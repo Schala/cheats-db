@@ -1,0 +1,5605 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="26">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>23</ID>
+      <Description>"Character Status (Open Status To Update)"</Description>
+      <Options moHideChildren="1"/>
+      <LastState/>
+      <Color>A00000</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+ 
+ 
+aobscanmodule(stat,FairyFencerAD.exe,66 83 78 04 00 74 35) // should be unique
+alloc(statnewmem,2048,"FairyFencerAD.exe")
+
+label(statcode)
+label(statreturn)
+
+globalalloc(_id,4)
+
+statnewmem:
+
+statcode:
+  mov [_id],eax
+  cmp word ptr [eax+04],00
+  jmp statreturn
+
+stat:
+  jmp statnewmem
+statreturn:
+registersymbol(stat)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+stat:
+  db 66 83 78 04 00
+
+unregistersymbol(stat)
+dealloc(statnewmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "FairyFencerAD.exe"+AC21D
+
+"FairyFencerAD.exe"+AC207: 56                       -  push esi
+"FairyFencerAD.exe"+AC208: 8B F1                    -  mov esi,ecx
+"FairyFencerAD.exe"+AC20A: 85 F6                    -  test esi,esi
+"FairyFencerAD.exe"+AC20C: 78 05                    -  js FairyFencerAD.exe+AC213
+"FairyFencerAD.exe"+AC20E: 83 FE 02                 -  cmp esi,02
+"FairyFencerAD.exe"+AC211: 7C 02                    -  jl FairyFencerAD.exe+AC215
+"FairyFencerAD.exe"+AC213: 33 F6                    -  xor esi,esi
+"FairyFencerAD.exe"+AC215: 89 44 B3 08              -  mov [ebx+esi*4+08],eax
+"FairyFencerAD.exe"+AC219: 85 C0                    -  test eax,eax
+"FairyFencerAD.exe"+AC21B: 74 3C                    -  je FairyFencerAD.exe+AC259
+// ---------- INJECTING HERE ----------
+"FairyFencerAD.exe"+AC21D: 66 83 78 04 00           -  cmp word ptr [eax+04],00
+// ---------- DONE INJECTING  ----------
+"FairyFencerAD.exe"+AC222: 74 35                    -  je FairyFencerAD.exe+AC259
+"FairyFencerAD.exe"+AC224: 57                       -  push edi
+"FairyFencerAD.exe"+AC225: 8B FE                    -  mov edi,esi
+"FairyFencerAD.exe"+AC227: 85 F6                    -  test esi,esi
+"FairyFencerAD.exe"+AC229: 78 05                    -  js FairyFencerAD.exe+AC230
+"FairyFencerAD.exe"+AC22B: 83 FE 02                 -  cmp esi,02
+"FairyFencerAD.exe"+AC22E: 7C 02                    -  jl FairyFencerAD.exe+AC232
+"FairyFencerAD.exe"+AC230: 33 FF                    -  xor edi,edi
+"FairyFencerAD.exe"+AC232: 8B 44 BB 10              -  mov eax,[ebx+edi*4+10]
+"FairyFencerAD.exe"+AC236: 85 C0                    -  test eax,eax
+}
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>24</ID>
+          <Description>"ID"</Description>
+          <DropDownList DisplayValueAsItem="1">1:Fang
+2:Tiara
+3:Harley
+4:Galdo
+5:Ethel
+6:Pippin
+7:Apollonius
+8:Lola
+9:Sherman
+10:Marianna
+11:Noie
+</DropDownList>
+          <VariableType>2 Bytes</VariableType>
+          <Address>_id</Address>
+          <Offsets>
+            <Offset>4</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>158</ID>
+          <Description>"EX?"</Description>
+          <DropDownList DisplayValueAsItem="1">10:No
+24:Yes
+26:Yes
+</DropDownList>
+          <VariableType>2 Bytes</VariableType>
+          <Address>_id</Address>
+          <Offsets>
+            <Offset>2</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>51</ID>
+          <Description>"Level"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_ID</Address>
+          <Offsets>
+            <Offset>1a</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>52</ID>
+          <Description>"HP"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_ID</Address>
+          <Offsets>
+            <Offset>20</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>53</ID>
+          <Description>"SP"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_ID</Address>
+          <Offsets>
+            <Offset>28</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>25</ID>
+          <Description>"STR"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_id</Address>
+          <Offsets>
+            <Offset>2c</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>26</ID>
+          <Description>"VIT"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_ID</Address>
+          <Offsets>
+            <Offset>30</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>27</ID>
+          <Description>"INT"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_ID</Address>
+          <Offsets>
+            <Offset>34</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>28</ID>
+          <Description>"MEN"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_ID</Address>
+          <Offsets>
+            <Offset>38</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>29</ID>
+          <Description>"AGI"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_ID</Address>
+          <Offsets>
+            <Offset>3C</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>30</ID>
+          <Description>"TEC"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_ID</Address>
+          <Offsets>
+            <Offset>40</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>31</ID>
+          <Description>"LUK"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_ID</Address>
+          <Offsets>
+            <Offset>44</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>32</ID>
+          <Description>"MOV"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>_ID</Address>
+          <Offsets>
+            <Offset>48</Offset>
+          </Offsets>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>47</ID>
+      <Description>"Battle Options (Open Battle Options To Update)"</Description>
+      <Options moHideChildren="1"/>
+      <LastState/>
+      <Color>A00000</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+ 
+ 
+aobscanmodule(battle,FairyFencerAD.exe,66 39 1E 74 0A 81) // should be unique
+alloc(battlenewmem,2048,"FairyFencerAD.exe")
+
+label(battlecode)
+label(battlereturn)
+
+globalalloc(_wp,4)
+
+battlenewmem:
+
+battlecode:
+  mov [_wp],esi
+  cmp [esi],bx
+  je battle+F
+  jmp battlereturn
+
+battle:
+  jmp battlenewmem
+battlereturn:
+registersymbol(battle)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+battle:
+  db 66 39 1E 74 0A
+
+unregistersymbol(battle)
+dealloc(battlenewmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "FairyFencerAD.exe"+1D8F0
+
+"FairyFencerAD.exe"+1D8CC: 8B 3D 10 C8 27 02  -  mov edi,[FairyFencerAD.exe+148C810]
+"FairyFencerAD.exe"+1D8D2: 8B 97 60 2E 00 00  -  mov edx,[edi+00002E60]
+"FairyFencerAD.exe"+1D8D8: 8B CA              -  mov ecx,edx
+"FairyFencerAD.exe"+1D8DA: 69 C9 70 02 00 00  -  imul ecx,ecx,00000270
+"FairyFencerAD.exe"+1D8E0: 56                 -  push esi
+"FairyFencerAD.exe"+1D8E1: 8D B7 64 2E 00 00  -  lea esi,[edi+00002E64]
+"FairyFencerAD.exe"+1D8E7: 03 CE              -  add ecx,esi
+"FairyFencerAD.exe"+1D8E9: 3B F1              -  cmp esi,ecx
+"FairyFencerAD.exe"+1D8EB: 73 12              -  jae FairyFencerAD.exe+1D8FF
+"FairyFencerAD.exe"+1D8ED: 8D 49 00           -  lea ecx,[ecx+00]
+// ---------- INJECTING HERE ----------
+"FairyFencerAD.exe"+1D8F0: 66 39 1E           -  cmp [esi],bx
+"FairyFencerAD.exe"+1D8F3: 74 0A              -  je FairyFencerAD.exe+1D8FF
+// ---------- DONE INJECTING  ----------
+"FairyFencerAD.exe"+1D8F5: 81 C6 70 02 00 00  -  add esi,00000270
+"FairyFencerAD.exe"+1D8FB: 3B F1              -  cmp esi,ecx
+"FairyFencerAD.exe"+1D8FD: 72 F1              -  jb FairyFencerAD.exe+1D8F0
+"FairyFencerAD.exe"+1D8FF: 33 DB              -  xor ebx,ebx
+"FairyFencerAD.exe"+1D901: 3B F1              -  cmp esi,ecx
+"FairyFencerAD.exe"+1D903: 0F 94 C3           -  sete bl
+"FairyFencerAD.exe"+1D906: 0F B7 CB           -  movzx ecx,bx
+"FairyFencerAD.exe"+1D909: 66 85 C9           -  test cx,cx
+"FairyFencerAD.exe"+1D90C: 74 1F              -  je FairyFencerAD.exe+1D92D
+"FairyFencerAD.exe"+1D90E: 83 FA 10           -  cmp edx,10
+}
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>48</ID>
+          <Description>"ID"</Description>
+          <DropDownList DisplayValueAsItem="1">1:Fang
+2:Tiara
+3:Harley
+4:Galdo
+5:Ethel
+6:Pippin
+7:Apollonius
+8:Lola
+9:Sherman
+10:Marianna
+11:Noie
+</DropDownList>
+          <VariableType>2 Bytes</VariableType>
+          <Address>_wp</Address>
+          <Offsets>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>49</ID>
+          <Description>"WP"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_wp</Address>
+          <Offsets>
+            <Offset>38</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>50</ID>
+          <Description>"Unlock 5th Combo?"</Description>
+          <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+          <VariableType>Byte</VariableType>
+          <Address>_wp</Address>
+          <Offsets>
+            <Offset>6</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>299</ID>
+          <Description>"Skill/Magic/Abilities Editor"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>300</ID>
+              <Description>"Total (Change This Value to 256 First !)"</Description>
+              <Color>0000FF</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>6c</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>301</ID>
+              <Description>"Slot 1"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>70</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>302</ID>
+              <Description>"Slot 2"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>72</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>303</ID>
+              <Description>"Slot 3"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>74</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>304</ID>
+              <Description>"Slot 4"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>76</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>305</ID>
+              <Description>"Slot 5"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>78</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>306</ID>
+              <Description>"Slot 6"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>7a</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>307</ID>
+              <Description>"Slot 7"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>7c</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>308</ID>
+              <Description>"Slot 8"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>7e</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>309</ID>
+              <Description>"Slot 9"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>80</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>310</ID>
+              <Description>"Slot 10"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>82</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>311</ID>
+              <Description>"Slot 11"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>84</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>312</ID>
+              <Description>"Slot 12"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>86</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>313</ID>
+              <Description>"Slot 13"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>88</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>314</ID>
+              <Description>"Slot 14"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>8a</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>315</ID>
+              <Description>"Slot 15"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>8c</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>316</ID>
+              <Description>"Slot 16"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>8e</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>317</ID>
+              <Description>"Slot 17"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>90</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>318</ID>
+              <Description>"Slot 18"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>92</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>319</ID>
+              <Description>"Slot 19"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>94</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>320</ID>
+              <Description>"Slot 20"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>96</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>321</ID>
+              <Description>"Slot 21"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>98</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>322</ID>
+              <Description>"Slot 22"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>9a</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>323</ID>
+              <Description>"Slot 23"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>9c</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>324</ID>
+              <Description>"Slot 24"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>9e</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>325</ID>
+              <Description>"Slot 25"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>a0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>326</ID>
+              <Description>"Slot 26"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>a2</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>327</ID>
+              <Description>"Slot 27"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>a4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>328</ID>
+              <Description>"Slot 28"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>a6</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>329</ID>
+              <Description>"Slot 29"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>a8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>330</ID>
+              <Description>"Slot 30"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>aa</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>331</ID>
+              <Description>"Slot 31"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>ac</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>332</ID>
+              <Description>"Slot 32"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>ae</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>333</ID>
+              <Description>"Slot 33"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>b0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>334</ID>
+              <Description>"Slot 34"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>b2</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>335</ID>
+              <Description>"Slot 35"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>b4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>336</ID>
+              <Description>"Slot 36"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>b6</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>337</ID>
+              <Description>"Slot 37"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>b8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>338</ID>
+              <Description>"Slot 38"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>ba</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>339</ID>
+              <Description>"Slot 39"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>bc</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>340</ID>
+              <Description>"Slot 40"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>be</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>341</ID>
+              <Description>"Slot 41"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>c0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>342</ID>
+              <Description>"Slot 42"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>c2</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>343</ID>
+              <Description>"Slot 43"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>c4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>344</ID>
+              <Description>"Slot 44"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>c6</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>345</ID>
+              <Description>"Slot 45"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>c8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>346</ID>
+              <Description>"Slot 46"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>ca</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>347</ID>
+              <Description>"Slot 47"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>cc</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>348</ID>
+              <Description>"Slot 48"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>ce</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>349</ID>
+              <Description>"Slot 49"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>d0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>350</ID>
+              <Description>"Slot 50"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>d2</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>351</ID>
+              <Description>"Slot 51"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>d4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>352</ID>
+              <Description>"Slot 52"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>d6</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>353</ID>
+              <Description>"Slot 53"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>d8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>354</ID>
+              <Description>"Slot 54"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>da</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>355</ID>
+              <Description>"Slot 55"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>dc</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>356</ID>
+              <Description>"Slot 56"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>de</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>357</ID>
+              <Description>"Slot 57"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>e0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>358</ID>
+              <Description>"Slot 58"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>e2</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>359</ID>
+              <Description>"Slot 59"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>e4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>360</ID>
+              <Description>"Slot 60"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>e6</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>361</ID>
+              <Description>"Slot 61"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>e8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>362</ID>
+              <Description>"Slot 62"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>ea</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>363</ID>
+              <Description>"Slot 63"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>ec</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>364</ID>
+              <Description>"Slot 64"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>ee</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>365</ID>
+              <Description>"Slot 65"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>f0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>366</ID>
+              <Description>"Slot 66"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>f2</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>367</ID>
+              <Description>"Slot 67"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>f4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>368</ID>
+              <Description>"Slot 68"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>f6</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>369</ID>
+              <Description>"Slot 69"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>f8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>370</ID>
+              <Description>"Slot 70"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>fa</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>371</ID>
+              <Description>"Slot 71"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>fc</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>372</ID>
+              <Description>"Slot 72"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>fe</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>373</ID>
+              <Description>"Slot 73"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>100</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>374</ID>
+              <Description>"Slot 74"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>102</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>375</ID>
+              <Description>"Slot 75"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>104</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>376</ID>
+              <Description>"Slot 76"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>106</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>377</ID>
+              <Description>"Slot 77"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>108</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>378</ID>
+              <Description>"Slot 78"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>10a</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>379</ID>
+              <Description>"Slot 79"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>10c</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>380</ID>
+              <Description>"Slot 80"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>10e</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>381</ID>
+              <Description>"Slot 81"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>110</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>382</ID>
+              <Description>"Slot 82"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>112</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>383</ID>
+              <Description>"Slot 83"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>114</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>384</ID>
+              <Description>"Slot 84"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>116</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>385</ID>
+              <Description>"Slot 85"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>118</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>386</ID>
+              <Description>"Slot 86"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>11a</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>387</ID>
+              <Description>"Slot 87"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>11c</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>388</ID>
+              <Description>"Slot 88"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>11e</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>389</ID>
+              <Description>"Slot 89"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>120</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>390</ID>
+              <Description>"Slot 90"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>122</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>391</ID>
+              <Description>"Slot 91"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>124</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>392</ID>
+              <Description>"Slot 92"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>126</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>393</ID>
+              <Description>"Slot 93"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>128</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>394</ID>
+              <Description>"Slot 94"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>12a</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>395</ID>
+              <Description>"Slot 95"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>12c</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>419</ID>
+              <Description>"Slot 96"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>12e</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>418</ID>
+              <Description>"Slot 97"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>130</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>417</ID>
+              <Description>"Slot 98"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>132</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>416</ID>
+              <Description>"Slot 99"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>134</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>415</ID>
+              <Description>"Slot 100"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>136</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>414</ID>
+              <Description>"Slot 101"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>138</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>413</ID>
+              <Description>"Slot 102"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>13a</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>412</ID>
+              <Description>"Slot 103"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>13c</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>411</ID>
+              <Description>"Slot 104"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>13e</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>410</ID>
+              <Description>"Slot 105"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>140</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>409</ID>
+              <Description>"Slot 106"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>142</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>408</ID>
+              <Description>"Slot 107"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>144</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>407</ID>
+              <Description>"Slot 108"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>146</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>406</ID>
+              <Description>"Slot 109"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>148</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>405</ID>
+              <Description>"Slot 110"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>14a</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>404</ID>
+              <Description>"Slot 111"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>14c</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>403</ID>
+              <Description>"Slot 112"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>14e</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>402</ID>
+              <Description>"Slot 113"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>150</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>401</ID>
+              <Description>"Slot 114"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>152</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>400</ID>
+              <Description>"Slot 115"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>154</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>399</ID>
+              <Description>"Slot 116"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>156</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>398</ID>
+              <Description>"Slot 117"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>158</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>397</ID>
+              <Description>"Slot 118"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>15a</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>396</ID>
+              <Description>"Slot 119"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>15c</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>423</ID>
+              <Description>"Slot 120"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>15e</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>424</ID>
+              <Description>"Slot 121"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>160</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>431</ID>
+              <Description>"Slot 122"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>162</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>430</ID>
+              <Description>"Slot 123"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>164</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>429</ID>
+              <Description>"Slot 124"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>166</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>428</ID>
+              <Description>"Slot 125"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>168</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>427</ID>
+              <Description>"Slot 126"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>16a</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>426</ID>
+              <Description>"Slot 127"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>16c</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>425</ID>
+              <Description>"Slot 128"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>16e</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>433</ID>
+              <Description>"Slot 129"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>170</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>432</ID>
+              <Description>"Slot 130"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>172</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>443</ID>
+              <Description>"Slot 131"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>174</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>442</ID>
+              <Description>"Slot 132"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>176</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>441</ID>
+              <Description>"Slot 133"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>178</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>440</ID>
+              <Description>"Slot 134"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>17a</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>439</ID>
+              <Description>"Slot 135"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>17c</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>438</ID>
+              <Description>"Slot 136"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>17e</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>437</ID>
+              <Description>"Slot 137"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>180</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>436</ID>
+              <Description>"Slot 138"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>182</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>435</ID>
+              <Description>"Slot 139"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>184</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>434</ID>
+              <Description>"Slot 140"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>186</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>463</ID>
+              <Description>"Slot 141"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>188</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>462</ID>
+              <Description>"Slot 142"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>18a</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>461</ID>
+              <Description>"Slot 143"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>18c</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>460</ID>
+              <Description>"Slot 144"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>18e</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>459</ID>
+              <Description>"Slot 145"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>190</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>458</ID>
+              <Description>"Slot 146"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>192</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>457</ID>
+              <Description>"Slot 147"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>194</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>456</ID>
+              <Description>"Slot 148"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>196</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>455</ID>
+              <Description>"Slot 149"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>198</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>454</ID>
+              <Description>"Slot 150"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>19a</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>453</ID>
+              <Description>"Slot 151"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>19c</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>452</ID>
+              <Description>"Slot 152"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>19e</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>451</ID>
+              <Description>"Slot 153"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1a0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>450</ID>
+              <Description>"Slot 154"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1a2</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>449</ID>
+              <Description>"Slot 155"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1a4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>448</ID>
+              <Description>"Slot 156"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1a6</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>447</ID>
+              <Description>"Slot 157"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1a8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>446</ID>
+              <Description>"Slot 158"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1aa</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>445</ID>
+              <Description>"Slot 159"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1ac</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>444</ID>
+              <Description>"Slot 160"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1ae</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>483</ID>
+              <Description>"Slot 161"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1b0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>482</ID>
+              <Description>"Slot 162"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1b2</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>481</ID>
+              <Description>"Slot 163"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1b4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>480</ID>
+              <Description>"Slot 164"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1b6</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>479</ID>
+              <Description>"Slot 165"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1b8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>478</ID>
+              <Description>"Slot 166"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1ba</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>477</ID>
+              <Description>"Slot 167"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1bc</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>476</ID>
+              <Description>"Slot 168"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1be</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>475</ID>
+              <Description>"Slot 169"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1c0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>474</ID>
+              <Description>"Slot 170"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1c2</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>473</ID>
+              <Description>"Slot 171"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1c4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>472</ID>
+              <Description>"Slot 172"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1c6</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>471</ID>
+              <Description>"Slot 173"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1c8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>470</ID>
+              <Description>"Slot 174"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1ca</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>469</ID>
+              <Description>"Slot 175"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1cc</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>468</ID>
+              <Description>"Slot 176"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1ce</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>467</ID>
+              <Description>"Slot 177"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1d0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>466</ID>
+              <Description>"Slot 178"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1d2</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>465</ID>
+              <Description>"Slot 179"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1d4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>464</ID>
+              <Description>"Slot 180"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1d6</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>503</ID>
+              <Description>"Slot 181"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1d8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>502</ID>
+              <Description>"Slot 182"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1da</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>501</ID>
+              <Description>"Slot 183"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1dc</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>500</ID>
+              <Description>"Slot 184"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1de</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>499</ID>
+              <Description>"Slot 185"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1e0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>498</ID>
+              <Description>"Slot 186"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1e2</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>497</ID>
+              <Description>"Slot 187"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1e4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>496</ID>
+              <Description>"Slot 188"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1e6</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>495</ID>
+              <Description>"Slot 189"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1e8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>494</ID>
+              <Description>"Slot 190"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1ea</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>493</ID>
+              <Description>"Slot 191"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1ec</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>492</ID>
+              <Description>"Slot 192"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1ee</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>491</ID>
+              <Description>"Slot 193"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1f0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>490</ID>
+              <Description>"Slot 194"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1f2</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>489</ID>
+              <Description>"Slot 195"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1f4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>488</ID>
+              <Description>"Slot 196"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1f6</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>487</ID>
+              <Description>"Slot 197"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1f8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>486</ID>
+              <Description>"Slot 198"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1fa</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>485</ID>
+              <Description>"Slot 199"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1fc</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>484</ID>
+              <Description>"Slot 200"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>1fe</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>523</ID>
+              <Description>"Slot 201"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>200</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>522</ID>
+              <Description>"Slot 202"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>202</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>521</ID>
+              <Description>"Slot 203"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>204</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>520</ID>
+              <Description>"Slot 204"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>206</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>519</ID>
+              <Description>"Slot 205"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>208</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>518</ID>
+              <Description>"Slot 206"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>20a</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>517</ID>
+              <Description>"Slot 207"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>20c</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>516</ID>
+              <Description>"Slot 208"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>20e</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>515</ID>
+              <Description>"Slot 209"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>210</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>514</ID>
+              <Description>"Slot 210"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>212</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>513</ID>
+              <Description>"Slot 211"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>214</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>512</ID>
+              <Description>"Slot 212"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>216</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>511</ID>
+              <Description>"Slot 213"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>218</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>510</ID>
+              <Description>"Slot 214"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>21a</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>509</ID>
+              <Description>"Slot 215"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>21c</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>508</ID>
+              <Description>"Slot 216"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>21e</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>507</ID>
+              <Description>"Slot 217"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>220</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>506</ID>
+              <Description>"Slot 218"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>222</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>505</ID>
+              <Description>"Slot 219"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>224</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>504</ID>
+              <Description>"Slot 220"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>226</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>543</ID>
+              <Description>"Slot 221"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>228</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>542</ID>
+              <Description>"Slot 222"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>22a</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>541</ID>
+              <Description>"Slot 223"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>22c</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>540</ID>
+              <Description>"Slot 224"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>22e</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>539</ID>
+              <Description>"Slot 225"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>230</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>538</ID>
+              <Description>"Slot 226"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>232</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>537</ID>
+              <Description>"Slot 227"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>234</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>536</ID>
+              <Description>"Slot 228"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>236</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>535</ID>
+              <Description>"Slot 229"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>238</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>534</ID>
+              <Description>"Slot 230"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>23a</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>533</ID>
+              <Description>"Slot 231"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>23c</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>532</ID>
+              <Description>"Slot 232"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>23e</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>531</ID>
+              <Description>"Slot 233"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>240</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>530</ID>
+              <Description>"Slot 234"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>242</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>529</ID>
+              <Description>"Slot 235"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>244</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>528</ID>
+              <Description>"Slot 236"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>246</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>527</ID>
+              <Description>"Slot 237"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>248</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>526</ID>
+              <Description>"Slot 238"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>24a</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>525</ID>
+              <Description>"Slot 239"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>24c</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>524</ID>
+              <Description>"Slot 240"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>24e</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>563</ID>
+              <Description>"Slot 241"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>250</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>562</ID>
+              <Description>"Slot 242"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>252</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>561</ID>
+              <Description>"Slot 243"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>254</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>560</ID>
+              <Description>"Slot 244"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>256</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>559</ID>
+              <Description>"Slot 245"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>258</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>558</ID>
+              <Description>"Slot 246"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>25a</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>557</ID>
+              <Description>"Slot 247"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>25c</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>556</ID>
+              <Description>"Slot 248"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>25e</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>555</ID>
+              <Description>"Slot 249"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>260</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>554</ID>
+              <Description>"Slot 250"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>262</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>553</ID>
+              <Description>"Slot 251"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>264</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>552</ID>
+              <Description>"Slot 252"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>266</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>551</ID>
+              <Description>"Slot 253"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>268</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>550</ID>
+              <Description>"Slot 254"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>26a</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>549</ID>
+              <Description>"Slot 255"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>26c</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>548</ID>
+              <Description>"Slot 256"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_wp</Address>
+              <Offsets>
+                <Offset>26e</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>797</ID>
+      <Description>"Skill/Magic/Abilities ID Identifier(Open Weapon Boost To Update)"</Description>
+      <Options moHideChildren="1"/>
+      <LastState/>
+      <Color>A00000</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+ 
+ 
+aobscanmodule(smaid,FairyFencerAD.exe,0F B6 4A 02 8B 42 14) // should be unique
+alloc(smaidnewmem,2048,"FairyFencerAD.exe")
+
+label(smaidcode)
+label(smaidreturn)
+
+globalalloc(_sklid,4)
+smaidnewmem:
+
+smaidcode:
+  mov [_sklid],edx
+  movzx ecx,byte ptr [edx+02]
+  mov eax,[edx+14]
+  jmp smaidreturn
+
+smaid:
+  jmp smaidnewmem
+  nop
+  nop
+smaidreturn:
+registersymbol(smaid)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+smaid:
+  db 0F B6 4A 02 8B 42 14
+
+unregistersymbol(smaid)
+dealloc(smaidnewmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "FairyFencerAD.exe"+25C96
+
+"FairyFencerAD.exe"+25C7E: CC                 -  int 3 
+"FairyFencerAD.exe"+25C7F: CC                 -  int 3 
+"FairyFencerAD.exe"+25C80: 85 D2              -  test edx,edx
+"FairyFencerAD.exe"+25C82: 75 12              -  jne FairyFencerAD.exe+25C96
+"FairyFencerAD.exe"+25C84: 68 1C C2 DB 01     -  push FairyFencerAD.exe+139C21C
+"FairyFencerAD.exe"+25C89: 6A 02              -  push 02
+"FairyFencerAD.exe"+25C8B: E8 20 10 24 00     -  call FairyFencerAD.exe+266CB0
+"FairyFencerAD.exe"+25C90: 83 C4 08           -  add esp,08
+"FairyFencerAD.exe"+25C93: 33 C0              -  xor eax,eax
+"FairyFencerAD.exe"+25C95: C3                 -  ret 
+// ---------- INJECTING HERE ----------
+"FairyFencerAD.exe"+25C96: 0F B6 4A 02        -  movzx ecx,byte ptr [edx+02]
+"FairyFencerAD.exe"+25C9A: 8B 42 14           -  mov eax,[edx+14]
+// ---------- DONE INJECTING  ----------
+"FairyFencerAD.exe"+25C9D: 85 C9              -  test ecx,ecx
+"FairyFencerAD.exe"+25C9F: 74 48              -  je FairyFencerAD.exe+25CE9
+"FairyFencerAD.exe"+25CA1: 83 F9 02           -  cmp ecx,02
+"FairyFencerAD.exe"+25CA4: 75 0D              -  jne FairyFencerAD.exe+25CB3
+"FairyFencerAD.exe"+25CA6: E8 25 2C 00 00     -  call FairyFencerAD.exe+288D0
+"FairyFencerAD.exe"+25CAB: 85 C0              -  test eax,eax
+"FairyFencerAD.exe"+25CAD: 74 3A              -  je FairyFencerAD.exe+25CE9
+"FairyFencerAD.exe"+25CAF: 8B 40 18           -  mov eax,[eax+18]
+"FairyFencerAD.exe"+25CB2: C3                 -  ret 
+"FairyFencerAD.exe"+25CB3: 83 F9 01           -  cmp ecx,01
+}
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>852</ID>
+          <Description>"ID"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>_sklid</Address>
+          <Offsets>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>70</ID>
+      <Description>"Battle Result (Hit Enemy To Update)"</Description>
+      <Options moHideChildren="1"/>
+      <LastState/>
+      <Color>A00000</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+ 
+ 
+aobscanmodule(battleresult,FairyFencerAD.exe,8B B9 3C A0 00 00) // should be unique
+alloc(battleresultnewmem,2048,"FairyFencerAD.exe")
+
+label(battleresultcode)
+label(battleresultreturn)
+
+globalalloc(_battleresult,4)
+
+battleresultnewmem:
+
+battleresultcode:
+  mov [_battleresult],ecx
+  mov edi,[ecx+0000A03C]
+  jmp battleresultreturn
+
+battleresult:
+  jmp battleresultnewmem
+  nop
+battleresultreturn:
+registersymbol(battleresult)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+battleresult:
+  db 8B B9 3C A0 00 00
+
+unregistersymbol(battleresult)
+dealloc(battleresultnewmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "FairyFencerAD.exe"+182000
+
+"FairyFencerAD.exe"+181FD1: 3B C3                 -  cmp eax,ebx
+"FairyFencerAD.exe"+181FD3: 73 08                 -  jae FairyFencerAD.exe+181FDD
+"FairyFencerAD.exe"+181FD5: 89 81 38 A0 00 00     -  mov [ecx+0000A038],eax
+"FairyFencerAD.exe"+181FDB: EB 06                 -  jmp FairyFencerAD.exe+181FE3
+"FairyFencerAD.exe"+181FDD: 89 99 38 A0 00 00     -  mov [ecx+0000A038],ebx
+"FairyFencerAD.exe"+181FE3: 8B 81 38 A0 00 00     -  mov eax,[ecx+0000A038]
+"FairyFencerAD.exe"+181FE9: E8 B2 93 E9 FF        -  call FairyFencerAD.exe+1B3A0
+"FairyFencerAD.exe"+181FEE: 8B 0D 54 CA 49 02     -  mov ecx,[FairyFencerAD.exe+148CA54]
+"FairyFencerAD.exe"+181FF4: 8B 81 AC 9E 00 00     -  mov eax,[ecx+00009EAC]
+"FairyFencerAD.exe"+181FFA: 8B B1 A8 9E 00 00     -  mov esi,[ecx+00009EA8]
+// ---------- INJECTING HERE ----------
+"FairyFencerAD.exe"+182000: 8B B9 3C A0 00 00     -  mov edi,[ecx+0000A03C]
+// ---------- DONE INJECTING  ----------
+"FairyFencerAD.exe"+182006: 33 D2                 -  xor edx,edx
+"FairyFencerAD.exe"+182008: 3B D0                 -  cmp edx,eax
+"FairyFencerAD.exe"+18200A: 7F 33                 -  jg FairyFencerAD.exe+18203F
+"FairyFencerAD.exe"+18200C: 7C 04                 -  jl FairyFencerAD.exe+182012
+"FairyFencerAD.exe"+18200E: 3B FE                 -  cmp edi,esi
+"FairyFencerAD.exe"+182010: 73 2D                 -  jae FairyFencerAD.exe+18203F
+"FairyFencerAD.exe"+182012: 85 C0                 -  test eax,eax
+"FairyFencerAD.exe"+182014: 7F 1C                 -  jg FairyFencerAD.exe+182032
+"FairyFencerAD.exe"+182016: 7C 04                 -  jl FairyFencerAD.exe+18201C
+"FairyFencerAD.exe"+182018: 3B F3                 -  cmp esi,ebx
+}
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>71</ID>
+          <Description>"Max Damage"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_battleresult</Address>
+          <Offsets>
+            <Offset>a03c</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>72</ID>
+          <Description>"Max Combo"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_battleresult</Address>
+          <Offsets>
+            <Offset>a038</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>73</ID>
+          <Description>"Earned EXP"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_battleresult</Address>
+          <Offsets>
+            <Offset>a048</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>74</ID>
+          <Description>"Earned Money"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_battleresult</Address>
+          <Offsets>
+            <Offset>a058</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>75</ID>
+          <Description>"Earned WP"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_battleresult</Address>
+          <Offsets>
+            <Offset>a060</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>76</ID>
+          <Description>"Drop 1"</Description>
+          <Options moHideChildren="1"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_battleresult</Address>
+          <Offsets>
+            <Offset>a068</Offset>
+          </Offsets>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>77</ID>
+              <Description>"Quantity"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>_result</Address>
+              <Offsets>
+                <Offset>a06c</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>78</ID>
+          <Description>"Drop 2"</Description>
+          <Options moHideChildren="1"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_battleresult</Address>
+          <Offsets>
+            <Offset>a070</Offset>
+          </Offsets>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>79</ID>
+              <Description>"Quantity"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>_result</Address>
+              <Offsets>
+                <Offset>a074</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>80</ID>
+          <Description>"Drop 3"</Description>
+          <Options moHideChildren="1"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_battleresult</Address>
+          <Offsets>
+            <Offset>a078</Offset>
+          </Offsets>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>81</ID>
+              <Description>"Quantity"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>_result</Address>
+              <Offsets>
+                <Offset>a07c</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>82</ID>
+          <Description>"Drop 4"</Description>
+          <Options moHideChildren="1"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_battleresult</Address>
+          <Offsets>
+            <Offset>a080</Offset>
+          </Offsets>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>83</ID>
+              <Description>"Quantity"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>_result</Address>
+              <Offsets>
+                <Offset>a084</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>84</ID>
+          <Description>"Drop 5"</Description>
+          <Options moHideChildren="1"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_battleresult</Address>
+          <Offsets>
+            <Offset>a088</Offset>
+          </Offsets>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>85</ID>
+              <Description>"Quantity"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>_result</Address>
+              <Offsets>
+                <Offset>a08c</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>89</ID>
+      <Description>"Party Stats (Open Menu To Update)"</Description>
+      <Options moHideChildren="1"/>
+      <LastState/>
+      <Color>A00000</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+ 
+ 
+aobscanmodule(overall,FairyFencerAD.exe,0F B6 B4 BB 28 2E 00 00) // should be unique
+alloc(overallnewmem,2048,"FairyFencerAD.exe")
+
+label(overallcode)
+label(overallreturn)
+
+globalalloc(_base,4)
+
+overallnewmem:
+
+overallcode:
+  mov [_base],ebx
+  movzx esi,byte ptr [ebx+edi*4+00002E28]
+  jmp overallreturn
+
+overall:
+  jmp overallnewmem
+  nop
+  nop
+  nop
+overallreturn:
+registersymbol(overall)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+overall:
+  db 0F B6 B4 BB 28 2E 00 00
+
+unregistersymbol(overall)
+dealloc(overallnewmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "FairyFencerAD.exe"+1C8C4
+
+"FairyFencerAD.exe"+1C8A9: 68 90 B0 F3 01           -  push FairyFencerAD.exe+139B090
+"FairyFencerAD.exe"+1C8AE: 6A 02                    -  push 02
+"FairyFencerAD.exe"+1C8B0: E8 FB A3 24 00           -  call FairyFencerAD.exe+266CB0
+"FairyFencerAD.exe"+1C8B5: 83 C4 0C                 -  add esp,0C
+"FairyFencerAD.exe"+1C8B8: 33 C0                    -  xor eax,eax
+"FairyFencerAD.exe"+1C8BA: 5F                       -  pop edi
+"FairyFencerAD.exe"+1C8BB: C3                       -  ret 
+"FairyFencerAD.exe"+1C8BC: 53                       -  push ebx
+"FairyFencerAD.exe"+1C8BD: 8B 1D 10 C8 02 02        -  mov ebx,[FairyFencerAD.exe+148C810]
+"FairyFencerAD.exe"+1C8C3: 56                       -  push esi
+// ---------- INJECTING HERE ----------
+"FairyFencerAD.exe"+1C8C4: 0F B6 B4 BB 28 2E 00 00  -  movzx esi,byte ptr [ebx+edi*4+00002E28]
+// ---------- DONE INJECTING  ----------
+"FairyFencerAD.exe"+1C8CC: 85 F6                    -  test esi,esi
+"FairyFencerAD.exe"+1C8CE: 74 18                    -  je FairyFencerAD.exe+1C8E8
+"FairyFencerAD.exe"+1C8D0: 6A 01                    -  push 01
+"FairyFencerAD.exe"+1C8D2: 8B C6                    -  mov eax,esi
+"FairyFencerAD.exe"+1C8D4: E8 37 FA FF FF           -  call FairyFencerAD.exe+1C310
+"FairyFencerAD.exe"+1C8D9: 83 C4 04                 -  add esp,04
+"FairyFencerAD.exe"+1C8DC: 85 C0                    -  test eax,eax
+"FairyFencerAD.exe"+1C8DE: 75 08                    -  jne FairyFencerAD.exe+1C8E8
+"FairyFencerAD.exe"+1C8E0: 33 F6                    -  xor esi,esi
+"FairyFencerAD.exe"+1C8E2: 8B C6                    -  mov eax,esi
+}
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>94</ID>
+          <Description>"Revival rank"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>_base</Address>
+          <Offsets>
+            <Offset>2e48</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>95</ID>
+          <Description>"Quest rank"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>_base</Address>
+          <Offsets>
+            <Offset>2e44</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>91</ID>
+          <Description>"Party leader"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_base</Address>
+          <Offsets>
+            <Offset>2e40</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>92</ID>
+          <Description>"Money"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_base</Address>
+          <Offsets>
+            <Offset>2e50</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>93</ID>
+          <Description>"Difficulty"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>_base</Address>
+          <Offsets>
+            <Offset>2e54</Offset>
+          </Offsets>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>130</ID>
+      <Description>"Challenge (Open Challenge To Update)"</Description>
+      <Options moHideChildren="1"/>
+      <LastState/>
+      <Color>A00000</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+ 
+ 
+aobscanmodule(challenge,FairyFencerAD.exe,8B 4C B7 04 DB 44 B7 04) // should be unique
+alloc(cnewmem,2048,"FairyFencerAD.exe")
+
+label(ccode)
+label(creturn)
+
+globalalloc(_challenge,4)
+
+cnewmem:
+
+ccode:
+  mov [_challenge],edi
+  mov ecx,[edi+esi*4+04]
+  fild dword ptr [edi+esi*4+04]
+  jmp creturn
+
+challenge:
+  jmp cnewmem
+  nop
+  nop
+  nop
+creturn:
+registersymbol(challenge)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+challenge:
+  db 8B 4C B7 04 DB 44 B7 04
+
+unregistersymbol(challenge)
+dealloc(cnewmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "FairyFencerAD.exe"+16BEB
+
+"FairyFencerAD.exe"+16BDC: 72 F2              -  jb FairyFencerAD.exe+16BD0
+"FairyFencerAD.exe"+16BDE: 3B C1              -  cmp eax,ecx
+"FairyFencerAD.exe"+16BE0: 72 09              -  jb FairyFencerAD.exe+16BEB
+"FairyFencerAD.exe"+16BE2: D9 E8              -  fld1 
+"FairyFencerAD.exe"+16BE4: 5F                 -  pop edi
+"FairyFencerAD.exe"+16BE5: 5E                 -  pop esi
+"FairyFencerAD.exe"+16BE6: 5B                 -  pop ebx
+"FairyFencerAD.exe"+16BE7: 8B E5              -  mov esp,ebp
+"FairyFencerAD.exe"+16BE9: 5D                 -  pop ebp
+"FairyFencerAD.exe"+16BEA: C3                 -  ret 
+// ---------- INJECTING HERE ----------
+"FairyFencerAD.exe"+16BEB: 8B 4C B7 04        -  mov ecx,[edi+esi*4+04]
+"FairyFencerAD.exe"+16BEF: DB 44 B7 04        -  fild dword ptr [edi+esi*4+04]
+// ---------- DONE INJECTING  ----------
+"FairyFencerAD.exe"+16BF3: 85 C9              -  test ecx,ecx
+"FairyFencerAD.exe"+16BF5: 79 06              -  jns FairyFencerAD.exe+16BFD
+"FairyFencerAD.exe"+16BF7: DC 05 50 2A 6C 02  -  fadd qword ptr [FairyFencerAD.exe+13B2A50]
+"FairyFencerAD.exe"+16BFD: 8B 54 83 18        -  mov edx,[ebx+eax*4+18]
+"FairyFencerAD.exe"+16C01: DB 44 83 18        -  fild dword ptr [ebx+eax*4+18]
+"FairyFencerAD.exe"+16C05: 85 D2              -  test edx,edx
+"FairyFencerAD.exe"+16C07: 79 06              -  jns FairyFencerAD.exe+16C0F
+"FairyFencerAD.exe"+16C09: DC 05 50 2A 6C 02  -  fadd qword ptr [FairyFencerAD.exe+13B2A50]
+"FairyFencerAD.exe"+16C0F: DE F9              -  fdivp st(1),st(0)
+"FairyFencerAD.exe"+16C11: D9 5C 24 0C        -  fstp dword ptr [esp+0C]
+}
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>133</ID>
+          <Description>"Favoritism"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_challenge</Address>
+          <Offsets>
+            <Offset>4</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>131</ID>
+          <Description>"Dungeon Crawler"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_challenge</Address>
+          <Offsets>
+            <Offset>8</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>132</ID>
+          <Description>"Jump"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_challenge</Address>
+          <Offsets>
+            <Offset>c</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>134</ID>
+          <Description>"Treasure Hunter"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_challenge</Address>
+          <Offsets>
+            <Offset>10</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>135</ID>
+          <Description>"Flawless Fencer"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_challenge</Address>
+          <Offsets>
+            <Offset>14</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>136</ID>
+          <Description>"Hawk Eye"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_challenge</Address>
+          <Offsets>
+            <Offset>18</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>137</ID>
+          <Description>"Lone Fencer"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_challenge</Address>
+          <Offsets>
+            <Offset>1c</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>138</ID>
+          <Description>"Regular"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_challenge</Address>
+          <Offsets>
+            <Offset>20</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>139</ID>
+          <Description>"Diligince"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_challenge</Address>
+          <Offsets>
+            <Offset>24</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>140</ID>
+          <Description>"Tactical Retreat"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_challenge</Address>
+          <Offsets>
+            <Offset>28</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>141</ID>
+          <Description>"Item Master"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_challenge</Address>
+          <Offsets>
+            <Offset>2c</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>142</ID>
+          <Description>"Swordman"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_challenge</Address>
+          <Offsets>
+            <Offset>30</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>143</ID>
+          <Description>"Magician"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_challenge</Address>
+          <Offsets>
+            <Offset>34</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>144</ID>
+          <Description>"Uniqueness"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_challenge</Address>
+          <Offsets>
+            <Offset>38</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>145</ID>
+          <Description>"Power of The People"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_challenge</Address>
+          <Offsets>
+            <Offset>3c</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>146</ID>
+          <Description>"Breaker"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_challenge</Address>
+          <Offsets>
+            <Offset>40</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>147</ID>
+          <Description>"Air Master"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_challenge</Address>
+          <Offsets>
+            <Offset>44</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>149</ID>
+          <Description>"Slayer"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_challenge</Address>
+          <Offsets>
+            <Offset>4c</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>150</ID>
+          <Description>"Guardian"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_challenge</Address>
+          <Offsets>
+            <Offset>50</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>151</ID>
+          <Description>"Sponge"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_challenge</Address>
+          <Offsets>
+            <Offset>54</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>152</ID>
+          <Description>"Strength of Spirit"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_challenge</Address>
+          <Offsets>
+            <Offset>58</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>153</ID>
+          <Description>"Infinite Hands"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_challenge</Address>
+          <Offsets>
+            <Offset>5c</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>154</ID>
+          <Description>"Finish"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_challenge</Address>
+          <Offsets>
+            <Offset>60</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>155</ID>
+          <Description>"Perfect"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_challenge</Address>
+          <Offsets>
+            <Offset>64</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>156</ID>
+          <Description>"Unbroken Heart"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_challenge</Address>
+          <Offsets>
+            <Offset>68</Offset>
+          </Offsets>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>225</ID>
+      <Description>"Fairy (Open Fairies To Update)"</Description>
+      <Options moHideChildren="1"/>
+      <LastState/>
+      <Color>A00000</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+ 
+ 
+aobscanmodule(fairy,FairyFencerAD.exe,8A 5E 01 80 FB 0A) // should be unique
+alloc(fairynewmem,2048,"FairyFencerAD.exe")
+
+label(fairycode)
+label(fairyreturn)
+
+globalalloc(_test,4)
+
+fairynewmem:
+
+fairycode:
+  mov [_test],esi
+  mov bl,[esi+01]
+  cmp bl,0A
+  jmp fairyreturn
+
+fairy:
+  jmp fairynewmem
+  nop
+fairyreturn:
+registersymbol(fairy)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+fairy:
+  db 8A 5E 01 80 FB 0A
+
+unregistersymbol(fairy)
+dealloc(fairynewmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "FairyFencerAD.exe"+267C7
+
+"FairyFencerAD.exe"+267BB: CC                 -  int 3 
+"FairyFencerAD.exe"+267BC: CC                 -  int 3 
+"FairyFencerAD.exe"+267BD: CC                 -  int 3 
+"FairyFencerAD.exe"+267BE: CC                 -  int 3 
+"FairyFencerAD.exe"+267BF: CC                 -  int 3 
+"FairyFencerAD.exe"+267C0: 55                 -  push ebp
+"FairyFencerAD.exe"+267C1: 8B EC              -  mov ebp,esp
+"FairyFencerAD.exe"+267C3: 51                 -  push ecx
+"FairyFencerAD.exe"+267C4: D9 E8              -  fld1 
+"FairyFencerAD.exe"+267C6: 53                 -  push ebx
+// ---------- INJECTING HERE ----------
+"FairyFencerAD.exe"+267C7: 8A 5E 01           -  mov bl,[esi+01]
+"FairyFencerAD.exe"+267CA: 80 FB 0A           -  cmp bl,0A
+// ---------- DONE INJECTING  ----------
+"FairyFencerAD.exe"+267CD: 73 61              -  jae FairyFencerAD.exe+26830
+"FairyFencerAD.exe"+267CF: 57                 -  push edi
+"FairyFencerAD.exe"+267D0: D9 5D FC           -  fstp dword ptr [ebp-04]
+"FairyFencerAD.exe"+267D3: 0F B7 7E 02        -  movzx edi,word ptr [esi+02]
+"FairyFencerAD.exe"+267D7: 85 FF              -  test edi,edi
+"FairyFencerAD.exe"+267D9: 74 51              -  je FairyFencerAD.exe+2682C
+"FairyFencerAD.exe"+267DB: E8 70 3B 00 00     -  call FairyFencerAD.exe+2A350
+"FairyFencerAD.exe"+267E0: 85 C0              -  test eax,eax
+"FairyFencerAD.exe"+267E2: 74 48              -  je FairyFencerAD.exe+2682C
+"FairyFencerAD.exe"+267E4: 0F B6 CB           -  movzx ecx,bl
+}
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>227</ID>
+          <Description>"ID"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>_test</Address>
+          <Offsets>
+            <Offset>2</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>230</ID>
+          <Description>"Lvl"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>_test</Address>
+          <Offsets>
+            <Offset>1</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>231</ID>
+          <Description>"No. of Battle"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>_test</Address>
+          <Offsets>
+            <Offset>c</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>228</ID>
+          <Description>"EXP"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>_test</Address>
+          <Offsets>
+            <Offset>08</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>232</ID>
+          <Description>"Fury &amp; Shaping Effect"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>_test</Address>
+          <Offsets>
+            <Offset>6</Offset>
+          </Offsets>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>878</ID>
+      <Description>"Item (Open Item To Update)"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <Color>A00000</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>791</ID>
+          <Description>"Item ID Identifier"</Description>
+          <Options moHideChildren="1"/>
+          <LastState/>
+          <Color>000000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+ 
+ 
+aobscanmodule(itemid,FairyFencerAD.exe,66 83 7E 02 00 74 63) // should be unique
+alloc(itemidnewmem,2048,"FairyFencerAD.exe")
+
+label(itemidcode)
+label(itemidreturn)
+
+globalalloc(_item,4)
+itemidnewmem:
+
+itemidcode:
+  mov [_item],esi
+  cmp word ptr [esi+02],00
+  jmp itemidreturn
+
+itemid:
+  jmp itemidnewmem
+itemidreturn:
+registersymbol(itemid)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+itemid:
+  db 66 83 7E 02 00
+
+unregistersymbol(itemid)
+dealloc(itemidnewmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "FairyFencerAD.exe"+9FB54
+
+"FairyFencerAD.exe"+9FB3F: CC                             -  int 3 
+"FairyFencerAD.exe"+9FB40: 55                             -  push ebp
+"FairyFencerAD.exe"+9FB41: 8B EC                          -  mov ebp,esp
+"FairyFencerAD.exe"+9FB43: 81 EC FC 00 00 00              -  sub esp,000000FC
+"FairyFencerAD.exe"+9FB49: 53                             -  push ebx
+"FairyFencerAD.exe"+9FB4A: 56                             -  push esi
+"FairyFencerAD.exe"+9FB4B: 8B F0                          -  mov esi,eax
+"FairyFencerAD.exe"+9FB4D: 83 CB FF                       -  or ebx,-01
+"FairyFencerAD.exe"+9FB50: 85 F6                          -  test esi,esi
+"FairyFencerAD.exe"+9FB52: 74 6A                          -  je FairyFencerAD.exe+9FBBE
+// ---------- INJECTING HERE ----------
+"FairyFencerAD.exe"+9FB54: 66 83 7E 02 00                 -  cmp word ptr [esi+02],00
+// ---------- DONE INJECTING  ----------
+"FairyFencerAD.exe"+9FB59: 74 63                          -  je FairyFencerAD.exe+9FBBE
+"FairyFencerAD.exe"+9FB5B: 8B CE                          -  mov ecx,esi
+"FairyFencerAD.exe"+9FB5D: E8 1E 01 FB FF                 -  call FairyFencerAD.exe+4FC80
+"FairyFencerAD.exe"+9FB62: 84 C0                          -  test al,al
+"FairyFencerAD.exe"+9FB64: 74 58                          -  je FairyFencerAD.exe+9FBBE
+"FairyFencerAD.exe"+9FB66: 8B C6                          -  mov eax,esi
+"FairyFencerAD.exe"+9FB68: E8 B3 01 FB FF                 -  call FairyFencerAD.exe+4FD20
+"FairyFencerAD.exe"+9FB6D: 84 C0                          -  test al,al
+"FairyFencerAD.exe"+9FB6F: 74 07                          -  je FairyFencerAD.exe+9FB78
+"FairyFencerAD.exe"+9FB71: BB 02 00 00 00                 -  mov ebx,00000002
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>792</ID>
+              <Description>"ID"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_item</Address>
+              <Offsets>
+                <Offset>2</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>226</ID>
+          <Description>"Infinite Item"</Description>
+          <LastState/>
+          <Color>000000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+
+
+aobscanmodule(equip,FairyFencerAD.exe,89 4E 04 5E 5B B0) // should be unique
+alloc(equipnewmem,2048,"FairyFencerAD.exe")
+
+label(equipcode)
+label(equipreturn)
+
+equipnewmem:
+cmp [esi+04],ecx
+jge equipcode
+mov [esi+04],ecx
+
+equipcode:
+  pop esi
+  pop ebx
+  jmp equipreturn
+
+equip:
+  jmp equipnewmem
+equipreturn:
+registersymbol(equip)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+equip:
+  db 89 4E 04 5E 5B
+
+unregistersymbol(equip)
+dealloc(equipnewmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "FairyFencerAD.exe"+1D572
+
+"FairyFencerAD.exe"+1D554: 2B C8                 -  sub ecx,eax
+"FairyFencerAD.exe"+1D556: 79 02                 -  jns FairyFencerAD.exe+1D55A
+"FairyFencerAD.exe"+1D558: 33 C9                 -  xor ecx,ecx
+"FairyFencerAD.exe"+1D55A: 81 F9 FF 00 00 00     -  cmp ecx,000000FF
+"FairyFencerAD.exe"+1D560: 76 05                 -  jna FairyFencerAD.exe+1D567
+"FairyFencerAD.exe"+1D562: B9 FF 00 00 00        -  mov ecx,000000FF
+"FairyFencerAD.exe"+1D567: 39 4D 0C              -  cmp [ebp+0C],ecx
+"FairyFencerAD.exe"+1D56A: 7E 03                 -  jle FairyFencerAD.exe+1D56F
+"FairyFencerAD.exe"+1D56C: 89 4D 0C              -  mov [ebp+0C],ecx
+"FairyFencerAD.exe"+1D56F: 8B 4D 0C              -  mov ecx,[ebp+0C]
+// ---------- INJECTING HERE ----------
+"FairyFencerAD.exe"+1D572: 89 4E 04              -  mov [esi+04],ecx
+"FairyFencerAD.exe"+1D575: 5E                    -  pop esi
+"FairyFencerAD.exe"+1D576: 5B                    -  pop ebx
+// ---------- DONE INJECTING  ----------
+"FairyFencerAD.exe"+1D577: B0 01                 -  mov al,01
+"FairyFencerAD.exe"+1D579: 5F                    -  pop edi
+"FairyFencerAD.exe"+1D57A: 8B E5                 -  mov esp,ebp
+"FairyFencerAD.exe"+1D57C: 5D                    -  pop ebp
+"FairyFencerAD.exe"+1D57D: C3                    -  ret
+"FairyFencerAD.exe"+1D57E: 57                    -  push edi
+"FairyFencerAD.exe"+1D57F: 68 74 B2 44 02        -  push FairyFencerAD.exe+139B274
+"FairyFencerAD.exe"+1D584: 6A 02                 -  push 02
+"FairyFencerAD.exe"+1D586: E8 25 97 24 00        -  call FairyFencerAD.exe+266CB0
+"FairyFencerAD.exe"+1D58B: 83 C4 0C              -  add esp,0C
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>877</ID>
+          <Description>"Infinite Item [99]"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+ 
+ 
+aobscanmodule(maxinf,FairyFencerAD.exe,0F B7 3B 85 FF 74 09 E8 B2) // should be unique
+alloc(maxinfnewmem,2048,"FairyFencerAD.exe")
+
+label(maxinfcode)
+label(maxinfreturn)
+
+maxinfnewmem:
+mov [ebx+4], #99
+
+maxinfcode:
+  movzx edi,word ptr [ebx]
+  test edi,edi
+  jmp maxinfreturn
+
+maxinf:
+  jmp maxinfnewmem
+maxinfreturn:
+registersymbol(maxinf)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+maxinf:
+  db 0F B7 3B 85 FF
+
+unregistersymbol(maxinf)
+dealloc(maxinfnewmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "FairyFencerAD.exe"+1D812
+
+"FairyFencerAD.exe"+1D7F4: 3B D8                 -  cmp ebx,eax
+"FairyFencerAD.exe"+1D7F6: 73 63                 -  jae FairyFencerAD.exe+1D85B
+"FairyFencerAD.exe"+1D7F8: 57                    -  push edi
+"FairyFencerAD.exe"+1D7F9: 8D A4 24 00 00 00 00  -  lea esp,[esp+00000000]
+"FairyFencerAD.exe"+1D800: 83 7B 04 00           -  cmp dword ptr [ebx+04],00
+"FairyFencerAD.exe"+1D804: 75 0C                 -  jne FairyFencerAD.exe+1D812
+"FairyFencerAD.exe"+1D806: 0F B7 3B              -  movzx edi,word ptr [ebx]
+"FairyFencerAD.exe"+1D809: E8 F2 FA FF FF        -  call FairyFencerAD.exe+1D300
+"FairyFencerAD.exe"+1D80E: 85 C0                 -  test eax,eax
+"FairyFencerAD.exe"+1D810: 74 40                 -  je FairyFencerAD.exe+1D852
+// ---------- INJECTING HERE ----------
+"FairyFencerAD.exe"+1D812: 0F B7 3B              -  movzx edi,word ptr [ebx]
+"FairyFencerAD.exe"+1D815: 85 FF                 -  test edi,edi
+// ---------- DONE INJECTING  ----------
+"FairyFencerAD.exe"+1D817: 74 09                 -  je FairyFencerAD.exe+1D822
+"FairyFencerAD.exe"+1D819: E8 B2 CC 00 00        -  call FairyFencerAD.exe+2A4D0
+"FairyFencerAD.exe"+1D81E: 85 C0                 -  test eax,eax
+"FairyFencerAD.exe"+1D820: 75 05                 -  jne FairyFencerAD.exe+1D827
+"FairyFencerAD.exe"+1D822: B8 30 AE 6B 02        -  mov eax,FairyFencerAD.exe+13DAE30
+"FairyFencerAD.exe"+1D827: 66 83 78 02 00        -  cmp word ptr [eax+02],00
+"FairyFencerAD.exe"+1D82C: 74 24                 -  je FairyFencerAD.exe+1D852
+"FairyFencerAD.exe"+1D82E: 0F B7 4B 02           -  movzx ecx,word ptr [ebx+02]
+"FairyFencerAD.exe"+1D832: 89 0E                 -  mov [esi],ecx
+"FairyFencerAD.exe"+1D834: 8B 53 04              -  mov edx,[ebx+04]
+}
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>237</ID>
+      <Description>"Play Data (Open Menu To Update)"</Description>
+      <Options moHideChildren="1"/>
+      <LastState/>
+      <Color>A00000</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+ 
+ 
+aobscanmodule(data,FairyFencerAD.exe,F6 81 60 02 00 00 01) // should be unique
+alloc(datanewmem,2048,"FairyFencerAD.exe")
+
+label(datacode)
+label(datareturn)
+
+globalalloc(_data,4)
+
+datanewmem:
+
+datacode:
+  mov [_data],ecx
+  test byte ptr [ecx+00000260],01
+  jmp datareturn
+
+data:
+  jmp datanewmem
+  nop
+  nop
+datareturn:
+registersymbol(data)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+data:
+  db F6 81 60 02 00 00 01
+
+unregistersymbol(data)
+dealloc(datanewmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "FairyFencerAD.exe"+ADD86
+
+"FairyFencerAD.exe"+ADD6E: 83 F8 05              -  cmp eax,05
+"FairyFencerAD.exe"+ADD71: 7C 07                 -  jl FairyFencerAD.exe+ADD7A
+"FairyFencerAD.exe"+ADD73: 81 4E 18 00 00 01 00  -  or [esi+18],00010000
+"FairyFencerAD.exe"+ADD7A: C3                    -  ret 
+"FairyFencerAD.exe"+ADD7B: CC                    -  int 3 
+"FairyFencerAD.exe"+ADD7C: CC                    -  int 3 
+"FairyFencerAD.exe"+ADD7D: CC                    -  int 3 
+"FairyFencerAD.exe"+ADD7E: CC                    -  int 3 
+"FairyFencerAD.exe"+ADD7F: CC                    -  int 3 
+"FairyFencerAD.exe"+ADD80: 8B 0D 10 C8 7E 02     -  mov ecx,[FairyFencerAD.exe+148C810]
+// ---------- INJECTING HERE ----------
+"FairyFencerAD.exe"+ADD86: F6 81 60 02 00 00 01  -  test byte ptr [ecx+00000260],01
+// ---------- DONE INJECTING  ----------
+"FairyFencerAD.exe"+ADD8D: 75 04                 -  jne FairyFencerAD.exe+ADD93
+"FairyFencerAD.exe"+ADD8F: 83 48 1C 01           -  or dword ptr [eax+1C],01
+"FairyFencerAD.exe"+ADD93: BA 02 00 00 00        -  mov edx,00000002
+"FairyFencerAD.exe"+ADD98: 84 91 60 02 00 00     -  test [ecx+00000260],dl
+"FairyFencerAD.exe"+ADD9E: 75 03                 -  jne FairyFencerAD.exe+ADDA3
+"FairyFencerAD.exe"+ADDA0: 09 50 1C              -  or [eax+1C],edx
+"FairyFencerAD.exe"+ADDA3: 53                    -  push ebx
+"FairyFencerAD.exe"+ADDA4: BB 08 00 00 00        -  mov ebx,00000008
+"FairyFencerAD.exe"+ADDA9: 33 D2                 -  xor edx,edx
+"FairyFencerAD.exe"+ADDAB: 84 99 60 02 00 00     -  test [ecx+00000260],bl
+}
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>255</ID>
+          <Description>"Playthrough"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_data</Address>
+          <Offsets>
+            <Offset>0288</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>251</ID>
+          <Description>"Saved"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_data</Address>
+          <Offsets>
+            <Offset>4</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>239</ID>
+          <Description>"No. of Battle"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_data</Address>
+          <Offsets>
+            <Offset>28c</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>240</ID>
+          <Description>"Enemies Defeated"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_data</Address>
+          <Offsets>
+            <Offset>290</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>241</ID>
+          <Description>"No. KO"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_data</Address>
+          <Offsets>
+            <Offset>298</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>242</ID>
+          <Description>"Max Damage"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_data</Address>
+          <Offsets>
+            <Offset>2a4</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>243</ID>
+          <Description>"Max Combo"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_data</Address>
+          <Offsets>
+            <Offset>2a8</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>244</ID>
+          <Description>"No. Air Attack"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_data</Address>
+          <Offsets>
+            <Offset>2f8</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>245</ID>
+          <Description>"No. of Avalanche Attack"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_data</Address>
+          <Offsets>
+            <Offset>2fc</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>246</ID>
+          <Description>"No. Of Escape"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_data</Address>
+          <Offsets>
+            <Offset>2d0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>247</ID>
+          <Description>"Total HP Healed"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_data</Address>
+          <Offsets>
+            <Offset>2c0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>248</ID>
+          <Description>"No. Of Fairize"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_data</Address>
+          <Offsets>
+            <Offset>030c</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>249</ID>
+          <Description>"Total Damage Dealt"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_data</Address>
+          <Offsets>
+            <Offset>2b0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>250</ID>
+          <Description>"No. Of Jump"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_data</Address>
+          <Offsets>
+            <Offset>2e4</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>252</ID>
+          <Description>"No. of Quest Cleared"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_data </Address>
+          <Offsets>
+            <Offset>0360</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>253</ID>
+          <Description>"No. of Losses......."</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_data</Address>
+          <Offsets>
+            <Offset>02d8</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>254</ID>
+          <Description>"No. of Victories ....."</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_data</Address>
+          <Offsets>
+            <Offset>02d4</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>882</ID>
+          <Description>"Total Money"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_data</Address>
+          <Offsets>
+            <Offset>350</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>884</ID>
+          <Description>"Total Money Spent"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_data</Address>
+          <Offsets>
+            <Offset>358</Offset>
+          </Offsets>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>296</ID>
+      <Description>"Unlock All CG (Open Picture Gallery To Update)"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <Color>A00000</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>265</ID>
+          <Description>"Activate to unlock"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+ 
+ 
+aobscanmodule(gallery,FairyFencerAD.exe,C3 8B 0D * * * * 8B 91 C4 DE 14 00) // should be unique
+alloc(gallerynewmem,2048,"FairyFencerAD.exe")
+
+label(gallerycode)
+label(galleryreturn)
+
+globalalloc(_gal,4)
+
+gallerynewmem:
+mov [ecx+14DEC8],10A64
+mov [ecx+14DECC],10A5A
+mov [ecx+14DED0],10A50
+mov [ecx+14DED4],10A46
+mov [ecx+14DED8],10A3C
+mov [ecx+14DEDC],10A32
+mov [ecx+14DEE0],10A28
+mov [ecx+14DEE4],10A1E
+mov [ecx+14DEE8],10A14
+mov [ecx+14DEEC],10A0A
+mov [ecx+14DEF0],10A00
+mov [ecx+14DEF4],109F6
+mov [ecx+14DEF8],109EC
+mov [ecx+14DEFC],109E2
+mov [ecx+14DF00],109D8
+mov [ecx+14DF04],109CE
+mov [ecx+14DF08],109C4
+mov [ecx+14DF0C],109BA
+mov [ecx+14DF10],109B0
+mov [ecx+14DF14],109A6
+mov [ecx+14DF18],1099C
+mov [ecx+14DF1C],10992
+mov [ecx+14DF20],10988
+mov [ecx+14DF24],1097E
+mov [ecx+14DF28],10974
+mov [ecx+14DF2C],1096A
+mov [ecx+14DF30],10960
+mov [ecx+14DF34],10956
+mov [ecx+14DF38],1094C
+mov [ecx+14DF3C],10942
+mov [ecx+14DF40],10938
+mov [ecx+14DF44],1092E
+mov [ecx+14DF48],10924
+mov [ecx+14DF4C],1091A
+mov [ecx+14DF50],10910
+mov [ecx+14DF54],10906
+mov [ecx+14DF58],108FC
+mov [ecx+14DF5C],108F2
+mov [ecx+14DF60],108E8
+mov [ecx+14DF64],108DE
+mov [ecx+14DF68],108D4
+mov [ecx+14DF6C],108CA
+mov [ecx+14DF70],108C0
+mov [ecx+14DF74],108B6
+mov [ecx+14DF78],108AC
+mov [ecx+14DF7C],108A2
+mov [ecx+14DF80],10898
+mov [ecx+14DF84],1088E
+mov [ecx+14DF88],10884
+mov [ecx+14DF8C],1087A
+mov [ecx+14DF90],10870
+mov [ecx+14DF94],10866
+mov [ecx+14DF98],1085C
+mov [ecx+14DF9C],10852
+mov [ecx+14DFA0],10848
+mov [ecx+14DFA4],1083E
+mov [ecx+14DFA8],10834
+mov [ecx+14DFAC],1082A
+mov [ecx+14DFB0],10820
+mov [ecx+14DFB4],10816
+mov [ecx+14DFB8],1080C
+mov [ecx+14DFBC],10802
+mov [ecx+14DFC0],107F8
+mov [ecx+14DFC4],107EE
+mov [ecx+14DFC8],107E4
+mov [ecx+14DFCC],107DA
+mov [ecx+14DFD0],107D0
+mov [ecx+14DFD4],105E6
+mov [ecx+14DFD8],105DC
+mov [ecx+14DFDC],105D2
+mov [ecx+14DFE0],105C8
+mov [ecx+14DFE4],105BE
+mov [ecx+14DFE8],105B4
+mov [ecx+14DFEC],105AA
+mov [ecx+14DFF0],105A0
+mov [ecx+14DFF4],10596
+mov [ecx+14DFF8],1058C
+mov [ecx+14DFFC],10582
+mov [ecx+14E000],10578
+mov [ecx+14E004],1056E
+mov [ecx+14E008],10564
+mov [ecx+14E00C],1055A
+mov [ecx+14E010],10550
+mov [ecx+14E014],10546
+mov [ecx+14E018],1053C
+mov [ecx+14E01C],10532
+mov [ecx+14E020],10528
+mov [ecx+14E024],1051E
+mov [ecx+14E028],10514
+mov [ecx+14E02C],1050A
+mov [ecx+14E030],10500
+mov [ecx+14E034],104F6
+mov [ecx+14E038],104EC
+mov [ecx+14E03C],104E2
+mov [ecx+14E040],104D8
+mov [ecx+14E044],104CE
+mov [ecx+14E048],104C4
+mov [ecx+14E04C],104BA
+mov [ecx+14E050],104B0
+mov [ecx+14E054],104A6
+mov [ecx+14E058],1049C
+mov [ecx+14E05C],10492
+mov [ecx+14E060],10488
+mov [ecx+14E064],1047E
+mov [ecx+14E068],10474
+mov [ecx+14E06C],1046A
+mov [ecx+14E070],10460
+mov [ecx+14E074],10456
+mov [ecx+14E078],1044C
+mov [ecx+14E07C],103F5
+mov [ecx+14E080],103F4
+mov [ecx+14E084],103F3
+mov [ecx+14E088],103F2
+mov [ecx+14E08C],103E9
+mov [ecx+14E090],103E8
+
+gallerycode:
+  mov [_gal],ecx
+  mov edx,[ecx+0014DEC4]
+  jmp galleryreturn
+
+gallery+07:
+  jmp gallerynewmem
+  nop
+galleryreturn:
+registersymbol(gallery)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+gallery+07:
+  db 8B 91 C4 DE 14 00
+
+unregistersymbol(gallery)
+dealloc(gallerynewmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "FairyFencerAD.exe"+1F0C7
+
+"FairyFencerAD.exe"+1F0AB: 72 10                 -  jb FairyFencerAD.exe+1F0BD
+"FairyFencerAD.exe"+1F0AD: 57                    -  push edi
+"FairyFencerAD.exe"+1F0AE: 68 24 B5 6F 02        -  push FairyFencerAD.exe+139B524
+"FairyFencerAD.exe"+1F0B3: 6A 02                 -  push 02
+"FairyFencerAD.exe"+1F0B5: E8 F6 7B 24 00        -  call FairyFencerAD.exe+266CB0
+"FairyFencerAD.exe"+1F0BA: 83 C4 0C              -  add esp,0C
+"FairyFencerAD.exe"+1F0BD: 32 C0                 -  xor al,al
+"FairyFencerAD.exe"+1F0BF: 5F                    -  pop edi
+"FairyFencerAD.exe"+1F0C0: C3                    -  ret 
+"FairyFencerAD.exe"+1F0C1: 8B 0D 10 C8 7E 02     -  mov ecx,[FairyFencerAD.exe+148C810]
+// ---------- INJECTING HERE ----------
+"FairyFencerAD.exe"+1F0C7: 8B 91 C4 DE 14 00     -  mov edx,[ecx+0014DEC4]
+// ---------- DONE INJECTING  ----------
+"FairyFencerAD.exe"+1F0CD: 8D 81 C8 DE 14 00     -  lea eax,[ecx+0014DEC8]
+"FairyFencerAD.exe"+1F0D3: 8D 8C 91 C8 DE 14 00  -  lea ecx,[ecx+edx*4+0014DEC8]
+"FairyFencerAD.exe"+1F0DA: 3B C1                 -  cmp eax,ecx
+"FairyFencerAD.exe"+1F0DC: 73 0E                 -  jae FairyFencerAD.exe+1F0EC
+"FairyFencerAD.exe"+1F0DE: 8B FF                 -  mov edi,edi
+"FairyFencerAD.exe"+1F0E0: 66 39 38              -  cmp [eax],di
+"FairyFencerAD.exe"+1F0E3: 74 07                 -  je FairyFencerAD.exe+1F0EC
+"FairyFencerAD.exe"+1F0E5: 83 C0 04              -  add eax,04
+"FairyFencerAD.exe"+1F0E8: 3B C1                 -  cmp eax,ecx
+"FairyFencerAD.exe"+1F0EA: 72 F4                 -  jb FairyFencerAD.exe+1F0E0
+}
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>283</ID>
+      <Description>"Quest (Open Accept Quest To Update)"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <Color>A00000</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>166</ID>
+          <Description>"No Quest Requiment"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+ 
+ 
+aobscanmodule(requi,FairyFencerAD.exe,8A 5E 03 0F B7 06 33 C9) // should be unique
+alloc(requinewmem,2048,"FairyFencerAD.exe")
+
+label(requicode)
+label(requireturn)
+
+requinewmem:
+cmp [esi+03],0
+je requicode
+mov [esi+03],0
+
+requicode:
+  mov bl,[esi+03]
+  movzx eax,word ptr [esi]
+  jmp requireturn
+
+requi:
+  jmp requinewmem
+  nop
+requireturn:
+registersymbol(requi)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+requi:
+  db 8A 5E 03 0F B7 06
+
+unregistersymbol(requi)
+dealloc(requinewmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "FairyFencerAD.exe"+6493D
+
+"FairyFencerAD.exe"+6491F: C3                    -  ret 
+"FairyFencerAD.exe"+64920: 66 8B 46 02           -  mov ax,[esi+02]
+"FairyFencerAD.exe"+64924: 66 83 E0 07           -  and ax,07
+"FairyFencerAD.exe"+64928: 33 FF                 -  xor edi,edi
+"FairyFencerAD.exe"+6492A: 66 89 45 FE           -  mov [ebp-02],ax
+"FairyFencerAD.exe"+6492E: 83 C6 40              -  add esi,40
+"FairyFencerAD.exe"+64931: EB 04                 -  jmp FairyFencerAD.exe+64937
+"FairyFencerAD.exe"+64933: 66 8B 45 FE           -  mov ax,[ebp-02]
+"FairyFencerAD.exe"+64937: 66 83 F8 02           -  cmp ax,02
+"FairyFencerAD.exe"+6493B: 75 44                 -  jne FairyFencerAD.exe+64981
+// ---------- INJECTING HERE ----------
+"FairyFencerAD.exe"+6493D: 8A 5E 03              -  mov bl,[esi+03]
+"FairyFencerAD.exe"+64940: 0F B7 06              -  movzx eax,word ptr [esi]
+// ---------- DONE INJECTING  ----------
+"FairyFencerAD.exe"+64943: 33 C9                 -  xor ecx,ecx
+"FairyFencerAD.exe"+64945: 84 DB                 -  test bl,bl
+"FairyFencerAD.exe"+64947: 0F 94 C1              -  sete cl
+"FairyFencerAD.exe"+6494A: 33 D2                 -  xor edx,edx
+"FairyFencerAD.exe"+6494C: 66 85 C0              -  test ax,ax
+"FairyFencerAD.exe"+6494F: 0F 94 C2              -  sete dl
+"FairyFencerAD.exe"+64952: 0B CA                 -  or ecx,edx
+"FairyFencerAD.exe"+64954: 75 2B                 -  jne FairyFencerAD.exe+64981
+"FairyFencerAD.exe"+64956: 0F B6 4E 02           -  movzx ecx,byte ptr [esi+02]
+"FairyFencerAD.exe"+6495A: 85 C9                 -  test ecx,ecx
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>287</ID>
+          <Description>"Quest Data"</Description>
+          <Options moHideChildren="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+ 
+ 
+aobscanmodule(quest,FairyFencerAD.exe,33 C0 57 85 C9 74 05 0F B7 39 EB 02) // should be unique
+alloc(qtnewmem,2048,"FairyFencerAD.exe")
+
+label(qtcode)
+label(qtreturn)
+
+globalalloc(_qt,4)
+
+qtnewmem:
+
+qtcode:
+  mov [_qt],ecx
+  movzx edi,word ptr [ecx]
+  jmp quest+E
+  jmp qtreturn
+
+quest+07:
+  jmp qtnewmem
+qtreturn:
+registersymbol(quest)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+quest+07:
+  db 0F B7 39 EB 02
+
+unregistersymbol(quest)
+dealloc(qtnewmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "FairyFencerAD.exe"+649F7
+
+"FairyFencerAD.exe"+649EA: C3                    -  ret 
+"FairyFencerAD.exe"+649EB: CC                    -  int 3 
+"FairyFencerAD.exe"+649EC: CC                    -  int 3 
+"FairyFencerAD.exe"+649ED: CC                    -  int 3 
+"FairyFencerAD.exe"+649EE: CC                    -  int 3 
+"FairyFencerAD.exe"+649EF: CC                    -  int 3 
+"FairyFencerAD.exe"+649F0: 33 C0                 -  xor eax,eax
+"FairyFencerAD.exe"+649F2: 57                    -  push edi
+"FairyFencerAD.exe"+649F3: 85 C9                 -  test ecx,ecx
+"FairyFencerAD.exe"+649F5: 74 05                 -  je FairyFencerAD.exe+649FC
+// ---------- INJECTING HERE ----------
+"FairyFencerAD.exe"+649F7: 0F B7 39              -  movzx edi,word ptr [ecx]
+"FairyFencerAD.exe"+649FA: EB 02                 -  jmp FairyFencerAD.exe+649FE
+// ---------- DONE INJECTING  ----------
+"FairyFencerAD.exe"+649FC: 33 FF                 -  xor edi,edi
+"FairyFencerAD.exe"+649FE: 8B 15 10 C8 00 02     -  mov edx,[FairyFencerAD.exe+148C810]
+"FairyFencerAD.exe"+64A04: 56                    -  push esi
+"FairyFencerAD.exe"+64A05: 8B B2 B4 32 13 00     -  mov esi,[edx+001332B4]
+"FairyFencerAD.exe"+64A0B: 8D 34 76              -  lea esi,[esi+esi*2]
+"FairyFencerAD.exe"+64A0E: 8D 8A B8 32 13 00     -  lea ecx,[edx+001332B8]
+"FairyFencerAD.exe"+64A14: 8D 94 F2 B8 32 13 00  -  lea edx,[edx+esi*8+001332B8]
+"FairyFencerAD.exe"+64A1B: 5E                    -  pop esi
+"FairyFencerAD.exe"+64A1C: 3B CA                 -  cmp ecx,edx
+"FairyFencerAD.exe"+64A1E: 73 16                 -  jae FairyFencerAD.exe+64A36
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>288</ID>
+              <Description>"Quest ID"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>_qt</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>289</ID>
+              <Description>"Gold"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>_qt</Address>
+              <Offsets>
+                <Offset>50</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>290</ID>
+              <Description>"Reward ID 1"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_qt</Address>
+              <Offsets>
+                <Offset>58</Offset>
+              </Offsets>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>291</ID>
+                  <Description>"Quantity"</Description>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>_qt</Address>
+                  <Offsets>
+                    <Offset>5a</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>292</ID>
+              <Description>"Reward ID 2"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>_qt</Address>
+              <Offsets>
+                <Offset>5c</Offset>
+              </Offsets>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>293</ID>
+                  <Description>"Quantity"</Description>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>_qt</Address>
+                  <Offsets>
+                    <Offset>5e</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>294</ID>
+              <Description>"Req 1"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>_qt</Address>
+              <Offsets>
+                <Offset>43</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>295</ID>
+              <Description>"Req 2"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>_qt</Address>
+              <Offsets>
+                <Offset>47</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>614</ID>
+      <Description>"Instant Avalanche (Hit Enemy To Activate)"</Description>
+      <LastState/>
+      <Color>A00000</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+ 
+ 
+aobscanmodule(avalanche,FairyFencerAD.exe,8B 88 D4 00 00 00 C1 E9 02 F6) // should be unique
+alloc(avalanchenewmem,2048,"FairyFencerAD.exe")
+
+label(avalanchecode)
+label(avalanchereturn)
+
+avalanchenewmem:
+cmp [eax+000000D4],40
+je avalanchecode
+mov [eax+000000D4],40
+mov [eax+000000D8],1
+
+avalanchecode:
+  mov ecx,[eax+000000D4]
+  jmp avalanchereturn
+
+avalanche:
+  jmp avalanchenewmem
+  nop
+avalanchereturn:
+registersymbol(avalanche)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+avalanche:
+  db 8B 88 D4 00 00 00
+
+unregistersymbol(avalanche)
+dealloc(avalanchenewmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "FairyFencerAD.exe"+BE7A6
+
+"FairyFencerAD.exe"+BE78F: D9 44 24 38        -  fld dword ptr [esp+38]
+"FairyFencerAD.exe"+BE793: D9 C0              -  fld st(0)
+"FairyFencerAD.exe"+BE795: D9 EE              -  fldz 
+"FairyFencerAD.exe"+BE797: D9 C0              -  fld st(0)
+"FairyFencerAD.exe"+BE799: DD EA              -  fucomp st(2)
+"FairyFencerAD.exe"+BE79B: DF E0              -  fnstsw ax
+"FairyFencerAD.exe"+BE79D: DD D9              -  fstp st(1)
+"FairyFencerAD.exe"+BE79F: F6 C4 44           -  test ah,44
+"FairyFencerAD.exe"+BE7A2: 7B 37              -  jnp FairyFencerAD.exe+BE7DB
+"FairyFencerAD.exe"+BE7A4: 8B 03              -  mov eax,[ebx]
+// ---------- INJECTING HERE ----------
+"FairyFencerAD.exe"+BE7A6: 8B 88 D4 00 00 00  -  mov ecx,[eax+000000D4]
+// ---------- DONE INJECTING  ----------
+"FairyFencerAD.exe"+BE7AC: C1 E9 02           -  shr ecx,02
+"FairyFencerAD.exe"+BE7AF: F6 C1 01           -  test cl,01
+"FairyFencerAD.exe"+BE7B2: 74 12              -  je FairyFencerAD.exe+BE7C6
+"FairyFencerAD.exe"+BE7B4: D9 C9              -  fxch st(1)
+"FairyFencerAD.exe"+BE7B6: DC 25 C0 32 5E 02  -  fsub qword ptr [FairyFencerAD.exe+13B32C0]
+"FairyFencerAD.exe"+BE7BC: D9 5C 24 38        -  fstp dword ptr [esp+38]
+"FairyFencerAD.exe"+BE7C0: D9 44 24 38        -  fld dword ptr [esp+38]
+"FairyFencerAD.exe"+BE7C4: D9 C9              -  fxch st(1)
+"FairyFencerAD.exe"+BE7C6: D9 44 24 28        -  fld dword ptr [esp+28]
+"FairyFencerAD.exe"+BE7CA: D8 DA              -  fcomp st(0),st(2)
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>654</ID>
+      <Description>"Battle Status (Battle To Update)"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Activated="1"/>
+      <Color>A00000</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+registersymbol(battlestats_hpset_enable)
+registersymbol(battlestats_spset_enable)
+registersymbol(battlestats_tensionset_enable)
+registersymbol(atkup_enable)
+registersymbol(atkup_percentage)
+registersymbol(phydefup_enable)
+registersymbol(phydefup_percentage)
+registersymbol(splup_enable)
+registersymbol(splup_percentage)
+registersymbol(spldefup_enable)
+registersymbol(spldefup_percentage)
+registersymbol(battlestats_poison_enable)
+registersymbol(battlestats_paralysis_enable)
+registersymbol(battlestats_stun_enable)
+registersymbol(battlestats_rage_enable)
+registersymbol(battlestats_confusion_enable)
+registersymbol(battlestats_spell_enable)
+registersymbol(battlestats_skill_enable)
+registersymbol(battlestats_immobile_enable)
+registersymbol(battlestats_no_fairize_enable)
+registersymbol(hpdecay_enable)
+registersymbol(spdecay_enable)
+registersymbol(evasion_enable)
+registersymbol(evasion)
+registersymbol(seriousface_enable)
+registersymbol(seriousface)
+registersymbol(fullswing_enable)
+registersymbol(fullswing)
+registersymbol(barrier_enable)
+registersymbol(barrier)
+registersymbol(spdup_enable)
+registersymbol(spdup_pencentage)
+registersymbol(battlestats_stop_enable)
+registersymbol(wall_enable)
+registersymbol(wall)
+
+alloc(battlestats_hpset_enable, 4)
+alloc(battlestats_spset_enable, 4)
+alloc(battlestats_tensionset_enable, 4)
+alloc(atkup_enable, 4)
+alloc(atkup_percentage,4)
+alloc(phydefup_enable, 4)
+alloc(phydefup_percentage,4)
+alloc(splup_enable, 4)
+alloc(splup_percentage,4)
+alloc(spldefup_enable, 4)
+alloc(spldefup_percentage,4)
+alloc(battlestats_poison_enable,4)
+alloc(battlestats_paralysis_enable,4)
+alloc(battlestats_stun_enable,4)
+alloc(battlestats_rage_enable,4)
+alloc(battlestats_confusion_enable, 4)
+alloc(battlestats_spell_enable, 4)
+alloc(battlestats_skill_enable, 4)
+alloc(battlestats_immobile_enable, 4)
+alloc(battlestats_no_fairize_enable, 4)
+alloc(hpdecay_enable, 4)
+alloc(spdecay_enable, 4)
+alloc(evasion_enable, 4)
+alloc(evasion, 4)
+alloc(seriousface_enable, 4)
+alloc(seriousface, 4)
+alloc(fullswing_enable, 4)
+alloc(fullswing, 4)
+alloc(barrier_enable, 4)
+alloc(barrier, 4)
+alloc(spdup_enable, 4)
+alloc(spdup_pencentage, 4)
+alloc(battlestats_stop_enable, 4)
+alloc(wall_enable, 4)
+alloc(wall, 4)
+
+atkup_percentage:
+dd #10
+phydefup_percentage:
+dd #10
+splup_percentage:
+dd #10
+spldefup_percentage:
+dd #10
+spdup_pencentage:
+dd #100
+evasion:
+dd #0
+seriousface:
+dd #0
+fullswing:
+dd #0
+barrier:
+dd #0
+wall:
+dd #0
+
+[DISABLE]
+unregistersymbol(battlestats_hpset_enable)
+unregistersymbol(battlestats_spset_enable)
+unregistersymbol(battlestats_tensionset_enable)
+unregistersymbol(atkup_enable)
+unregistersymbol(atkup_percentage)
+unregistersymbol(phydefup_enable)
+unregistersymbol(phydefup_percentage)
+unregistersymbol(splup_enable)
+unregistersymbol(splup_percentage)
+unregistersymbol(spldefup_enable)
+unregistersymbol(spldefup_percentage)
+unregistersymbol(battlestats_poison_enable)
+unregistersymbol(battlestats_paralysis_enable)
+unregistersymbol(battlestats_stun_enable)
+unregistersymbol(battlestats_rage_enable)
+unregistersymbol(battlestats_confusion_enable)
+unregistersymbol(battlestats_spell_enable)
+unregistersymbol(battlestats_skill_enable)
+unregistersymbol(battlestats_immobile_enable)
+unregistersymbol(battlestats_no_fairize_enable)
+unregistersymbol(hpdecay_enable)
+unregistersymbol(spdecay_enable)
+unregistersymbol(evasion_enable)
+unregistersymbol(evasion)
+unregistersymbol(seriousface_enable)
+unregistersymbol(seriousface)
+unregistersymbol(fullswing_enable)
+unregistersymbol(fullswing)
+unregistersymbol(barrier_enable)
+unregistersymbol(barrier)
+unregistersymbol(spdup_enable)
+unregistersymbol(spdup_pencentage)
+unregistersymbol(battlestats_stop_enable)
+unregistersymbol(wall_enable)
+unregistersymbol(wall)
+
+dealloc(battlestats_hpset_enable)
+dealloc(battlestats_spset_enable)
+dealloc(battlestats_tensionset_enable)
+dealloc(atkup_enable)
+dealloc(atkup_percentage)
+dealloc(phydefup_enable)
+dealloc(phydefup_percentage)
+dealloc(splup_enable)
+dealloc(splup_percentage)
+dealloc(spldefup_enable)
+dealloc(spldefup_percentage)
+dealloc(battlestats_poison_enable)
+dealloc(battlestats_paralysis_enable)
+dealloc(battlestats_stun_enable)
+dealloc(battlestats_rage_enable)
+dealloc(battlestats_confusion_enable)
+dealloc(battlestats_spell_enable)
+dealloc(battlestats_skill_enable)
+dealloc(battlestats_immobile_enable)
+dealloc(battlestats_no_fairize_enable)
+dealloc(hpdecay_enable)
+dealloc(spdecay_enable)
+dealloc(evasion_enable)
+dealloc(evasion)
+dealloc(seriousface_enable)
+dealloc(seriousface)
+dealloc(fullswing_enable)
+dealloc(fullswing)
+dealloc(barrier_enable)
+dealloc(barrier)
+dealloc(spdup_enable)
+dealloc(spdup_pencentage)
+dealloc(battlestats_stop_enable)
+dealloc(wall_enable)
+dealloc(wall)
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>655</ID>
+          <Description>"Activate This First"</Description>
+          <LastState Activated="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+label(battlestats_savedAOB)
+label(battlestats_returnhere)
+label(battlestats_originalcode)
+label(battlestats_exit)
+
+label(battlestats_hpset_exit)
+label(battlestats_spset_exit)
+label(battlestats_tensionset_exit)
+label(battlestats_atkup_exit)
+label(battlestats_phydefup_exit)
+label(battlestats_splup_exit)
+label(battlestats_spldefup_exit)
+label(battlestats_poison_exit)
+label(battlestats_paralysis_exit)
+label(battlestats_stun_exit)
+label(battlestats_rage_exit)
+label(battlestats_confusion_exit)
+label(battlestats_spell_exit)
+label(battlestats_skill_exit)
+label(battlestats_immobile_exit)
+label(battlestats_no_fairize_exit)
+label(battlestats_hpdecay_exit)
+label(battlestats_spdecay_exit)
+label(battlestats_evasion_exit)
+label(battlestats_seriousface_exit)
+label(battlestats_fullswing_exit)
+label(battlestats_barrier_exit)
+label(battlestats_spdup_exit)
+label(battlestats_stop_exit)
+label(battlestats_wall_exit)
+
+registersymbol(battlestats_savedAOB)
+
+aobscanmodule(battlestats_searchedAOB,FairyFencerAD.exe,8B 08 8B 40 04 8B D0 8B)
+
+alloc(battlestats_newmem,2048,"FairyFencerAD.exe")
+
+
+battlestats_newmem:
+cmp dword ptr [wall_enable], #0
+je battlestats_wall_exit
+mov ecx,[wall]
+mov [eax+88],ecx
+battlestats_wall_exit:
+
+cmp dword ptr [spdup_enable], #0
+je battlestats_spdup_exit
+mov ecx,[spdup_pencentage]
+mov [eax+b8],ecx
+battlestats_spdup_exit:
+
+cmp dword ptr [battlestats_stop_enable], #0
+je battlestats_stop_exit
+mov [eax+b0],0
+battlestats_stop_exit:
+
+cmp dword ptr [barrier_enable], #0
+je battlestats_barrier_exit
+mov ecx,[barrier]
+mov [eax+28],ecx
+battlestats_barrier_exit:
+
+cmp dword ptr [fullswing_enable], #0
+je battlestats_fullswing_exit
+mov ecx,[fullswing]
+mov [eax+30],ecx
+battlestats_fullswing_exit:
+
+cmp dword ptr [seriousface_enable], #0
+je battlestats_seriousface_exit
+mov ecx,[seriousface]
+mov [eax+20],ecx
+battlestats_seriousface_exit:
+
+cmp dword ptr [evasion_enable], #0
+je battlestats_evasion_exit
+mov ecx,[evasion]
+mov [eax+98],ecx
+battlestats_evasion_exit:
+
+cmp dword ptr [battlestats_hpset_enable], #0
+je battlestats_hpset_exit
+mov [eax],1869f
+battlestats_hpset_exit:
+
+cmp dword ptr [battlestats_spset_enable], #0
+je battlestats_spset_exit
+mov [eax+10],270f
+battlestats_spset_exit:
+
+cmp dword ptr [battlestats_tensionset_enable], #0
+je battlestats_tensionset_exit
+mov [eax+18],3e8
+battlestats_tensionset_exit:
+
+cmp dword ptr [atkup_enable], #0
+je battlestats_atkup_exit
+mov ecx,[atkup_percentage]
+mov [eax+c0],ecx
+battlestats_atkup_exit:
+
+cmp dword ptr [phydefup_enable], #0
+je battlestats_phydefup_exit
+mov ecx,[phydefup_percentage]
+mov [eax+c8],ecx
+battlestats_phydefup_exit:
+
+cmp dword ptr [splup_enable], #0
+je battlestats_splup_exit
+mov ecx,[splup_percentage]
+mov [eax+d0],ecx
+battlestats_splup_exit:
+
+cmp dword ptr [spldefup_enable], #0
+je battlestats_spldefup_exit
+mov ecx,[spldefup_percentage]
+mov [eax+d8],ecx
+battlestats_spldefup_exit:
+
+cmp dword ptr [battlestats_poison_enable], #0
+je battlestats_poison_exit
+mov [eax+38],0
+battlestats_poison_exit:
+
+cmp dword ptr [battlestats_paralysis_enable], #0
+je battlestats_paralysis_exit
+mov [eax+40],0
+battlestats_paralysis_exit:
+
+cmp dword ptr [battlestats_stun_enable], #0
+je battlestats_stun_exit
+mov [eax+48],0
+battlestats_stun_exit:
+
+cmp dword ptr [battlestats_rage_enable], #0
+je battlestats_rage_exit
+mov [eax+50],0
+battlestats_rage_exit:
+
+cmp dword ptr [battlestats_confusion_enable], #0
+je battlestats_confusion_exit
+mov [eax+58],0
+battlestats_confusion_exit:
+
+cmp dword ptr [battlestats_spell_enable], #0
+je battlestats_spell_exit
+mov [eax+60],0
+battlestats_spell_exit:
+
+cmp dword ptr [battlestats_skill_enable], #0
+je battlestats_skill_exit
+mov [eax+68],0
+battlestats_skill_exit:
+
+cmp dword ptr [battlestats_immobile_enable], #0
+je battlestats_immobile_exit
+mov [eax+70],0
+battlestats_immobile_exit:
+
+cmp dword ptr [battlestats_no_fairize_enable], #0
+je battlestats_no_fairize_exit
+mov [eax+78],0
+battlestats_no_fairize_exit:
+
+cmp dword ptr [hpdecay_enable], #0
+je battlestats_hpdecay_exit
+mov [eax+e0],0
+battlestats_hpdecay_exit:
+
+cmp dword ptr [spdecay_enable], #0
+je battlestats_spdecay_exit
+mov [eax+e8],0
+battlestats_spdecay_exit:
+
+battlestats_originalcode:
+mov ecx,[eax]
+  mov eax,[eax+04]
+jmp battlestats_returnhere
+
+
+battlestats_exit:
+jmp battlestats_returnhere
+
+
+battlestats_searchedAOB:
+battlestats_savedAOB:
+jmp battlestats_newmem
+battlestats_returnhere:
+
+
+[DISABLE]
+battlestats_savedAOB:
+db 8B 08 8B 40 04
+
+unregistersymbol(battlestats_savedAOB)
+
+dealloc(battlestats_newmem)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>656</ID>
+          <Description>"Infinite HP"</Description>
+          <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+          <LastState Value="1" Activated="1" RealAddress="043F0000"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>battlestats_hpset_enable</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>657</ID>
+          <Description>"Infinite SP"</Description>
+          <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+          <LastState Value="1" Activated="1" RealAddress="043F0004"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>battlestats_spset_enable</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>864</ID>
+          <Description>"100% Evasion"</Description>
+          <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+          <LastState Value="0" RealAddress="043F0058"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>evasion_enable</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>869</ID>
+              <Description>"Activate?"</Description>
+              <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+              <LastState Value="0" RealAddress="043F005C"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>evasion</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>865</ID>
+          <Description>"All Serious Face"</Description>
+          <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+          <LastState Value="0" RealAddress="043F0060"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>seriousface_enable</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>870</ID>
+              <Description>"Activate?"</Description>
+              <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+              <LastState Value="0" RealAddress="043F0064"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>seriousface</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>866</ID>
+          <Description>"All Full Swing"</Description>
+          <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+          <LastState Value="0" RealAddress="043F0068"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>fullswing_enable</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>871</ID>
+              <Description>"Activate?"</Description>
+              <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+              <LastState Value="0" RealAddress="043F006C"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>fullswing</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>867</ID>
+          <Description>"All Barrier"</Description>
+          <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+          <LastState Value="0" RealAddress="043F0070"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>barrier_enable</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>872</ID>
+              <Description>"Activate?"</Description>
+              <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+              <LastState Value="0" RealAddress="043F0074"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>barrier</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>888</ID>
+          <Description>"All Wall"</Description>
+          <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+          <LastState Value="0" RealAddress="043F0084"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>wall_enable</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>889</ID>
+              <Description>"Activate?"</Description>
+              <DropDownList DisplayValueAsItem="1">0:No
+100:Yes
+</DropDownList>
+              <LastState Value="0" RealAddress="043F0088"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>wall</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>658</ID>
+          <Description>"Infinite Tension"</Description>
+          <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+          <LastState Value="1" Activated="1" RealAddress="043F0008"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>battlestats_tensionset_enable</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>673</ID>
+          <Description>"Remove Poison"</Description>
+          <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+          <LastState Value="0" RealAddress="043F002C"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>battlestats_poison_enable</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>674</ID>
+          <Description>"Remove Paralysis"</Description>
+          <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+          <LastState Value="0" RealAddress="043F0030"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>battlestats_paralysis_enable</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>675</ID>
+          <Description>"Remove Stun"</Description>
+          <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+          <LastState Value="0" RealAddress="043F0034"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>battlestats_stun_enable</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>676</ID>
+          <Description>"Remove Berserk"</Description>
+          <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+          <LastState Value="0" RealAddress="043F0038"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>battlestats_rage_enable</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>677</ID>
+          <Description>"Remove Confusion"</Description>
+          <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+          <LastState Value="0" RealAddress="043F003C"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>battlestats_confusion_enable</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>678</ID>
+          <Description>"Remove Spell Seal"</Description>
+          <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+          <LastState Value="0" RealAddress="043F0040"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>battlestats_spell_enable</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>679</ID>
+          <Description>"Remove Skill Seal"</Description>
+          <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+          <LastState Value="0" RealAddress="043F0044"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>battlestats_skill_enable</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>680</ID>
+          <Description>"Remove Immobile"</Description>
+          <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+          <LastState Value="0" RealAddress="043F0048"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>battlestats_immobile_enable</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>681</ID>
+          <Description>"Remove No Fairize"</Description>
+          <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+          <LastState Value="0" RealAddress="043F004C"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>battlestats_no_fairize_enable</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>689</ID>
+          <Description>"Remove HP Decay"</Description>
+          <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+          <LastState Value="0" RealAddress="043F0050"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>hpdecay_enable</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>690</ID>
+          <Description>"Remove SP Decay"</Description>
+          <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+          <LastState Value="0" RealAddress="043F0054"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>spdecay_enable</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>868</ID>
+          <Description>"Remove Stop"</Description>
+          <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+          <LastState Value="0" RealAddress="043F0080"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>battlestats_stop_enable</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>659</ID>
+          <Description>"Instant ATK UP"</Description>
+          <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+          <LastState Value="0" RealAddress="043F000C"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>atkup_enable</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>662</ID>
+              <Description>"+x% "</Description>
+              <LastState Value="10" RealAddress="043F0010"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>atkup_percentage</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>663</ID>
+          <Description>"Instant PHY DEF UP"</Description>
+          <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+          <LastState Value="0" RealAddress="043F0014"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>phydefup_enable</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>666</ID>
+              <Description>"+x% "</Description>
+              <LastState Value="10" RealAddress="043F0018"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>phydefup_percentage</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>664</ID>
+          <Description>"Instant SPL UP"</Description>
+          <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+          <LastState Value="0" RealAddress="043F001C"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>splup_enable</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>667</ID>
+              <Description>"+x%"</Description>
+              <LastState Value="10" RealAddress="043F0020"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>splup_percentage</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>665</ID>
+          <Description>"Instant SPL DEF UP"</Description>
+          <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+          <LastState Value="0" RealAddress="043F0024"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>spldefup_enable</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>668</ID>
+              <Description>"+x%"</Description>
+              <LastState Value="10" RealAddress="043F0028"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>spldefup_percentage</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>862</ID>
+          <Description>"Instant SPD UP"</Description>
+          <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+          <LastState Value="0" RealAddress="043F0078"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>spdup_enable</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>863</ID>
+              <Description>"+x%"</Description>
+              <LastState Value="100" RealAddress="043F007C"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>spdup_pencentage</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>849</ID>
+      <Description>"Synthesize (Open Synthesize To Update)"</Description>
+      <Options moHideChildren="1"/>
+      <LastState/>
+      <Color>A00000</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+registersymbol(synthesis_basepointer)
+registersymbol(synthesis_instant_enable)
+registersymbol(synthesis_data_enable)
+
+alloc(synthesis_basepointer, 4)
+alloc(synthesis_instant_enable, 4)
+alloc(synthesis_data_enable, 4)
+
+
+[DISABLE]
+unregistersymbol(synthesis_basepointer)
+unregistersymbol(synthesis_instant_enable)
+unregistersymbol(synthesis_data_enable)
+
+dealloc(synthesis_basepointer)
+dealloc(synthesis_instant_enable)
+dealloc(synthesis_data_enable)
+
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>841</ID>
+          <Description>"Activate This First"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : FairyFencerAD.exe
+  Version: 
+  Date   : 2017-06-11
+  Author : mackeyz_cx_
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+ 
+ 
+aobscanmodule(synthesis_searchedAOB,FairyFencerAD.exe,0F B7 7F 02 89 BE 48 02 00 00) // should be unique
+alloc(synthesis_newmem,2048,"FairyFencerAD.exe")
+
+label(synthesis_savedAOB)
+label(synthesis_returnhere)
+label(synthesis_originalcode)
+label(synthesis_exit)
+
+label(synthesis_instant_exit)
+label(synthesis_data_exit)
+
+registersymbol(synthesis_savedAOB)
+
+synthesis_newmem:
+cmp dword ptr [synthesis_data_enable], #0
+je synthesis_data_exit
+mov [synthesis_basepointer], edi
+synthesis_data_exit:
+
+cmp dword ptr [synthesis_instant_enable], #0
+je synthesis_instant_exit
+mov word ptr[edi+8], #0
+mov word ptr[edi+c], #0
+mov word ptr[edi+10], #0
+synthesis_instant_exit:
+
+synthesis_originalcode:
+  movzx edi,word ptr [edi+02]
+  mov [esi+00000248],edi
+  jmp synthesis_returnhere
+
+synthesis_exit:
+jmp synthesis_returnhere
+
+synthesis_searchedAOB:
+synthesis_savedAOB:
+jmp synthesis_newmem
+  nop
+  nop
+  nop
+  nop
+  nop
+synthesis_returnhere:
+
+
+
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+synthesis_savedAOB:
+  db 0F B7 7F 02 89 BE 48 02 00 00
+
+unregistersymbol(synthesis_savedAOB)
+dealloc(synthesis_newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "FairyFencerAD.exe"+7F87E
+
+"FairyFencerAD.exe"+7F860: 74 09                          -  je FairyFencerAD.exe+7F86B
+"FairyFencerAD.exe"+7F862: 8B 40 04                       -  mov eax,[eax+04]
+"FairyFencerAD.exe"+7F865: 85 C0                          -  test eax,eax
+"FairyFencerAD.exe"+7F867: 74 02                          -  je FairyFencerAD.exe+7F86B
+"FairyFencerAD.exe"+7F869: 8B F8                          -  mov edi,eax
+"FairyFencerAD.exe"+7F86B: 89 BE 3C 02 00 00              -  mov [esi+0000023C],edi
+"FairyFencerAD.exe"+7F871: 85 FF                          -  test edi,edi
+"FairyFencerAD.exe"+7F873: 74 35                          -  je FairyFencerAD.exe+7F8AA
+"FairyFencerAD.exe"+7F875: 0F B7 0F                       -  movzx ecx,word ptr [edi]
+"FairyFencerAD.exe"+7F878: 89 8E 40 02 00 00              -  mov [esi+00000240],ecx
+// ---------- INJECTING HERE ----------
+"FairyFencerAD.exe"+7F87E: 0F B7 7F 02                    -  movzx edi,word ptr [edi+02]
+"FairyFencerAD.exe"+7F882: 89 BE 48 02 00 00              -  mov [esi+00000248],edi
+// ---------- DONE INJECTING  ----------
+"FairyFencerAD.exe"+7F888: 85 FF                          -  test edi,edi
+"FairyFencerAD.exe"+7F88A: 74 1E                          -  je FairyFencerAD.exe+7F8AA
+"FairyFencerAD.exe"+7F88C: E8 3F AC FA FF                 -  call FairyFencerAD.exe+2A4D0
+"FairyFencerAD.exe"+7F891: 85 C0                          -  test eax,eax
+"FairyFencerAD.exe"+7F893: 75 05                          -  jne FairyFencerAD.exe+7F89A
+"FairyFencerAD.exe"+7F895: B8 30 AE 77 01                 -  mov eax,FairyFencerAD.exe+13DAE30
+"FairyFencerAD.exe"+7F89A: 89 86 44 02 00 00              -  mov [esi+00000244],eax
+"FairyFencerAD.exe"+7F8A0: C7 86 4C 02 00 00 00 00 00 00  -  mov [esi+0000024C],00000000
+"FairyFencerAD.exe"+7F8AA: 5F                             -  pop edi
+"FairyFencerAD.exe"+7F8AB: 8B E5                          -  mov esp,ebp
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>850</ID>
+          <Description>"Instant Synthesize"</Description>
+          <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+          <VariableType>4 Bytes</VariableType>
+          <Address>synthesis_instant_enable</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>851</ID>
+          <Description>"Synthesize Data"</Description>
+          <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+          <VariableType>4 Bytes</VariableType>
+          <Address>synthesis_data_enable</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>842</ID>
+          <Description>"Item ID"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>synthesis_basepointer</Address>
+          <Offsets>
+            <Offset>2</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>843</ID>
+          <Description>"Material 1 ID"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>synthesis_basepointer</Address>
+          <Offsets>
+            <Offset>8</Offset>
+          </Offsets>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>844</ID>
+              <Description>"Amount"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>synthesis_basepointer</Address>
+              <Offsets>
+                <Offset>a</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>845</ID>
+          <Description>"Material 2 ID"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>synthesis_basepointer</Address>
+          <Offsets>
+            <Offset>c</Offset>
+          </Offsets>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>846</ID>
+              <Description>"Amount"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>synthesis_basepointer</Address>
+              <Offsets>
+                <Offset>e</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>847</ID>
+          <Description>"Material 3 ID"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>synthesis_basepointer</Address>
+          <Offsets>
+            <Offset>10</Offset>
+          </Offsets>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>848</ID>
+              <Description>"Amount"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>synthesis_basepointer</Address>
+              <Offsets>
+                <Offset>12</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols>
+    <SymbolEntry>
+      <Name>_item</Name>
+      <Address>03AA00A0</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>_stats</Name>
+      <Address>00590000</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>_lvl</Name>
+      <Address>00850000</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>_text</Name>
+      <Address>00850010</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>_id</Name>
+      <Address>00F10000</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>_wp</Name>
+      <Address>043E0000</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>_itm</Name>
+      <Address>00610000</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>_pt</Name>
+      <Address>00940040</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>_result</Name>
+      <Address>05780030</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>_quest</Name>
+      <Address>096D0000</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>_base</Name>
+      <Address>03AA0040</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>_qst</Name>
+      <Address>02160000</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>_fairy</Name>
+      <Address>00430080</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>_challenge</Name>
+      <Address>03AA0050</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>_hp</Name>
+      <Address>0CEE0000</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>_mon</Name>
+      <Address>09E00010</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>monster</Name>
+      <Address>010AD5C4</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>_test</Name>
+      <Address>03AA0060</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>_data</Name>
+      <Address>049D0000</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>_picture</Name>
+      <Address>00B50020</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>_gal</Name>
+      <Address>03AA0080</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>_ge</Name>
+      <Address>0D530020</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>_qt</Name>
+      <Address>049D0010</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>qt</Name>
+      <Address>014086AB</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>_eqpm</Name>
+      <Address>186E0000</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>_it</Name>
+      <Address>00DA0040</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>_dump</Name>
+      <Address>00520010</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>sp</Name>
+      <Address>014973E3</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>_guard</Name>
+      <Address>009C0000</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>_enemy</Name>
+      <Address>00AE0000</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>_fff</Name>
+      <Address>00B70010</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>rrr</Name>
+      <Address>012EE835</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>ddd</Name>
+      <Address>0136E08C</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>aaaa</Name>
+      <Address>013AF3D4</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>_hpen</Name>
+      <Address>009C0020</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>_poison</Name>
+      <Address>09DD0000</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>_bttle</Name>
+      <Address>011D0000</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>_kkk</Name>
+      <Address>011D0010</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>hp_enable</Name>
+      <Address>011D0020</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>_skillid</Name>
+      <Address>01FE0020</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>_sklid</Name>
+      <Address>03AA0020</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>_ikr</Name>
+      <Address>05770000</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>_gale</Name>
+      <Address>05770010</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>_synthesis</Name>
+      <Address>05770020</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>enemydiff_savedAOB</Name>
+      <Address>01142BE5</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>result</Name>
+      <Address>00522000</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>avalanche</Name>
+      <Address>0045E7A6</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>_battleresult</Name>
+      <Address>03AA0030</Address>
+    </SymbolEntry>
+  </UserdefinedSymbols>
+</CheatTable>

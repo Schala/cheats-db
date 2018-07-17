@@ -1,0 +1,8 @@
+setgs fvatshitchancemult 100
+setgs fvatsmaxchance 100
+setgs fpickpocketactorskillmult 100
+setgs fpickpocketminchance 100
+setgs fpickpocketmaxchance 100
+setgs flockskillbase 100
+setgs ihackingmaxwords 1
+tdm

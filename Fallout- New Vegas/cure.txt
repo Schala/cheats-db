@@ -1,0 +1,14 @@
+player.removespell 6698c ; alcohol
+player.removespell 6dc6e ; ant nectar
+player.removespell 33066 ; buffout
+player.removespell 175d6f ; hydra
+player.removespell 33067 ; jet
+player.removespell 33063 ; mentats
+player.removespell 2ae29 ; med x
+player.removespell 33064 ; psycho
+player.removespell 175d70 ; steady
+player.removespell fab12 ; tobacco
+player.removespell 175d6d ; turbo
+player.removespell 9ade7 ; nuka cola quantum
+player.removespell c9cf5 ; ultrajet
+player.removespell 175d6e ; rebound

@@ -1,0 +1,10 @@
+tim
+setgs fpowerarmorpcarmordamagemultiplier 0
+setgs fpowerarmorpowerdrainperactionpoint 0
+setgs fpowerarmorpowerdrainpersecondrunning 0
+setgs fpowerarmorpowerdrainpermeleeattack 0
+setgs fpowerarmorpowerdrainperjump 0
+setgs fpowerarmorpowerdrainperimpactland 0
+setgs fpickpocketminchance 100
+setgs fpickpocketmaxchance 100
+setgs ihackingmaxwords 1

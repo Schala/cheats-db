@@ -1,0 +1,3 @@
+setgs fpickpocketmaxchance 100
+setgs fpickpocketminchance 100
+tgm

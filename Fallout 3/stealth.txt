@@ -1,0 +1,1 @@
+player.addspell 7e474

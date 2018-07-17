@@ -1,0 +1,79 @@
+14fe77f7.pnach
+
+Type
+Text
+Size
+1,009 bytes
+Storage used
+1,009 bytes
+Location
+pcsx2
+Owner
+me
+Modified
+Jun 1, 2017 by me
+Opened
+9:11 PM by me
+Created
+Jun 1, 2017
+Add a description
+Viewers can download
+gametitle=Tales of the Abyss
+//Infinite Gald 
+patch=1,EE,206D2C10,extended,05F5E0FF
+
+//Luke Codes 
+
+//Infinite HP 
+patch=1,EE,206D2F0C,extended,0000270F
+
+//Infinite TP 
+patch=1,EE,206D2F10,extended,000003E7
+
+//Tear Codes 
+
+//Infinite HP 
+patch=1,EE,206D325C,extended,0000270F
+
+//Infinite TP 
+patch=1,EE,206D3260,extended,000003E7
+
+//Jade Codes 
+
+//Infinite HP 
+patch=1,EE,206D35AC,extended,0000270F
+
+//Infinite TP 
+patch=1,EE,206D35B0,extended,000003E7
+
+//Anise Codes 
+
+//Infinite HP 
+patch=1,EE,206D38FC,extended,0000270F
+
+//Infinite TP 
+patch=1,EE,206D3900,extended,000003E7
+
+//Guy Codes 
+
+//Infinite HP 
+patch=1,EE,206D3C4C,extended,0000270F
+
+//Infinite TP 
+patch=1,EE,206D3C50,extended,000003E7
+
+//Natalia Codes 
+
+//Infinite HP 
+patch=1,EE,206D3F9C,extended,0000270F
+
+//Infinite TP 
+patch=1,EE,206D3FA0,extended,000003E7
+
+//Asch Codes 
+
+//Infinite HP 
+patch=1,EE,206D42EC,extended,0000270F
+
+//Infinite TP 
+patch=1,EE,206D42F0,extended,000003E7

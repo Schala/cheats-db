@@ -1,0 +1,2 @@
+player.additem 50f92 1,100
+player.additem 2937e 1
