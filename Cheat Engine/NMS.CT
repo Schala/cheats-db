@@ -5,21 +5,21 @@
       <ID>8046</ID>
       <Description>"[NMS Next Update]"</Description>
       <Options moHideChildren="1"/>
-      <LastState Value="" RealAddress="00000000"/>
+      <LastState Value="" Activated="1" RealAddress="00000000"/>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
           <ID>8354</ID>
           <Description>"Player"</Description>
           <Options moHideChildren="1"/>
-          <LastState Value="" RealAddress="00000000"/>
+          <LastState Value="" Activated="1" RealAddress="00000000"/>
           <Color>FF0000</Color>
           <GroupHeader>1</GroupHeader>
           <CheatEntries>
             <CheatEntry>
               <ID>8039</ID>
               <Description>"Inf Health"</Description>
-              <LastState/>
+              <LastState Activated="1"/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : NMS.exe
   Version: 
@@ -46,7 +46,7 @@ unregistersymbol(infhp)
             <CheatEntry>
               <ID>8024</ID>
               <Description>"Inf Life Support"</Description>
-              <LastState/>
+              <LastState Activated="1"/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : NMS.exe
   Version: 
@@ -74,7 +74,7 @@ unregistersymbol(infls)
             <CheatEntry>
               <ID>8021</ID>
               <Description>"Inf Hazard Protection"</Description>
-              <LastState/>
+              <LastState Activated="1"/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : NMS.exe
   Version: 
@@ -101,7 +101,7 @@ unregistersymbol(infhzp)
             <CheatEntry>
               <ID>7994</ID>
               <Description>"Inf Sprint"</Description>
-              <LastState/>
+              <LastState Activated="1"/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : NMS.exe
   Version:
@@ -139,7 +139,7 @@ unregistersymbol(infsprintBackup)
             <CheatEntry>
               <ID>7992</ID>
               <Description>"Inf Jetpack"</Description>
-              <LastState/>
+              <LastState Activated="1"/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : NMS.exe
   Version:
@@ -178,7 +178,7 @@ unregistersymbol(infjetpackBackup)
             <CheatEntry>
               <ID>8048</ID>
               <Description>"Inf Scanner"</Description>
-              <LastState/>
+              <LastState Activated="1"/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : NMS.exe
   Version: 
@@ -205,7 +205,7 @@ unregistersymbol(infscanner)
             <CheatEntry>
               <ID>8023</ID>
               <Description>"Inf Ammo"</Description>
-              <LastState/>
+              <LastState Activated="1"/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : NMS.exe
   Version: 
@@ -242,7 +242,7 @@ unregistersymbol(infammoBackup)
             <CheatEntry>
               <ID>8025</ID>
               <Description>"Inf Grenades"</Description>
-              <LastState/>
+              <LastState Activated="1"/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : NMS.exe
   Version: 
@@ -271,7 +271,7 @@ unregistersymbol(infpll)
             <CheatEntry>
               <ID>8068</ID>
               <Description>"Inf Blaze Javelin"</Description>
-              <LastState/>
+              <LastState Activated="1"/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : NMS.exe
   Version: 
@@ -299,7 +299,7 @@ unregistersymbol(infbj)
             <CheatEntry>
               <ID>8022</ID>
               <Description>"Inf Mining Beam"</Description>
-              <LastState/>
+              <LastState Activated="1"/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : NMS.exe
   Version: 
@@ -329,7 +329,7 @@ unregistersymbol(infmb)
             <CheatEntry>
               <ID>8054</ID>
               <Description>"No Mining Beam Overheat"</Description>
-              <LastState/>
+              <LastState Activated="1"/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : NMS.exe
   Version:
@@ -358,7 +358,7 @@ unregistersymbol(nooverheat)
             <CheatEntry>
               <ID>8045</ID>
               <Description>"Inf Terrain Manipulator"</Description>
-              <LastState/>
+              <LastState Activated="1"/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : NMS.exe
   Version: 
@@ -598,14 +598,14 @@ unregistersymbol(mulval)
           <ID>8356</ID>
           <Description>"Spaceship"</Description>
           <Options moHideChildren="1"/>
-          <LastState Value="" RealAddress="00000000"/>
+          <LastState Value="" Activated="1" RealAddress="00000000"/>
           <Color>000080</Color>
           <GroupHeader>1</GroupHeader>
           <CheatEntries>
             <CheatEntry>
               <ID>8016</ID>
               <Description>"Inf Launch Thrusters"</Description>
-              <LastState/>
+              <LastState Activated="1"/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : NMS.exe
   Version: 
@@ -643,7 +643,7 @@ unregistersymbol(inflt2)
             <CheatEntry>
               <ID>8040</ID>
               <Description>"Inf Pulse Engine"</Description>
-              <LastState/>
+              <LastState Activated="1"/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : NMS.exe
   Version: 
@@ -670,7 +670,7 @@ unregistersymbol(infpe)
             <CheatEntry>
               <ID>8067</ID>
               <Description>"Inf Hyperdrive"</Description>
-              <LastState/>
+              <LastState Activated="1"/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : NMS.exe
   Version: 
@@ -698,7 +698,7 @@ unregistersymbol(infhd)
             <CheatEntry>
               <ID>8071</ID>
               <Description>"Inf Deflector Shield"</Description>
-              <LastState/>
+              <LastState Activated="1"/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : NMS.exe
   Version: 
@@ -726,7 +726,7 @@ unregistersymbol(infds)
             <CheatEntry>
               <ID>8135</ID>
               <Description>"No Ship Overheat"</Description>
-              <LastState/>
+              <LastState Activated="1"/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : NMS.exe
   Version: 
@@ -762,7 +762,7 @@ unregistersymbol(nosohBackup)
             <CheatEntry>
               <ID>8138</ID>
               <Description>"No Rocket Launcher Overheat"</Description>
-              <LastState/>
+              <LastState Activated="1"/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : NMS.exe
   Version: 
@@ -792,14 +792,14 @@ unregistersymbol(norlo)
           <ID>8355</ID>
           <Description>"Exocraft"</Description>
           <Options moHideChildren="1"/>
-          <LastState Value="" RealAddress="00000000"/>
+          <LastState Value="" Activated="1" RealAddress="00000000"/>
           <Color>008000</Color>
           <GroupHeader>1</GroupHeader>
           <CheatEntries>
             <CheatEntry>
               <ID>8084</ID>
               <Description>"Inf Exocraft Boost"</Description>
-              <LastState/>
+              <LastState Activated="1"/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : NMS.exe
   Version: 
@@ -826,7 +826,7 @@ unregistersymbol(infeb)
             <CheatEntry>
               <ID>8075</ID>
               <Description>"Inf Fusion Engine"</Description>
-              <LastState/>
+              <LastState Activated="1"/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : NMS.exe
   Version: 
@@ -853,7 +853,7 @@ unregistersymbol(infee)
             <CheatEntry>
               <ID>8139</ID>
               <Description>"Inf Exocraft Mining Laser"</Description>
-              <LastState/>
+              <LastState Activated="1"/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : NMS.exe
   Version: 
@@ -880,7 +880,7 @@ unregistersymbol(infeml)
             <CheatEntry>
               <ID>8140</ID>
               <Description>"Inf Exocraft Cannon"</Description>
-              <LastState/>
+              <LastState Activated="1"/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : NMS.exe
   Version: 
@@ -1286,14 +1286,14 @@ unregistersymbol(buildInRedBackup)
           <ID>8358</ID>
           <Description>"Pointers"</Description>
           <Options moHideChildren="1"/>
-          <LastState Value="" RealAddress="00000000"/>
+          <LastState Value="" Activated="1" RealAddress="00000000"/>
           <GroupHeader>1</GroupHeader>
           <CheatEntries>
             <CheatEntry>
               <ID>8086</ID>
               <Description>"Wanted Level"</Description>
               <Options moHideChildren="1"/>
-              <LastState/>
+              <LastState Activated="1"/>
               <Color>000080</Color>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : NMS.exe
@@ -1343,7 +1343,7 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>8123</ID>
                   <Description>"Wanted Level Wont Increase"</Description>
-                  <LastState/>
+                  <LastState Activated="1"/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>{ Game   : NMS.exe
   Version: 
@@ -2670,7 +2670,7 @@ unregistersymbol(reflistp)
           <ID>8359</ID>
           <Description>"etc"</Description>
           <Options moHideChildren="1"/>
-          <LastState Value="" RealAddress="00000000"/>
+          <LastState Value="" Activated="1" RealAddress="00000000"/>
           <GroupHeader>1</GroupHeader>
           <CheatEntries>
             <CheatEntry>
@@ -2862,7 +2862,7 @@ dealloc(newmem)
             <CheatEntry>
               <ID>8062</ID>
               <Description>"Bypass Locks"</Description>
-              <LastState/>
+              <LastState Activated="1"/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : NMS.exe
   Version: 
