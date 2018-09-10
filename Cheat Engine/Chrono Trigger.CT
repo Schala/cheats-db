@@ -1,0 +1,1741 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="24">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"Chrono Trigger (PC Steam Version)"</Description>
+      <Options moHideChildren="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>10</ID>
+          <Description>"Enable"</Description>
+          <Options moHideChildren="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+//aobscanmodule(MoneyReadInStatusAOB,"Chrono Trigger.exe",8B B0 24 1A 00 00 8D 85 60 FF FF FF) // should be unique
+aobscanmodule(MoneyReadInStatusAOB,"Chrono Trigger.exe",8B B7 24 1A 00 00 6A 18 6A 3F 50) // should be unique
+registersymbol(MoneyReadInStatusAOB)
+alloc(newmem,8192,MoneyReadInStatusAOB)
+
+//aobscanmodule(ItemReadInStatusAOB,"Chrono Trigger.exe",8B 48 08 89 4C 32 08 83 C6 0C) // should be unique
+aobscanmodule(ItemReadInStatusAOB,"Chrono Trigger.exe",8B 42 08 89 44 39 08 8D 4E 01) // should be unique
+registersymbol(ItemReadInStatusAOB)
+
+//aobscanmodule(EXPReadInStatusAOB,"Chrono Trigger.exe",8B 54 3B 74 8D 8D 40 F9 FF FF) // should be unique
+aobscanmodule(EXPReadInStatusAOB,"Chrono Trigger.exe",8B 4C 33 74 89 48 08 C7 40 0C FF FF FF FF) // should be unique
+registersymbol(EXPReadInStatusAOB)
+
+//aobscanmodule(SilverPointsAOB,"Chrono Trigger.exe",8B 84 81 E8 0D 01 00 25 FF FF 00 00) // should be unique
+aobscanmodule(SilverPointsAOB,"Chrono Trigger.exe",8B 84 81 30 0E 01 00 25 FF FF 00 00) // should be unique
+registersymbol(SilverPointsAOB)
+
+///
+label(MoneyPtr)
+registersymbol(MoneyPtr)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+///
+label(ItemBasePtr)
+registersymbol(ItemBasePtr)
+label(ItemSlot)
+registersymbol(ItemSlot)
+label(AllItemList)
+registersymbol(AllItemList)
+label(AllItemQty)
+registersymbol(AllItemQty)
+label(returnhere22)
+label(originalcode22)
+label(exit22)
+
+
+///
+label(CharBasePtr)
+registersymbol(CharBasePtr)
+label(CharSlot)
+registersymbol(CharSlot)
+label(returnhere33)
+label(originalcode33)
+label(exit33)
+
+///
+label(SilverPointsPtr)
+registersymbol(SilverPointsPtr)
+label(returnhere44)
+label(originalcode44)
+label(exit44)
+
+
+///
+newmem:
+  mov [MoneyPtr],edi
+  add [MoneyPtr],00001A24
+  
+originalcode:
+  mov esi,[edi+00001A24]
+  
+exit:
+  jmp returnhere
+
+///
+newmem22:
+  cmp esi,0
+  jne originalcode22
+  mov [ItemBasePtr],edx
+  
+originalcode22:
+  mov eax,[edx+08]
+  mov [ecx+edi+08],eax
+  
+exit22:
+  jmp returnhere22
+
+
+///
+newmem33:
+  mov [CharBasePtr],esi
+  
+originalcode33:
+  mov ecx,[ebx+esi+74]
+  mov [eax+08],ecx
+  
+exit33:
+  jmp returnhere33
+
+///
+newmem44:
+  cmp eax,52
+  jne originalcode44
+  push eax
+  imul eax,4
+  mov [SilverPointsPtr],eax
+  add [SilverPointsPtr],ecx
+  add [SilverPointsPtr],00010E30
+  pop eax
+  
+originalcode44:
+  mov eax,[ecx+eax*4+00010E30]
+  
+exit44:
+  jmp returnhere44
+
+  
+MoneyPtr:
+dq 0
+SilverPointsPtr:
+dq 0
+CharBasePtr:
+dq 0
+CharSlot:
+dd 0
+ItemBasePtr:
+dq 0
+ItemSlot:
+dq 0
+AllItemQty:
+dd #50
+AllItemList:
+dw 0001
+dw 0002
+dw 0003
+dw 0004
+dw 0005
+dw 0006
+dw 0007
+dw 0008
+dw 0009
+dw 000A
+dw 000B
+dw 000C
+dw 000D
+dw 000E
+dw 000F
+dw 0010
+dw 0011
+dw 0012
+dw 0013
+dw 0014
+dw 0015
+dw 0016
+dw 0017
+dw 0018
+dw 0019
+dw 001A
+dw 001F
+dw 0020
+dw 0021
+dw 0022
+dw 0023
+dw 0024
+dw 0025
+dw 0026
+dw 0027
+dw 0028
+dw 0029
+dw 002E
+dw 002F
+dw 0030
+dw 0031
+dw 0032
+dw 0033
+dw 0034
+dw 0035
+dw 0036
+dw 0037
+dw 0038
+dw 0039
+dw 003B
+dw 003C
+dw 003D
+dw 003E
+dw 003F
+dw 0040
+dw 0041
+dw 0042
+dw 0043
+dw 0044
+dw 0045
+dw 0046
+dw 0047
+dw 0048
+dw 004B
+dw 004D
+dw 004E
+dw 004F
+dw 0050
+dw 0051
+dw 0052
+dw 0053
+dw 0054
+dw 0055
+dw 005A
+dw 005B
+dw 005C
+dw 005D
+dw 005E
+dw 005F
+dw 0060
+dw 0061
+dw 0062
+dw 0063
+dw 0064
+dw 1001
+dw 1002
+dw 1003
+dw 1004
+dw 1005
+dw 1006
+dw 1007
+dw 1008
+dw 1009
+dw 100A
+dw 100B
+dw 100C
+dw 100D
+dw 100E
+dw 100F
+dw 1010
+dw 1011
+dw 1012
+dw 1013
+dw 1014
+dw 1015
+dw 1016
+dw 1017
+dw 1018
+dw 1019
+dw 101A
+dw 101B
+dw 101C
+dw 101D
+dw 101E
+dw 101F
+dw 1020
+dw 1021
+dw 1022
+dw 1023
+dw 1024
+dw 1025
+dw 1026
+dw 2001
+dw 2002
+dw 2003
+dw 2004
+dw 2005
+dw 2006
+dw 2007
+dw 2008
+dw 2009
+dw 200A
+dw 200B
+dw 200C
+dw 200D
+dw 200E
+dw 200F
+dw 2010
+dw 2011
+dw 2012
+dw 2013
+dw 2014
+dw 2015
+dw 2016
+dw 2017
+dw 2018
+dw 2019
+dw 201A
+dw 201B
+dw 201C
+dw 3001
+dw 3002
+dw 3003
+dw 3004
+dw 3005
+dw 3006
+dw 3007
+dw 3008
+dw 3009
+dw 300A
+dw 300B
+dw 300C
+dw 300D
+dw 300E
+dw 300F
+dw 3010
+dw 3011
+dw 3012
+dw 3013
+dw 3014
+dw 3015
+dw 3016
+dw 3017
+dw 3018
+dw 3019
+dw 301A
+dw 301B
+dw 301C
+dw 301D
+dw 301E
+dw 301F
+dw 3020
+dw 3021
+dw 3022
+dw 3023
+dw 3024
+dw 3025
+dw 3026
+dw 3027
+dw 3028
+dw 3029
+dw 302A
+dw 302B
+dw 302C
+dw 302D
+dw 302E
+dw 302F
+dw 3030
+dw 4001
+dw 4002
+dw 4003
+dw 4004
+dw 4005
+dw 4006
+dw 4007
+dw 4008
+dw 4009
+dw 400A
+dw 400B
+dw 400C
+dw 400D
+dw 400E
+dw 400F
+dw 4010
+dw 4011
+dw 4012
+dw 4013
+dw 4014
+dw 4015
+dw 4016
+dw 4017
+dw 4018
+dw 4019
+dw 401A
+dw 401B
+dw 401C
+dw 401D
+dw 401E
+dw 401F
+dw 4020
+dw 5001
+dw 5002
+dw 5003
+dw 5004
+dw 5005
+dw 5006
+dw 5007
+dw 5008
+dw 5009
+dw 500A
+dw 500B
+dw 500C
+dw 500D
+dw 500E
+dw 500F
+dw 5010
+dw 5011
+dw 5012
+dw 5013
+dw 5014
+dw 5015
+dw 5016
+dw 5017
+dw 5018
+dw 5019
+dw 501A
+dw 501B
+dw 501C
+dw 501D
+dw 501E
+dw 501F
+dw 5020
+dw 5021
+dw 5022
+dw 5023
+dw 5024
+
+MoneyReadInStatusAOB:
+  jmp newmem
+  nop
+  returnhere:
+
+ItemReadInStatusAOB:
+  jmp newmem22
+  nop
+  nop
+  returnhere22:
+
+EXPReadInStatusAOB:
+  jmp newmem33
+  nop
+  nop
+  returnhere33:
+
+SilverPointsAOB:
+  jmp newmem44
+  nop
+  nop
+  returnhere44:
+  
+[DISABLE]
+
+MoneyReadInStatusAOB:
+  db 8B B7 24 1A 00 00
+  
+unregistersymbol(MoneyPtr)
+unregistersymbol(MoneyReadInStatusAOB)
+
+ItemReadInStatusAOB:
+  db 8B 42 08 89 44 39 08
+ 
+unregistersymbol(ItemBasePtr)
+unregistersymbol(ItemSlot)
+unregistersymbol(AllItemList)
+unregistersymbol(AllItemQty)
+unregistersymbol(ItemReadInStatusAOB)
+
+EXPReadInStatusAOB:
+  db 8B 4C 33 74 89 48 08
+  
+unregistersymbol(CharBasePtr)
+unregistersymbol(CharSlot)
+unregistersymbol(EXPReadInStatusAOB)
+
+SilverPointsAOB:
+  db 8B 84 81 30 0E 01 00
+  
+unregistersymbol(SilverPointsPtr)
+unregistersymbol(SilverPointsAOB)
+
+dealloc(newmem)
+</AssemblerScript>
+			<CheatEntries>
+			  <CheatEntry>
+				  <ID>100</ID>
+				  <Description>"[Scripts]"</Description>
+				  <Options moHideChildren="1"/>
+				  <LastState Value="" RealAddress="00000000"/>
+				  <GroupHeader>1</GroupHeader>
+				  <CheatEntries>
+					<CheatEntry>
+					  <ID>200</ID>
+					  <Description>"In Battle Pointers"</Description>
+					  <Options moHideChildren="1"/>
+					  <LastState/>
+					  <VariableType>Auto Assembler Script</VariableType>
+					  <AssemblerScript>[ENABLE]
+
+//luaCall(lua_aobscan("DamageModAOB1","Chrono Trigger.exe","8B 5E 38 8D 47 03 99 8D 4F 03",1))
+luaCall(lua_aobscan("DamageModAOB1","Chrono Trigger.exe","8B 5E 34 8D 47 03 99 8D 4F 03",1))
+alloc(newmem,4096,DamageModAOB1)
+
+{
+luaCall(lua_aobscan("DamageModAOB2","Chrono Trigger.exe","8B 4E 54 88 1C 08 8D 4F 04 8B C1 C1 FB 08 99 83 E2 7F",2))
+luaCall(lua_aobscan("DamageModAOB3","Chrono Trigger.exe","8B 4E 54 88 1C 08 8D 4F 04 8B C1 C1 FB 08 99 83 E2 7F",3))
+luaCall(lua_aobscan("DamageModAOB4","Chrono Trigger.exe","8B 4E 54 88 1C 08 8D 4F 04 8B C1 C1 FB 08 99 83 E2 7F",4))
+}
+
+label(return)
+label(GodMode)
+registersymbol(GodMode)
+label(HeroPointers)
+registersymbol(HeroPointers)
+label(EnemyPointers)
+registersymbol(EnemyPointers)
+
+newmem:
+  push edx
+  mov edx,[esi+50]
+  cmp byte ptr [edx+27],FF
+  je HeroHit
+  jmp EnemyHit
+HeroHit:
+  push ebx
+  cmp [GodMode],1
+  jne @F
+  movzx ebx,word ptr [edx+5]
+  mov [edx+3],bx
+  movzx ebx,word ptr [edx+85]
+  mov [edx+83],bx
+  movzx ebx,word ptr [edx+105]
+  mov [edx+103],bx
+@@:
+  mov ebx,HeroPointers
+StartHeroLoop:
+  cmp [ebx],edx
+  je CleanUp
+  cmp [ebx],0
+  jne @F
+  mov [ebx],edx
+  jmp CleanUp
+@@:
+  add ebx,8
+  jmp StartHeroLoop
+EnemyHit:
+  push ebx
+  mov ebx,EnemyPointers
+StartEnemyLoop:
+  cmp [ebx],edx
+  je CleanUp
+  cmp [ebx],0
+  jne @F
+  mov [ebx],edx
+  jmp CleanUp
+@@:
+  add ebx,8
+  jmp StartEnemyLoop
+CleanUp:
+  pop ebx
+  pop edx
+  mov ebx,[esi+34]
+  lea eax,[edi+03]
+  jmp return
+
+GodMode:
+dq 1
+HeroPointers:
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+EnemyPointers:
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+
+DamageModAOB1:
+  jmp newmem
+  nop
+  return:
+
+{
+DamageModAOB2:
+  jmp newmem
+  nop
+  return:
+
+DamageModAOB3:
+  jmp newmem
+  nop
+  return:
+
+DamageModAOB4:
+  jmp newmem
+  nop
+  return:
+}
+
+[DISABLE]
+
+DamageModAOB1:
+  db 8B 5E 34 8D 47 03
+
+{
+DamageModAOB2:
+  db 8B 4E 54 88 1C 08
+
+DamageModAOB3:
+  db 8B 4E 54 88 1C 08
+
+DamageModAOB4:
+  db 8B 4E 54 88 1C 08
+}
+
+unregistersymbol(DamageModAOB1)
+unregistersymbol(GodMode)
+
+dealloc(newmem)
+</AssemblerScript>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>201</ID>
+						  <Description>"God Mode"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+1:On
+</DropDownList>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>GodMode</Address>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>202</ID>
+						  <Description>"Hero Char 1 Current HP"</Description>
+						  <VariableType>2 Bytes</VariableType>
+						  <Address>HeroPointers</Address>
+						  <Offsets>
+						    <Offset>3</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>203</ID>
+						  <Description>"Hero Char 2 Current HP"</Description>
+						  <VariableType>2 Bytes</VariableType>
+						  <Address>HeroPointers</Address>
+						  <Offsets>
+						    <Offset>83</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>204</ID>
+						  <Description>"Hero Char 3 Current HP"</Description>
+						  <VariableType>2 Bytes</VariableType>
+						  <Address>HeroPointers</Address>
+						  <Offsets>
+						    <Offset>103</Offset>
+						  </Offsets>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>210</ID>
+					  <Description>"Infinite MP In Battle"</Description>
+					  <Options moHideChildren="1"/>
+					  <LastState/>
+					  <VariableType>Auto Assembler Script</VariableType>
+					  <AssemblerScript>[ENABLE]
+
+luaCall(lua_aobscan("InfMPAOB","Chrono Trigger.exe","0F B6 54 19 08 0F B6 44 19 07 C1 E2 08 0B D0 2B D7",1))
+
+InfMPAOB+4:
+  db 0A
+  
+InfMPAOB+9:
+  db 09
+
+InfMPAOB+F:
+  db 90 90
+  
+[DISABLE]
+
+InfMPAOB+4:
+  db 08
+  
+InfMPAOB+9:
+  db 07
+
+InfMPAOB+F:
+  db 2B D7
+
+unregistersymbol(InfMPAOB)
+</AssemblerScript>
+					</CheatEntry>					
+					<CheatEntry>
+					  <ID>225</ID>
+					  <Description>"Infinite Item Usage In Battle or Set Minimum Item Amount"</Description>
+					  <Options moHideChildren="1"/>
+					  <LastState/>
+					  <VariableType>Auto Assembler Script</VariableType>
+					  <AssemblerScript>[ENABLE]
+
+//aobscanmodule(InfiniteItemUsageAOB,"Chrono Trigger.exe",FF 8C 88 9C B3 01 00 8B 46 54) // should be unique
+aobscanmodule(InfiniteItemUsageAOB,"Chrono Trigger.exe",FF 4C 88 0C 8B 46 50 C7 80 3C 45 00 00) // should be unique
+alloc(newmem,1024,InfiniteItemUsageAOB)
+registersymbol(InfiniteItemUsageAOB)
+
+label(return)
+label(originalcode)
+label(originalcode2)
+label(SetItemAmount)
+registersymbol(SetItemAmount)
+
+newmem:
+  push edx
+  movzx edx,byte ptr [eax+ecx*4+0C]
+  cmp word ptr [eax+ecx*4+08],5000
+  jle @F
+  jmp originalcode2
+@@:
+  cmp edx,[SetItemAmount]
+  jge originalcode
+  mov edx,[SetItemAmount]
+  mov [eax+ecx*4+0C],dl
+  jmp originalcode
+
+originalcode2:
+  dec [eax+ecx*4+0C]
+  mov eax,[esi+50]
+  
+originalcode:
+  jmp return
+
+SetItemAmount:
+dq #10
+    
+InfiniteItemUsageAOB:
+  jmp newmem
+  nop
+  nop
+  return:
+  
+[DISABLE]
+
+InfiniteItemUsageAOB:
+  db FF 4C 88 0C 8B 46 50
+  
+unregistersymbol(SetItemAmount)
+unregistersymbol(InfiniteItemUsageAOB)
+  
+dealloc(newmem)
+</AssemblerScript>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>226</ID>
+						  <Description>"Set Minimum Item Amount On Use/Toss (0 = Off)"</Description>
+						  <VariableType>Byte</VariableType>
+						  <Address>SetItemAmount</Address>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>227</ID>
+					  <Description>"Infinite Item Usage Out of Battle or Set Minimum Item Amount"</Description>
+					  <Options moHideChildren="1"/>
+					  <LastState/>
+					  <VariableType>Auto Assembler Script</VariableType>
+					  <AssemblerScript>[ENABLE]
+
+aobscanmodule(InfiniteItemUsageAOB2,"Chrono Trigger.exe",8D 0C 87 8B 01 3B C6 7C 04) // should be unique
+alloc(newmem,1024,InfiniteItemUsageAOB2)
+registersymbol(InfiniteItemUsageAOB2)
+
+label(return)
+label(originalcode)
+label(SetItemAmount2)
+registersymbol(SetItemAmount2)
+label(LastItemPtr)
+registersymbol(LastItemPtr)
+
+newmem:
+  lea ecx,[edi+eax*4]
+  mov eax,[ecx]
+  mov [LastItemPtr],ecx
+  cmp word ptr [ecx-4],5000
+  jle @F
+  jmp originalcode
+@@:
+  xor esi,esi
+  mov [ebp+0C],esi
+  cmp eax,[SetItemAmount2]
+  jge originalcode
+  mov eax,[SetItemAmount2]
+
+originalcode:
+  jmp return
+
+SetItemAmount2:
+dq #10
+LastItemPtr:
+dq 0
+    
+InfiniteItemUsageAOB2:
+  jmp newmem
+  return:
+  
+[DISABLE]
+
+InfiniteItemUsageAOB2:
+  db 8D 0C 87 8B 01
+  
+unregistersymbol(SetItemAmount2)
+unregistersymbol(InfiniteItemUsageAOB2)
+  
+dealloc(newmem)
+</AssemblerScript>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>228</ID>
+						  <Description>"Set Minimum Item Amount On Use/Toss (0 = Off)"</Description>
+						  <VariableType>Byte</VariableType>
+						  <Address>SetItemAmount2</Address>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>229</ID>
+						  <Description>"Last Item Quantity"</Description>
+						  <VariableType>2 Bytes</VariableType>
+						  <Address>LastItemPtr</Address>
+						  <Offsets>
+						    <Offset>0</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>229</ID>
+						  <Description>"Last Item ID"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">==========WEAPONS===============
+0001:Wooden Sword 
+0002:Bronze Blade 
+0003:Steel Saber 
+0004:Silver Sword 
+0005:Crimson Blade 
+0006:Mammoth Tusk 
+0007:Dark Saber 
+0008:Primeval Blade 
+0009:Zanmato 
+000A:Vajra Sword 
+000B:Empyrean Blade 
+000C:Yaksha Blade 
+000D:Onimaru 
+000E:Suzaku 
+000F:Thunder Blade 
+0010:Slasher 
+0011:Bronze Bowgun 
+0012:Iron Bowgun 
+0013:Silver Bow 
+0014:Bandit's Bow 
+0015:Shaman's Bow 
+0016:Dreamstone Bow 
+0017:Comet Bow 
+0018:Sonic Bow 
+0019:Valkyrie Bow 
+001A:Siren's Kiss 
+001F:Airgun 
+0020:Pea Shooter 
+0021:Pocket Blaster 
+0022:Picomagnum 
+0023:Plasma Gun 
+0024:Ruby Gun 
+0025:Dreamstone Gun 
+0026:Megablaster 
+0027:Shockwave 
+0028:Wondershot 
+0029:Gravitator 
+002E:Tin Arm 
+002F:Hammer Arm 
+0030:Mirage Hand 
+0031:Stone Arm 
+0032:Death Claw 
+0033:Magma Hand 
+0034:Megaton Arm 
+0035:Heavy Hand 
+0036:Kaiser Arm 
+0037:Gigaton Arm 
+0038:Teraton Arm 
+0039:Crisis Arm 
+003B:Bronze Sword 
+003C:Iron Sword 
+003D:Masamune 
+003E:Radiant Blade 
+003F:Smiter's Blade 
+0040:Rune Blade 
+0041:Brave Sword 
+0042:Masamune 
+0043:Demonslayer 
+0044:Fist 
+0045:Fist 
+0046:Fist 
+0047:Iron Fist 
+0048:Bronze Fist 
+004B:Moonfall Scythe 
+004D:Hadean Sickle 
+004E:Doom Scythe 
+004F:Mop 
+0050:Broken Blade 
+0051:Broken Hilt 
+0052:Masamune 
+0053:Swallow 
+0054:Slasher II 
+0055:Rainbow 
+005A:Icewyrm 
+005B:Stardust Bow 
+005C:Turboshot 
+005D:Dinoblade 
+005E:Dragon Arm 
+005F:Judgment Scythe 
+0060:Dreamseeker 
+0061:Venus Bow 
+0062:Spellslinger 
+0063:Apocalypse Arm 
+0064:Dreamreaper
+==========BODY ARMOR===============
+1001:Hide Tunic 
+1002:Padded Vest 
+1003:Bronze Armor 
+1004:Maiden's Suit 
+1005:Iron Suit 
+1006:Titanium Vest 
+1007:Golden Suit 
+1008:Ruby Vest 
+1009:Dark Mail 
+100A:Mist Robe 
+100B:Mesozoic Mail 
+100C:Luminous Robe 
+100D:Radiant Plate 
+100E:Platinum Vest 
+100F:Aeonian Suit 
+1010:Zodiac Cape 
+1011:Nova Armor 
+1012:Prismatic Dress 
+1013:Moonbeam Armor 
+1014:Ruby Armor 
+1015:Raven Armor 
+1016:Gloom Cape 
+1017:White Plate 
+1018:Black Plate 
+1019:Blue Plate 
+101A:Red Plate 
+101B:White Vest 
+101C:Black Vest 
+101D:Blue Vest 
+101E:Red Vest 
+101F:Taban's Vest 
+1020:Taban's Suit 
+1021:Dragon Armor 
+1022:Reptite Dress 
+1024:Regal Plate 
+1025:Regal Gown 
+1026:Elemental Aegis 
+===========HELMETS==================
+2001:Hide Cap 
+2002:Bronze Helm 
+2003:Iron Helm 
+2004:Porrean Beret 
+2005:Golden Helm 
+2006:Stone Helm 
+2007:Triceratopper 
+2008:Radiant Helm 
+2009:Platinum Helm 
+200A:Aeonian Helm 
+200B:Prismatic Helm 
+200C:Doom Helm 
+200D:Dark Helm 
+200E:Gloom Helm 
+200F:Guardian Helm 
+2010:Taban's Helm 
+2011:Clarity Cap 
+2012:Memory Cap 
+2013:Time Hat 
+2014:Vigilant's Hat 
+2015:Ozzie Pants 
+2016:Haste Helm 
+2017:Rainbow Helm 
+2018:Mermaid Helm 
+2019:Dragonhead 
+201A:Reptite Tiara 
+201B:Master's Crown 
+201C:Angel's Tiara 
+============ACCESSORIES==================
+3001:Headband 
+3002:Ribbon 
+3003:Power Glove 
+3004:Guardian Bangle 
+3005:Magic Scarf 
+3006:Schala's Amulet 
+3007:Speed Ring 
+3008:Acuity Ring 
+3009:Power Ring 
+300A:Magic Ring 
+300B:Barrier Ring 
+300C:Silver Earring 
+300D:Golden Earring 
+300E:Silver Stud 
+300F:Golden Stud 
+3010:Sight Scope 
+3011:Alluring Top 
+3012:Rage Band 
+3013:Wrath Band 
+3014:Third Eye 
+3016:Green Dream 
+3017:Berserker Ring 
+3018:Power Scarf 
+3019:Speed Belt 
+301A:Black Gemstone 
+301B:Blue Gemstone 
+301C:Silver Gemstone 
+301D:White Gemstone 
+301E:Golden Gemstone 
+301F:Hero's Badge 
+3020:Muscle Ring 
+3021:Flea Bustier 
+3022:Magic Crest 
+3023:Power Crest 
+3024:Accessory 
+3025:Seraph Song 
+3026:Sunglasses 
+3028:Valor Crest 
+302A:Dragon's Tear 
+302B:Nu Arcana 
+302C:Uranian Mirror 
+302D:Pontic Mirror 
+302F:Hadean Mirror 
+3030:Aresian Mirror 
+=========USABLE ITEMS==================
+4001:Potion 
+4002:Mid-Potion 
+4003:Hi-Potion 
+4004:Ether 
+4005:Mid-Ether 
+4006:Hi-Ether 
+4007:Elixir 
+4008:Turbo Ether 
+4009:Megalixir 
+400A:Panacea 
+400B:Athenian Water 
+400C:Shelter 
+400D:Ambrosia 
+400E:Lapis 
+400F:Barrier Sphere 
+4010:Shield Sphere
+4011:Strength Capsule 
+4012:Magic Capsule 
+4013:Speed Capsule 
+4014:Slops 
+4015:Flameclaw 
+4016:Seafang 
+4017:Duskeye 
+4018:Luxwing 
+4019:Hawk Talon 
+401A:Shield Cloak 
+401B:Feral Wrath 
+401C:Smoked Meat 
+401D:Dried Mushroom 
+401E:Sweet Banana 
+401F:Millennia Fruit 
+4020:Songbird Egg 
+=============KEY ITEMS====================
+5001:Petal 
+5002:Fang 
+5003:Horn 
+5004:Feather 
+5005:Seed 
+5006:Jetbike Key 
+5007:Pendant 
+5008:Gate Key 
+5009:Rainbow Shard 
+500A:Chrono Trigger 
+500C:Spiced Jerky 
+500D:Dreamstone 
+500E:Race Recorder 
+500F:Moon Stone 
+5010:Sun Stone 
+5011:Ruby Knife 
+5012:Yakra's Key 
+5013:Doppel Doll 
+5014:Toma's Spirits 
+5015:2 Petals 
+5016:2 Fangs 
+5017:2 Horns 
+5018:2 Feathers 
+5019:Golden Sand 
+501A:Golden Hammer 
+501B:Prismastone 
+501C:Saintstone 
+501D:Reptmark 
+501E:Waystone 
+501F:Godwood 
+5020:Steel Ingot 
+5021:Sturdy Vines 
+5022:Hearty Lunch 
+5023:Rusted Blade 
+5024:Lumicite Shard 
+</DropDownList>
+						  <ShowAsHex>1</ShowAsHex>
+						  <VariableType>2 Bytes</VariableType>
+						  <Address>LastItemPtr</Address>
+						  <Offsets>
+						    <Offset>-4</Offset>
+						  </Offsets>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>251</ID>
+					  <Description>"EXP Multiplier"</Description>
+					  <Options moHideChildren="1"/>
+					  <VariableType>Auto Assembler Script</VariableType>
+					  <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat		  
+//aobscanmodule(EXPMultAOB2,"Chrono Trigger.exe",8B 55 EC 01 42 44 81 7A 44 7F 96 98 00) // should be unique
+aobscanmodule(EXPMultAOB2,"Chrono Trigger.exe",8B 80 40 16 00 00 89 45 F0 66 66 0F 1F 84 00 00 00 00 00) // should be unique
+registersymbol(EXPMultAOB2)
+alloc(newmem,1024,EXPMultAOB2)
+
+///
+label(return)
+label(originalcode)
+label(EXPMult2)
+registersymbol(EXPMult2)
+
+newmem:
+  push ebx
+  mov ebx,eax
+  mov eax,[eax+00001640]
+  imul eax,[EXPMult2]
+  mov [ebx+00001640],eax
+  pop ebx
+  
+originalcode:
+  jmp return
+ 
+EXPMult2:
+dd #5
+    
+EXPMultAOB2:
+  jmp newmem
+  nop
+  return:
+  
+[DISABLE]
+
+EXPMultAOB2:
+  db 8B 80 40 16 00 00
+  
+unregistersymbol(EXPMult2)
+unregistersymbol(EXPMultAOB2)
+
+dealloc(newmem)
+</AssemblerScript>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>252</ID>
+						  <Description>"EXP Multiplier"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>EXPMult2</Address>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>255</ID>
+					  <Description>"Tech Point Multiplier"</Description>
+					  <Options moHideChildren="1"/>
+					  <VariableType>Auto Assembler Script</VariableType>
+					  <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat		  
+aobscanmodule(TPMultAOB2,"Chrono Trigger.exe",0F B7 81 58 17 00 00 3B D0 7E 04) // should be unique
+registersymbol(TPMultAOB2)
+alloc(newmem,1024,TPMultAOB2)
+
+///
+label(return)
+label(originalcode)
+label(TPMult2)
+registersymbol(TPMult2)
+
+newmem:
+  movzx eax,word ptr [ecx+00001758]
+  imul eax,[TPMult2]
+  mov [ecx+00001758],ax
+  
+originalcode:
+  jmp return
+ 
+TPMult2:
+dd #5
+    
+TPMultAOB2:
+  jmp newmem
+  nop
+  nop
+  return:
+  
+[DISABLE]
+
+TPMultAOB2:
+  db 0F B7 81 58 17 00 00
+  
+unregistersymbol(TPMult2)
+unregistersymbol(TPMultAOB2)
+
+dealloc(newmem)
+</AssemblerScript>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>256</ID>
+						  <Description>"Tech Point Multiplier"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>TPMult2</Address>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>					
+				  </CheatEntries>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>4000</ID>
+				  <Description>"Pointers"</Description>
+				  <Options moHideChildren="1"/>
+				  <LastState Value="" Activated="1" RealAddress="00000000"/>
+				  <GroupHeader>1</GroupHeader>
+				  <CheatEntries>
+					<CheatEntry>
+					  <ID>4001</ID>
+					  <Description>"Money"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>MoneyPtr</Address>
+					  <Offsets>
+						<Offset>0</Offset>
+					  </Offsets>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4002</ID>
+					  <Description>"Silver Points"</Description>
+					  <VariableType>Byte</VariableType>
+					  <Address>SilverPointsPtr</Address>
+					  <Offsets>
+						<Offset>0</Offset>
+					  </Offsets>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>460</ID>
+					  <Description>"Character Editor (View Equipment and Choose Char Manually, Re-Equip Something to See Changes)"</Description>
+					  <Options moHideChildren="1"/>
+					  <GroupHeader>1</GroupHeader>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>461</ID>
+						  <Description>"Char Slot"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Crono
+1:Marle
+2:Lucca
+3:Robo
+4:Frog
+5:Ayla
+6:Magus
+</DropDownList>		  
+						  <VariableType>2 Bytes</VariableType>
+						  <Address>CharSlot</Address>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>462</ID>
+						  <Description>"EXP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>CharBasePtr</Address>
+						  <Offsets>
+							<Offset>[CharSlot]*120+74</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>463</ID>
+						  <Description>"Current HP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>CharBasePtr</Address>
+						  <Offsets>
+							<Offset>[CharSlot]*120+44</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>464</ID>
+						  <Description>"Max HP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>CharBasePtr</Address>
+						  <Offsets>
+							<Offset>[CharSlot]*120+40</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>465</ID>
+						  <Description>"Current MP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>CharBasePtr</Address>
+						  <Offsets>
+							<Offset>[CharSlot]*120+4C</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>466</ID>
+						  <Description>"Max MP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>CharBasePtr</Address>
+						  <Offsets>
+							<Offset>[CharSlot]*120+48</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>467</ID>
+						  <Description>"Stength"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>CharBasePtr</Address>
+						  <Offsets>
+							<Offset>[CharSlot]*120+54</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>468</ID>
+						  <Description>"Stamina"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>CharBasePtr</Address>
+						  <Offsets>
+							<Offset>[CharSlot]*120+58</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>468</ID>
+						  <Description>"Speed"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>CharBasePtr</Address>
+						  <Offsets>
+							<Offset>[CharSlot]*120+5C</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>469</ID>
+						  <Description>"Magic"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>CharBasePtr</Address>
+						  <Offsets>
+							<Offset>[CharSlot]*120+60</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>470</ID>
+						  <Description>"Accuracy"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>CharBasePtr</Address>
+						  <Offsets>
+							<Offset>[CharSlot]*120+64</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>470</ID>
+						  <Description>"Evasion"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>CharBasePtr</Address>
+						  <Offsets>
+							<Offset>[CharSlot]*120+68</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>470</ID>
+						  <Description>"Magic Defense"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>CharBasePtr</Address>
+						  <Offsets>
+							<Offset>[CharSlot]*120+6C</Offset>
+						  </Offsets>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>					
+					<CheatEntry>
+					  <ID>360</ID>
+					  <Description>"Inventory Editor (Choose Slot Manually)"</Description>
+					  <Options moHideChildren="1"/>
+					  <GroupHeader>1</GroupHeader>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>361</ID>
+						  <Description>"Add All Items of Current Type (View Inventory First)"</Description>
+						  <Options moHideChildren="1"/>
+						  <LastState/>
+						  <VariableType>Auto Assembler Script</VariableType>
+						  <AssemblerScript>[ENABLE]
+{$lua}
+local ItemBasePtr = ReadPointer(getAddress("ItemBasePtr"))
+local ItemType = ReadInteger(ItemBasePtr) &amp; 0xF000
+local AllItemQty = getAddress("AllItemQty")
+local AllItemsPtr = getAddress("AllItemList")
+while (ReadSmallInteger(AllItemsPtr) &lt; ItemType) do
+      AllItemsPtr = AllItemsPtr + 2
+end
+while ((ReadSmallInteger(AllItemsPtr) &lt; (ItemType + 0x1000)) and (ReadSmallInteger(AllItemsPtr) ~= 0)) do
+      WriteInteger(ItemBasePtr,ReadSmallInteger(AllItemsPtr))
+      WriteInteger(ItemBasePtr + 4,ReadInteger(AllItemQty))
+      ItemBasePtr = ItemBasePtr + 0x0C
+      AllItemsPtr = AllItemsPtr + 0x02
+end
+{$asm}
+[DISABLE]
+</AssemblerScript>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>362</ID>
+						  <Description>"All Item Quantity To Use"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>AllItemQty</Address>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>363</ID>
+						  <Description>"Inventory Slot"</Description>
+						  <VariableType>2 Bytes</VariableType>
+						  <Address>ItemSlot</Address>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>364</ID>
+						  <Description>"Quantity"</Description>
+						  <VariableType>2 Bytes</VariableType>
+						  <Address>ItemBasePtr</Address>
+						  <Offsets>
+							<Offset>[ItemSlot]*0C+4</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>365</ID>
+						  <Description>"Item ID"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">==========WEAPONS===============
+0001:Wooden Sword 
+0002:Bronze Blade 
+0003:Steel Saber 
+0004:Silver Sword 
+0005:Crimson Blade 
+0006:Mammoth Tusk 
+0007:Dark Saber 
+0008:Primeval Blade 
+0009:Zanmato 
+000A:Vajra Sword 
+000B:Empyrean Blade 
+000C:Yaksha Blade 
+000D:Onimaru 
+000E:Suzaku 
+000F:Thunder Blade 
+0010:Slasher 
+0011:Bronze Bowgun 
+0012:Iron Bowgun 
+0013:Silver Bow 
+0014:Bandit's Bow 
+0015:Shaman's Bow 
+0016:Dreamstone Bow 
+0017:Comet Bow 
+0018:Sonic Bow 
+0019:Valkyrie Bow 
+001A:Siren's Kiss 
+001F:Airgun 
+0020:Pea Shooter 
+0021:Pocket Blaster 
+0022:Picomagnum 
+0023:Plasma Gun 
+0024:Ruby Gun 
+0025:Dreamstone Gun 
+0026:Megablaster 
+0027:Shockwave 
+0028:Wondershot 
+0029:Gravitator 
+002E:Tin Arm 
+002F:Hammer Arm 
+0030:Mirage Hand 
+0031:Stone Arm 
+0032:Death Claw 
+0033:Magma Hand 
+0034:Megaton Arm 
+0035:Heavy Hand 
+0036:Kaiser Arm 
+0037:Gigaton Arm 
+0038:Teraton Arm 
+0039:Crisis Arm 
+003B:Bronze Sword 
+003C:Iron Sword 
+003D:Masamune 
+003E:Radiant Blade 
+003F:Smiter's Blade 
+0040:Rune Blade 
+0041:Brave Sword 
+0042:Masamune 
+0043:Demonslayer 
+0044:Fist 
+0045:Fist 
+0046:Fist 
+0047:Iron Fist 
+0048:Bronze Fist 
+004B:Moonfall Scythe 
+004D:Hadean Sickle 
+004E:Doom Scythe 
+004F:Mop 
+0050:Broken Blade 
+0051:Broken Hilt 
+0052:Masamune 
+0053:Swallow 
+0054:Slasher II 
+0055:Rainbow 
+005A:Icewyrm 
+005B:Stardust Bow 
+005C:Turboshot 
+005D:Dinoblade 
+005E:Dragon Arm 
+005F:Judgment Scythe 
+0060:Dreamseeker 
+0061:Venus Bow 
+0062:Spellslinger 
+0063:Apocalypse Arm 
+0064:Dreamreaper
+==========BODY ARMOR===============
+1001:Hide Tunic 
+1002:Padded Vest 
+1003:Bronze Armor 
+1004:Maiden's Suit 
+1005:Iron Suit 
+1006:Titanium Vest 
+1007:Golden Suit 
+1008:Ruby Vest 
+1009:Dark Mail 
+100A:Mist Robe 
+100B:Mesozoic Mail 
+100C:Luminous Robe 
+100D:Radiant Plate 
+100E:Platinum Vest 
+100F:Aeonian Suit 
+1010:Zodiac Cape 
+1011:Nova Armor 
+1012:Prismatic Dress 
+1013:Moonbeam Armor 
+1014:Ruby Armor 
+1015:Raven Armor 
+1016:Gloom Cape 
+1017:White Plate 
+1018:Black Plate 
+1019:Blue Plate 
+101A:Red Plate 
+101B:White Vest 
+101C:Black Vest 
+101D:Blue Vest 
+101E:Red Vest 
+101F:Taban's Vest 
+1020:Taban's Suit 
+1021:Dragon Armor 
+1022:Reptite Dress
+1023:Saurian Leathers 
+1024:Regal Plate 
+1025:Regal Gown 
+1026:Elemental Aegis 
+===========HELMETS==================
+2001:Hide Cap 
+2002:Bronze Helm 
+2003:Iron Helm 
+2004:Porrean Beret 
+2005:Golden Helm 
+2006:Stone Helm 
+2007:Triceratopper 
+2008:Radiant Helm 
+2009:Platinum Helm 
+200A:Aeonian Helm 
+200B:Prismatic Helm 
+200C:Doom Helm 
+200D:Dark Helm 
+200E:Gloom Helm 
+200F:Guardian Helm 
+2010:Taban's Helm 
+2011:Clarity Cap 
+2012:Memory Cap 
+2013:Time Hat 
+2014:Vigilant's Hat 
+2015:Ozzie Pants 
+2016:Haste Helm 
+2017:Rainbow Helm 
+2018:Mermaid Helm 
+2019:Dragonhead 
+201A:Reptite Tiara 
+201B:Master's Crown 
+201C:Angel's Tiara 
+============ACCESSORIES==================
+3001:Headband 
+3002:Ribbon 
+3003:Power Glove 
+3004:Guardian Bangle 
+3005:Magic Scarf 
+3006:Schala's Amulet 
+3007:Speed Ring 
+3008:Acuity Ring 
+3009:Power Ring 
+300A:Magic Ring 
+300B:Barrier Ring 
+300C:Silver Earring 
+300D:Golden Earring 
+300E:Silver Stud 
+300F:Golden Stud 
+3010:Sight Scope 
+3011:Alluring Top 
+3012:Rage Band 
+3013:Wrath Band 
+3014:Third Eye 
+3015:Workman's Wallet
+3016:Green Dream 
+3017:Berserker Ring 
+3018:Power Scarf 
+3019:Speed Belt 
+301A:Black Gemstone 
+301B:Blue Gemstone 
+301C:Silver Gemstone 
+301D:White Gemstone 
+301E:Golden Gemstone 
+301F:Hero's Badge 
+3020:Muscle Ring 
+3021:Flea Bustier 
+3022:Magic Crest 
+3023:Power Crest 
+3024:Accessory 
+3025:Seraph Song 
+3026:Sunglasses 
+3027:Prism Spectacles
+3028:Valor Crest 
+3029:Champion's Badge
+302A:Dragon's Tear 
+302B:Nu Arcana 
+302C:Uranian Mirror 
+302D:Pontic Mirror
+302E:Promethean Mirror 
+302F:Hadean Mirror 
+3030:Aresian Mirror 
+=========USABLE ITEMS==================
+4001:Potion 
+4002:Mid-Potion 
+4003:Hi-Potion 
+4004:Ether 
+4005:Mid-Ether 
+4006:Hi-Ether 
+4007:Elixir 
+4008:Turbo Ether 
+4009:Megalixir 
+400A:Panacea 
+400B:Athenian Water 
+400C:Shelter 
+400D:Ambrosia 
+400E:Lapis 
+400F:Barrier Sphere 
+4010:Shield Sphere 
+4011:Strength Capsule
+4012:Magic Capsule 
+4013:Speed Capsule 
+4014:Slops 
+4015:Flameclaw 
+4016:Seafang 
+4017:Duskeye 
+4018:Luxwing 
+4019:Hawk Talon 
+401A:Shield Cloak 
+401B:Feral Wrath 
+401C:Smoked Meat 
+401D:Dried Mushroom 
+401E:Sweet Banana 
+401F:Millennia Fruit 
+4020:Songbird Egg 
+=============KEY ITEMS====================
+5001:Petal 
+5002:Fang 
+5003:Horn 
+5004:Feather 
+5005:Seed 
+5006:Jetbike Key 
+5007:Pendant 
+5008:Gate Key 
+5009:Rainbow Shard 
+500A:Chrono Trigger
+500B:Carpenter's Tools 
+500C:Spiced Jerky 
+500D:Dreamstone 
+500E:Race Recorder 
+500F:Moon Stone 
+5010:Sun Stone 
+5011:Ruby Knife 
+5012:Yakra's Key 
+5013:Doppel Doll 
+5014:Toma's Spirits 
+5015:2 Petals 
+5016:2 Fangs 
+5017:2 Horns 
+5018:2 Feathers 
+5019:Golden Sand 
+501A:Golden Hammer 
+501B:Prismastone 
+501C:Saintstone 
+501D:Reptmark 
+501E:Waystone 
+501F:Godwood 
+5020:Steel Ingot 
+5021:Sturdy Vines 
+5022:Hearty Lunch 
+5023:Rusted Blade 
+5024:Lumicite Shard 
+</DropDownList>
+						  <ShowAsHex>1</ShowAsHex>
+						  <VariableType>2 Bytes</VariableType>
+						  <Address>ItemBasePtr</Address>
+						  <Offsets>
+							<Offset>[ItemSlot]*0C</Offset>
+						  </Offsets>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>					
+				  </CheatEntries>
+				</CheatEntry>
+		  </CheatEntries>
+		</CheatEntry>
+      </CheatEntries>
+	</CheatEntry>
+</CheatEntries>
+<LuaScript>function lua_aobscan(name,module,bytes,index)
+  index = index - 1
+  if(module == "") then
+    local resultSet = AOBScan(bytes)
+      if(resultSet == nil) then
+        unregisterSymbol(name)
+        print(name.." not found")
+      else
+        unregisterSymbol(name)
+        registerSymbol(name,resultSet[index])
+        resultSet.destroy()
+      end
+  else
+    if(getModuleSize(module) == nil) then
+      print("Module "..module.." not found")
+    else
+      local memScanner = createMemScan()
+      local memFoundList = createFoundList(memScanner)
+      memScanner.firstScan(
+        soExactValue,vtByteArray,rtRounded,bytes,nil,
+        getAddress(module),(getAddress(module)+getModuleSize(module)),"",
+        fsmNotAligned,"",true,false,false,false)
+      memScanner.waitTillDone()
+      memFoundList.initialize()
+        if(memFoundList.Count == 0) then
+          unregisterSymbol(name)
+          print(name.." in module "..module.." not found")
+        else
+          unregisterSymbol(name)
+          registerSymbol(name,memFoundList.Address[index])
+        end
+      memScanner.destroy()
+      memFoundList.destroy()
+    end
+  end
+end
+</LuaScript>	
+</CheatTable>
