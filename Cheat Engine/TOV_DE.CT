@@ -537,6 +537,66 @@ SPAOB+C:
 
 unregistersymbol(SPAOB)
 </AssemblerScript>
+				</CheatEntry>
+                <CheatEntry>
+                  <ID>3400</ID>
+                  <Description>"OverLimit Multiplier"</Description>
+				  <Options moHideChildren="1" />
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+aobscanmodule(OLModAOB,TOV_DE.exe,F3 0F 58 91 58 3C 00 00 F3 0F 11 91 58 3C 00 00 83 B9 58 1E 00 00 00 74 07) // should be unique
+registersymbol(OLModAOB)
+alloc(newmem,2048,OLModAOB)
+
+label(originalcode)
+label(return)
+
+label(OLMult)
+registersymbol(OLMult)
+
+newmem:
+  cmp [r10+4],0
+  jne originalcode
+  cmp [r10+8],0
+  jne originalcode
+  comiss xmm2,xmm15
+  jb originalcode
+  mulss xmm2,[OLMult]
+  jmp originalcode
+
+originalcode:
+  addss xmm2,dword ptr [rcx+00003C58]
+  jmp return
+
+OLMult:
+dq (float)25.0
+ 
+OLModAOB:
+  jmp newmem
+  nop
+  nop
+  nop
+return:
+
+[DISABLE]
+
+OLModAOB:
+  db F3 0F 58 91 58 3C 00 00 F3 0F 11 91 58 3C 00 00
+
+unregistersymbol(OLModAOB)
+unregistersymbol(OLMult)
+
+dealloc(newmem)
+</AssemblerScript>
+				  <CheatEntries>
+					<CheatEntry>
+					  <ID>3401</ID>
+					  <Description>"OL Multiplier"</Description>
+					  <VariableType>Float</VariableType>
+					  <Address>OLMult</Address>
+					</CheatEntry>
+				  </CheatEntries>
 				</CheatEntry>				
 			  </CheatEntries>
 			</CheatEntry>
