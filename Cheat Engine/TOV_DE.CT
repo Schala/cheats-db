@@ -103,6 +103,8 @@ HeroHealingHit:
 EnemyHit:
   cmp [AffectYuriOnly],0
   je @F
+  cmp r10,1000
+  jb @F
   cmp [r10+44],1
   jne originalcode
 @@:
@@ -554,26 +556,45 @@ label(return)
 
 label(OLMult)
 registersymbol(OLMult)
+label(EnemyHit2)
 
 newmem:
+  mov [EnemyHit2],0
+  cmp r10,1000
+  jb originalcode
   cmp [r10+4],0
-  jne originalcode
+  jne EnemyHitJMP
   cmp [r10+8],0
-  jne originalcode
+  jne EnemyHitJMP
   comiss xmm2,xmm15
   jb originalcode
   mulss xmm2,[OLMult]
   jmp originalcode
-
+EnemyHitJMP:
+  mov [EnemyHit2],1
+  
 originalcode:
   addss xmm2,dword ptr [rcx+00003C58]
-  jmp return
+  movss [rcx+00003C58],xmm2
+  cmp [EnemyHit2],1
+  je return
+  jmp OLModAOB+19
 
 OLMult:
 dq (float)25.0
- 
+EnemyHit2:
+dq 0
+
 OLModAOB:
   jmp newmem
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
   nop
   nop
   nop
@@ -597,7 +618,58 @@ dealloc(newmem)
 					  <Address>OLMult</Address>
 					</CheatEntry>
 				  </CheatEntries>
-				</CheatEntry>				
+				</CheatEntry>
+                <CheatEntry>
+                  <ID>3500</ID>
+                  <Description>"Cooking EXP Multiplier"</Description>
+				  <Options moHideChildren="1" />
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+aobscanmodule(CookingEXPModAOB,TOV_DE.exe,8B 8A 1C 3D 00 00 41 03 C8 0F 49 C1) // should be unique
+registersymbol(CookingEXPModAOB)
+alloc(newmem,2048,CookingEXPModAOB)
+
+label(originalcode)
+label(return)
+
+label(CookingEXPMult)
+registersymbol(CookingEXPMult)
+
+newmem:
+  imul r8,[CookingEXPMult]
+  
+originalcode:
+  mov ecx,[rdx+00003D1C]
+  jmp return
+
+CookingEXPMult:
+dq #25
+
+CookingEXPModAOB:
+  jmp newmem
+  nop 
+return:
+
+[DISABLE]
+
+CookingEXPModAOB:
+  db 8B 8A 1C 3D 00 00
+
+unregistersymbol(CookingEXPModAOB)
+unregistersymbol(CookingEXPMult)
+
+dealloc(newmem)
+</AssemblerScript>
+				  <CheatEntries>
+					<CheatEntry>
+					  <ID>3501</ID>
+					  <Description>"Cooking EXP Multiplier"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>CookingEXPMult</Address>
+					</CheatEntry>
+				  </CheatEntries>
+				</CheatEntry>
 			  </CheatEntries>
 			</CheatEntry>
             <CheatEntry>
