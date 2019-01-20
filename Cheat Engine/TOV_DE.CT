@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CheatTable CheatEngineTableVersion="24">
+<CheatTable CheatEngineTableVersion="28">
   <CheatEntries>
     <CheatEntry>
       <ID>1</ID>
       <Description>"Tales of Vesperia Definitive Edition"</Description>
       <Options moHideChildren="1"/>
+      <LastState Value="" Activated="1" RealAddress="00000000"/>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
           <ID>10</ID>
           <Description>"Enable"</Description>
           <Options moHideChildren="1"/>
-		  <GroupHeader>1</GroupHeader>
+          <LastState Value="" Activated="1" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
           <CheatEntries>
             <CheatEntry>
               <ID>100</ID>
@@ -24,6 +26,7 @@
                   <ID>2000</ID>
                   <Description>"Damage Modifier Script"</Description>
                   <Options moHideChildren="1"/>
+                  <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
 
@@ -250,6 +253,7 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>2100</ID>
                   <Description>"Infinite In-Battle TP"</Description>
+                  <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
 
@@ -290,11 +294,12 @@ TPDamageModAOB:
 unregistersymbol(TPDamageModAOB)
 dealloc(newmem)
 </AssemblerScript>
-				</CheatEntry>				
+                </CheatEntry>
                 <CheatEntry>
                   <ID>2200</ID>
                   <Description>"Infinite Item Usage or Set Item Amount"</Description>
                   <Options moHideChildren="1"/>
+                  <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
 
@@ -367,6 +372,7 @@ dealloc(newmem)
                   <ID>2300</ID>
                   <Description>"Art Usage Multiplier"</Description>
                   <Options moHideChildren="1"/>
+                  <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
 
@@ -412,13 +418,14 @@ dealloc(newmem)
                       <Address>ArtUsageMult</Address>
                     </CheatEntry>
                   </CheatEntries>
-				</CheatEntry>
-				<CheatEntry>
-				  <ID>3000</ID>
-				  <Description>"Exp Multiplier"</Description>
-				  <Options moHideChildren="1" />
-				  <VariableType>Auto Assembler Script</VariableType>
-				  <AssemblerScript>[ENABLE]
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>3000</ID>
+                  <Description>"Exp Multiplier"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
 
 aobscanmodule(ExpMultAOB,TOV_DE.exe,8B 49 60 03 CA 3B C8 7F 09)
 registersymbol(ExpMultAOB)
@@ -457,21 +464,22 @@ db 8B 49 60 03 CA
 unregistersymbol(ExpMultAOB)
 unregistersymbol(ExpMult)
 </AssemblerScript>
-				  <CheatEntries>
-					<CheatEntry>
-					  <ID>3001</ID>
-					  <Description>"Exp Multiplier"</Description>
-					  <VariableType>4 Bytes</VariableType>
-					  <Address>ExpMult</Address>
-					</CheatEntry>
-				  </CheatEntries>
-				</CheatEntry>
-				<CheatEntry>
-				  <ID>3100</ID>
-				  <Description>"LP Multiplier (Quick Gain Skills)"</Description>
-				  <Options moHideChildren="1" />
-				  <VariableType>Auto Assembler Script</VariableType>
-				  <AssemblerScript>[ENABLE]
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>3001</ID>
+                      <Description>"Exp Multiplier"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>ExpMult</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>3100</ID>
+                  <Description>"LP Multiplier (Quick Gain Skills)"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
 aobscanmodule(LPMultAOB,TOV_DE.exe,42 8B 8C 8F 10 27 00 00 41 03 CE 3B CA)
 registersymbol(LPMultAOB)
 alloc(newmem,2048,LPMultAOB)
@@ -511,21 +519,22 @@ db 42 8B 8C 8F 10 27 00 00
 unregistersymbol(LPMultAOB)
 unregistersymbol(LPMult)
 </AssemblerScript>
-				  <CheatEntries>
-					<CheatEntry>
-					  <ID>3101</ID>
-					  <Description>"LP Multiplier"</Description>
-					  <VariableType>4 Bytes</VariableType>
-					  <Address>LPMult</Address>
-					</CheatEntry>
-				  </CheatEntries>
-				</CheatEntry>
-				<CheatEntry>
-				  <ID>3300</ID>
-				  <Description>"Infinite SP"</Description>
-				  <Options moHideChildren="1" />
-				  <VariableType>Auto Assembler Script</VariableType>
-				  <AssemblerScript>[ENABLE]
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>3101</ID>
+                      <Description>"LP Multiplier"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>LPMult</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>3300</ID>
+                  <Description>"Infinite SP"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
 aobscanmodule(SPAOB,TOV_DE.exe,8B 8B F8 24 00 00 8B 83 FC 24 00 00 2B CE 3B C8)
 registersymbol(SPAOB)
 
@@ -539,11 +548,12 @@ SPAOB+C:
 
 unregistersymbol(SPAOB)
 </AssemblerScript>
-				</CheatEntry>
+                </CheatEntry>
                 <CheatEntry>
                   <ID>3400</ID>
                   <Description>"OverLimit Multiplier"</Description>
-				  <Options moHideChildren="1" />
+                  <Options moHideChildren="1"/>
+                  <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
 
@@ -610,19 +620,20 @@ unregistersymbol(OLMult)
 
 dealloc(newmem)
 </AssemblerScript>
-				  <CheatEntries>
-					<CheatEntry>
-					  <ID>3401</ID>
-					  <Description>"OL Multiplier"</Description>
-					  <VariableType>Float</VariableType>
-					  <Address>OLMult</Address>
-					</CheatEntry>
-				  </CheatEntries>
-				</CheatEntry>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>3401</ID>
+                      <Description>"OL Multiplier"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>OLMult</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
                 <CheatEntry>
                   <ID>3500</ID>
                   <Description>"Cooking EXP Multiplier"</Description>
-				  <Options moHideChildren="1" />
+                  <Options moHideChildren="1"/>
+                  <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
 
@@ -661,21 +672,245 @@ unregistersymbol(CookingEXPMult)
 
 dealloc(newmem)
 </AssemblerScript>
-				  <CheatEntries>
-					<CheatEntry>
-					  <ID>3501</ID>
-					  <Description>"Cooking EXP Multiplier"</Description>
-					  <VariableType>4 Bytes</VariableType>
-					  <Address>CookingEXPMult</Address>
-					</CheatEntry>
-				  </CheatEntries>
-				</CheatEntry>
-			  </CheatEntries>
-			</CheatEntry>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>3501</ID>
+                      <Description>"Cooking EXP Multiplier"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>CookingEXPMult</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>3539</ID>
+                  <Description>"Free Crafting"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>{ Game   : TOV_DE.exe
+  Version: 
+  Date   : 2019-01-11
+  Author : Zach
+
+  This script does blah blah blah
+}
+
+define(address,"TOV_DE.exe"+449610)
+define(bytes,89 47 34 8B 43 38)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000,"TOV_DE.exe"+449610)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [rdi+34],#1
+  mov eax,[rbx+38]
+  jmp return
+
+address:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // mov [rdi+34],eax
+  // mov eax,[rbx+38]
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "TOV_DE.exe"+449610
+
+"TOV_DE.exe"+4495F2: 89 47 20                       -  mov [rdi+20],eax
+"TOV_DE.exe"+4495F5: 8B 43 24                       -  mov eax,[rbx+24]
+"TOV_DE.exe"+4495F8: 89 47 24                       -  mov [rdi+24],eax
+"TOV_DE.exe"+4495FB: 8B 43 28                       -  mov eax,[rbx+28]
+"TOV_DE.exe"+4495FE: 89 47 28                       -  mov [rdi+28],eax
+"TOV_DE.exe"+449601: 8B 43 2C                       -  mov eax,[rbx+2C]
+"TOV_DE.exe"+449604: 89 47 2C                       -  mov [rdi+2C],eax
+"TOV_DE.exe"+449607: 8B 43 30                       -  mov eax,[rbx+30]
+"TOV_DE.exe"+44960A: 89 47 30                       -  mov [rdi+30],eax
+"TOV_DE.exe"+44960D: 8B 43 34                       -  mov eax,[rbx+34]
+// ---------- INJECTING HERE ----------
+"TOV_DE.exe"+449610: 89 47 34                       -  mov [rdi+34],eax
+"TOV_DE.exe"+449613: 8B 43 38                       -  mov eax,[rbx+38]
+// ---------- DONE INJECTING  ----------
+"TOV_DE.exe"+449616: 89 47 38                       -  mov [rdi+38],eax
+"TOV_DE.exe"+449619: 8B 43 3C                       -  mov eax,[rbx+3C]
+"TOV_DE.exe"+44961C: 89 47 3C                       -  mov [rdi+3C],eax
+"TOV_DE.exe"+44961F: 0F B6 43 40                    -  movzx eax,byte ptr [rbx+40]
+"TOV_DE.exe"+449623: 88 47 40                       -  mov [rdi+40],al
+"TOV_DE.exe"+449626: 8B 43 44                       -  mov eax,[rbx+44]
+"TOV_DE.exe"+449629: 89 47 44                       -  mov [rdi+44],eax
+"TOV_DE.exe"+44962C: 0F B6 43 48                    -  movzx eax,byte ptr [rbx+48]
+"TOV_DE.exe"+449630: 88 47 48                       -  mov [rdi+48],al
+"TOV_DE.exe"+449633: 0F B6 43 49                    -  movzx eax,byte ptr [rbx+49]
+}
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>140</ID>
+                  <Description>"Infinite Overlimit"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>{ Game   : TOV_DE.exe
+  Version: 
+  Date   : 2019-01-13
+  Author : Zach
+
+  This script does blah blah blah
+}
+
+define(address,"TOV_DE.exe"+5BBB1B)
+define(bytes,F3 0F 11 91 58 3C 00 00)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000,"TOV_DE.exe"+5BBB1B)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [rcx+00003C58],(float)800
+  jmp return
+
+address:
+  jmp newmem
+  nop
+  nop
+  nop
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // movss [rcx+00003C58],xmm2
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "TOV_DE.exe"+5BBB1B
+
+"TOV_DE.exe"+5BBB08: CC                             -  int 3 
+"TOV_DE.exe"+5BBB09: CC                             -  int 3 
+"TOV_DE.exe"+5BBB0A: CC                             -  int 3 
+"TOV_DE.exe"+5BBB0B: CC                             -  int 3 
+"TOV_DE.exe"+5BBB0C: CC                             -  int 3 
+"TOV_DE.exe"+5BBB0D: CC                             -  int 3 
+"TOV_DE.exe"+5BBB0E: CC                             -  int 3 
+"TOV_DE.exe"+5BBB0F: CC                             -  int 3 
+"TOV_DE.exe"+5BBB10: 0F 28 D1                       -  movaps xmm2,xmm1
+"TOV_DE.exe"+5BBB13: F3 0F 58 91 58 3C 00 00        -  addss xmm2,[rcx+00003C58]
+// ---------- INJECTING HERE ----------
+"TOV_DE.exe"+5BBB1B: F3 0F 11 91 58 3C 00 00        -  movss [rcx+00003C58],xmm2
+// ---------- DONE INJECTING  ----------
+"TOV_DE.exe"+5BBB23: 83 B9 58 1E 00 00 00           -  cmp dword ptr [rcx+00001E58],00
+"TOV_DE.exe"+5BBB2A: 74 07                          -  je TOV_DE.exe+5BBB33
+"TOV_DE.exe"+5BBB2C: BA 08 00 00 00                 -  mov edx,00000008
+"TOV_DE.exe"+5BBB31: EB 42                          -  jmp TOV_DE.exe+5BBB75
+"TOV_DE.exe"+5BBB33: 83 B9 40 0B 00 00 00           -  cmp dword ptr [rcx+00000B40],00
+"TOV_DE.exe"+5BBB3A: 74 07                          -  je TOV_DE.exe+5BBB43
+"TOV_DE.exe"+5BBB3C: BA 04 00 00 00                 -  mov edx,00000004
+"TOV_DE.exe"+5BBB41: EB 32                          -  jmp TOV_DE.exe+5BBB75
+"TOV_DE.exe"+5BBB43: 83 B9 3C 0B 00 00 00           -  cmp dword ptr [rcx+00000B3C],00
+"TOV_DE.exe"+5BBB4A: 74 07                          -  je TOV_DE.exe+5BBB53
+}
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>3313</ID>
+                  <Description>"Infinite Overlimit Duration"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>{ Game   : TOV_DE.exe
+  Version: 
+  Date   : 2019-01-13
+  Author : Zach
+
+  This script does blah blah blah
+}
+
+define(address,"TOV_DE.exe"+5CA2EE)
+define(bytes,F3 0F 11 89 70 40 00 00)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000,"TOV_DE.exe"+5CA2EE)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [rcx+00004070],(float)100
+  jmp return
+
+address:
+  jmp newmem
+  nop
+  nop
+  nop
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // movss [rcx+00004070],xmm1
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "TOV_DE.exe"+5CA2EE
+
+"TOV_DE.exe"+5CA2D9: CC                             -  int 3 
+"TOV_DE.exe"+5CA2DA: CC                             -  int 3 
+"TOV_DE.exe"+5CA2DB: CC                             -  int 3 
+"TOV_DE.exe"+5CA2DC: CC                             -  int 3 
+"TOV_DE.exe"+5CA2DD: CC                             -  int 3 
+"TOV_DE.exe"+5CA2DE: CC                             -  int 3 
+"TOV_DE.exe"+5CA2DF: CC                             -  int 3 
+"TOV_DE.exe"+5CA2E0: F3 0F 58 89 70 40 00 00        -  addss xmm1,[rcx+00004070]
+"TOV_DE.exe"+5CA2E8: 0F 57 C0                       -  xorps xmm0,xmm0
+"TOV_DE.exe"+5CA2EB: 0F 2F C1                       -  comiss xmm0,xmm1
+// ---------- INJECTING HERE ----------
+"TOV_DE.exe"+5CA2EE: F3 0F 11 89 70 40 00 00        -  movss [rcx+00004070],xmm1
+// ---------- DONE INJECTING  ----------
+"TOV_DE.exe"+5CA2F6: 76 0A                          -  jna TOV_DE.exe+5CA302
+"TOV_DE.exe"+5CA2F8: C7 81 70 40 00 00 00 00 00 00  -  mov [rcx+00004070],00000000
+"TOV_DE.exe"+5CA302: F3 0F 10 81 70 40 00 00        -  movss xmm0,[rcx+00004070]
+"TOV_DE.exe"+5CA30A: 0F 2F 05 17 3E 65 00           -  comiss xmm0,[TOV_DE.exe+C1E128]
+"TOV_DE.exe"+5CA311: 76 0A                          -  jna TOV_DE.exe+5CA31D
+"TOV_DE.exe"+5CA313: C7 81 70 40 00 00 00 00 C8 42  -  mov [rcx+00004070],42C80000
+"TOV_DE.exe"+5CA31D: C3                             -  ret 
+"TOV_DE.exe"+5CA31E: CC                             -  int 3 
+"TOV_DE.exe"+5CA31F: CC                             -  int 3 
+"TOV_DE.exe"+5CA320: CC                             -  int 3 
+}
+</AssemblerScript>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
             <CheatEntry>
               <ID>500</ID>
               <Description>"Pointers"</Description>
               <Options moHideChildren="1"/>
+              <LastState Value="" Activated="1" RealAddress="00000000"/>
               <GroupHeader>1</GroupHeader>
               <CheatEntries>
                 <CheatEntry>
@@ -684,12 +919,35 @@ dealloc(newmem)
                   <VariableType>4 Bytes</VariableType>
                   <Address>TOV_DE.exe+1178E00+30</Address>
                 </CheatEntry>
-				<CheatEntry>
-				  <ID>28</ID>
-				  <Description>"[ Tools ] (Original By Exeter)"</Description>
-				  <Options moHideChildren="1"/>
-				  <VariableType>Auto Assembler Script</VariableType>
-				  <AssemblerScript>[ENABLE]
+                <CheatEntry>
+                  <ID>3538</ID>
+                  <Description>"Holy Effect - Lock to 1"</Description>
+                  <DropDownList DisplayValueAsItem="1">0:Holy Effect Off
+				1:Holy Effect On
+				
+</DropDownList>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>TOV_DE.exe+1B227DC</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>3553</ID>
+                  <Description>"Grade"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>TOV_DE.exe+117C7D8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>4815</ID>
+                  <Description>"Fake Gald"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>TOV_DE.exe+117A6B8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>28</ID>
+                  <Description>"[ Tools ] (Original By Exeter)"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
 
 TOV_DE.exe + 1178E3C:
 InventoryBasePtr:
@@ -699,651 +957,263 @@ registersymbol(InventoryBasePtr)
 [DISABLE]
 
 unregistersymbol(InventoryBasePtr)
-			</AssemblerScript>
-				  <CheatEntries>
-					<CheatEntry>
-					  <ID>29</ID>
-					  <Description>"Apple Gel"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>32</ID>
-					  <Description>"Lemon Gel"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+4</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>33</ID>
-					  <Description>"Orange Gel"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+8</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>35</ID>
-					  <Description>"Pineapple Gel"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+C</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>36</ID>
-					  <Description>"Melange Gel"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+10</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>37</ID>
-					  <Description>"Miracle Gel"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+14</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>38</ID>
-					  <Description>"Specific"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+18</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>39</ID>
-					  <Description>"Treat"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+1C</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>40</ID>
-					  <Description>"Special Gel"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+20</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>41</ID>
-					  <Description>"Lottery Gel"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+24</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>42</ID>
-					  <Description>"Poison Bottle"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+28</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>43</ID>
-					  <Description>"Paralysis Bottle"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+2C</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>44</ID>
-					  <Description>"Stone Bottle"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+30</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>45</ID>
-					  <Description>"Seal Bottle"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+34</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>46</ID>
-					  <Description>"Weak Bottle"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+38</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>47</ID>
-					  <Description>"Mind Bottle"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+3C</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>48</ID>
-					  <Description>"Life Bottle"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+40</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>49</ID>
-					  <Description>"Cure Bottle"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+44</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>50</ID>
-					  <Description>"Dinei Bottle"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+48</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>51</ID>
-					  <Description>"Panacea Bottle"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+4C</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>52</ID>
-					  <Description>"Holy Bottle"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+50</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>53</ID>
-					  <Description>"Dark Bottle"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+54</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>54</ID>
-					  <Description>"Syrup Bottle"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+58</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>55</ID>
-					  <Description>"Nectar Bottle"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+5C</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>57</ID>
-					  <Description>"Sage"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+64</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>58</ID>
-					  <Description>"Red Sage"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+68</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>59</ID>
-					  <Description>"Savory"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+6C</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>60</ID>
-					  <Description>"Red Savory"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+70</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>61</ID>
-					  <Description>"Lavender"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+74</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>62</ID>
-					  <Description>"Red Lavender"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+78</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>63</ID>
-					  <Description>"Verbena"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+7C</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>64</ID>
-					  <Description>"Red Verbena"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+80</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>65</ID>
-					  <Description>"Chamomile"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+84</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>66</ID>
-					  <Description>"Red Chamomile"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+88</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>67</ID>
-					  <Description>"Basil"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+8C</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>68</ID>
-					  <Description>"Red Basil"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+90</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>69</ID>
-					  <Description>"Saffron"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+94</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>70</ID>
-					  <Description>"Red Saffron"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+98</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>31</ID>
-					  <Description>"Magic Lens"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+9C</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>72</ID>
-					  <Description>"All-Divide"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+A0</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>73</ID>
-					  <Description>"Hourglass"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>InventoryBasePtr+A4</Address>
-					</CheatEntry>
-				  </CheatEntries>
-				</CheatEntry>
-				<CheatEntry>
-				  <ID>27</ID>
-				  <Description>"Grade Shop (By Manacomb Seegood)"</Description>
-				  <Options moHideChildren="1"/>
-				  <LastState Value="" RealAddress="00000000"/>
-				  <GroupHeader>1</GroupHeader>
-				  <CheatEntries>
-					<CheatEntry>
-					  <ID>4</ID>
-					  <Description>"Max 99 Items"</Description>
-					  <ShowAsHex>1</ShowAsHex>
-					  <VariableType>Binary</VariableType>
-					  <BitStart>1</BitStart>
-					  <BitLength>1</BitLength>
-					  <ShowAsBinary>0</ShowAsBinary>
-					  <Address>TOV_DE.exe+117D75C</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>5</ID>
-					  <Description>"Inherit Items"</Description>
-					  <ShowAsHex>1</ShowAsHex>
-					  <VariableType>Binary</VariableType>
-					  <BitStart>2</BitStart>
-					  <BitLength>1</BitLength>
-					  <ShowAsBinary>0</ShowAsBinary>
-					  <Address>TOV_DE.exe+117D75C</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>6</ID>
-					  <Description>"Gald"</Description>
-					  <ShowAsHex>1</ShowAsHex>
-					  <VariableType>Binary</VariableType>
-					  <BitStart>3</BitStart>
-					  <BitLength>1</BitLength>
-					  <ShowAsBinary>0</ShowAsBinary>
-					  <Address>TOV_DE.exe+117D75C</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>7</ID>
-					  <Description>"Titles"</Description>
-					  <ShowAsHex>1</ShowAsHex>
-					  <VariableType>Binary</VariableType>
-					  <BitStart>4</BitStart>
-					  <BitLength>1</BitLength>
-					  <ShowAsBinary>0</ShowAsBinary>
-					  <Address>TOV_DE.exe+117D75C</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>8</ID>
-					  <Description>"Collector's Book"</Description>
-					  <ShowAsHex>1</ShowAsHex>
-					  <VariableType>Binary</VariableType>
-					  <BitStart>5</BitStart>
-					  <BitLength>1</BitLength>
-					  <ShowAsBinary>0</ShowAsBinary>
-					  <Address>TOV_DE.exe+117D75C</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>9</ID>
-					  <Description>"Enemy Book"</Description>
-					  <ShowAsHex>1</ShowAsHex>
-					  <VariableType>Binary</VariableType>
-					  <BitStart>6</BitStart>
-					  <BitLength>1</BitLength>
-					  <ShowAsBinary>0</ShowAsBinary>
-					  <Address>TOV_DE.exe+117D75C</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>10</ID>
-					  <Description>"Recipes"</Description>
-					  <ShowAsHex>1</ShowAsHex>
-					  <VariableType>Binary</VariableType>
-					  <BitStart>7</BitStart>
-					  <BitLength>1</BitLength>
-					  <ShowAsBinary>0</ShowAsBinary>
-					  <Address>TOV_DE.exe+117D75C</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>11</ID>
-					  <Description>"Cooking Skill"</Description>
-					  <ShowAsHex>1</ShowAsHex>
-					  <VariableType>Binary</VariableType>
-					  <BitStart>0</BitStart>
-					  <BitLength>1</BitLength>
-					  <ShowAsBinary>0</ShowAsBinary>
-					  <Address>TOV_DE.exe+117D75D</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>12</ID>
-					  <Description>"World Map"</Description>
-					  <ShowAsHex>1</ShowAsHex>
-					  <VariableType>Binary</VariableType>
-					  <BitStart>1</BitStart>
-					  <BitLength>1</BitLength>
-					  <ShowAsBinary>0</ShowAsBinary>
-					  <Address>TOV_DE.exe+117D75D</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>13</ID>
-					  <Description>"Craft Skill"</Description>
-					  <ShowAsHex>1</ShowAsHex>
-					  <VariableType>Binary</VariableType>
-					  <BitStart>2</BitStart>
-					  <BitLength>1</BitLength>
-					  <ShowAsBinary>0</ShowAsBinary>
-					  <Address>TOV_DE.exe+117D75D</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>14</ID>
-					  <Description>"Records"</Description>
-					  <ShowAsHex>1</ShowAsHex>
-					  <VariableType>Binary</VariableType>
-					  <BitStart>3</BitStart>
-					  <BitLength>1</BitLength>
-					  <ShowAsBinary>0</ShowAsBinary>
-					  <Address>TOV_DE.exe+117D75D</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>15</ID>
-					  <Description>"Artes"</Description>
-					  <ShowAsHex>1</ShowAsHex>
-					  <VariableType>Binary</VariableType>
-					  <BitStart>4</BitStart>
-					  <BitLength>1</BitLength>
-					  <ShowAsBinary>0</ShowAsBinary>
-					  <Address>TOV_DE.exe+117D75D</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>17</ID>
-					  <Description>"Skills"</Description>
-					  <ShowAsHex>1</ShowAsHex>
-					  <VariableType>Binary</VariableType>
-					  <BitStart>6</BitStart>
-					  <BitLength>1</BitLength>
-					  <ShowAsBinary>0</ShowAsBinary>
-					  <Address>TOV_DE.exe+117D75D</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>18</ID>
-					  <Description>"Yuri Artes &amp; Skills"</Description>
-					  <ShowAsHex>1</ShowAsHex>
-					  <VariableType>Binary</VariableType>
-					  <BitStart>7</BitStart>
-					  <BitLength>1</BitLength>
-					  <ShowAsBinary>0</ShowAsBinary>
-					  <Address>TOV_DE.exe+117D75D</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>19</ID>
-					  <Description>"Estelle Artes &amp; Skills"</Description>
-					  <ShowAsHex>1</ShowAsHex>
-					  <VariableType>Binary</VariableType>
-					  <BitStart>0</BitStart>
-					  <BitLength>1</BitLength>
-					  <ShowAsBinary>0</ShowAsBinary>
-					  <Address>TOV_DE.exe+117D75E</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>20</ID>
-					  <Description>"Karol Artes &amp; Skills"</Description>
-					  <ShowAsHex>1</ShowAsHex>
-					  <VariableType>Binary</VariableType>
-					  <BitStart>1</BitStart>
-					  <BitLength>1</BitLength>
-					  <ShowAsBinary>0</ShowAsBinary>
-					  <Address>TOV_DE.exe+117D75E</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>21</ID>
-					  <Description>"Rita Artes &amp; Skills"</Description>
-					  <ShowAsHex>1</ShowAsHex>
-					  <VariableType>Binary</VariableType>
-					  <BitStart>2</BitStart>
-					  <BitLength>1</BitLength>
-					  <ShowAsBinary>0</ShowAsBinary>
-					  <Address>TOV_DE.exe+117D75E</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>22</ID>
-					  <Description>"Raven Artes &amp; Skills"</Description>
-					  <ShowAsHex>1</ShowAsHex>
-					  <VariableType>Binary</VariableType>
-					  <BitStart>3</BitStart>
-					  <BitLength>1</BitLength>
-					  <ShowAsBinary>0</ShowAsBinary>
-					  <Address>TOV_DE.exe+117D75E</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>23</ID>
-					  <Description>"Judith Artes &amp; Skills"</Description>
-					  <ShowAsHex>1</ShowAsHex>
-					  <VariableType>Binary</VariableType>
-					  <BitStart>4</BitStart>
-					  <BitLength>1</BitLength>
-					  <ShowAsBinary>0</ShowAsBinary>
-					  <Address>TOV_DE.exe+117D75E</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>24</ID>
-					  <Description>"Repede Artes &amp; Skills"</Description>
-					  <ShowAsHex>1</ShowAsHex>
-					  <VariableType>Binary</VariableType>
-					  <BitStart>5</BitStart>
-					  <BitLength>1</BitLength>
-					  <ShowAsBinary>0</ShowAsBinary>
-					  <Address>TOV_DE.exe+117D75E</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>40</ID>
-					  <Description>"Flynn Artes &amp; Skills"</Description>
-					  <ShowAsHex>1</ShowAsHex>
-					  <VariableType>Binary</VariableType>
-					  <BitStart>6</BitStart>
-					  <BitLength>1</BitLength>
-					  <ShowAsBinary>0</ShowAsBinary>
-					  <Address>TOV_DE.exe+117D760</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>45</ID>
-					  <Description>"Patty Artes &amp; Skills"</Description>
-					  <ShowAsHex>1</ShowAsHex>
-					  <VariableType>Binary</VariableType>
-					  <BitStart>7</BitStart>
-					  <BitLength>1</BitLength>
-					  <ShowAsBinary>0</ShowAsBinary>
-					  <Address>TOV_DE.exe+117D760</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>28</ID>
-					  <Description>"Increase Max HP"</Description>
-					  <ShowAsHex>1</ShowAsHex>
-					  <VariableType>Binary</VariableType>
-					  <BitStart>6</BitStart>
-					  <BitLength>1</BitLength>
-					  <ShowAsBinary>0</ShowAsBinary>
-					  <Address>TOV_DE.exe+117D75E</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>29</ID>
-					  <Description>"Decrease Max HP"</Description>
-					  <ShowAsHex>1</ShowAsHex>
-					  <VariableType>Binary</VariableType>
-					  <BitStart>7</BitStart>
-					  <BitLength>1</BitLength>
-					  <ShowAsBinary>0</ShowAsBinary>
-					  <Address>TOV_DE.exe+117D75E</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>30</ID>
-					  <Description>"Increase Max TP"</Description>
-					  <ShowAsHex>1</ShowAsHex>
-					  <VariableType>Binary</VariableType>
-					  <BitStart>0</BitStart>
-					  <BitLength>1</BitLength>
-					  <ShowAsBinary>0</ShowAsBinary>
-					  <Address>TOV_DE.exe+117D75F</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>31</ID>
-					  <Description>"Decrease Max TP"</Description>
-					  <ShowAsHex>1</ShowAsHex>
-					  <VariableType>Binary</VariableType>
-					  <BitStart>1</BitStart>
-					  <BitLength>1</BitLength>
-					  <ShowAsBinary>0</ShowAsBinary>
-					  <Address>TOV_DE.exe+117D75F</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>32</ID>
-					  <Description>"2x Gald"</Description>
-					  <ShowAsHex>1</ShowAsHex>
-					  <VariableType>Binary</VariableType>
-					  <BitStart>2</BitStart>
-					  <BitLength>1</BitLength>
-					  <ShowAsBinary>0</ShowAsBinary>
-					  <Address>TOV_DE.exe+117D75F</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>33</ID>
-					  <Description>"Increase Over Limit"</Description>
-					  <ShowAsHex>1</ShowAsHex>
-					  <VariableType>Binary</VariableType>
-					  <BitStart>3</BitStart>
-					  <BitLength>1</BitLength>
-					  <ShowAsBinary>0</ShowAsBinary>
-					  <Address>TOV_DE.exe+117D75F</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>34</ID>
-					  <Description>"1/2 Experience"</Description>
-					  <ShowAsHex>1</ShowAsHex>
-					  <VariableType>Binary</VariableType>
-					  <BitStart>4</BitStart>
-					  <BitLength>1</BitLength>
-					  <ShowAsBinary>0</ShowAsBinary>
-					  <Address>TOV_DE.exe+117D75F</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>35</ID>
-					  <Description>"2x Experience"</Description>
-					  <ShowAsHex>1</ShowAsHex>
-					  <VariableType>Binary</VariableType>
-					  <BitStart>5</BitStart>
-					  <BitLength>1</BitLength>
-					  <ShowAsBinary>0</ShowAsBinary>
-					  <Address>TOV_DE.exe+117D75F</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>36</ID>
-					  <Description>"10x Experience"</Description>
-					  <ShowAsHex>1</ShowAsHex>
-					  <VariableType>Binary</VariableType>
-					  <BitStart>6</BitStart>
-					  <BitLength>1</BitLength>
-					  <ShowAsBinary>0</ShowAsBinary>
-					  <Address>TOV_DE.exe+117D75F</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>37</ID>
-					  <Description>"2x Grade"</Description>
-					  <ShowAsHex>1</ShowAsHex>
-					  <VariableType>Binary</VariableType>
-					  <BitStart>7</BitStart>
-					  <BitLength>1</BitLength>
-					  <ShowAsBinary>0</ShowAsBinary>
-					  <Address>TOV_DE.exe+117D75F</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>42</ID>
-					  <Description>"Skill SP 1"</Description>
-					  <ShowAsHex>1</ShowAsHex>
-					  <VariableType>Binary</VariableType>
-					  <BitStart>4</BitStart>
-					  <BitLength>1</BitLength>
-					  <ShowAsBinary>0</ShowAsBinary>
-					  <Address>TOV_DE.exe+117D760</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>38</ID>
-					  <Description>"Increase Item Drop Rate"</Description>
-					  <ShowAsHex>1</ShowAsHex>
-					  <VariableType>Binary</VariableType>
-					  <BitStart>0</BitStart>
-					  <BitLength>1</BitLength>
-					  <ShowAsBinary>0</ShowAsBinary>
-					  <Address>TOV_DE.exe+117D760</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>39</ID>
-					  <Description>"Battle Techniques"</Description>
-					  <ShowAsHex>1</ShowAsHex>
-					  <VariableType>Binary</VariableType>
-					  <BitStart>1</BitStart>
-					  <BitLength>1</BitLength>
-					  <ShowAsBinary>0</ShowAsBinary>
-					  <Address>TOV_DE.exe+117D760</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>44</ID>
-					  <Description>"Unlock Battle Rank"</Description>
-					  <ShowAsHex>1</ShowAsHex>
-					  <VariableType>Binary</VariableType>
-					  <BitStart>2</BitStart>
-					  <BitLength>1</BitLength>
-					  <ShowAsBinary>0</ShowAsBinary>
-					  <Address>TOV_DE.exe+117D760</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>41</ID>
-					  <Description>"Unlock All Skits"</Description>
-					  <ShowAsHex>1</ShowAsHex>
-					  <VariableType>Binary</VariableType>
-					  <BitStart>5</BitStart>
-					  <BitLength>1</BitLength>
-					  <ShowAsBinary>0</ShowAsBinary>
-					  <Address>TOV_DE.exe+117D760</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>46</ID>
-					  <Description>"Fell Arms Power"</Description>
-					  <ShowAsHex>1</ShowAsHex>
-					  <VariableType>Binary</VariableType>
-					  <BitStart>0</BitStart>
-					  <BitLength>1</BitLength>
-					  <ShowAsBinary>0</ShowAsBinary>
-					  <Address>TOV_DE.exe+117D761</Address>
-					</CheatEntry>
-				  </CheatEntries>
-				</CheatEntry>				
-			  </CheatEntries>
-			</CheatEntry>
-		  </CheatEntries>
-		</CheatEntry>
-	  </CheatEntries>
-	</CheatEntry>
-  </CheatEntries>
-</CheatTable>
 			
+</AssemblerScript>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>29</ID>
+                      <Description>"Apple Gel"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>32</ID>
+                      <Description>"Lemon Gel"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+4</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>33</ID>
+                      <Description>"Orange Gel"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+8</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>35</ID>
+                      <Description>"Pineapple Gel"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+C</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>36</ID>
+                      <Description>"Melange Gel"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+10</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>37</ID>
+                      <Description>"Miracle Gel"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+14</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>38</ID>
+                      <Description>"Specific"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+18</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>39</ID>
+                      <Description>"Treat"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+1C</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>40</ID>
+                      <Description>"Special Gel"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+20</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>41</ID>
+                      <Description>"Lottery Gel"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+24</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>42</ID>
+                      <Description>"Poison Bottle"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+28</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>43</ID>
+                      <Description>"Paralysis Bottle"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+2C</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>44</ID>
+                      <Description>"Stone Bottle"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+30</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>45</ID>
+                      <Description>"Seal Bottle"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+34</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>46</ID>
+                      <Description>"Weak Bottle"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+38</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>47</ID>
+                      <Description>"Mind Bottle"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+3C</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>48</ID>
+                      <Description>"Life Bottle"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+40</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>49</ID>
+                      <Description>"Cure Bottle"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+44</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>50</ID>
+                      <Description>"Dinei Bottle"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+48</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>51</ID>
+                      <Description>"Panacea Bottle"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+4C</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>52</ID>
+                      <Description>"Holy Bottle"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+50</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>53</ID>
+                      <Description>"Dark Bottle"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+54</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>54</ID>
+                      <Description>"Syrup Bottle"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+58</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>55</ID>
+                      <Description>"Nectar Bottle"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+5C</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>57</ID>
+                      <Description>"Sage"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+64</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>58</ID>
+                      <Description>"Red Sage"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+68</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>59</ID>
+                      <Description>"Savory"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+6C</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>60</ID>
+                      <Description>"Red Savory"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+70</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>61</ID>
+                      <Description>"Lavender"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+74</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>62</ID>
+                      <Description>"Red Lavender"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+78</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>63</ID>
+                      <Description>"Verbena"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+7C</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>64</ID>
+                      <Description>"Red Verbena"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+80</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>65</ID>
+                      <Description>"Chamomile"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+84</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>66</ID>
+                      <Description>"Red Chamomile"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+88</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>67</ID>
+                      <Description>"Basil"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+8C</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>68</ID>
+                      <Description>"Red Basil"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+90</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>69</ID>
+                      <Description>"Saffron"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+94</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>70</ID>
+                      <Description>"Red Saffron"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+98</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>31</ID>
+                      <Description>"Magic Lens"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+9C</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>72</ID>
+                      <Description>"All-Divide"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+A0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>73</ID>
+                      <Description>"Hourglass"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>InventoryBasePtr+A4</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
