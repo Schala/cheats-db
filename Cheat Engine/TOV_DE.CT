@@ -19,7 +19,7 @@
               <ID>100</ID>
               <Description>"[Scripts]"</Description>
               <Options moHideChildren="1"/>
-              <LastState Value="" RealAddress="00000000"/>
+              <LastState Value="" Activated="1" RealAddress="00000000"/>
               <GroupHeader>1</GroupHeader>
               <CheatEntries>
                 <CheatEntry>
@@ -904,13 +904,79 @@ dealloc(newmem)
 }
 </AssemblerScript>
                 </CheatEntry>
+                <CheatEntry>
+                  <ID>3380</ID>
+                  <Description>"Instant Escape"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>//Geo was here
+
+[ENABLE]
+
+aobscanmodule(Instant_Escape,TOV_DE.exe,45 84 F6 74 * B9 * * * * E8 * * * * F3)
+
+Instant_Escape:
+  db EB 03
+
+registersymbol(Instant_Escape)
+
+aobscanmodule(Instant_Escape_2,TOV_DE.exe,F3 0F 59 05 * * * * F3 0F 59 F0 40 84)
+
+Instant_Escape_2:
+  db EB 06
+
+registersymbol(Instant_Escape_2)
+
+[DISABLE]
+
+Instant_Escape:
+  db 45 84
+
+unregistersymbol(Instant_Escape)
+
+Instant_Escape_2:
+  db F3 0F
+
+unregistersymbol(Instant_Escape_2)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>3381</ID>
+                  <Description>"Instant Cast Time"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>//Geo was here
+
+[ENABLE]
+
+aobscanmodule(Instant_Cast,TOV_DE.exe,41 8B 56 * 48 8B CD E8 * * * * 48 8B CD 45 39 66 * 74)
+
+Instant_Cast:
+  db EB 02
+
+Instant_Cast+13:
+  db EB
+
+registersymbol(Instant_Cast)
+
+[DISABLE]
+
+Instant_Cast:
+  db 41 8B
+
+Instant_Cast+13:
+  db 74
+
+unregistersymbol(Instant_Cast)
+</AssemblerScript>
+                </CheatEntry>
               </CheatEntries>
             </CheatEntry>
             <CheatEntry>
               <ID>500</ID>
               <Description>"Pointers"</Description>
               <Options moHideChildren="1"/>
-              <LastState Value="" Activated="1" RealAddress="00000000"/>
+              <LastState Value="" RealAddress="00000000"/>
               <GroupHeader>1</GroupHeader>
               <CheatEntries>
                 <CheatEntry>
