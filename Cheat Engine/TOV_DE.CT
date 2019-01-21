@@ -976,34 +976,27 @@ unregistersymbol(Instant_Cast)
               <ID>500</ID>
               <Description>"Pointers"</Description>
               <Options moHideChildren="1"/>
-              <LastState Value="" RealAddress="00000000"/>
+              <LastState Value="" Activated="1" RealAddress="00000000"/>
               <GroupHeader>1</GroupHeader>
               <CheatEntries>
                 <CheatEntry>
                   <ID>501</ID>
                   <Description>"Gald"</Description>
+                  <LastState Value="3527744" RealAddress="7FF731968E30"/>
                   <VariableType>4 Bytes</VariableType>
                   <Address>TOV_DE.exe+1178E00+30</Address>
                 </CheatEntry>
                 <CheatEntry>
-                  <ID>3538</ID>
-                  <Description>"Holy Effect - Lock to 1"</Description>
-                  <DropDownList DisplayValueAsItem="1">0:Holy Effect Off
-				1:Holy Effect On
-				
-</DropDownList>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>TOV_DE.exe+1B227DC</Address>
-                </CheatEntry>
-                <CheatEntry>
                   <ID>3553</ID>
                   <Description>"Grade"</Description>
+                  <LastState Value="4453.54248" RealAddress="7FF73196C7D8"/>
                   <VariableType>Float</VariableType>
                   <Address>TOV_DE.exe+117C7D8</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>4815</ID>
                   <Description>"Fake Gald"</Description>
+                  <LastState Value="0" RealAddress="7FF73196A6B8"/>
                   <VariableType>Byte</VariableType>
                   <Address>TOV_DE.exe+117A6B8</Address>
                 </CheatEntry>
