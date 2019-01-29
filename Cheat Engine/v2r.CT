@@ -1,0 +1,1211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="27">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>8278</ID>
+      <Description>"--- Megadimension Neptunia VIIR | Cheat Engine Table v1.0, [2018-10-24] COLONELRVH ---"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <Color>A00000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>8274</ID>
+      <Description>"========== - MAIN CHEATS -                    =========="</Description>
+      <Options moAllowManualCollapseAndExpand="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <Color>FF8000</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>8848</ID>
+          <Description>"[Stats]   == Activate: Alt+Insert     | Deactivate: Alt+Del              =="</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" Activated="1" RealAddress="00000000"/>
+          <Color>FF8000</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>9206</ID>
+              <Description>"Activate Individual Script by Ctrl + Numpad (Numerical)"</Description>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>808000</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9200</ID>
+              <Description>"Unlimited Credits"</Description>
+              <LastState Activated="1"/>
+              <Color>808000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : v2r.exe
+  Version: 
+  Date   : 2018-10-24
+  Author : ColonelRVH
+
+  This script does blah blah blah
+}
+
+/*===============================
+Cheat Script by ColonelRVH
+
+Please Support my work at:
+  https://www.patreon.com/ColonelRVH
+
+Visit my website at:
+  https://www.thecheatscript.com
+- For latest content, better index &amp; easy to find game cheat that you need.
+
+● You can alter it as your own discretion, but you must keep my credits.
+● Any distributions of my tables &amp; codes are unadvised.
+
+===============================*/
+[ENABLE]
+
+aobscanmodule(Get_Credits_AOB,v2r.exe,48 8B 80 B0 F6 00 00) // should be unique
+alloc(newmem,$1000,"v2r.exe"+5EE4F7)
+
+label(code)
+label(return)
+
+newmem:
+  mov [rax+0000F6B0],#777777777
+code:
+  mov rax,[rax+0000F6B0]
+  jmp return
+
+Get_Credits_AOB:
+  jmp newmem
+  nop
+  nop
+return:
+registersymbol(Get_Credits_AOB)
+
+[DISABLE]
+
+Get_Credits_AOB:
+  db 48 8B 80 B0 F6 00 00
+
+unregistersymbol(Get_Credits_AOB)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "v2r.exe"+5EE4F7
+
+"v2r.exe"+5EE4E0: 48 83 C4 28              -  add rsp,28
+"v2r.exe"+5EE4E4: C3                       -  ret 
+"v2r.exe"+5EE4E5: 33 C0                    -  xor eax,eax
+"v2r.exe"+5EE4E7: 48 83 C4 28              -  add rsp,28
+"v2r.exe"+5EE4EB: C3                       -  ret 
+"v2r.exe"+5EE4EC: CC                       -  int 3 
+"v2r.exe"+5EE4ED: CC                       -  int 3 
+"v2r.exe"+5EE4EE: CC                       -  int 3 
+"v2r.exe"+5EE4EF: CC                       -  int 3 
+"v2r.exe"+5EE4F0: 48 8B 05 81 DA D8 00     -  mov rax,[v2r.exe+137BF78]
+// ---------- INJECTING HERE ----------
+"v2r.exe"+5EE4F7: 48 8B 80 B0 F6 00 00     -  mov rax,[rax+0000F6B0]
+// ---------- DONE INJECTING  ----------
+"v2r.exe"+5EE4FE: C3                       -  ret 
+"v2r.exe"+5EE4FF: CC                       -  int 3 
+"v2r.exe"+5EE500: 48 89 5C 24 10           -  mov [rsp+10],rbx
+"v2r.exe"+5EE505: 48 89 74 24 18           -  mov [rsp+18],rsi
+"v2r.exe"+5EE50A: 57                       -  push rdi
+"v2r.exe"+5EE50B: 41 56                    -  push r14
+"v2r.exe"+5EE50D: 41 57                    -  push r15
+"v2r.exe"+5EE50F: 48 83 EC 20              -  sub rsp,20
+"v2r.exe"+5EE513: 48 8B 05 5E DA D8 00     -  mov rax,[v2r.exe+137BF78]
+"v2r.exe"+5EE51A: 45 33 F6                 -  xor r14d,r14d
+}
+</AssemblerScript>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Activate</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>45</Key>
+                  </Keys>
+                  <ID>0</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Deactivate</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>46</Key>
+                  </Keys>
+                  <ID>1</ID>
+                  <DeactivateSound>Deactivate</DeactivateSound>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Toggle Activation</Action>
+                  <Keys>
+                    <Key>17</Key>
+                    <Key>97</Key>
+                  </Keys>
+                  <ID>2</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                  <DeactivateSound>Deactivate</DeactivateSound>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9211</ID>
+              <Description>"Multiply EXP Gains"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Activated="1"/>
+              <Color>808000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : v2r.exe
+  Version: 
+  Date   : 2018-10-24
+  Author : ColonelRVH
+
+  This script does blah blah blah
+}
+
+/*===============================
+Cheat Script by ColonelRVH
+
+Please Support my work at:
+  https://www.patreon.com/ColonelRVH
+
+Visit my website at:
+  https://www.thecheatscript.com
+- For latest content, better index &amp; easy to find game cheat that you need.
+
+● You can alter it as your own discretion, but you must keep my credits.
+● Any distributions of my tables &amp; codes are unadvised.
+
+===============================*/
+[ENABLE]
+
+aobscanmodule(Set_EXP_AOB,v2r.exe,48 0F 47 D8 48 89 5E 08) // should be unique
+alloc(newmem,$1000,"v2r.exe"+5D679B)
+
+label(code)
+label(return)
+alloc(EXP_Mult,4)
+registersymbol(EXP_Mult)
+
+EXP_Mult:
+dd 7
+newmem:
+
+code:
+  cmova rbx,rax
+  sub rbx,[rsi+08]
+  imul rbx,[EXP_Mult]
+  add [rsi+08],rbx
+  jmp return
+
+Set_EXP_AOB:
+  jmp newmem
+  nop
+  nop
+  nop
+return:
+registersymbol(Set_EXP_AOB)
+
+[DISABLE]
+
+Set_EXP_AOB:
+  db 48 0F 47 D8 48 89 5E 08
+
+unregistersymbol(Set_EXP_AOB)
+dealloc(newmem)
+unregistersymbol(EXP_Mult)
+dealloc(EXP_Mult)
+{
+// ORIGINAL CODE - INJECTION POINT: "v2r.exe"+5D679B
+
+"v2r.exe"+5D676D: 79 08                          -  jns v2r.exe+5D6777
+"v2r.exe"+5D676F: F2 0F 58 05 61 D1 A7 00        -  addsd xmm0,qword ptr [v2r.exe+10538D8]
+"v2r.exe"+5D6777: F2 0F 59 05 F9 8E 83 00        -  mulsd xmm0,[v2r.exe+E0F678]
+"v2r.exe"+5D677F: F2 48 0F 2C C0                 -  cvttsd2si rax,xmm0
+"v2r.exe"+5D6784: 48 2B E8                       -  sub rbp,rax
+"v2r.exe"+5D6787: 48 8B 5E 08                    -  mov rbx,[rsi+08]
+"v2r.exe"+5D678B: B9 9E 86 01 00                 -  mov ecx,0001869E
+"v2r.exe"+5D6790: E8 2B 82 FF FF                 -  call v2r.exe+5CE9C0
+"v2r.exe"+5D6795: 48 03 DD                       -  add rbx,rbp
+"v2r.exe"+5D6798: 48 3B D8                       -  cmp rbx,rax
+// ---------- INJECTING HERE ----------
+"v2r.exe"+5D679B: 48 0F 47 D8                    -  cmova rbx,rax
+"v2r.exe"+5D679F: 48 89 5E 08                    -  mov [rsi+08],rbx
+// ---------- DONE INJECTING  ----------
+"v2r.exe"+5D67A3: 41 81 FE 9F 86 01 00           -  cmp r14d,0001869F
+"v2r.exe"+5D67AA: 73 2F                          -  jae v2r.exe+5D67DB
+"v2r.exe"+5D67AC: 41 8B CE                       -  mov ecx,r14d
+"v2r.exe"+5D67AF: E8 0C 82 FF FF                 -  call v2r.exe+5CE9C0
+"v2r.exe"+5D67B4: 48 85 C0                       -  test rax,rax
+"v2r.exe"+5D67B7: 74 1D                          -  je v2r.exe+5D67D6
+"v2r.exe"+5D67B9: 0F 1F 80 00 00 00 00           -  nop [rax+00000000]
+"v2r.exe"+5D67C0: 48 39 46 08                    -  cmp [rsi+08],rax
+"v2r.exe"+5D67C4: 72 10                          -  jb v2r.exe+5D67D6
+"v2r.exe"+5D67C6: 48 8B D6                       -  mov rdx,rsi
+}
+</AssemblerScript>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Activate</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>45</Key>
+                  </Keys>
+                  <ID>0</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Deactivate</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>46</Key>
+                  </Keys>
+                  <ID>1</ID>
+                  <DeactivateSound>Deactivate</DeactivateSound>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Toggle Activation</Action>
+                  <Keys>
+                    <Key>17</Key>
+                    <Key>98</Key>
+                  </Keys>
+                  <ID>2</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                  <DeactivateSound>Deactivate</DeactivateSound>
+                </Hotkey>
+              </Hotkeys>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>9266</ID>
+                  <Description>"EXP Multiplier"</Description>
+                  <LastState Value="7" RealAddress="7FF767221000"/>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>EXP_Mult</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>110</ID>
+          <Description>"[Battle] == Activate: Alt+Home    | Deactivate: Alt+End             =="</Description>
+          <Options moHideChildren="1" moDeactivateChildrenAsWell="1"/>
+          <LastState Value="" Activated="1" RealAddress="00000000"/>
+          <Color>FF8000</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>9207</ID>
+              <Description>"Activate Individual Script by Alt + Numpad (Numerical)"</Description>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>808000</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9213</ID>
+              <Description>"Unlimited HP"</Description>
+              <LastState Activated="1"/>
+              <Color>808000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : v2r.exe
+  Version: 
+  Date   : 2018-10-24
+  Author : ColonelRVH
+
+  This script does blah blah blah
+}
+
+/*===============================
+Cheat Script by ColonelRVH
+
+Please Support my work at:
+  https://www.patreon.com/ColonelRVH
+
+Visit my website at:
+  https://www.thecheatscript.com
+- For latest content, better index &amp; easy to find game cheat that you need.
+
+● You can alter it as your own discretion, but you must keep my credits.
+● Any distributions of my tables &amp; codes are unadvised.
+
+===============================*/
+[ENABLE]
+
+aobscanmodule(Get_PlayerHP_AOB,v2r.exe,48 8B 1F 48 8B C8 E8 DF) // should be unique
+alloc(newmem,$1000,"v2r.exe"+5DA3A6)
+
+label(code)
+label(return)
+
+newmem:
+  mov [rdi],#777777
+  //mov rbx,[rdi+20]
+  //mov [rdi],rbx
+code:
+  mov rbx,[rdi]
+  mov rcx,rax
+  jmp return
+
+Get_PlayerHP_AOB:
+  jmp newmem
+  nop
+return:
+registersymbol(Get_PlayerHP_AOB)
+
+[DISABLE]
+
+Get_PlayerHP_AOB:
+  db 48 8B 1F 48 8B C8
+
+unregistersymbol(Get_PlayerHP_AOB)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "v2r.exe"+5DA3A6
+
+"v2r.exe"+5DA388: 0F AF DE        -  imul ebx,esi
+"v2r.exe"+5DA38B: 8B CB           -  mov ecx,ebx
+"v2r.exe"+5DA38D: E8 8E 26 01 00  -  call v2r.exe+5ECA20
+"v2r.exe"+5DA392: 8B CB           -  mov ecx,ebx
+"v2r.exe"+5DA394: 48 8B F8        -  mov rdi,rax
+"v2r.exe"+5DA397: E8 B4 26 01 00  -  call v2r.exe+5ECA50
+"v2r.exe"+5DA39C: 48 85 FF        -  test rdi,rdi
+"v2r.exe"+5DA39F: 74 23           -  je v2r.exe+5DA3C4
+"v2r.exe"+5DA3A1: 48 85 C0        -  test rax,rax
+"v2r.exe"+5DA3A4: 74 1E           -  je v2r.exe+5DA3C4
+// ---------- INJECTING HERE ----------
+"v2r.exe"+5DA3A6: 48 8B 1F        -  mov rbx,[rdi]
+"v2r.exe"+5DA3A9: 48 8B C8        -  mov rcx,rax
+// ---------- DONE INJECTING  ----------
+"v2r.exe"+5DA3AC: E8 DF 68 07 00  -  call v2r.exe+650C90
+"v2r.exe"+5DA3B1: 48 03 C3        -  add rax,rbx
+"v2r.exe"+5DA3B4: 48 8B 5C 24 30  -  mov rbx,[rsp+30]
+"v2r.exe"+5DA3B9: 48 8B 74 24 38  -  mov rsi,[rsp+38]
+"v2r.exe"+5DA3BE: 48 83 C4 20     -  add rsp,20
+"v2r.exe"+5DA3C2: 5F              -  pop rdi
+"v2r.exe"+5DA3C3: C3              -  ret 
+"v2r.exe"+5DA3C4: 48 8B 5C 24 30  -  mov rbx,[rsp+30]
+"v2r.exe"+5DA3C9: 48 8B 74 24 38  -  mov rsi,[rsp+38]
+"v2r.exe"+5DA3CE: 33 C0           -  xor eax,eax
+}
+</AssemblerScript>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Activate</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>36</Key>
+                  </Keys>
+                  <ID>0</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Deactivate</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>35</Key>
+                  </Keys>
+                  <ID>1</ID>
+                  <DeactivateSound>Deactivate</DeactivateSound>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Toggle Activation</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>97</Key>
+                  </Keys>
+                  <ID>2</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                  <DeactivateSound>Deactivate</DeactivateSound>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9216</ID>
+              <Description>"Unlimited SP"</Description>
+              <LastState Activated="1"/>
+              <Color>808000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : v2r.exe
+  Version: 
+  Date   : 2018-10-24
+  Author : ColonelRVH
+
+  This script does blah blah blah
+}
+
+/*===============================
+Cheat Script by ColonelRVH
+
+Please Support my work at:
+  https://www.patreon.com/ColonelRVH
+
+Visit my website at:
+  https://www.thecheatscript.com
+- For latest content, better index &amp; easy to find game cheat that you need.
+
+● You can alter it as your own discretion, but you must keep my credits.
+● Any distributions of my tables &amp; codes are unadvised.
+
+===============================*/
+[ENABLE]
+
+aobscanmodule(Get_Player_SP_AOB,v2r.exe,8B 40 10 48 8B 5C 24 30) // should be unique
+alloc(newmem,$1000,"v2r.exe"+5DB16F)
+
+label(code)
+label(return)
+
+newmem:
+  push edx
+  mov edx,[rax+28]
+  mov [rax+10],edx
+  pop edx
+code:
+  mov eax,[rax+10]
+  mov rbx,[rsp+30]
+  jmp return
+
+Get_Player_SP_AOB:
+  jmp newmem
+  nop
+  nop
+  nop
+return:
+registersymbol(Get_Player_SP_AOB)
+
+[DISABLE]
+
+Get_Player_SP_AOB:
+  db 8B 40 10 48 8B 5C 24 30
+
+unregistersymbol(Get_Player_SP_AOB)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "v2r.exe"+5DB16F
+
+"v2r.exe"+5DB151: E8 7A FE 02 00           -  call v2r.exe+60AFD0
+"v2r.exe"+5DB156: 33 C9                    -  xor ecx,ecx
+"v2r.exe"+5DB158: 84 C0                    -  test al,al
+"v2r.exe"+5DB15A: 0F B6 C3                 -  movzx eax,bl
+"v2r.exe"+5DB15D: 0F 94 C1                 -  sete cl
+"v2r.exe"+5DB160: 23 C8                    -  and ecx,eax
+"v2r.exe"+5DB162: 0F AF CF                 -  imul ecx,edi
+"v2r.exe"+5DB165: E8 B6 18 01 00           -  call v2r.exe+5ECA20
+"v2r.exe"+5DB16A: 48 85 C0                 -  test rax,rax
+"v2r.exe"+5DB16D: 74 0E                    -  je v2r.exe+5DB17D
+// ---------- INJECTING HERE ----------
+"v2r.exe"+5DB16F: 8B 40 10                 -  mov eax,[rax+10]
+"v2r.exe"+5DB172: 48 8B 5C 24 30           -  mov rbx,[rsp+30]
+// ---------- DONE INJECTING  ----------
+"v2r.exe"+5DB177: 48 83 C4 20              -  add rsp,20
+"v2r.exe"+5DB17B: 5F                       -  pop rdi
+"v2r.exe"+5DB17C: C3                       -  ret 
+"v2r.exe"+5DB17D: 48 8B 5C 24 30           -  mov rbx,[rsp+30]
+"v2r.exe"+5DB182: 48 83 C4 20              -  add rsp,20
+"v2r.exe"+5DB186: 5F                       -  pop rdi
+"v2r.exe"+5DB187: C3                       -  ret 
+"v2r.exe"+5DB188: CC                       -  int 3 
+"v2r.exe"+5DB189: CC                       -  int 3 
+"v2r.exe"+5DB18A: CC                       -  int 3 
+}
+</AssemblerScript>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Activate</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>36</Key>
+                  </Keys>
+                  <ID>0</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Deactivate</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>35</Key>
+                  </Keys>
+                  <ID>1</ID>
+                  <DeactivateSound>Deactivate</DeactivateSound>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Toggle Activation</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>98</Key>
+                  </Keys>
+                  <ID>2</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                  <DeactivateSound>Deactivate</DeactivateSound>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9215</ID>
+              <Description>"Unlimited AP"</Description>
+              <LastState Activated="1"/>
+              <Color>808000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : v2r.exe
+  Version: 
+  Date   : 2018-10-24
+  Author : ColonelRVH
+
+  This script does blah blah blah
+}
+
+/*===============================
+Cheat Script by ColonelRVH
+
+Please Support my work at:
+  https://www.patreon.com/ColonelRVH
+
+Visit my website at:
+  https://www.thecheatscript.com
+- For latest content, better index &amp; easy to find game cheat that you need.
+
+● You can alter it as your own discretion, but you must keep my credits.
+● Any distributions of my tables &amp; codes are unadvised.
+
+===============================*/
+[ENABLE]
+
+aobscanmodule(Get_Player_AP_AOB,v2r.exe,8B 40 14 48 8B 5C 24 30) // should be unique
+alloc(newmem,$1000,"v2r.exe"+5D8C0F)
+
+label(code)
+label(return)
+
+newmem:
+  mov [rax+14],#77
+code:
+  mov eax,[rax+14]
+  mov rbx,[rsp+30]
+  jmp return
+
+Get_Player_AP_AOB:
+  jmp newmem
+  nop
+  nop
+  nop
+return:
+registersymbol(Get_Player_AP_AOB)
+
+[DISABLE]
+
+Get_Player_AP_AOB:
+  db 8B 40 14 48 8B 5C 24 30
+
+unregistersymbol(Get_Player_AP_AOB)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "v2r.exe"+5D8C0F
+
+"v2r.exe"+5D8BF1: E8 DA 23 03 00  -  call v2r.exe+60AFD0
+"v2r.exe"+5D8BF6: 33 C9           -  xor ecx,ecx
+"v2r.exe"+5D8BF8: 84 C0           -  test al,al
+"v2r.exe"+5D8BFA: 0F B6 C3        -  movzx eax,bl
+"v2r.exe"+5D8BFD: 0F 94 C1        -  sete cl
+"v2r.exe"+5D8C00: 23 C8           -  and ecx,eax
+"v2r.exe"+5D8C02: 0F AF CF        -  imul ecx,edi
+"v2r.exe"+5D8C05: E8 16 3E 01 00  -  call v2r.exe+5ECA20
+"v2r.exe"+5D8C0A: 48 85 C0        -  test rax,rax
+"v2r.exe"+5D8C0D: 74 0E           -  je v2r.exe+5D8C1D
+// ---------- INJECTING HERE ----------
+"v2r.exe"+5D8C0F: 8B 40 14        -  mov eax,[rax+14]
+"v2r.exe"+5D8C12: 48 8B 5C 24 30  -  mov rbx,[rsp+30]
+// ---------- DONE INJECTING  ----------
+"v2r.exe"+5D8C17: 48 83 C4 20     -  add rsp,20
+"v2r.exe"+5D8C1B: 5F              -  pop rdi
+"v2r.exe"+5D8C1C: C3              -  ret 
+"v2r.exe"+5D8C1D: 48 8B 5C 24 30  -  mov rbx,[rsp+30]
+"v2r.exe"+5D8C22: 48 83 C4 20     -  add rsp,20
+"v2r.exe"+5D8C26: 5F              -  pop rdi
+"v2r.exe"+5D8C27: C3              -  ret 
+"v2r.exe"+5D8C28: CC              -  int 3 
+"v2r.exe"+5D8C29: CC              -  int 3 
+"v2r.exe"+5D8C2A: CC              -  int 3 
+}
+</AssemblerScript>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Activate</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>36</Key>
+                  </Keys>
+                  <ID>0</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Deactivate</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>35</Key>
+                  </Keys>
+                  <ID>1</ID>
+                  <DeactivateSound>Deactivate</DeactivateSound>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Toggle Activation</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>99</Key>
+                  </Keys>
+                  <ID>2</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                  <DeactivateSound>Deactivate</DeactivateSound>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>118</ID>
+          <Description>"[Extra]   == Activate: Alt+PageUp | Deactivate: Alt+PageDown =="</Description>
+          <Options moHideChildren="1" moDeactivateChildrenAsWell="1"/>
+          <LastState Value="" Activated="1" RealAddress="00000000"/>
+          <Color>FF8000</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>9218</ID>
+              <Description>"Unlimited Current Items"</Description>
+              <LastState/>
+              <Color>808000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : v2r.exe
+  Version: 
+  Date   : 2018-10-24
+  Author : ColonelRVH
+
+  This script does blah blah blah
+}
+
+/*===============================
+Cheat Script by ColonelRVH
+
+Please Support my work at:
+  https://www.patreon.com/ColonelRVH
+
+Visit my website at:
+  https://www.thecheatscript.com
+- For latest content, better index &amp; easy to find game cheat that you need.
+
+● You can alter it as your own discretion, but you must keep my credits.
+● Any distributions of my tables &amp; codes are unadvised.
+
+===============================*/
+[ENABLE]
+
+aobscanmodule(Get_Items_AOB,v2r.exe,8B 47 04 44 89 7B E8) // should be unique
+alloc(newmem,$1000,"v2r.exe"+5EEEBE)
+
+label(code)
+label(return)
+
+newmem:
+  mov [rdi+04],#77
+code:
+  mov eax,[rdi+04]
+  mov [rbx-18],r15d
+  jmp return
+
+Get_Items_AOB:
+  jmp newmem
+  nop
+  nop
+return:
+registersymbol(Get_Items_AOB)
+
+[DISABLE]
+
+Get_Items_AOB:
+  db 8B 47 04 44 89 7B E8
+
+unregistersymbol(Get_Items_AOB)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "v2r.exe"+5EEEBE
+
+"v2r.exe"+5EEE9D: 8B 48 20              -  mov ecx,[rax+20]
+"v2r.exe"+5EEEA0: FF C9                 -  dec ecx
+"v2r.exe"+5EEEA2: 83 F9 0A              -  cmp ecx,0A
+"v2r.exe"+5EEEA5: 76 3D                 -  jna v2r.exe+5EEEE4
+"v2r.exe"+5EEEA7: 66 44 39 78 02        -  cmp [rax+02],r15w
+"v2r.exe"+5EEEAC: 74 36                 -  je v2r.exe+5EEEE4
+"v2r.exe"+5EEEAE: 0F B7 4F 02           -  movzx ecx,word ptr [rdi+02]
+"v2r.exe"+5EEEB2: 66 44 89 7B 04        -  mov [rbx+04],r15w
+"v2r.exe"+5EEEB7: 48 83 C3 30           -  add rbx,30
+"v2r.exe"+5EEEBB: 89 4B D0              -  mov [rbx-30],ecx
+// ---------- INJECTING HERE ----------
+"v2r.exe"+5EEEBE: 8B 47 04              -  mov eax,[rdi+04]
+"v2r.exe"+5EEEC1: 44 89 7B E8           -  mov [rbx-18],r15d
+// ---------- DONE INJECTING  ----------
+"v2r.exe"+5EEEC5: 89 43 D8              -  mov [rbx-28],eax
+"v2r.exe"+5EEEC8: 44 89 7B F0           -  mov [rbx-10],r15d
+"v2r.exe"+5EEECC: 0F B7 07              -  movzx eax,word ptr [rdi]
+"v2r.exe"+5EEECF: 44 89 7B F8           -  mov [rbx-08],r15d
+"v2r.exe"+5EEED3: 89 43 F4              -  mov [rbx-0C],eax
+"v2r.exe"+5EEED6: 0F B7 07              -  movzx eax,word ptr [rdi]
+"v2r.exe"+5EEED9: 89 43 FC              -  mov [rbx-04],eax
+"v2r.exe"+5EEEDC: 48 89 53 E0           -  mov [rbx-20],rdx
+"v2r.exe"+5EEEE0: FF CD                 -  dec ebp
+"v2r.exe"+5EEEE2: 74 0D                 -  je v2r.exe+5EEEF1
+}
+</AssemblerScript>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Activate</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>33</Key>
+                  </Keys>
+                  <ID>0</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Deactivate</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>34</Key>
+                  </Keys>
+                  <ID>1</ID>
+                  <DeactivateSound>Deactivate</DeactivateSound>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9198</ID>
+              <Description>"Force Pause (Toggle: Pause Break)"</Description>
+              <LastState/>
+              <Color>808080</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+luacall(speedhack_setSpeed(0))
+
+[DISABLE]
+luacall(speedhack_setSpeed(1))
+</AssemblerScript>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Toggle Activation</Action>
+                  <Keys>
+                    <Key>19</Key>
+                  </Keys>
+                  <ID>0</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                  <DeactivateSound>Deactivate</DeactivateSound>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9199</ID>
+              <Description>"Speedhack (Ctrl+/Ctrl-)"</Description>
+              <LastState/>
+              <Color>808080</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+luacall(speedhack_setSpeed(3))
+
+[DISABLE]
+luacall(speedhack_setSpeed(1))
+</AssemblerScript>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Activate</Action>
+                  <Keys>
+                    <Key>17</Key>
+                    <Key>107</Key>
+                  </Keys>
+                  <ID>0</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Deactivate</Action>
+                  <Keys>
+                    <Key>17</Key>
+                    <Key>109</Key>
+                  </Keys>
+                  <ID>1</ID>
+                  <DeactivateSound>Deactivate</DeactivateSound>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>117</ID>
+          <Description>"[Misc.][!]"</Description>
+          <Options moHideChildren="1" moDeactivateChildrenAsWell="1"/>
+          <LastState Value="" Activated="1" RealAddress="00000000"/>
+          <Color>0000FF</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>9107</ID>
+              <Description>"Proceed With Cautions! This section is for Advanced User Only"</Description>
+              <Options moHideChildren="1" moDeactivateChildrenAsWell="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>0000FF</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>8266</ID>
+              <Description>"[Backups][Unused]"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>C0C0C0</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>9252</ID>
+                  <Description>"Get_HP_AOB"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>{ Game   : v2r.exe
+  Version: 
+  Date   : 2018-10-24
+  Author : ColonelRVH
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(Get_HP_AOB,v2r.exe,48 8B 01 C3 CC CC CC CC CC CC CC CC CC CC CC CC 48 85 C9 74) // should be unique
+alloc(newmem,$1000,"v2r.exe"+5D82F0)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov rax,[rcx]
+  ret 
+  int 3 
+  jmp return
+
+Get_HP_AOB:
+  jmp newmem
+return:
+registersymbol(Get_HP_AOB)
+
+[DISABLE]
+
+Get_HP_AOB:
+  db 48 8B 01 C3 CC
+
+unregistersymbol(Get_HP_AOB)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "v2r.exe"+5D82F0
+
+"v2r.exe"+5D82E6: CC                    -  int 3 
+"v2r.exe"+5D82E7: CC                    -  int 3 
+"v2r.exe"+5D82E8: CC                    -  int 3 
+"v2r.exe"+5D82E9: CC                    -  int 3 
+"v2r.exe"+5D82EA: CC                    -  int 3 
+"v2r.exe"+5D82EB: CC                    -  int 3 
+"v2r.exe"+5D82EC: CC                    -  int 3 
+"v2r.exe"+5D82ED: CC                    -  int 3 
+"v2r.exe"+5D82EE: CC                    -  int 3 
+"v2r.exe"+5D82EF: CC                    -  int 3 
+// ---------- INJECTING HERE ----------
+"v2r.exe"+5D82F0: 48 8B 01              -  mov rax,[rcx]
+"v2r.exe"+5D82F3: C3                    -  ret 
+"v2r.exe"+5D82F4: CC                    -  int 3 
+// ---------- DONE INJECTING  ----------
+"v2r.exe"+5D82F5: CC                    -  int 3 
+"v2r.exe"+5D82F6: CC                    -  int 3 
+"v2r.exe"+5D82F7: CC                    -  int 3 
+"v2r.exe"+5D82F8: CC                    -  int 3 
+"v2r.exe"+5D82F9: CC                    -  int 3 
+"v2r.exe"+5D82FA: CC                    -  int 3 
+"v2r.exe"+5D82FB: CC                    -  int 3 
+"v2r.exe"+5D82FC: CC                    -  int 3 
+"v2r.exe"+5D82FD: CC                    -  int 3 
+"v2r.exe"+5D82FE: CC                    -  int 3 
+}
+</AssemblerScript>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>8435</ID>
+              <Description>"[Obsolete][Buggy]"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>C0C0C0</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>9105</ID>
+          <Description>"&lt;-[HERE] INSTRUCTIONS | Tick the left square □ of this line to view -"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <Color>008080</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>9110</ID>
+              <Description>"- Basic -"</Description>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>008080</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>9121</ID>
+                  <Description>"Choose Yes on the table opening so it can detect the game automatically"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <Color>008080</Color>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9111</ID>
+                  <Description>"- To Activate a Cheat"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <Color>008080</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>9114</ID>
+                      <Description>"1. Follow the [Activate] instructions"</Description>
+                      <LastState Value="" RealAddress="00000000"/>
+                      <Color>008080</Color>
+                      <GroupHeader>1</GroupHeader>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>9113</ID>
+                      <Description>"2. Tick on the square □ next to it"</Description>
+                      <LastState Value="" RealAddress="00000000"/>
+                      <Color>008080</Color>
+                      <GroupHeader>1</GroupHeader>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9112</ID>
+              <Description>"- Intermediate - "</Description>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>008080</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>9106</ID>
+                  <Description>"- For God Mode &amp; Instant Kill you must change the value to "Enabled" unless there's none"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <Color>008080</Color>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9116</ID>
+                  <Description>"- You can find old cheats in [Misc.] for older version, in rare cases"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <Color>008080</Color>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9117</ID>
+              <Description>"- Advanced | Master - "</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>008080</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>9118</ID>
+                  <Description>"- All my codes are easy to understand and straightforward"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <Color>008080</Color>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9119</ID>
+                  <Description>"- You can alter it as your own discretion, but you must keep my credits"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <Color>008080</Color>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9120</ID>
+                  <Description>"- Any distributions of my tables &amp; codes are unadvised"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <Color>008080</Color>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9115</ID>
+              <Description>"References"</Description>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>808000</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>9082</ID>
+                  <Description>"- [Activate: To Activate this cheat you must do this action first] -"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <Color>808000</Color>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9083</ID>
+                  <Description>"- [Update: To Update/Get the cheat's effects you must do this action first] -"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <Color>808000</Color>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>8265</ID>
+      <Description>"========== - SPECIAL THANKS -               =========="</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <Color>808000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>8849</ID>
+      <Description>"========== - CHANGES | NOTES -             =========="</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <Color>808000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>8908</ID>
+      <Description>"- Please support my work at -"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <Color>808000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>8909</ID>
+      <Description>"https://www.patreon.com/ColonelRVH"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <Color>808000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols>
+    <SymbolEntry>
+      <Name>BLucre</Name>
+      <Address>015C0010</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>BHP</Name>
+      <Address>015C0000</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>GetHP</Name>
+      <Address>463A7445</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>GetLucre</Name>
+      <Address>463A9B27</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>IgnoreMana</Name>
+      <Address>463C8647</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>BaseGold</Name>
+      <Address>02680000</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>GetGold</Name>
+      <Address>00F6FCC9</Address>
+    </SymbolEntry>
+  </UserdefinedSymbols>
+  <Structures StructVersion="2">
+    <Structure Name="AP" AutoFill="0" AutoCreate="1" DefaultHex="0" AutoDestroy="0" DoNotSaveLocal="0" RLECompression="1" AutoCreateStructsize="4096">
+      <Elements>
+        <Element Offset="0" Vartype="4 Bytes" Bytesize="4" RLECount="74" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="296" Vartype="4 Bytes" Bytesize="4" RLECount="7" DisplayMethod="Hexadecimal"/>
+        <Element Offset="324" Vartype="4 Bytes" Bytesize="4" RLECount="849" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3720" Vartype="4 Bytes" Bytesize="4" RLECount="8" DisplayMethod="Hexadecimal"/>
+        <Element Offset="3752" Vartype="4 Bytes" Bytesize="4" RLECount="86" DisplayMethod="Unsigned Integer"/>
+      </Elements>
+    </Structure>
+    <Structure Name="HP" AutoFill="0" AutoCreate="1" DefaultHex="0" AutoDestroy="0" DoNotSaveLocal="0" RLECompression="1" AutoCreateStructsize="4096">
+      <Elements>
+        <Element Offset="0" Vartype="4 Bytes" Bytesize="4" RLECount="74" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="296" Vartype="4 Bytes" Bytesize="4" RLECount="7" DisplayMethod="Hexadecimal"/>
+        <Element Offset="324" Vartype="4 Bytes" Bytesize="4" RLECount="849" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3720" Vartype="4 Bytes" Bytesize="4" RLECount="8" DisplayMethod="Hexadecimal"/>
+        <Element Offset="3752" Vartype="4 Bytes" Bytesize="4" RLECount="86" DisplayMethod="Unsigned Integer"/>
+      </Elements>
+    </Structure>
+    <Structure Name="Items" AutoFill="0" AutoCreate="1" DefaultHex="0" AutoDestroy="0" DoNotSaveLocal="0" RLECompression="1" AutoCreateStructsize="4096">
+      <Elements>
+        <Element Offset="0" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="4" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="8" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="12" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="16" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="20" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="24" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="28" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="32" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="36" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="40" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="44" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="48" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="52" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="56" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="60" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="64" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="68" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="72" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="76" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="80" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="84" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="88" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="92" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="96" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="100" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="104" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="108" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="112" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="116" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="120" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="124" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="128" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="132" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="136" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="140" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="144" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="148" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="152" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="156" Vartype="4 Bytes" Bytesize="4" RLECount="985" DisplayMethod="Unsigned Integer"/>
+      </Elements>
+    </Structure>
+  </Structures>
+  <Comments>If you want to support, Please consider become my patron at:
+----------------------
+https://www.patreon.com/ColonelRVH
+----------------------
+It would be a great help for me to cover my living expenses so I can focus on making  &amp; improving cheat for you. 
+----------------------
+© ColonelRVH, 2017
+</Comments>
+  <LuaScript>attachlist=getAutoAttachList()
+stringlist_add(attachlist,"v2r.exe");
+</LuaScript>
+</CheatTable>
