@@ -1,0 +1,2372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="24">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"Trails In The Sky The FC"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Value="" Activated="1" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>10</ID>
+          <Description>"Enable"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Activated="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : ed6_win_DX9.exe
+  Version: 
+  Date   : 2017-05-04
+  Author : Turk
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(MiraReadInStatusAOB,ed6_win_DX9.exe,B9 01 00 00 00 8B C6 ?? ?? ?? ?? ?? A1 ?? ?? ?? ?? 50 8B CF) // should be unique
+registersymbol(MiraReadInStatusAOB)
+alloc(newmem,2048,MiraReadInStatusAOB)
+
+aobscanmodule(EarthSepithWriteAOB,ed6_win_DX9.exe,CC 29 0C 85 ?? ?? ?? ?? 79 0B C7 04 85 ?? ?? ?? ?? 00 00 00 00) // should be unique
+registersymbol(EarthSepithWriteAOB)
+
+aobscanmodule(ExpReadInStatusAOB,ed6_win_DX9.exe,8B 46 0C 50 8D 4C 24 44) // should be unique
+registersymbol(EXPReadInStatusAOB)
+
+aobscanmodule(EquipmentIDReadInStatusAOB,ed6_win_DX9.exe,0F B7 8C 00 ?? ?? ?? ?? 0F B7 94 00) // should be unique
+registersymbol(EquipmentIDReadInStatusAOB)
+
+aobscanmodule(CharStatWriteAOB,ed6_win_DX9.exe,0F B7 51 06 66 89 50 10) // should be unique
+registersymbol(CharStatWriteAOB)
+
+aobscanmodule(ItemUsageAOB,ed6_win_DX9.exe,3B D6 7E 0D 2B CE 66 89 0C 85 ?? ?? ?? ?? B0 01) // should be unique
+registersymbol(ItemUsageAOB)
+
+aobscanmodule(CurrentItemSelectedAOB,ed6_win_DX9.exe,89 83 CC 38 00 00 E8 39 ?F FF FF) // should be unique
+registersymbol(CurrentItemSelectedAOB)
+
+aobscanmodule(CraftIDReadInStatusAOB,ed6_win_DX9.exe,0F B7 94 09 ?? ?? ?? ?? 33 F6 03 C9) // should be unique
+registersymbol(CraftIDReadInStatusAOB)
+
+aobscanmodule(SCraftIDReadInStatusAOB,ed6_win_DX9.exe,0F B7 0C FD ?? ?? ?? ?? 33 C0 89 74) // should be unique
+registersymbol(SCraftIDReadInStatusAOB)
+
+aobscanmodule(OrbmentIDReadInStatusAOB,ed6_win_DX9.exe,0F B7 14 85 ?? ?? ?? ?? 8D 8A 6C) // should be unique
+registersymbol(OrbmentIDReadInStatusAOB)
+
+///
+label(MiraPtr)
+registersymbol(MiraPtr)
+
+///
+label(EarthSepithPtr)
+registersymbol(EarthSepithPtr)
+
+///
+label(InventoryBasePtr)
+registersymbol(InventoryBasePtr)
+label(InventoryIDBasePtr)
+registersymbol(InventoryIDBasePtr)
+label(InventorySlotOffset)
+registersymbol(InventorySlotOffset)
+
+///
+label(SelectedCharPtr)
+registersymbol(SelectedCharPtr)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+///
+label(SelectedCharEquipmentPtr)
+registersymbol(SelectedCharEquipmentPtr)
+label(SelectedCharEquipmentBaseAddress)
+registersymbol(SelectedCharEquipmentBaseAddress)
+label(EquipmentIDReadInStatusOriginalAOB)
+registersymbol(EquipmentIDReadInStatusOriginalAOB)
+label(returnhere11)
+label(originalcode11)
+label(exit11)
+
+///
+label(returnhere22)
+label(originalcode22)
+label(exit22)
+
+///
+label(SelectedCharStatusPtr)
+registersymbol(SelectedCharStatusPtr)
+label(returnhere33)
+label(originalcode33)
+label(exit33)
+
+///
+label(SelectedCharCraftPtr)
+registersymbol(SelectedCharCraftPtr)
+label(SelectedCharCraftBaseAddress)
+registersymbol(SelectedCharCraftBaseAddress)
+label(CraftIDReadInStatusOriginalAOB)
+registersymbol(CraftIDReadInStatusOriginalAOB)
+label(returnhere44)
+label(originalcode44)
+label(exit44)
+
+///
+label(SelectedCharSCraftPtr)
+registersymbol(SelectedCharSCraftPtr)
+label(SelectedCharSCraftBaseAddress)
+registersymbol(SelectedCharSCraftBaseAddress)
+label(SCraftIDReadInStatusOriginalAOB)
+registersymbol(SCraftIDReadInStatusOriginalAOB)
+label(returnhere55)
+label(originalcode55)
+label(exit55)
+
+///
+label(SelectedCharOrbmentPtr)
+registersymbol(SelectedCharOrbmentPtr)
+label(SelectedCharOrbmentBaseAddress)
+registersymbol(SelectedCharOrbmentBaseAddress)
+label(OrbmentIDReadInStatusOriginalAOB)
+registersymbol(OrbmentIDReadInStatusOriginalAOB)
+label(returnhere66)
+label(originalcode66)
+label(exit66)
+
+///
+newmem:
+  mov [SelectedCharPtr],esi
+  
+originalcode:
+  mov eax,[esi+0C]
+  push eax
+  lea ecx,[esp+44]
+  
+exit:
+  jmp returnhere
+
+///
+EquipmentIDReadInStatusOriginalAOB:
+  readmem(EquipmentIDReadInStatusAOB,8)
+
+SelectedCharEquipmentBaseAddress:
+readmem(EquipmentIDReadInStatusAOB+4,4)
+
+newmem11:
+  mov ecx,eax
+  add ecx,eax
+  add ecx,[SelectedCharEquipmentBaseAddress]
+  mov [SelectedCharEquipmentPtr],ecx
+  
+originalcode11:
+  push edx
+  mov edx,[SelectedCharEquipmentBaseAddress]
+  movzx ecx,word ptr [eax*2+edx]
+  pop edx
+  
+exit11:
+  jmp returnhere11
+
+///
+newmem22:
+  push edx
+  mov edx,[InventoryBasePtr]
+  sub edx,2
+  mov [InventoryIDBasePtr],edx
+  pop edx
+  
+originalcode22:
+  mov [ebx+000038CC],eax  
+
+exit22:
+  jmp returnhere22
+
+///
+newmem33:
+  mov [SelectedCharStatusPtr],ecx
+
+originalcode33:
+  movzx edx, word ptr [ecx+06]
+  mov [eax+10],dx
+  
+exit33:
+  jmp returnhere33
+
+///  
+CraftIDReadInStatusOriginalAOB:
+  readmem(CraftIDReadInStatusAOB,8)
+
+SelectedCharCraftBaseAddress:
+readmem(CraftIDReadInStatusAOB+4,4)
+
+newmem44:
+  mov edx,ecx
+  add edx,ecx
+  add edx,[SelectedCharCraftBaseAddress]
+  mov [SelectedCharCraftPtr],edx
+  
+originalcode44:
+  push ebx
+  mov ebx,[SelectedCharCraftBaseAddress]
+  add ebx,ecx
+  add ebx,ecx
+  movzx edx,word ptr [ebx]
+  pop ebx
+  
+exit44:
+  jmp returnhere44
+  
+///
+SCraftIDReadInStatusOriginalAOB:
+  readmem(SCraftIDReadInStatusAOB,8)
+
+SelectedCharSCraftBaseAddress:
+readmem(SCraftIDReadInStatusAOB+4,4)
+
+newmem55:
+  mov ecx,edi
+  imul ecx,8
+  add ecx,[SelectedCharSCraftBaseAddress]
+  mov [SelectedCharSCraftPtr],ecx
+  
+originalcode55:
+  movzx ecx,word ptr [ecx]
+  
+exit55:
+  jmp returnhere55
+
+///
+OrbmentIDReadInStatusOriginalAOB:
+  readmem(OrbmentIDReadInStatusAOB,8)
+
+SelectedCharOrbmentBaseAddress:
+readmem(OrbmentIDReadInStatusAOB+4,4)
+
+newmem66:
+  push ecx
+  mov ecx,0
+  mov ecx,eax
+  add ecx,eax
+  add ecx,eax
+  add ecx,eax
+  sub ecx,14
+  add ecx,[SelectedCharOrbmentBaseAddress]
+  mov [SelectedCharOrbmentPtr],ecx
+  
+originalcode66:
+  add ecx,14
+  movzx edx,word ptr [ecx]
+  pop ecx
+  
+exit66:
+  jmp returnhere66
+
+///
+SelectedCharPtr:
+dq 0
+SelectedCharEquipmentPtr:
+dq 0
+SelectedCharStatusPtr:
+dq 0
+SelectedCharCraftPtr:
+dq 0
+SelectedCharSCraftPtr:
+dq 0
+SelectedCharOrbmentPtr:
+dq 0
+InventorySlotOffset:
+dq 0
+InventoryIDBasePtr:
+dq 0
+
+MiraPtr:
+readmem(MiraReadInStatusAOB+D,4)
+
+EarthSepithPtr:
+readmem(EarthSepithWriteAOB+4,4)
+
+InventoryBasePtr:
+readmem(ItemUsageAOB+A,4)
+
+ExpReadInStatusAOB:
+  jmp newmem
+  nop
+  nop
+  nop
+  returnhere:
+
+EquipmentIDReadInStatusAOB:
+  jmp newmem11
+  nop
+  nop
+  nop
+  returnhere11:
+
+CharStatWriteAOB:
+  jmp newmem33
+  nop
+  nop
+  nop
+  returnhere33:
+
+CurrentItemSelectedAOB:
+  jmp newmem22
+  nop
+  returnhere22:
+
+CraftIDReadInStatusAOB:
+  jmp newmem44
+  nop
+  nop
+  nop
+  returnhere44:
+
+SCraftIDReadInStatusAOB:
+  jmp newmem55
+  nop
+  nop
+  nop
+  returnhere55:
+
+OrbmentIDReadInStatusAOB:
+  jmp newmem66
+  nop
+  nop
+  nop
+  returnhere66:
+
+[DISABLE]
+
+EXPReadInStatusAOB:
+  db 8B 46 0C 50 8D 4C 24 44
+
+EquipmentIDReadInStatusAOB:
+  readmem(EquipmentIDReadInStatusOriginalAOB,8)
+
+CharStatWriteAOB:
+  db 0F B7 51 06 66 89 50 10
+
+CurrentItemSelectedAOB:
+  db 89 83 CC 38 00 00
+
+CraftIDReadInStatusAOB:
+  readmem(CraftIDReadInStatusOriginalAOB,8)
+
+SCraftIDReadInStatusAOB:
+  readmem(SCraftIDReadInStatusOriginalAOB,8)
+
+OrbmentIDReadInStatusAOB:
+  readmem(OrbmentIDReadInStatusOriginalAOB,8)
+
+///
+unregistersymbol(EXPReadInStatusAOB)
+unregistersymbol(SelectedCharPtr)
+
+///
+unregistersymbol(SelectedCharStatusPtr)
+unregistersymbol(CharStatWriteAOB)
+
+///
+unregistersymbol(MiraReadInStatusAOB)
+unregistersymbol(MiraPtr)
+
+///
+unregistersymbol(EarthSepithWriteAOB)
+unregistersymbol(EarthSepithPtr)
+
+///
+unregistersymbol(EquipmentIDReadInStatusAOB)
+unregistersymbol(EquipmentIDReadInStatusOriginalAOB)
+unregistersymbol(SelectedCharEquipmentPtr)
+unregistersymbol(SelectedCharEquipmentBaseAddress)
+
+///
+unregistersymbol(ItemUsageAOB)
+unregistersymbol(InventoryBasePtr)
+unregistersymbol(CurrentItemSelectedAOB)
+unregistersymbol(InventorySlotOffset)
+unregistersymbol(InventoryIDBasePtr)
+
+///
+unregistersymbol(CraftIDReadInStatusAOB)
+unregistersymbol(CraftIDReadInStatusOriginalAOB)
+unregistersymbol(SelectedCharCraftPtr)
+unregistersymbol(SelectedCharCraftBaseAddress)
+
+///
+unregistersymbol(SCraftIDReadInStatusAOB)
+unregistersymbol(SCraftIDReadInStatusOriginalAOB)
+unregistersymbol(SelectedCharSCraftPtr)
+unregistersymbol(SelectedCharSCraftBaseAddress)
+
+///
+unregistersymbol(OrbmentIDReadInStatusAOB)
+unregistersymbol(OrbmentIDReadInStatusOriginalAOB)
+unregistersymbol(SelectedCharOrbmentPtr)
+unregistersymbol(SelectedCharOrbmentBaseAddress)
+
+dealloc(newmem)
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>100</ID>
+              <Description>"[Scripts]"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>200</ID>
+                  <Description>"Damage Modifier Script"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>{ Game   : ed6_win_DX9.exe
+  Version: 
+  Date   : 2017-05-03
+  Author : Turk
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(DamageModAOB,ed6_win_DX9.exe,2B C1 EB 02 33 C0 66 89 86 08 02 00 00) // should be unique
+registersymbol(DamageModAOB)
+alloc(newmem,2048,DamageModAOB)
+
+label(originalcode)
+label(return)
+label(DamageData)
+registersymbol(DamageData)
+
+newmem:
+  add eax,ecx
+  
+  cmp [DamageData+8],0
+  je _DamageCheck
+    cmp byte ptr [esi+A],FF
+    jne _DamageFail
+	imul ecx,[DamageData+8]  
+  _DamageCheck:	
+  cmp [DamageData+4],1
+  jne _DamageFail
+    cmp byte ptr [esi+A],FF
+    jne _DamageFail
+    mov ecx,#99999
+  _DamageFail:
+  cmp byte ptr [esi+A],FF
+  je _NotPlayer
+  cmp [DamageData],1
+  jne @F
+  mov ecx,0
+  @@:
+  _NotPlayer:
+  
+  cmp eax,ecx
+  ja originalcode
+  mov eax,0
+  mov [esi+0000208],ax
+  jmp return
+
+originalcode:
+  sub eax,ecx
+  mov [esi+0000208],ax
+
+  jmp return
+
+DamageData:
+  {0 = godmode
+  4 = 1 hit kill
+  8 = Enemy Damage Mult}
+
+DamageModAOB+6:
+  jmp newmem
+  nop
+  nop
+return:
+
+[DISABLE]
+
+DamageModAOB+6:
+  db 66 89 86 08 02 00 00
+
+unregistersymbol(DamageModAOB)
+unregistersymbol(DamageData)
+dealloc(newmem)
+</AssemblerScript>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>201</ID>
+                      <Description>"One Hit Kill"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+1:On
+</DropDownList>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>DamageData+4</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>202</ID>
+                      <Description>"God Mode"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+1:On
+</DropDownList>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>DamageData</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>203</ID>
+                      <Description>"Enemy Damage Multiplier (Set to Zero = Off; Otherwise multiplier"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>DamageData+8</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>205</ID>
+                  <Description>"Infinite Battle EP"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>{ Game   : ed6_win_DX9.exe
+  Version: 
+  Date   : 2017-05-04
+  Author : Turk
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(BattleEPModAOB,ed6_win_DX9.exe,2B C8 66 89 8E 0C 02 00 00 0F B7 C1) // should be unique
+registersymbol(BattleEPModAOB)
+alloc(newmem,2048,BattleEPModAOB)
+
+label(originalcode)
+label(return)
+
+newmem:
+  cmp byte ptr [esi+A],FF
+  je _NotPlayer
+  mov eax,0
+  @@:
+  _NotPlayer:
+
+  cmp edi,eax
+  ja originalcode
+  mov ecx,0
+  mov [esi+0000020C],cx
+  jmp return
+
+originalcode:
+  sub ecx,eax
+  mov [esi+0000020C],cx
+
+  jmp return
+  
+BattleEPModAOB:
+  jmp newmem
+  nop
+  nop
+  nop
+  nop
+return:
+  
+[DISABLE]
+
+BattleEPModAOB:
+  db 2B C8 66 89 8E 0C 02 00 00
+
+unregistersymbol(BattleEPModAOB)
+dealloc(newmem)				
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>210</ID>
+                  <Description>"Infinite Battle CP"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>{ Game   : ed6_win_DX9.exe
+  Version: 
+  Date   : 2017-05-04
+  Author : Turk
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(BattleCPModAOB,ed6_win_DX9.exe,2B CF 66 89 48 0A 0F B7 C9 66 89 48 0A) // should be unique
+registersymbol(BattleCPModAOB)
+alloc(newmem,2048,BattleCPModAOB)
+
+label(originalcode)
+label(return)
+
+newmem:
+  cmp byte ptr [esi+A],FF
+  je _NotPlayer
+  mov edi,0
+  _NotPlayer:
+
+  cmp ecx,edi
+  ja originalcode
+  mov ecx,0
+  mov [eax+0A],cx
+  jmp return
+
+originalcode:
+  sub ecx,edi
+  mov [eax+0A],cx
+
+  jmp return
+  
+BattleCPModAOB:
+  jmp newmem
+  nop
+return:
+  
+[DISABLE]
+BattleCPModAOB:
+  db 2B CF 66 89 48 0A
+
+unregistersymbol(BattleCPModAOB)
+dealloc(newmem)				
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>215</ID>
+                  <Description>"Max CP On Hit/Attack"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>{ Game   : ed6_win_DX9.exe
+  Version: 
+  Date   : 2017-05-04
+  Author : Turk
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(BattleCPMaxModAOB,ed6_win_DX9.exe,3B CA 7D 05 66 89 48 0A C3 66 89 50 0A) // should be unique
+registersymbol(BattleCPMaxModAOB)
+alloc(newmem,2048,BattleCPMaxModAOB)
+
+label(originalcode)
+label(return)
+
+newmem:
+  cmp byte ptr [esi+A],FF
+  je _NotPlayer
+  mov ecx,edx
+  _NotPlayer:
+
+originalcode:
+  mov [eax+0A],cx
+
+  jmp return
+  
+BattleCPMaxModAOB:
+  jmp newmem
+  nop
+  nop
+  nop
+return:
+  
+[DISABLE]
+BattleCPMaxModAOB:
+  db 3B CA 7D 05 66 89 48 0A
+
+unregistersymbol(BattleCPMaxModAOB)
+dealloc(newmem)
+				
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>220</ID>
+                  <Description>"Infinite Sepith (Creating Quartz)"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>{ Game   : ed6_win_DX9.exe
+  Version: 
+  Date   : 2017-05-04
+  Author : Turk
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+EarthSepithWriteAOB+1:
+  db 01
+
+[DISABLE]
+
+EarthSepithWriteAOB+1:
+  db 29
+
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>225</ID>
+                  <Description>"Infinite Item Usage"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>{ Game   : ed6_win_DX9.exe
+  Version: 
+  Date   : 2017-05-04
+  Author : Turk
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+alloc(newmem,2048,ItemUsageAOB)
+
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem:
+  mov esi,0	
+  
+originalcode:
+  sub ecx,esi
+exit:
+  jmp returnhere
+  
+ItemUsageAOB:
+  jmp newmem
+  nop
+returnhere:
+  
+[DISABLE]
+
+ItemUsageAOB:
+  db 3B D6 7E 0D 2B CE
+  
+dealloc(newmem)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>230</ID>
+                  <Description>"Exp Multiplier"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>{ Game   : ed6_win_DX9.exe
+  Version:
+  Date   : 2017-04-26
+  Author : Turk
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+aobscanmodule(ExpMultAOB,ed6_win_DX9.exe,03 CA 66 89 88 CC 21 00 00 C3) // should be unique
+alloc(newmem,2048,ExpMultAOB)
+registersymbol(ExpMultAOB)
+
+label(code)
+label(return)
+label(originalcode)
+label(ExpMult)
+registersymbol(ExpMult)
+
+newmem:
+
+code:
+  imul edx,[ExpMult]
+  
+originalcode:
+  add ecx,edx
+  cmp ecx,000001F4
+  jg @F
+  mov [eax+000021CC],cx
+  jmp return
+@@:
+  mov ecx,000001F4
+  mov [eax+000021CC],cx
+  jmp return 
+
+ExpMult:
+  dd 5
+
+ExpMultAOB:
+  jmp newmem
+  nop
+  nop
+  nop
+  nop
+return:
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+ExpMultAOB:
+  db 03 CA 66 89 88 CC 21 00 00
+
+unregistersymbol(ExpMultAOB)
+unregistersymbol(ExpMult)
+dealloc(newmem)
+</AssemblerScript>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>231</ID>
+                      <Description>"Multiplier"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>ExpMult</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>240</ID>
+                  <Description>"Infinite Out Of Battle EP"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>{ Game   : ed6_win_DX9.exe
+  Version: 
+  Date   : 2017-05-04
+  Author : Turk
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(OutBattleEPModAOB,ed6_win_DX9.exe,2B C8 66 89 4E 08 0F B7 C1 66 89 46 08 C6 44 24 14 00) // should be unique
+registersymbol(OutBattleEPModAOB)
+alloc(newmem,2048,OutBattleEPModAOB)
+
+label(originalcode)
+label(return)
+
+newmem:
+  mov eax,0
+
+  cmp edx,eax
+  ja originalcode
+  mov ecx,0
+  mov [esi+08],cx
+  jmp return
+
+originalcode:
+  sub ecx,eax
+  mov [esi+08],cx
+
+  jmp return
+  
+OutBattleEPModAOB:
+  jmp newmem
+  nop
+return:
+  
+[DISABLE]
+
+OutBattleEPModAOB:
+  db 2B C8 66 89 4E 08
+
+unregistersymbol(OutBattleEPModAOB)
+dealloc(newmem)				
+				</AssemblerScript>
+                </CheatEntry>				
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>300</ID>
+              <Description>"Pointers"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" Activated="1" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>301</ID>
+                  <Description>"Mira"</Description>
+                  <LastState Value="254180" RealAddress="015D5478"/>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>MiraPtr</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>302</ID>
+                  <Description>"Bracer Points"</Description>
+                  <LastState Value="25" RealAddress="015D547C"/>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>MiraPtr</Address>
+                  <Offsets>
+                    <Offset>4</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>305</ID>
+                  <Description>"Quartz"</Description>
+                  <Options moHideChildren="1" moRecursiveSetValue="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>310</ID>
+                      <Description>"Earth Sepith"</Description>
+                      <LastState Value="3066" RealAddress="015D5480"/>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>EarthSepithPtr</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>311</ID>
+                      <Description>"Water Sepith"</Description>
+                      <LastState Value="3007" RealAddress="015D5484"/>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>EarthSepithPtr</Address>
+                      <Offsets>
+                        <Offset>4</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>312</ID>
+                      <Description>"Fire Sepith"</Description>
+                      <LastState Value="3017" RealAddress="015D5488"/>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>EarthSepithPtr</Address>
+                      <Offsets>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>313</ID>
+                      <Description>"Wind Sepith"</Description>
+                      <LastState Value="3042" RealAddress="015D548C"/>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>EarthSepithPtr</Address>
+                      <Offsets>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>314</ID>
+                      <Description>"Time Sepith"</Description>
+                      <LastState Value="3045" RealAddress="015D5490"/>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>EarthSepithPtr</Address>
+                      <Offsets>
+                        <Offset>10</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>315</ID>
+                      <Description>"Space Sepith"</Description>
+                      <LastState Value="3010" RealAddress="015D5494"/>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>EarthSepithPtr</Address>
+                      <Offsets>
+                        <Offset>14</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>316</ID>
+                      <Description>"Mirage Sepith"</Description>
+                      <LastState Value="3025" RealAddress="015D5498"/>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>EarthSepithPtr</Address>
+                      <Offsets>
+                        <Offset>18</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>330</ID>
+                  <Description>"Selected Character (In Status Screen)"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" Activated="1" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>340</ID>
+                      <Description>"Experience"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>SelectedCharPtr</Address>
+                      <Offsets>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>370</ID>
+                      <Description>"Character Stats"</Description>
+                      <Options moHideChildren="1"/>
+                      <LastState Value="" Activated="1" RealAddress="00000000"/>
+                      <GroupHeader>1</GroupHeader>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>371</ID>
+                          <Description>"HP"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>SelectedCharStatusPtr</Address>
+                          <Offsets>
+                            <Offset>2</Offset>
+                          </Offsets>
+                          <Hotkeys>
+                            <Hotkey>
+                              <Action>Increase Value</Action>
+                              <Keys>
+                                <Key>112</Key>
+                              </Keys>
+                              <Value>1000</Value>
+                              <Description>Add 1000 to HP</Description>
+                              <ID>0</ID>
+                            </Hotkey>
+                          </Hotkeys>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>372</ID>
+                          <Description>"Strength"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>SelectedCharStatusPtr</Address>
+                          <Offsets>
+                            <Offset>6</Offset>
+                          </Offsets>
+                          <Hotkeys>
+                            <Hotkey>
+                              <Action>Increase Value</Action>
+                              <Keys>
+                                <Key>113</Key>
+                              </Keys>
+                              <Value>100</Value>
+                              <Description>Add 100 to Strength</Description>
+                              <ID>0</ID>
+                            </Hotkey>
+                          </Hotkeys>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>373</ID>
+                          <Description>"Defense"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>SelectedCharStatusPtr</Address>
+                          <Offsets>
+                            <Offset>8</Offset>
+                          </Offsets>
+                          <Hotkeys>
+                            <Hotkey>
+                              <Action>Increase Value</Action>
+                              <Keys>
+                                <Key>114</Key>
+                              </Keys>
+                              <Value>100</Value>
+                              <Description>Add 100 to Defense</Description>
+                              <ID>0</ID>
+                            </Hotkey>
+                          </Hotkeys>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>374</ID>
+                          <Description>"Magic Strength (ATS)"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>SelectedCharStatusPtr</Address>
+                          <Offsets>
+                            <Offset>A</Offset>
+                          </Offsets>
+                          <Hotkeys>
+                            <Hotkey>
+                              <Action>Increase Value</Action>
+                              <Keys>
+                                <Key>115</Key>
+                              </Keys>
+                              <Value>100</Value>
+                              <Description>Add 100 to Magic Strength (ATS)</Description>
+                              <ID>0</ID>
+                            </Hotkey>
+                          </Hotkeys>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>375</ID>
+                          <Description>"Magic Defense (ADF)"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>SelectedCharStatusPtr</Address>
+                          <Offsets>
+                            <Offset>C</Offset>
+                          </Offsets>
+                          <Hotkeys>
+                            <Hotkey>
+                              <Action>Increase Value</Action>
+                              <Keys>
+                                <Key>116</Key>
+                              </Keys>
+                              <Value>100</Value>
+                              <Description>Add 100 to Magic Defense (ADF)</Description>
+                              <ID>0</ID>
+                            </Hotkey>
+                          </Hotkeys>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>376</ID>
+                          <Description>"Speed"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>SelectedCharStatusPtr</Address>
+                          <Offsets>
+                            <Offset>14</Offset>
+                          </Offsets>
+                          <Hotkeys>
+                            <Hotkey>
+                              <Action>Increase Value</Action>
+                              <Keys>
+                                <Key>117</Key>
+                              </Keys>
+                              <Value>50</Value>
+                              <Description>Add 50 to Speed</Description>
+                              <ID>0</ID>
+                            </Hotkey>
+                          </Hotkeys>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>377</ID>
+                          <Description>"Dexterity"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>SelectedCharStatusPtr</Address>
+                          <Offsets>
+                            <Offset>E</Offset>
+                          </Offsets>
+                          <Hotkeys>
+                            <Hotkey>
+                              <Action>Increase Value</Action>
+                              <Keys>
+                                <Key>118</Key>
+                              </Keys>
+                              <Value>50</Value>
+                              <Description>Add 50 to Dexterity</Description>
+                              <ID>0</ID>
+                            </Hotkey>
+                          </Hotkeys>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>378</ID>
+                          <Description>"Agility"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>SelectedCharStatusPtr</Address>
+                          <Offsets>
+                            <Offset>10</Offset>
+                          </Offsets>
+                          <Hotkeys>
+                            <Hotkey>
+                              <Action>Increase Value</Action>
+                              <Keys>
+                                <Key>119</Key>
+                              </Keys>
+                              <Value>50</Value>
+                              <Description>Add 50 to Agility</Description>
+                              <ID>0</ID>
+                            </Hotkey>
+                          </Hotkeys>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>379</ID>
+                          <Description>"Movement"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>SelectedCharStatusPtr</Address>
+                          <Offsets>
+                            <Offset>12</Offset>
+                          </Offsets>
+                          <Hotkeys>
+                            <Hotkey>
+                              <Action>Increase Value</Action>
+                              <Keys>
+                                <Key>120</Key>
+                              </Keys>
+                              <Value>25</Value>
+                              <Description>Add 25 to Movement</Description>
+                              <ID>0</ID>
+                            </Hotkey>
+                          </Hotkeys>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>343</ID>
+                      <Description>"Character Equipment"</Description>
+                      <Options moHideChildren="1"/>
+                      <LastState Value="" RealAddress="00000000"/>
+                      <GroupHeader>1</GroupHeader>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>345</ID>
+                          <Description>"Equipped Weapon"</Description>
+                          <VariableType>2 Bytes</VariableType>
+						  <DropDownList DescriptionOnly="1">
+0000:None
+==Weapons==============
+0001:Birch Staff-[STR+3/RNG+1] A light wooden staff polished to a fine finish.
+0002:Pile Rod-[STR+7/RNG+1] A battle staff reinforced with metal rings at each end.
+0003:Stun Rod-[STR+20/RNG+1] A full-blown fighting staff with a heavy metallic core.
+0004:Hex Stave-[STR+40/RNG+1] A staff made of ultra-hard wood. Plain, but packs a wallop.
+0005:Spike Rod-[STR+65/RNG+1] A staff with sharp ends. Great for making a point.
+0006:Tin Staff-[STR+10/RNG+1] A thin metallic staff said to be used by monks in the East.
+0007:Octavian Stave-[STR+80/RNG+1] An Eastern-style staff coated with a hardened resin.
+0008:Battle Staff-[STR+90/RNG+1] A large staff that requires a lot of training to wield.
+000A:Arc Rod-[STR+120/RNG+1] A staff crafted out of a mysterious, unidentified alloy.
+0010:Laundry Pole-[STR+7/RNG+2] Laundry pole turned weapon. Ingenious or pathetic?
+0011:Mystic Stave-[STR+130/RNG+1] An Eastern staff with designs depicting universal axioms.
+001F:Twin Dirks-[STR+4] Dirks with sharp blades. Small and easy to conceal.
+0020:Kunai-[STR+7] Unique multi-purpose weapons of Eastern legacy.
+0021:Dual Razors-[STR+21] Small daggers with ultra-thin blades made for cutting.
+0022:Katars-[STR+30] Short swords with a peculiar shape suitable for stabbing.
+0023:Baselards-[STR+42] Distinctive, sturdy short swords with curved hand-guards.
+0024:Schneiders-[STR+90] Small, lightweight daggers with double-edged tips.
+0027:Gurkha Knives-[STR+66] Sword with fierce edges on their curved inner blades.
+0028:Demi-Handers-[STR+80] Dirks used for covert ops. Subtle with a matte surface.
+0029:Erbe Blades-[STR+120] Ancient black knives made of unknown materials.
+002D:Skull Daggers-[STR+45 ATS-10] Roguish short swords with skulls carved into them.
+002F:Paring Knives-[STR+10] Used by pro chefs...and sometimes in domestic disputes...
+0030:Twin Plovers-[STR+130] Eastern-forged swords sheathed in checkered scabbards.
+003D:Viper-[STR+12/RNG+2] A light, easy to handle leather whip.
+003E:Blitz-[STR+22/RNG+2] A leather whip interwoven with a thin chain for more power.
+003F:Scorpion-[STR+35/RNG+2] A battle whip with a steel claw attached to the fall.
+0040:Sidewinder-[STR+90/RNG+2] A serpentine-like whip confected with sleek metal fittings.
+0041:Nine Tails-[STR+120/RNG+2] A whip made of ancient beast hide with a mysterious shine.
+005A:Needler-[STR+20/RNG+4] A popular orbal gun made by the Empire's Reinford Company.
+005B:Hawkeye-[STR+100/RNG+4] An orbal gun by the Verne Corporation for sport shooting.
+005C:Stinger-[STR+80/RNG+4] An orbal gun made by the Reinford Co. Uses spicular rounds.
+005D:Silver Star-[STR+90/RNG+4] A luxury model by the Reinford Co. Has a high output.
+005E:Bear Assault-[STR+35/RNG+4] A large caliber hunting gun made by the Verne Corporation.
+0060:Magesta-[STR+120/RNG+4] An ancient orbal weapon that fires powerful energy bursts.
+0065:Zero Shot (X)-[STR+95/SPD-2/RNG+3] An experimental gun from the Central Factory. Slow to fire.
+0077:Rapier-[STR+30] A thin needle-like sword for piercing.
+0078:Sabre-[STR+40] An ornate long-sword used for formal occasions.
+0079:Flamberge-[STR+50] A long sword with an exquisite undulating wave-like blade.
+007A:Estoc-[STR+90] A staunch sword which can easily pierce metallic armor.
+007E:Hauteclere-[STR+120] An ethereal sword of platinum formerly used by knights.
+0097:Broad Edge-[STR+35] A rugged broadsword with a wide blade.
+0098:Claymore-[STR+45] A two-handed sword with a cross-shaped hilt. Big and sharp.
+0099:Bastard Edge-[STR+70] A heavy two-handed sword used for duels in the dark ages.
+009A:Zweihaender-[STR+90] A giant two-handed sword used to take down mounted foes.
+009B:Rhomphaia-[STR+60] A large weapon with a curved blade attached to a long hilt.
+009C:Cavalier Killer-[STR+80] An Eastern sword the height of a man, used against horses.
+009D:Berserker-[STR+120] An ancient black sword forged from unknown materials.
+00B5:P-03-[STR+50/RNG+3/Area (S)] A low recoil orbal cannon made by the Zeiss Central Factory.
+00B7:Craft Cannon-[STR+60/RNG+4/Area (S)] A revamped model of the P-03 with an enhanced drive orbment.
+00B8:P-05-[STR+90/RNG+4/Area (S)] A new type of orbal cannon from the Zeiss Central Factory.
+00B9:G-Impact-[STR+75/RNG+4/Area (M)] A forgotten experimental high-output orbal cannon.
+00BB:Thor's Hammer-[STR+120/RNG+4/Area (M)] An ancient orbal weapon that fires powerful energy bursts.
+00D3:Brass Knuckles-[STR+65] A reinforced glove made of soft metal.
+00D4:Hide Gauntlet-[STR+70] A specially treated leather gauntlet. Flexible and tough.
+00D5:Cestus-[STR+100] A battle gauntlet with rivets implanted in the knuckles.
+00D6:Steel Gauntlet-[STR+85] An Eastern steel gauntlet. Reinforced with a hardened resin.
+00D9:Daedalus Arm-[STR+120] An arcane gauntlet which transforms according to need.
+						  </DropDownList>
+						  <ShowAsHex>1</ShowAsHex>
+                          <Address>SelectedCharEquipmentPtr</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>346</ID>
+                          <Description>"Equipped Body Armor"</Description>
+                          <VariableType>2 Bytes</VariableType>
+						  <DropDownList DescriptionOnly="1">
+0000:None
+==Armor==============
+00F1:Leather Vest-[DEF+5] A vest made of nice, soft leather.
+00F2:Armor Vest-[DEF+10/ADF+2] A vest with an iron plate in the chest for more protection.
+00F3:Leather Jacket-[DEF+25/ADF+2] A robust, tailored jacket made of thick leather.
+00F4:Shield Vest-[DEF+45/ADF+4] A protective vest embedded with numerous small iron plates.
+00F5:Metal Jacket-[DEF+75/ADF+4] A protective jacket made of woven metallic fibers.
+00F6:Shield Coat-[DEF+100/ADF+6] A protective coat made of a specially processed material.
+00F7:Hide Jumpsuit-[DEF+12/ADF+2] A jumpsuit made of inexpensive beast hide.
+00F8:Chain Mail-[DEF+30/ADF+4] Sheer protective clothing made of interwoven metal chains.
+00F9:Battle Suit-[DEF+50/ADF+6] Armor padded in various places to absorb shock.
+00FA:Black Coat-[DEF+80/ADF+8] A Central Factory product. Can repel edged weapons.
+00FB:Reflector-[DEF+105/ADF+10] A protective coat reinforced with a special anti-art layer.
+00FC:Work Jumpsuit-[DEF+50] A thick cloth worksuit that doesn't shrink in the wash.
+00FD:Royal Guard-[DEF+120/ADF+10/Men Only] Armor worn by knights of old. Lauded for its total defense.
+00FE:Valkyrie Dress-[DEF+120/ADF+10/Women Only] A female warrior's gown for battle alongside the knights.
+						  </DropDownList>
+						  <ShowAsHex>1</ShowAsHex>						  
+                          <Address>SelectedCharEquipmentPtr</Address>
+                          <Offsets>
+                            <Offset>2</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>347</ID>
+                          <Description>"Equipped Boots"</Description>
+                          <VariableType>2 Bytes</VariableType>
+						  <DropDownList DescriptionOnly="1">
+0000:None
+==Boots==============
+010F:Leather Boots-[DEF+2] A pair of tanned leather boots. Light and flexible.
+0110:Spikes-[DEF+5] A pair of shoes with pointy, non-skid soles.
+0111:Work Boots-[DEF+8/MOV+1] Rugged boots for laborers with top-rated craftsmanship.
+0112:Double Spikes-[DEF+12/MOV+1] A pair of shoes with spiky, non-skid soles.
+0113:Craft Shoes-[DEF+20/MOV+2] A new type of training shoe developed for rigorous workouts.
+0114:Composites-[DEF+30/MOV+2] Protective boots for professionals. Made of tough materials.
+0115:Knitted Shoes-[DEF+7/MOV+1] Simple shoes knitted from natural materials. Light and tough.
+0116:Strega-R-[DEF+10/MOV+1] The regular model of Strega-brand sneakers.
+0117:Army Boots-[DEF+15/MOV+2] The formal wear of the Royal Army and popular with soldiers.
+0118:Strega-G-[DEF+23/MOV+2] The high-end model of Strega-brand sneakers.
+0119:Atlas Gear-[DEF+35/MOV+3/Men Only] Boots made of metallic-fibers which feel nearly weightless.
+011A:Sylphen Boots-[DEF+35/MOV+3/Women Only] Mysterious boots that make your feet feel lighter than air.
+011B:Holey Boots-[DEF+1/MOV+3] Often the catch of the day at fishing spots. Light and airy.
+011C:(Alpha) Strega-[DEF+10/MOV+2] A pair of test shoes made for Estelle.
+011D:(Beta) Strega-[DEF+25/MOV+2] The newest model of upcoming Strega-brand sneakers.
+011E:Strega-J-[DEF+6/MOV+1] The junior model of Strega-brand sneakers.
+011F:Steel-Toed Boots-[DEF+12] Heavy-duty boots great for heavy-duty labor.
+						  </DropDownList>
+						  <ShowAsHex>1</ShowAsHex>						  
+                          <Address>SelectedCharEquipmentPtr</Address>
+                          <Offsets>
+                            <Offset>4</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>348</ID>
+                          <Description>"Equipped Accessory 1"</Description>
+                          <VariableType>2 Bytes</VariableType>
+						  <DropDownList DescriptionOnly="1">
+0000:None
+==Accessories==============
+012D:Silver Earring-[Prevents poison] A silver accessory blessed by the Goddess, Aidios.
+012E:Lighter-[Prevents freeze] A good-luck charm carried by hikers to combat the cold.
+012F:Mirage Ring-[Prevents petrify] A ring set with a mysterious rainbow-colored gem.
+0130:Black Bangle-[Prevents sleep] A leather wristband that stimulates a pressure point.
+0131:Glam Choker-[Prevents mute] A special necklace that diverts the effects of anti-sept.
+0132:White Bracelet-[Prevents blind] A bangle that emits pure white light to prevent blindness.
+0133:Pearl Earring-[Prevents seal] An earring with a precious pearl imported from the East.
+0134:Lily Necklace-[Prevents confuse] A necklace that gives off a calming floral fragrance.
+0135:Feather Brooch-[Prevents faint] A brooch featuring a vivid blue feather.
+0136:Skull Pendant-[Prevents deathblows] A bone pendant with a skull carved into its surface.
+0137:T-Anklet-[Prevents freeze/petrify] An anklet which repels hindrances to movement.
+0138:Crest Charm-[Prevents sleep/faint] A crescent amulet that protects the wearer's consciousness.
+0139:Grail Locket-[Prevents all abnormal status (except K.O.)] An ornament modeled after a holy Septian artifact.
+0141:Topaz Talisman-A talisman crafted from a type of septium. The wearer's attack and defense will become earth-based.
+0142:Sapphire Talisman-A talisman crafted from a type of septium. The wearer's attack and defense will become water-based.
+0143:Ruby Talisman-A talisman crafted from a type of septium. The wearer's attack and defense will become fire-based.
+0144:Emerald Talisman-A talisman crafted from a type of septium. The wearer's attack and defense will become wind-based.
+0145:Proxy Puppet-[Prevents K.O.] Defends against K.O. one time but breaks afterwards.
+0146:Gladiator Headband-[STR+5/DEF-5/CP Up+10%] A motivating headband. CP recovery rate rises in battle.
+0147:Gladiator Belt-[STR+10/DEF-10/Auto-CP Up] A motivating belt. CP automatically recovers during battle.
+0148:Work Helmet-[DEF+3] An essential piece of headgear for laborers.
+0149:Red Scarf-[DEF+2] Gaudy neckwear to accent the collar. Painfully bright.
+014A:Woolly Knit-Hat-[DEF+3] A cute, fluffy yarn cap. A great gift for a young girl.
+014D:Work Gloves-[DEF+3] Extra thick gloves. A standard gift for utility workers.
+014E:Jeweled Ring-[DEF+2] An expensive ring fitted with an incandescent gem.
+014F:Long Barrel-[RNG+2] Increases the firing range of orbal guns and cannons.
+						  </DropDownList>
+						  <ShowAsHex>1</ShowAsHex>						  
+                          <Address>SelectedCharEquipmentPtr</Address>
+                          <Offsets>
+                            <Offset>6</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>349</ID>
+                          <Description>"Equipped Accessory 2"</Description>
+                          <VariableType>2 Bytes</VariableType>
+						  <DropDownList DescriptionOnly="1">
+0000:None
+==Accessories==============
+012D:Silver Earring-[Prevents poison] A silver accessory blessed by the Goddess, Aidios.
+012E:Lighter-[Prevents freeze] A good-luck charm carried by hikers to combat the cold.
+012F:Mirage Ring-[Prevents petrify] A ring set with a mysterious rainbow-colored gem.
+0130:Black Bangle-[Prevents sleep] A leather wristband that stimulates a pressure point.
+0131:Glam Choker-[Prevents mute] A special necklace that diverts the effects of anti-sept.
+0132:White Bracelet-[Prevents blind] A bangle that emits pure white light to prevent blindness.
+0133:Pearl Earring-[Prevents seal] An earring with a precious pearl imported from the East.
+0134:Lily Necklace-[Prevents confuse] A necklace that gives off a calming floral fragrance.
+0135:Feather Brooch-[Prevents faint] A brooch featuring a vivid blue feather.
+0136:Skull Pendant-[Prevents deathblows] A bone pendant with a skull carved into its surface.
+0137:T-Anklet-[Prevents freeze/petrify] An anklet which repels hindrances to movement.
+0138:Crest Charm-[Prevents sleep/faint] A crescent amulet that protects the wearer's consciousness.
+0139:Grail Locket-[Prevents all abnormal status (except K.O.)] An ornament modeled after a holy Septian artifact.
+0141:Topaz Talisman-A talisman crafted from a type of septium. The wearer's attack and defense will become earth-based.
+0142:Sapphire Talisman-A talisman crafted from a type of septium. The wearer's attack and defense will become water-based.
+0143:Ruby Talisman-A talisman crafted from a type of septium. The wearer's attack and defense will become fire-based.
+0144:Emerald Talisman-A talisman crafted from a type of septium. The wearer's attack and defense will become wind-based.
+0145:Proxy Puppet-[Prevents K.O.] Defends against K.O. one time but breaks afterwards.
+0146:Gladiator Headband-[STR+5/DEF-5/CP Up+10%] A motivating headband. CP recovery rate rises in battle.
+0147:Gladiator Belt-[STR+10/DEF-10/Auto-CP Up] A motivating belt. CP automatically recovers during battle.
+0148:Work Helmet-[DEF+3] An essential piece of headgear for laborers.
+0149:Red Scarf-[DEF+2] Gaudy neckwear to accent the collar. Painfully bright.
+014A:Woolly Knit-Hat-[DEF+3] A cute, fluffy yarn cap. A great gift for a young girl.
+014D:Work Gloves-[DEF+3] Extra thick gloves. A standard gift for utility workers.
+014E:Jeweled Ring-[DEF+2] An expensive ring fitted with an incandescent gem.
+014F:Long Barrel-[RNG+2] Increases the firing range of orbal guns and cannons.
+						  </DropDownList>
+						  <ShowAsHex>1</ShowAsHex>						  
+                          <Address>SelectedCharEquipmentPtr</Address>
+                          <Offsets>
+                            <Offset>8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>380</ID>
+                      <Description>"Character Crafts"</Description>
+                      <Options moHideChildren="1"/>
+                      <LastState Value="" RealAddress="00000000"/>
+                      <GroupHeader>1</GroupHeader>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>381</ID>
+                          <Description>"Craft 1 ID"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>SelectedCharCraftPtr</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>382</ID>
+                          <Description>"Craft 1 Unknown Value"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>SelectedCharCraftPtr</Address>
+                          <Offsets>
+                            <Offset>2</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>383</ID>
+                          <Description>"Craft 2 ID"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>SelectedCharCraftPtr</Address>
+                          <Offsets>
+                            <Offset>4</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>384</ID>
+                          <Description>"Craft 2 Unknown Value"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>SelectedCharCraftPtr</Address>
+                          <Offsets>
+                            <Offset>6</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>385</ID>
+                          <Description>"Craft 3 ID"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>SelectedCharCraftPtr</Address>
+                          <Offsets>
+                            <Offset>8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>386</ID>
+                          <Description>"Craft 3 Unknown Value"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>SelectedCharCraftPtr</Address>
+                          <Offsets>
+                            <Offset>A</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>387</ID>
+                          <Description>"Craft 4 ID"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>SelectedCharCraftPtr</Address>
+                          <Offsets>
+                            <Offset>C</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>388</ID>
+                          <Description>"Craft 4 Unknown Value"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>SelectedCharCraftPtr</Address>
+                          <Offsets>
+                            <Offset>E</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>389</ID>
+                          <Description>"Craft 5 ID"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>SelectedCharCraftPtr</Address>
+                          <Offsets>
+                            <Offset>10</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>390</ID>
+                          <Description>"Craft 5 Unknown Value"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>SelectedCharCraftPtr</Address>
+                          <Offsets>
+                            <Offset>12</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>391</ID>
+                          <Description>"Craft 6 ID"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>SelectedCharCraftPtr</Address>
+                          <Offsets>
+                            <Offset>14</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>392</ID>
+                          <Description>"Craft 6 Unknown Value"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>SelectedCharCraftPtr</Address>
+                          <Offsets>
+                            <Offset>16</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>400</ID>
+                      <Description>"Character S-Crafts"</Description>
+                      <Options moHideChildren="1"/>
+                      <LastState Value="" RealAddress="00000000"/>
+                      <GroupHeader>1</GroupHeader>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>401</ID>
+                          <Description>"S-Craft 1"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>SelectedCharSCraftPtr</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>402</ID>
+                          <Description>"S-Craft 2"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>SelectedCharSCraftPtr</Address>
+                          <Offsets>
+                            <Offset>2</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>403</ID>
+                          <Description>"S-Craft 3"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>SelectedCharSCraftPtr</Address>
+                          <Offsets>
+                            <Offset>4</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>404</ID>
+                          <Description>"S-Craft 4"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>SelectedCharSCraftPtr</Address>
+                          <Offsets>
+                            <Offset>6</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>410</ID>
+                      <Description>"Character Orbments"</Description>
+                      <Options moHideChildren="1"/>
+                      <LastState Value="" RealAddress="00000000"/>
+                      <GroupHeader>1</GroupHeader>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>411</ID>
+                          <Description>"Orbment Slot 1 Item ID"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>SelectedCharOrbmentPtr</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>412</ID>
+                          <Description>"Orbment Slot 1 Unlock Level"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>SelectedCharOrbmentPtr</Address>
+                          <Offsets>
+                            <Offset>2</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>413</ID>
+                          <Description>"Orbment Slot 2 Item ID"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>SelectedCharOrbmentPtr</Address>
+                          <Offsets>
+                            <Offset>4</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>414</ID>
+                          <Description>"Orbment Slot 2 Unlock Level"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>SelectedCharOrbmentPtr</Address>
+                          <Offsets>
+                            <Offset>6</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>415</ID>
+                          <Description>"Orbment Slot 3 Item ID"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>SelectedCharOrbmentPtr</Address>
+                          <Offsets>
+                            <Offset>8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>416</ID>
+                          <Description>"Orbment Slot 3 Unlock Level"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>SelectedCharOrbmentPtr</Address>
+                          <Offsets>
+                            <Offset>A</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>417</ID>
+                          <Description>"Orbment Slot 4 Item ID"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>SelectedCharOrbmentPtr</Address>
+                          <Offsets>
+                            <Offset>C</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>418</ID>
+                          <Description>"Orbment Slot 4 Unlock Level"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>SelectedCharOrbmentPtr</Address>
+                          <Offsets>
+                            <Offset>E</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>419</ID>
+                          <Description>"Orbment Slot 5 Item ID"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>SelectedCharOrbmentPtr</Address>
+                          <Offsets>
+                            <Offset>10</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>420</ID>
+                          <Description>"Orbment Slot 5 Unlock Level"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>SelectedCharOrbmentPtr</Address>
+                          <Offsets>
+                            <Offset>12</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>421</ID>
+                          <Description>"Orbment Slot 6 Item ID"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>SelectedCharOrbmentPtr</Address>
+                          <Offsets>
+                            <Offset>14</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>422</ID>
+                          <Description>"Orbment Slot 6 Unlock Level"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>SelectedCharOrbmentPtr</Address>
+                          <Offsets>
+                            <Offset>16</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>360</ID>
+                  <Description>"Inventory Editor (Mouseover an Item Once and Choose Slot Manually)"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>361</ID>
+                      <Description>"Inventory Slot"</Description>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>InventorySlotOffset</Address>
+					  <DropDownList DescriptionOnly="1">
+0000:Slot 1
+0004:Slot 2
+0008:Slot 3
+000C:Slot 4
+0010:Slot 5
+0014:Slot 6
+0018:Slot 7
+001C:Slot 8
+0020:Slot 9
+0024:Slot 10
+0028:Slot 11
+002C:Slot 12
+0030:Slot 13
+0034:Slot 14
+0038:Slot 15
+003C:Slot 16
+0040:Slot 17
+0044:Slot 18
+0048:Slot 19
+004C:Slot 20
+0050:Slot 21
+0054:Slot 22
+0058:Slot 23
+005C:Slot 24
+0060:Slot 25
+0064:Slot 26
+0068:Slot 27
+006C:Slot 28
+0070:Slot 29
+0074:Slot 30
+0078:Slot 31
+007C:Slot 32
+0080:Slot 33
+0084:Slot 34
+0088:Slot 35
+008C:Slot 36
+0090:Slot 37
+0094:Slot 38
+0098:Slot 39
+009C:Slot 40
+00A0:Slot 41
+00A4:Slot 42
+00A8:Slot 43
+00AC:Slot 44
+00B0:Slot 45
+00B4:Slot 46
+00B8:Slot 47
+00BC:Slot 48
+00C0:Slot 49
+00C4:Slot 50
+00C8:Slot 51
+00CC:Slot 52
+00D0:Slot 53
+00D4:Slot 54
+00D8:Slot 55
+00DC:Slot 56
+00E0:Slot 57
+00E4:Slot 58
+00E8:Slot 59
+00EC:Slot 60
+00F0:Slot 61
+00F4:Slot 62
+00F8:Slot 63
+00FC:Slot 64
+0100:Slot 65
+0104:Slot 66
+0108:Slot 67
+010C:Slot 68
+0110:Slot 69
+0114:Slot 70
+0118:Slot 71
+011C:Slot 72
+0120:Slot 73
+0124:Slot 74
+0128:Slot 75
+012C:Slot 76
+0130:Slot 77
+0134:Slot 78
+0138:Slot 79
+013C:Slot 80
+0140:Slot 81
+0144:Slot 82
+0148:Slot 83
+014C:Slot 84
+0150:Slot 85
+0154:Slot 86
+0158:Slot 87
+015C:Slot 88
+0160:Slot 89
+0164:Slot 90
+0168:Slot 91
+016C:Slot 92
+0170:Slot 93
+0174:Slot 94
+0178:Slot 95
+017C:Slot 96
+0180:Slot 97
+0184:Slot 98
+0188:Slot 99
+018C:Slot 100
+0190:Slot 101
+0194:Slot 102
+0198:Slot 103
+019C:Slot 104
+01A0:Slot 105
+01A4:Slot 106
+01A8:Slot 107
+01AC:Slot 108
+01B0:Slot 109
+01B4:Slot 110
+01B8:Slot 111
+01BC:Slot 112
+01C0:Slot 113
+01C4:Slot 114
+01C8:Slot 115
+01CC:Slot 116
+01D0:Slot 117
+01D4:Slot 118
+01D8:Slot 119
+01DC:Slot 120
+01E0:Slot 121
+01E4:Slot 122
+01E8:Slot 123
+01EC:Slot 124
+01F0:Slot 125
+01F4:Slot 126
+01F8:Slot 127
+01FC:Slot 128
+0200:Slot 129
+0204:Slot 130
+0208:Slot 131
+020C:Slot 132
+0210:Slot 133
+0214:Slot 134
+0218:Slot 135
+021C:Slot 136
+0220:Slot 137
+0224:Slot 138
+0228:Slot 139
+022C:Slot 140
+0230:Slot 141
+0234:Slot 142
+0238:Slot 143
+023C:Slot 144
+0240:Slot 145
+0244:Slot 146
+0248:Slot 147
+024C:Slot 148
+0250:Slot 149
+0254:Slot 150
+0258:Slot 151
+025C:Slot 152
+0260:Slot 153
+0264:Slot 154
+0268:Slot 155
+026C:Slot 156
+0270:Slot 157
+0274:Slot 158
+0278:Slot 159
+027C:Slot 160
+0280:Slot 161
+0284:Slot 162
+0288:Slot 163
+028C:Slot 164
+0290:Slot 165
+0294:Slot 166
+0298:Slot 167
+029C:Slot 168
+02A0:Slot 169
+02A4:Slot 170
+02A8:Slot 171
+02AC:Slot 172
+02B0:Slot 173
+02B4:Slot 174
+02B8:Slot 175
+02BC:Slot 176
+02C0:Slot 177
+02C4:Slot 178
+02C8:Slot 179
+02CC:Slot 180
+02D0:Slot 181
+02D4:Slot 182
+02D8:Slot 183
+02DC:Slot 184
+02E0:Slot 185
+02E4:Slot 186
+02E8:Slot 187
+02EC:Slot 188
+02F0:Slot 189
+02F4:Slot 190
+02F8:Slot 191
+02FC:Slot 192
+0300:Slot 193
+0304:Slot 194
+0308:Slot 195
+030C:Slot 196
+0310:Slot 197
+0314:Slot 198
+0318:Slot 199
+031C:Slot 200
+0320:Slot 201
+0324:Slot 202
+0328:Slot 203
+032C:Slot 204
+0330:Slot 205
+0334:Slot 206
+0338:Slot 207
+033C:Slot 208
+0340:Slot 209
+0344:Slot 210
+0348:Slot 211
+034C:Slot 212
+0350:Slot 213
+0354:Slot 214
+0358:Slot 215
+035C:Slot 216
+0360:Slot 217
+0364:Slot 218
+0368:Slot 219
+036C:Slot 220
+0370:Slot 221
+0374:Slot 222
+0378:Slot 223
+037C:Slot 224
+0380:Slot 225
+0384:Slot 226
+0388:Slot 227
+038C:Slot 228
+0390:Slot 229
+0394:Slot 230
+0398:Slot 231
+039C:Slot 232
+03A0:Slot 233
+03A4:Slot 234
+03A8:Slot 235
+03AC:Slot 236
+03B0:Slot 237
+03B4:Slot 238
+03B8:Slot 239
+03BC:Slot 240
+03C0:Slot 241
+03C4:Slot 242
+03C8:Slot 243
+03CC:Slot 244
+03D0:Slot 245
+03D4:Slot 246
+03D8:Slot 247
+03DC:Slot 248
+03E0:Slot 249
+03E4:Slot 250
+03E8:Slot 251
+03EC:Slot 252
+03F0:Slot 253
+03F4:Slot 254
+03F8:Slot 255
+03FC:Slot 256
+					</DropDownList>
+                    <ShowAsHex>1</ShowAsHex>					
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>361</ID>
+                      <Description>"Quantity"</Description>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>InventoryBasePtr</Address>
+                      <Offsets>
+                        <Offset>[InventorySlotOffset]</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>362</ID>
+                      <Description>"Item ID"</Description>
+                      <VariableType>2 Bytes</VariableType>
+					  <DropDownList DescriptionOnly="1">
+0000:None
+==Weapons==============
+0001:Birch Staff-[STR+3/RNG+1] A light wooden staff polished to a fine finish.
+0002:Pile Rod-[STR+7/RNG+1] A battle staff reinforced with metal rings at each end.
+0003:Stun Rod-[STR+20/RNG+1] A full-blown fighting staff with a heavy metallic core.
+0004:Hex Stave-[STR+40/RNG+1] A staff made of ultra-hard wood. Plain, but packs a wallop.
+0005:Spike Rod-[STR+65/RNG+1] A staff with sharp ends. Great for making a point.
+0006:Tin Staff-[STR+10/RNG+1] A thin metallic staff said to be used by monks in the East.
+0007:Octavian Stave-[STR+80/RNG+1] An Eastern-style staff coated with a hardened resin.
+0008:Battle Staff-[STR+90/RNG+1] A large staff that requires a lot of training to wield.
+000A:Arc Rod-[STR+120/RNG+1] A staff crafted out of a mysterious, unidentified alloy.
+0010:Laundry Pole-[STR+7/RNG+2] Laundry pole turned weapon. Ingenious or pathetic?
+0011:Mystic Stave-[STR+130/RNG+1] An Eastern staff with designs depicting universal axioms.
+001F:Twin Dirks-[STR+4] Dirks with sharp blades. Small and easy to conceal.
+0020:Kunai-[STR+7] Unique multi-purpose weapons of Eastern legacy.
+0021:Dual Razors-[STR+21] Small daggers with ultra-thin blades made for cutting.
+0022:Katars-[STR+30] Short swords with a peculiar shape suitable for stabbing.
+0023:Baselards-[STR+42] Distinctive, sturdy short swords with curved hand-guards.
+0024:Schneiders-[STR+90] Small, lightweight daggers with double-edged tips.
+0027:Gurkha Knives-[STR+66] Sword with fierce edges on their curved inner blades.
+0028:Demi-Handers-[STR+80] Dirks used for covert ops. Subtle with a matte surface.
+0029:Erbe Blades-[STR+120] Ancient black knives made of unknown materials.
+002D:Skull Daggers-[STR+45 ATS-10] Roguish short swords with skulls carved into them.
+002F:Paring Knives-[STR+10] Used by pro chefs...and sometimes in domestic disputes...
+0030:Twin Plovers-[STR+130] Eastern-forged swords sheathed in checkered scabbards.
+003D:Viper-[STR+12/RNG+2] A light, easy to handle leather whip.
+003E:Blitz-[STR+22/RNG+2] A leather whip interwoven with a thin chain for more power.
+003F:Scorpion-[STR+35/RNG+2] A battle whip with a steel claw attached to the fall.
+0040:Sidewinder-[STR+90/RNG+2] A serpentine-like whip confected with sleek metal fittings.
+0041:Nine Tails-[STR+120/RNG+2] A whip made of ancient beast hide with a mysterious shine.
+005A:Needler-[STR+20/RNG+4] A popular orbal gun made by the Empire's Reinford Company.
+005B:Hawkeye-[STR+100/RNG+4] An orbal gun by the Verne Corporation for sport shooting.
+005C:Stinger-[STR+80/RNG+4] An orbal gun made by the Reinford Co. Uses spicular rounds.
+005D:Silver Star-[STR+90/RNG+4] A luxury model by the Reinford Co. Has a high output.
+005E:Bear Assault-[STR+35/RNG+4] A large caliber hunting gun made by the Verne Corporation.
+0060:Magesta-[STR+120/RNG+4] An ancient orbal weapon that fires powerful energy bursts.
+0065:Zero Shot (X)-[STR+95/SPD-2/RNG+3] An experimental gun from the Central Factory. Slow to fire.
+0077:Rapier-[STR+30] A thin needle-like sword for piercing.
+0078:Sabre-[STR+40] An ornate long-sword used for formal occasions.
+0079:Flamberge-[STR+50] A long sword with an exquisite undulating wave-like blade.
+007A:Estoc-[STR+90] A staunch sword which can easily pierce metallic armor.
+007E:Hauteclere-[STR+120] An ethereal sword of platinum formerly used by knights.
+0097:Broad Edge-[STR+35] A rugged broadsword with a wide blade.
+0098:Claymore-[STR+45] A two-handed sword with a cross-shaped hilt. Big and sharp.
+0099:Bastard Edge-[STR+70] A heavy two-handed sword used for duels in the dark ages.
+009A:Zweihaender-[STR+90] A giant two-handed sword used to take down mounted foes.
+009B:Rhomphaia-[STR+60] A large weapon with a curved blade attached to a long hilt.
+009C:Cavalier Killer-[STR+80] An Eastern sword the height of a man, used against horses.
+009D:Berserker-[STR+120] An ancient black sword forged from unknown materials.
+00B5:P-03-[STR+50/RNG+3/Area (S)] A low recoil orbal cannon made by the Zeiss Central Factory.
+00B7:Craft Cannon-[STR+60/RNG+4/Area (S)] A revamped model of the P-03 with an enhanced drive orbment.
+00B8:P-05-[STR+90/RNG+4/Area (S)] A new type of orbal cannon from the Zeiss Central Factory.
+00B9:G-Impact-[STR+75/RNG+4/Area (M)] A forgotten experimental high-output orbal cannon.
+00BB:Thor's Hammer-[STR+120/RNG+4/Area (M)] An ancient orbal weapon that fires powerful energy bursts.
+00D3:Brass Knuckles-[STR+65] A reinforced glove made of soft metal.
+00D4:Hide Gauntlet-[STR+70] A specially treated leather gauntlet. Flexible and tough.
+00D5:Cestus-[STR+100] A battle gauntlet with rivets implanted in the knuckles.
+00D6:Steel Gauntlet-[STR+85] An Eastern steel gauntlet. Reinforced with a hardened resin.
+00D9:Daedalus Arm-[STR+120] An arcane gauntlet which transforms according to need.
+==Armor==============
+00F1:Leather Vest-[DEF+5] A vest made of nice, soft leather.
+00F2:Armor Vest-[DEF+10/ADF+2] A vest with an iron plate in the chest for more protection.
+00F3:Leather Jacket-[DEF+25/ADF+2] A robust, tailored jacket made of thick leather.
+00F4:Shield Vest-[DEF+45/ADF+4] A protective vest embedded with numerous small iron plates.
+00F5:Metal Jacket-[DEF+75/ADF+4] A protective jacket made of woven metallic fibers.
+00F6:Shield Coat-[DEF+100/ADF+6] A protective coat made of a specially processed material.
+00F7:Hide Jumpsuit-[DEF+12/ADF+2] A jumpsuit made of inexpensive beast hide.
+00F8:Chain Mail-[DEF+30/ADF+4] Sheer protective clothing made of interwoven metal chains.
+00F9:Battle Suit-[DEF+50/ADF+6] Armor padded in various places to absorb shock.
+00FA:Black Coat-[DEF+80/ADF+8] A Central Factory product. Can repel edged weapons.
+00FB:Reflector-[DEF+105/ADF+10] A protective coat reinforced with a special anti-art layer.
+00FC:Work Jumpsuit-[DEF+50] A thick cloth worksuit that doesn't shrink in the wash.
+00FD:Royal Guard-[DEF+120/ADF+10/Men Only] Armor worn by knights of old. Lauded for its total defense.
+00FE:Valkyrie Dress-[DEF+120/ADF+10/Women Only] A female warrior's gown for battle alongside the knights.
+==Boots==============
+010F:Leather Boots-[DEF+2] A pair of tanned leather boots. Light and flexible.
+0110:Spikes-[DEF+5] A pair of shoes with pointy, non-skid soles.
+0111:Work Boots-[DEF+8/MOV+1] Rugged boots for laborers with top-rated craftsmanship.
+0112:Double Spikes-[DEF+12/MOV+1] A pair of shoes with spiky, non-skid soles.
+0113:Craft Shoes-[DEF+20/MOV+2] A new type of training shoe developed for rigorous workouts.
+0114:Composites-[DEF+30/MOV+2] Protective boots for professionals. Made of tough materials.
+0115:Knitted Shoes-[DEF+7/MOV+1] Simple shoes knitted from natural materials. Light and tough.
+0116:Strega-R-[DEF+10/MOV+1] The regular model of Strega-brand sneakers.
+0117:Army Boots-[DEF+15/MOV+2] The formal wear of the Royal Army and popular with soldiers.
+0118:Strega-G-[DEF+23/MOV+2] The high-end model of Strega-brand sneakers.
+0119:Atlas Gear-[DEF+35/MOV+3/Men Only] Boots made of metallic-fibers which feel nearly weightless.
+011A:Sylphen Boots-[DEF+35/MOV+3/Women Only] Mysterious boots that make your feet feel lighter than air.
+011B:Holey Boots-[DEF+1/MOV+3] Often the catch of the day at fishing spots. Light and airy.
+011C:(Alpha) Strega-[DEF+10/MOV+2] A pair of test shoes made for Estelle.
+011D:(Beta) Strega-[DEF+25/MOV+2] The newest model of upcoming Strega-brand sneakers.
+011E:Strega-J-[DEF+6/MOV+1] The junior model of Strega-brand sneakers.
+011F:Steel-Toed Boots-[DEF+12] Heavy-duty boots great for heavy-duty labor.
+==Accessories==============
+012D:Silver Earring-[Prevents poison] A silver accessory blessed by the Goddess, Aidios.
+012E:Lighter-[Prevents freeze] A good-luck charm carried by hikers to combat the cold.
+012F:Mirage Ring-[Prevents petrify] A ring set with a mysterious rainbow-colored gem.
+0130:Black Bangle-[Prevents sleep] A leather wristband that stimulates a pressure point.
+0131:Glam Choker-[Prevents mute] A special necklace that diverts the effects of anti-sept.
+0132:White Bracelet-[Prevents blind] A bangle that emits pure white light to prevent blindness.
+0133:Pearl Earring-[Prevents seal] An earring with a precious pearl imported from the East.
+0134:Lily Necklace-[Prevents confuse] A necklace that gives off a calming floral fragrance.
+0135:Feather Brooch-[Prevents faint] A brooch featuring a vivid blue feather.
+0136:Skull Pendant-[Prevents deathblows] A bone pendant with a skull carved into its surface.
+0137:T-Anklet-[Prevents freeze/petrify] An anklet which repels hindrances to movement.
+0138:Crest Charm-[Prevents sleep/faint] A crescent amulet that protects the wearer's consciousness.
+0139:Grail Locket-[Prevents all abnormal status (except K.O.)] An ornament modeled after a holy Septian artifact.
+0141:Topaz Talisman-A talisman crafted from a type of septium. The wearer's attack and defense will become earth-based.
+0142:Sapphire Talisman-A talisman crafted from a type of septium. The wearer's attack and defense will become water-based.
+0143:Ruby Talisman-A talisman crafted from a type of septium. The wearer's attack and defense will become fire-based.
+0144:Emerald Talisman-A talisman crafted from a type of septium. The wearer's attack and defense will become wind-based.
+0145:Proxy Puppet-[Prevents K.O.] Defends against K.O. one time but breaks afterwards.
+0146:Gladiator Headband-[STR+5/DEF-5/CP Up+10%] A motivating headband. CP recovery rate rises in battle.
+0147:Gladiator Belt-[STR+10/DEF-10/Auto-CP Up] A motivating belt. CP automatically recovers during battle.
+0148:Work Helmet-[DEF+3] An essential piece of headgear for laborers.
+0149:Red Scarf-[DEF+2] Gaudy neckwear to accent the collar. Painfully bright.
+014A:Woolly Knit-Hat-[DEF+3] A cute, fluffy yarn cap. A great gift for a young girl.
+014D:Work Gloves-[DEF+3] Extra thick gloves. A standard gift for utility workers.
+014E:Jeweled Ring-[DEF+2] An expensive ring fitted with an incandescent gem.
+014F:Long Barrel-[RNG+2] Increases the firing range of orbal guns and cannons.
+==Food==============
+0191:Maple Cookie-[Heals 80HP] A readily-made aromatic cookie. It's great for snacks.
+0192:Sweet Sponge Cake-[Heals 200HP/SPD+15%] A fluffy, fresh-baked cake that sweetly melts in the mouth.
+0193:Vegetable Sandwich-[Heals 150HP] A sandwich packed with greens. For the health-conscious.
+0194:Briny Delight-[Heals 450HP/DEF+10%] A steamed fish specialty in a rock salt-filled carapace.
+0195:Milk Crepe-[Heals 200HP] A luxurious cake of layered crepes with cream in between.
+0196:Refreshing Pie-[Heals 800HP] Pie chock-full of fruit and infused with zesty sweet herbs.
+0197:Coffee Ice Cream-[Heals 400HP/Cures sleep] Ice cream with a bittersweet flavor more for adults.
+0198:French Fries-[Heals 100HP/MOV+1] Fried in olive oil and lightly salted. Very popular.
+0199:Tomato Sandwich-[Heals 100HP/Restores 40CP] A bitter assault on the tongue. Favored by adults.
+019A:Azelia Rose-[Heals 500HP/Cures K.O.] A refreshing cocktail made from a pungent fruit juice.
+019B:Flowery Soda-[Heals 250HP/Cures poison] A healthy soda flavored with the astringency of herbs.
+019C:Rich Espresso-[Heals 500HP/Cures sleep] A cup of coffee that will even wake a hibernating bear.
+019D:Mouthful Soup-[Heals 300HP/Cures mute] A jaw-dropping, shockingly flavorful soup.
+019E:Carmine Eye-[Heals 100HP/Cures blind] An herbal-flavored soup with ingredients good for the eyes.
+019F:Plucked Herb Tea-[Heals 200HP/Cures confuse] Steaming herb-scented tea. A single sip is revitalizing.
+01A0:Red Tail Soup-[Heals 250HP/Cures seal] A spicy soup crammed full of energizing nutrients.
+01A1:Specialty Eggnog-[Heals 1000HP/Cures K.O.] An Eastern world hot cocktail. Warms the body to the core.
+01A2:Fresh Juice-[Heals 300HP/Cures petrify] Fruit juice with thoroughly squeezed fruit extracts.
+01A3:Black Pepper Soup-[Heals 550HP/Cures faint] A favorite among researchers. Piquantly peppery to taste.
+01A4:Mixed Cocktail-[Heals 1400HP/Cures all abnormal status] The ultimate cocktail; crammed with condensed food extracts.
+01A5:Drill Meatball-[Heals 120HP/STR+5%] A nourishing meatball. Uses monster horn powder for flavor.
+01A6:Rotini Pasta-[Heals 600HP/Cures confuse] Pasta which lavishly employs flavorful herbs.
+01A7:Fried Eyes and Eggs-[Heals 350HP/Cures blind] Terrifying at first glance. Eye-Caramba! Ripe for puns.
+01A8:Chomping Spare Rib-[Heals 800HP/STR and DEF+15%] Flame-grilled meat. Its spicy flavor grips the senses.
+01A9:Potluck in a Shell-[Heals 50HP/Cures K.O.] A dish made over a campfire. Lovely in the night air.
+01AA:Beast Steak-[Heals 180HP/Restores 20CP] A dish easily made over a campfire. A real outdoors treat.
+01AB:Monster Sushi-[Heals 800HP/STR+10%] Eastern food eaten raw. Be sure to check the freshness date.
+01AC:Hot Fried Chicken-[Heals 700HP/Cures seal] Fried chicken seasoned with a spicy marinade.
+01AD:Rainbow Jellybeans-[Heals 350HP/Restores 25CP] A fancy sweet found in all colors. Surprisingly nutritious.
+01AE:Floral Jelly-[Heals 550HP/Cures poison] A refreshing herbal jelly. Best when chilled.
+01AF:Hellfire Eggs-[Heals 500HP/Cures confuse/sleep/faint] A picante egg dish with a restorative effect.
+01B0:Wine-Steamed Egg-[Heals 600HP/Cures freeze] A popular dish skillfully cooked with spirited ingredients.
+01B1:Holey Popcorn-[Heals 400HP/MOV+2] The epitome of crunchiness. A holey natural snack.
+01B2:Seasonal Tart-[Heals 400HP] The king of sweets. A perfect gift for that special someone.
+01B3:Deep-Fried Smelt-[Heals 200HP] A small, lightly battered, Eastern-style fried fish.
+01B4:Boiled Miso Carp-[Heals 300HP] An Eastern-style river fish boiled in sweet and spicy miso.
+01B5:Grilled Rainbow-[Heals 400HP] A salted, grilled fish. It's simple, but a true delicacy.
+01B6:Rockfish Skewer-[Heals 500HP] A river fish cooked over an open fire. Scrumptiously firm.
+01B7:Salmon Meuniere-[Heals 600HP] A fish dish rich in flavor, locked in with a buttery glaze.
+01B8:Bouillabaisse Plus-[Heals 600HP/Restores 30CP] A futuristic menu item boldly jellifying a famous dish.
+01B9:Fluffy Spring Egg-[Heals 450HP] A boiled egg cooked over low heat. Soft and rubbery.
+01BA:Orange Ice Cream-[Heals 300HP] A refreshing dessert that uses freshly squeezed juice.
+01BB:Apple Ice Cream-[Heals 300HP] Fruity ice cream with the tartness of fresh apples.
+01BC:Royal Crepe-[Heals 400HP/Cures poison/confuse] An elegant crepe brimming with sweet herb-infused cream.
+01BD:Gorgeous Crepe-[Heals 700HP] A hearty dessert nearly overflowing with cream.
+01BE:Special Ice Cream-[Heals 1000HP/Restores 25CP] An iced sweet with a mysterious glow. Special indeed!
+01BF:Fruity Milk-[Heals 600HP/SPD+30%] A fruit-flavored lactic treat. Perfect for after a bath.
+==Usable Items==============
+01F5:Tear Balm-[Heals 200HP] A healing salve formulated by the Septian Church.
+01F6:Teara Balm-[Heals 1000HP] A healing salve formulated by the Septian Church.
+01F7:Tear All Balm-[Heals all HP] A healing salve formulated by the Septian Church.
+01F8:Purging Balm-[Cures poison/seal/blind] A salve from the Septian Church to treat abnormalities.
+01F9:Softening Balm-[Cures freeze/petrify] A salve from the Septian Church to repair movement.
+01FA:Insulating Tape-[Cures mute] Quick-fix tape to repair a neutralized orbment.
+01FB:Curia Balm-[Cures abnormal status] A salve which cures all status abnormalities except K.O.
+01FC:Reviving Balm-[Cures K.O./Heals 100HP] A salve which cures K.O. and heals 100HP.
+01FD:Celestial Balm-[Cures K.O./Heals all HP] A salve which cures K.O. and heals all HP.
+01FE:EP Charge-[Restores 100EP] An orbal energy-filled capsule.
+01FF:EP Charge EX-[Restores 300EP] An enhanced orbal energy-filled capsule.
+0200:Smelling Salts-[Cures confuse/sleep/faint] A salve from the Septian Church to stimulate the senses.
+==Books==============
+0208:Bracer Notebook-A notebook given to all bracers for investigative purposes. Keeping detailed records is an important part of the job.
+020D:Recipe Book-A book used to record the recipes of eaten food. Food can also be made from recipes if you have the right ingredients.
+020F:Monster Guide-A notebook used to record information gathered from enemy encounters.
+0212:Carnelia - Chapter 1-[The Imperial Chronicle] Part 1 of a fictional novel published in Liberl.
+0213:Carnelia - Chapter 2-[The Train Station] Part 2 of a fictional novel published in Liberl.
+0214:Carnelia - Chapter 3-[Representative of the Septian Church] Part 3 of a fictional novel published in Liberl.
+0215:Carnelia - Chapter 4-[Human Fodder] Part 4 of a fictional novel published in Liberl.
+0216:Carnelia - Chapter 5-[Emissary of the Sabbath] Part 5 of a fictional novel published in Liberl.
+0217:Carnelia - Chapter 6-[Ascertaining the Inner Workings] Part 6 of a fictional novel published in Liberl.
+0218:Carnelia - Chapter 7-[The Death of a Friend] Part 7 of a fictional novel published in Liberl.
+0219:Carnelia - Chapter 8-[In the Bowels of the Imperial City] Part 8 of a fictional novel published in Liberl.
+021A:Carnelia - Chapter 9-[Carnelia] Part 9 of a fictional novel published in Liberl.
+021B:Carnelia - Chapter 10-[The Last Stand] Part 10 of a fictional novel published in Liberl.
+021C:Carnelia - Finale-[A Legacy Never to be Forgotten] The finale to a fictional novel published in Liberl.
+==Quartz==============
+0258:HP 1-[Elemental: Water Elemental Value: 1] Max HP+5%
+0259:HP 2-[Elemental: Water Elemental Value: 3] Max HP+10%
+025A:HP 3-[Elemental: Water Elemental Value: 5] Max HP+15%
+025B:EP 1-[Elemental: Mirage Elemental Value: 1 1 2] Max EP+5%
+025C:EP 2-[Elemental: Mirage Elemental Value: 2 2 3] Max EP+10%
+025D:EP 3-[Elemental: Mirage Elemental Value: 3 3 5] Max EP+15%
+025E:Attack 1-[Elemental: Fire Elemental Value: 1] STR+5%/DEF-5%
+025F:Attack 2-[Elemental: Fire Elemental Value: 3] STR+10%/DEF-10%
+0260:Attack 3-[Elemental: Fire Elemental Value: 5] STR+15%/DEF-15%
+0261:Defense 1-[Elemental: Earth Elemental Value: 1] DEF+5%
+0262:Defense 2-[Elemental: Earth Elemental Value: 3] DEF+10%
+0263:Defense 3-[Elemental: Earth Elemental Value: 5] DEF+15%
+0264:Mind 1-[Elemental: Water Elemental Value: 1] ATS+5%
+0265:Mind 2-[Elemental: Water Elemental Value: 3] ATS+10%
+0266:Mind 3-[Elemental: Water Elemental Value: 5] ATS+15%
+0267:Shield 1-[Elemental: Wind Elemental Value: 1] ADF+5
+0268:Shield 2-[Elemental: Wind Elemental Value: 3] ADF+15
+0269:Shield 3-[Elemental: Wind Elemental Value: 5] ADF+30
+026A:Hit 1-[Elemental: Mirage Elemental Value: 1] DEX+5
+026B:Hit 2-[Elemental: Mirage Elemental Value: 3] DEX+10
+026C:Hit 3-[Elemental: Mirage Elemental Value: 5] DEX+15
+026D:Evade 1-[Elemental: Wind Elemental Value: 1] AGL+1
+026E:Evade 2-[Elemental: Wind Elemental Value: 3] AGL+2
+026F:Evade 3-[Elemental: Wind Elemental Value: 5] AGL+3
+0270:Move 1-[Elemental: Space Elemental Value: 1] MOV+1
+0271:Move 2-[Elemental: Space Elemental Value: 3] MOV+2
+0272:Move 3-[Elemental: Space Elemental Value: 5] MOV+3
+0273:Action 1-[Elemental: Time Elemental Value: 1] SPD+10%
+0274:Action 2-[Elemental: Time Elemental Value: 3] SPD+20%
+0275:Action 3-[Elemental: Time Elemental Value: 5] SPD+30%
+0276:Range 1-[Elemental: Space Elemental Value: 3] Arts' effect range +1
+027D:Poison-[Elemental: Earth Elemental Value: 3] Poison enemy with 10% success.
+027E:Freeze-[Elemental: Water Elemental Value: 3] Freeze enemy with 10% success.
+027F:Petrify-[Elemental: Earth Elemental Value: 3] Petrify enemy with 10% success.
+0280:Sleep-[Elemental: Wind Elemental Value: 3] Put enemy to sleep with 10% success.
+0281:Mute-[Elemental: Earth Elemental Value: 3] Mute enemy with 10% success.
+0282:Blind-[Elemental: Time Elemental Value: 3] Blind enemy with 10% success.
+0283:Seal-[Elemental: Fire Elemental Value: 3] Seal enemy crafts with 10% success.
+0284:Confuse-[Elemental: Fire Elemental Value: 3] Confuse enemy with 10% success.
+0285:Strike-[Elemental: Fire Elemental Value: 3] Critically strike with 10% success.
+0286:Deathblow 1-[Elemental: Time Elemental Value: 3] Kill enemy with 10% success.
+0287:Deathblow 2-[Elemental: Time Elemental Value: None] 100% kills enemy but quartz breaks.
+0291:Information-[Elemental: Mirage Elemental Value: 2] Be able to perceive enemy status.
+02C1:Impede 1-[Elemental: Wind Elemental Value: 1] Prevent enemy arts with 20% success.
+02C2:Impede 2-[Elemental: Wind Elemental Value: 3] Prevent enemy arts with 50% success.
+02C3:Impede 3-[Elemental: Wind Elemental Value: 5] Prevent enemy arts with 80% success.
+02C6:Cast 1-[Elemental: Time Elemental Value: 1] Time to cast arts is cut.
+02C7:Cast 2-[Elemental: Time Elemental Value: 3] Time to cast arts is greatly cut.
+02C8:EP Cut 1-[Elemental: Space Elemental Value: 1 2 1] Arts' EP cost -10%.
+02C9:EP Cut 2-[Elemental: Space Elemental Value: 2 3 2] Arts' EP cost -25%.
+02CA:EP Cut 3-[Elemental: Space Elemental Value: I3 5 3] Arts' EP cost -50%.
+02D0:Scent-[Elemental: Wind Elemental Value: 3 2] Enemies become aware of presence.
+02D1:Eagle Vision-[Elemental: Space Elemental Value: 3 2] Can see enemies from a distance.
+02D2:Haze-[Elemental: Mirage Elemental Value: 2 3] Enemies become unaware of presence.
+02D3:Cloak-[Elemental: Mirage Elemental Value: 2 3] No encounters.
+02D4:Heal-[Elemental: Water Elemental Value: 3 2] HP slowly recovers by walking.
+==Important Items==============
+0320:Guild Referral-A referral from the guild addressed to the owner of the Perzel Farm.
+0321:Mayor's Referral-A referral from Mayor Klaus addressed to the mine chief at the Malga Mine.
+0322:Elevator Key-A key borrowed from one of the mine workers at the Malga Mine to activate the elevator.
+0323:Septium Crystal-A septium crystal received from the mine chief.
+0324:Guild Referral-A referral from the guild addressed to a Liberl News reporter.
+0325:Quartz Fragment-A broken piece of quartz. It glows just like a nonfunctional piece of sepith.
+0326:Maintenance Kit-A case of tools used to service lighthouses. Inside is a complete set of tools and replacement parts.
+0327:Orbment Light-A large orbment light used to replace burned out ones in road lamps.
+0329:Father Divine's Letter-A letter from Father Divine addressed to Father Holstein in Bose.
+032A:Servais Leaf-A tree leaf found in the attic of the mayor's residence.
+032D:The Mayor's Letter-A letter from Mayor Maybelle addressed to General Morgan at the Haken Gate.
+032E:Abandoned Mine Key-A key for the abandoned mine borrowed from Reisen, the elder of Ravennue Village.
+032F:Gate Pass-A pass to enter the Bose Region.
+0330:Recommendation-A document awarded by the Rolent Bracer Guild recommending advancement to bracer status.
+0331:Hundred Days War-A book about the hidden truth behind the Hundred Days War campaign.
+0332:Progressive Rod-A normal fishing pole which can be found anywhere.
+0333:Recommendation-A document awarded by the Bose Bracer Guild recommending advancement to bracer status.
+0334:Warehouse Key-A key found in Ruan's south block.
+0335:Torn Map-A piece of an old sea chart found in a barrel washed up on the beach of the Gull Seaside Way.
+0336:Letter to Cassius-A letter received from the guild addressed to Cassius Bright.
+0337:Bouquet-A standard present.
+0338:Black Notebook-A notebook found inside a vacuum in the Sky Bandit's hideout. Nonsensical rows of numbers are written inside.
+0339:Recommendation-A document awarded by the Ruan Bracer Guild recommending advancement to bracer status.
+033A:Recommendation-A document awarded by the Zeiss Bracer Guild recommending advancement to bracer status.
+033B:Recommendation-A document awarded by the Grancel Bracer Guild recommending advancement to bracer status.
+033C:Special Boxed Lunch-A sandwich and paella set with a free herbal tea included.
+033D:Ruan Economics I-A book taken from the Material Archives at the Royal Academy. The 1st volume in a trilogy.
+033E:Ruan Economics II-A book taken from the Material Archives at the Royal Academy. The 2nd volume in a trilogy.
+033F:Ruan Economics III-A book taken from the Material Archives at the Royal Academy. The 3rd volume in a trilogy.
+0340:Kitty-Talk for Dummies-A book taken from the Material Archives at Zeiss Central Factory. Contains candid kitty conversations. Meow.
+0341:Tomorrow's Cooking-A book taken from the Material Archives at Zeiss Central Factory. It mainly speculates about the future of cooking.
+0342:Septium Optic Annals-A book taken from the Material Archives at Zeiss Central Factory. Collections of these are routinely published.
+0343:The Erbe Woodpecker-A book found inside the stone lantern in the pond at Elmo Village. From the Zeiss Central Factory Material Archives.
+0344:Hertz's Adventure II-A book found near the strange stone pillars on Tratt Plains Road. From the Zeiss Central Factory Material Archives.
+0345:31 Cypress Trees-A book found behind a barrel on the 3rd floor of the Sanktheim Gate. From the Zeiss Central Factory Archives.
+0346:Drive Orbment-A drive orbment which could be said to be the heart of a haulage vehicle.
+0347:Liberl News - Issue 1-S.C. 1202 [The Queen's Birthday is Approaching] The 60th Anniversary - Preparations are Underway!
+0348:Liberl News - Issue 2-S.C. 1202 [The Airliner 'Linde' has Vanished!] Accident? Incident? Details Inside!
+0349:Liberl News - Issue 3-S.C. 1202 [Update! Disappearance of the Linde] Ransom Note from Capua Family a.k.a. the Sky Bandits!
+034A:Liberl News - Issue 4-S.C. 1202 [Sky Bandits Arrested! Missing Linde Case Solved!] A First-Hand Account of the Foray!
+034B:Liberl News - Issue 5-S.C. 1202 [Exclusive Interview with Colonel Richard] The Royal Army's Rising Star! Personal Details Revealed!
+034C:Liberl News - Issue 6-S.C. 1202 [Ruan City Mayor Arrested on Suspicion of Arson!] Rampage of Incumbent Mayor! Motive Brought to Light!
+034D:Liberl News - Issue 7-S.C. 1202 [Shock Over Incident at Zeiss Central Factory] Daylight Attack - Terrorist a Member of the Royal Guard?!
+034E:Liberl News - Issue 8-S.C. 1202 [City Shaken Over Possible Sedition Conspiracy!] Sudden Mistrust Falls on Elite Group!
+034F:Liberl News - Issue 9-S.C. 1202 [Victors Decided in Martial Arts Competition!] The Fight is Over! - Crown Goes to an Unlikely Team!
+0350:Liberl News - Special-S.C. 1202 [Intel's Coup D'etat Plot Thwarted!] Full Report! Rescue Operation for Her Highness, the Queen!
+0356:Back Room Key-A key found in the Factory Chief's office of the Zeiss Central Factory.
+0357:Grancel Sewer Map-A blueprint of the sewers running beneath the Royal City of Grancel.
+0358:Dorothy's Photograph-A picture Dorothy took of the Leiston Fortress.
+0359:Leiston Fortress Map-The schematics for Leiston Fortress. (Obtained by secret means.)
+035A:Leiston Fortress Map-The schematics for Leiston Fortress. (Obtained by secret means.)
+035B:Black Orbment-An obsidian-black orbment found in a package addressed to Cassius.
+035C:Junior Bracer, Emblem-A junior bracer emblem awarded by the guild. Identification of one's junior bracer status.
+035D:Bracer Emblem-An emblem verifying bracer status awarded by the guild. Has the official Shinkansen Bracer Guild symbol on its surface.
+035E:Letter to Faye-A letter received from Private Brahm at the Wolf Fort written with words of equivocal love.
+035F:Liberl Kingdom Map-A map of the Liberl Kingdom. It can be used to confirm one's current whereabouts.
+0360:Attn. Factory Chief-A referral from the guild addressed to the head of the Central Factory.
+0362:Detector Jammer-A device invented by Professor Russell. Capable of jamming detection sensors.
+0364:Orbal Calculator-The orbal calculator, Capel, which was stolen from the Central Factory.
+0365:Zemuria Moss-A glowing moss gathered from the Kaldia Limestone Cave. It's needed to make a remedy developed by the Septian Church.
+0366:Arve Sovereign Serum-A remedy formulated from Zemuria moss. It boosts the immune system to fight off toxic agents.
+0367:Gasoline Tank-A tank filled with combustible liquid produced by the Republic.
+0368:Combustion Engine-A complex machine which changes thermal energy into kinetic energy by burning fuel inside a metallic pipe.
+0369:Pump Shed Key-A key borrowed from Mrs. Mao to the pump shed in Elmo Village.
+036A:Boarding Pass-A ticket for the airliner and a reserved seat to the Royal City of Grancel.
+036B:Grand Arena Ticket-A spectator ticket for the Martial Arts Competition.
+036C:Julia's Letter-A letter from 1st Lieutenant Schwarz addressed to Hilda, the head maid at Grancel Castle.
+036D:Grancel Sewer Key A-A key to the sewer entrance in Grancel's west block.
+036E:Grancel Sewer Key B-A key to the sewer entrance in Grancel's east block.
+036F:Spare Key-A key to the main hall hidden in the gallery of the Erbe Royal Villa.
+0370:Boarding Pass-A ticket for the airliner and a reserved seat to the Royal City of Grancel.
+0371:Invitation-An invitation to the royal banquet awarded by Duke von Auslese as a prize for winning the Martial Arts Competition.
+0372:Registry Card-A card indicating participation in the Martial Arts Competition.
+0373:Small Box-The item required to complete bracer practical training. It is tightly sealed.
+0374:Hertz's Adventure I-A book which can be read in the Central Factory Material Archives but not taken.
+0375:Room 202 Key-A key to room 202 at Hotel Roenbaum.
+0376:Luke's Journal-An account of Luke's day to day life as a bracer. Shocking twist ending! Sadly, it can't be taken.
+==Ingredients==============
+0384:Firefly Fungus-A suspiciously green, glowing mushroom. It is rumored to be delectable if prepared right.
+0385:Acerbic Tomato-A new species that arose as a byproduct of experimentation. It is unimaginably bitter.
+0386:Bear Claw-A thorny medicinal herb that looks like a bear's claw. Often used in food and medicine.
+0387:Tri-Colored Rice-A blend of red, yellow, and black husked rice. Delightfully crunchy and often used in dishes in Liberl.
+0388:Aged Miso-An Eastern seasoning made by fermenting steamed grains. Has a pungent flavor and is great for health.
+0389:Vintage Wine-A thoroughly aged, potent liquor. It is highly regarded as a cooking wine for its rich aroma.
+038A:Fresh Milk-Freshly drawn milk delivered daily from the farm. Rolent's local brand is said to be especially tasty.
+038B:Fresh Eggs-Newly laid eggs from free-range chickens. A basic ingredient essential for cooking.
+038C:Sharp Cheese-Ripened cheese made from freshly drawn milk.
+038D:Luscious Orange-A hand-picked fruit from a farming village. Vivid orange like the setting sun.
+038E:Ripe Apple-A succulent treat harvested after it has grown to maturity. From the famous fruit orchards of the Village of Ravennue.
+038F:Azelia Fruit-A fruit with a tough rind indigenous to the Ruan Region. It is mainly enjoyed in the form of juice.
+0390:Milled Flour-The most basic of ingredients. Neither pasta nor bread can be made without it.
+0391:Salted Anchovy-A nonperishable rustic fish in a salty sauce. The ones from Manoria Village are said to be top-quality.
+0392:Marbled Steak-A mouthwatering cut of meat, tender and marbled with fat. Great in dishes from stew to steak.
+0393:Flaky Potato-A small succulent potato. Great in boiled foods since it keeps its firmness.
+0394:Crisp Onion-A large onion with a nice crunchy texture. With almost no acrid taste, it can be eaten like an apple.
+0395:Dirty Carrot-A sweet carrot great for cooking. The dirt is used to keep it fresh.
+0396:Maple Sugar-A natural sweetener made from boiled-down tree sap. Its faint aroma can be used as an accent for foods.
+0397:Kibbled Salt-Coarsely ground rock salt. Rich in minerals, it carries a profound flavor.
+0398:Olive Oil-Oil taken from the olives of a tree laden with fruit. Essential to give that special touch to dishes.
+0399:Fresh Herb-A sweet herb with a pleasant fragrance. Its use varies from tea to even ridding meats of odors.
+039A:Dragon Beans-Flavorful coffee beans native to Liberl. The raw beans are used as a condiment.
+039B:Royal Leaf-A popular tree leaf used as an extract since old times. It's even used to flavor candy.
+039C:Black Pepper-Whole black pepper. An essential spice in meat dishes.
+039D:Red Pepper-A discernibly red hot pepper. Dried ones are often ground into powder.
+039E:Monster Horn-A health food full of minerals. Figuring out how to eat it requires some ingenuity.
+039F:Monster Wing-A thin, clear membranous wing. It is mainly used to flavor dishes.
+03A0:Monster Tail-A well-developed muscular tail. Though troublesome to cook, it has an excellent flavor.
+03A1:Monster Bone-An essential ingredient for soup broth. It is used in numerous dishes.
+03A2:Monster Eyeball-A large gelatinous ball of...meat. A healthy food most people wouldn't poke with a stick.
+03A3:Monster Fang-A sharp, jagged, saw-like fang. Once ground into a fine powder, it is used to spice up dishes.
+03A4:Monster Carapace-The tender meat inside the shell is a real prize. Being quite lean, the flesh has a light taste.
+03A5:Monster Beast Meat-Monster flesh with a slight odor. The more you chew it the better it tastes.
+03A6:Monster Fish Meat-Fish with a rather sinewy texture. It's quite tough to chew for being light white meat.
+03A7:Monster Fowl Meat-Monster meat with a rather ordinary flavor. Its leanness makes it a popular ingredient among women, however.
+03A8:Monster Gelatin-A tasteless, scentless gelatinous strand. It melts in the mouth like a smooth froth.
+03A9:Monster Fowl Egg-A giant egg the size of a child's head. Prized in the East as a revitalizing agent.
+03AA:Monster Fish Egg-A fun food that pops in the mouth. It is a popular ingredient in Eastern cooking.
+03AB:Monster Seed-A seed covered by a host of tiny thorns. Saut?ing it in a frying pan really brings out the flavor.
+03AC:Smelt-A small freshwater fish easily caught for sport. If battered and deep-fried, it can be eaten head and all.
+03AD:Liberl Carp-An omnivorous whiskered fish living in lakes. Although it has a peculiar smell it is great in many foods.
+03AE:Rainbow Trout-A medium-sized fish with iridescent lines on the sides of its body. Best cooked while it's fresh!
+03AF:Tiger Rockfish-A beautiful fish with a vivid orange belly. It tastes best if salted and grilled on a stick.
+03B0:Salmon-A fish that goes upstream to lay its eggs. It is a well-known edible fish with flavorful pink meat.
+					  </DropDownList>
+					  <ShowAsHex>1</ShowAsHex>						  
+                      <Address>InventoryIDBasePtr</Address>
+                      <Offsets>
+                        <Offset>[InventorySlotOffset]</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+</CheatTable>
