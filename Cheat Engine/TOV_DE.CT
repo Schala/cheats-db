@@ -5,28 +5,28 @@
       <ID>1</ID>
       <Description>"Tales of Vesperia Definitive Edition"</Description>
       <Options moHideChildren="1"/>
-      <LastState Value="" RealAddress="00000000"/>
+      <LastState Value="" Activated="1" RealAddress="00000000"/>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
           <ID>10</ID>
           <Description>"Enable"</Description>
           <Options moHideChildren="1"/>
-          <LastState Value="" RealAddress="00000000"/>
+          <LastState Value="" Activated="1" RealAddress="00000000"/>
           <GroupHeader>1</GroupHeader>
           <CheatEntries>
             <CheatEntry>
               <ID>100</ID>
               <Description>"[Scripts]"</Description>
               <Options moHideChildren="1"/>
-              <LastState Value="" RealAddress="00000000"/>
+              <LastState Value="" Activated="1" RealAddress="00000000"/>
               <GroupHeader>1</GroupHeader>
               <CheatEntries>
                 <CheatEntry>
                   <ID>2000</ID>
                   <Description>"Damage Modifier Script"</Description>
                   <Options moHideChildren="1"/>
-                  <LastState/>
+                  <LastState Activated="1"/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
 
@@ -191,6 +191,7 @@ dealloc(newmem)
                     <CheatEntry>
                       <ID>2001</ID>
                       <Description>"Enemy Damage Multiplier (Set to Zero = Off; Otherwise multiplier)"</Description>
+                      <LastState Value="1" Activated="1" RealAddress="7FF6B0FB01A6"/>
                       <VariableType>Float</VariableType>
                       <Address>EnemyDamageMultiplier</Address>
                     </CheatEntry>
@@ -200,12 +201,14 @@ dealloc(newmem)
                       <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
 1:On
 </DropDownList>
+                      <LastState Value="0" RealAddress="7FF6B0FB019E"/>
                       <VariableType>4 Bytes</VariableType>
                       <Address>OneHitKill</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>2003</ID>
                       <Description>"Enemy Healing Multiplier (Set to Zero = Off; Otherwise multiplier, e.g. 0.5 is half healing)"</Description>
+                      <LastState Value="0" Activated="1" RealAddress="7FF6B0FB01B6"/>
                       <VariableType>Float</VariableType>
                       <Address>EnemyHealingMultiplier</Address>
                     </CheatEntry>
@@ -215,6 +218,7 @@ dealloc(newmem)
                       <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
 1:On
 </DropDownList>
+                      <LastState Value="1" Activated="1" RealAddress="7FF6B0FB0196"/>
                       <VariableType>4 Bytes</VariableType>
                       <Address>GodMode</Address>
                     </CheatEntry>
@@ -224,18 +228,21 @@ dealloc(newmem)
                       <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
 1:On
 </DropDownList>
+                      <LastState Value="1" RealAddress="7FF6B0FB01C6"/>
                       <VariableType>4 Bytes</VariableType>
                       <Address>HeroCannotDie</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>2006</ID>
                       <Description>"Hero Damage Multiplier (Set to Zero = Off; Otherwise multiplier, e.g. 0.5 is half damage)"</Description>
+                      <LastState Value="0.125" RealAddress="7FF6B0FB01AE"/>
                       <VariableType>Float</VariableType>
                       <Address>HeroDamageMultiplier</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>2007</ID>
                       <Description>"Hero Healing Multiplier (Set to Zero = Off; Otherwise multiplier)"</Description>
+                      <LastState Value="2" RealAddress="7FF6B0FB01BE"/>
                       <VariableType>Float</VariableType>
                       <Address>HeroHealingMultiplier</Address>
                     </CheatEntry>
@@ -245,6 +252,7 @@ dealloc(newmem)
                       <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
 1:On
 </DropDownList>
+                      <LastState Value="0" RealAddress="7FF6B0FB01CE"/>
                       <VariableType>4 Bytes</VariableType>
                       <Address>AffectYuriOnly</Address>
                     </CheatEntry>
@@ -253,7 +261,7 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>2100</ID>
                   <Description>"Infinite In-Battle TP"</Description>
-                  <LastState/>
+                  <LastState Activated="1"/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
 
@@ -976,32 +984,29 @@ unregistersymbol(Instant_Cast)
               <ID>500</ID>
               <Description>"Pointers"</Description>
               <Options moHideChildren="1"/>
-              <LastState Value="" RealAddress="00000000"/>
+              <LastState Value="" Activated="1" RealAddress="00000000"/>
               <GroupHeader>1</GroupHeader>
               <CheatEntries>
                 <CheatEntry>
                   <ID>501</ID>
                   <Description>"Gald"</Description>
+                  <LastState Value="4369797" RealAddress="7FF6B2138E30"/>
                   <VariableType>4 Bytes</VariableType>
                   <Address>TOV_DE.exe+1178E00+30</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>3553</ID>
                   <Description>"Grade"</Description>
+                  <LastState Value="12627.31543" RealAddress="7FF6B213C7D8"/>
                   <VariableType>Float</VariableType>
                   <Address>TOV_DE.exe+117C7D8</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>4815</ID>
                   <Description>"Fake Gald"</Description>
+                  <LastState Value="1" RealAddress="7FF6B213A6B8"/>
                   <VariableType>Byte</VariableType>
                   <Address>TOV_DE.exe+117A6B8</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>78914</ID>
-                  <Description>"Repede: Succesful 'Thievery'"</Description>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>TOV_DE.exe+1199AE8</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>28</ID>
