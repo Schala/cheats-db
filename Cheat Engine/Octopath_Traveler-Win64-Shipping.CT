@@ -1,0 +1,5615 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="26">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"Octopath Traveler (Steam)"</Description>
+      <Options moHideChildren="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>10</ID>
+          <Description>"Enable"</Description>
+          <Options moHideChildren="1"/>
+		  <VariableType>Auto Assembler Script</VariableType>
+		  <AssemblerScript>[ENABLE]
+{$lua}
+LaunchMonoDataCollector()
+
+local al = getAddressList()
+
+-- Load Item Dropdowns
+local ItemList = {
+"4294967295:Nothing",
+"1:Healing Grape - Restores HP to a single ally.",
+"2:Healing Grape (M) - Greatly restores HP to a single ally.",
+"3:Healing Grape Bunch - Restores HP to all allies.",
+"4:Inspiriting Plum - Restores SP to a single ally.",
+"5:Inspiriting Plum (M) - Greatly restores SP to a single ally.",
+"6:Inspiriting Plum Basket - Restores to SP to all allies.",
+"7:Energizing Pomegrante - Restores BP to a single ally.",
+"8:Energizing Pomegrante (M) - Greatly restores BP to a single ally.",
+"9:Energizing Pomegrante (L) - Massively restores BP to single ally.",
+"10:Refreshing Jam - Restores HP and SP to a single ally.",
+"11:Revitalizing Jam - Restores HP, SP, and BP to a single ally.",
+"12:Olive of Life - Revives and restores HP to single fallen ally.",
+"13:Olive of Life (M) - Revives and greatly restores HP to a single fallen ally",
+"14:Olive of Life (L) - Revives and massively restores HP to a single fallen ally.",
+"20:Herb of Healing - Cures a single ally of poison.",
+"21:Herb of Clamor - Cures a single ally of silence.",
+"22:Herb of Light - Cures a single ally of blindness.",
+"23:Herb of Clarity - Cures a single ally of confusion.",
+"24:Herb of Awakening - Awakens a single sleeping ally.",
+"25:Herb of Valor - Cures a single ally of terror.",
+"26:Herb of Revival - Revives a single unconscious ally.",
+"30:Bottle of Poison Dust - Inflicts poison on a single foe with a given probablity.",
+"31:Bottle of Blinding Dust - Inflicts blindess on a single foe with a given probablity",
+"32:Bottle of Befuddling Dust - Inflicts confusion on a single foe with a given probablity",
+"33:Bottle of Sleeping Dust - Inflicts sleep on a single foe with a given probablity",
+"40:Fire Soulstone - Deals fire damage to all foes.",
+"41:Fire Soulstone (M) - Deals great fire damage to all foes.",
+"42:Fire Soulstone (L) - Deals massive fire damage to all foes.",
+"43:Ice Soulstone - Deals ice damage to all foes.",
+"44:Ice Soulstone (M) - Deals great ice damage to all foes.",
+"45:Ice Soulstone (L) - Deals massive ice damage to all foes.",
+"46:Thunder Soulstone - Deals lightning damage to all foes.",
+"47:Thunder Soulstone (M) - Deals great lightning damage to all foes.",
+"48:Thunder Soulstone (L) - Deals massive lightning damage to all foes.",
+"49:Wind Soulstone - Deals wind damage to all foes.",
+"50:Wind Soulstone (M) - Deals great wind damage to all foes.",
+"51:Wind Soulstone (L) - Deals massive wind damage to all foes.",
+"52:Light Soulstone - Deals light damage to all foes.",
+"53:Light Soulstone (M) - Deals great light damage to all foes.",
+"54:Light Soulstone (L) - Deals massive light damage to all foes.",
+"55:Shadow Soulstone - Deals dark damage to all foes.",
+"56:Shadow Soulstone (M) - Deals great dark damage to all foes.",
+"57:Shadow Soulstone (L) - Deals massive dark damage to all foes.",
+"60:Nourshing Nut - Increases maximum HP.",
+"61:Nourshing Nut (M) - Greatly increases maximum HP.",
+"62:Nourshing Nut (L) - Massively increases maximum HP.",
+"63:Invigorating Nut - Increases maximum SP.",
+"64:Invigorating Nut (M) - Greatly increases maximum SP.",
+"65:Invigorating Nut (L) - Massively increases maximum SP.",
+"66:Fortifying Nut - Increases physical attack.",
+"67:Fortifying Nut (M) - Greatly increases physical attack.",
+"68:Fortifying Nut (L) - Massively increases physical attack.",
+"69:Tough Nut - Increases physical defense.",
+"70:Tough Nut (M) - Greatly increases physical defense.",
+"71:Tough Nut (L) - Massively increases physical defense.",
+"72:Magic Nut - Increases elemental attack.",
+"73:Magic Nut (M) - Greatly increases elemental attack.",
+"74:Magic Nut (L) - Massively increases elemental attack.",
+"75:Resistant Nut - Increases elemental defense.",
+"76:Resistant Nut (M) - Greatly increases elemental defense.",
+"77:Resistant Nut (L) - Massively increases elemental defense.",
+"78:Sharp Nut - Increases accuracy.",
+"79:Sharp Nut (M) - Greatly increases accuracy.",
+"80:Sharp Nut (L) - Massively increases accuracy.",
+"81:Slippery Nut - Increases evasion.",
+"82:Slippery Nut (M) - Greatly increases evasion.",
+"83:Slippery Nut (L) - Massively increases evasion.",
+"84:Critical Nut - Increases critical hit rate.",
+"85:Critical Nut (M) - Greatly increases critical hit rate.",
+"86:Critical Nut (L) - Massively increases critical hit rate.",
+"87:Light Nut - Increases speed.",
+"88:Light Nut (M) - Greatly increases speed.",
+"89:Light Nut (L) - Massively increases speed.",
+"90:Scrap of Rope - Fetches a modest price if sold.",
+"91:Stuffed Toy - Fetches a modest price if sold.",
+"92:Candy - Slightly restores HP to a single ally.",
+"93:Glass Marble - Fetches a modest price if sold.",
+"94:Handkerchief - Fetches a modest price if sold.",
+"95:Hip Flask - Fetches a modest price if sold.",
+"96:Myterious Seed - Fetches a modest price if sold.",
+"97:Fish Tooth - Fetches a modest price if sold.",
+"98:Mysterious Ore - Fetches a modest price if sold.",
+"99:Tree Nut - Slightly restores SP to a single ally.",
+"100:Hairbrush - Fetches a modest price if sold.",
+"101:Empty Coin Pouch - Fetches a modest price if sold.",
+"102:Coin Pouch - Fetches a modest price if sold.",
+"103:Odds and Ends - Fetches a modest price if sold.",
+"104:Large Feather - Fetches a modest price if sold.",
+"105:Dubious Gold Ore - Fetches a modest price if sold.",
+"106:Psuedo Gold Ore - Fetches a modest price if sold.",
+"107:Fool's Gold Ore - Fetches a fair price if sold.",
+"108:Copper Lantern - Fetches a modest price if sold.",
+"109:Bone - Fetches a modest price if sold.",
+"110:Weathered Boots - Fetches a modest price if sold.",
+"111:Dirty Ball of cloth - Fetches a modest price if sold.",
+"112:Rigid Wire - Fetches a modest price if sold.",
+"113:Necklace - Fetches a modest price if sold.",
+"114:Poysenberry - Inflicts poison on a single ally for 5 turns.",
+"115:Psuedo Cider - Decreases physical and elemental defense of a single ally for 5 turns.",
+"116:Red Apple - Grants full BP to a single ally.",
+"117:Bottle Breath - Deals damage to all foes and allies.",
+"119:Monster Perfume - Restores HP to all allies.",
+"121:Small Cup - Fetches a modest price if sold.",
+"122:Silver Clock - Fetches a fair price if sold.",
+"123:Portrait with a Kiss - Fetches a modest price if sold.",
+"124:Introduction to Adventuring - Fetches a fair price if sold.",
+"125:Rare Stone - Fetches a fair price if sold.",
+"126:Heavy Coin Pouch - Fetches a fair price if sold.",
+"127:Commemorative Coin - Fetches a exorbitant price if sold.",
+"128:Silver-filled Pouch - Fetches a high price if sold.",
+"130:Feather Duster - Fetches a modest price if sold.",
+"131:Ali's Bread - Restores HP to a single ally.",
+"132:Joshua's Poem - Restores HP and SP to a single ally.",
+"133:Cat's Eye - Fetches a exorbitant price if sold.",
+"134:Tagged Collar - Fetches a modest price if sold.",
+"135:Old Coin - Fetches a fair price if sold.",
+"136:Copped-filled Pouch - Fetches a fair price if sold.",
+"138:Curious Antique - Fetches a high price if sold.",
+"139:Dazzling Artwork - Fetches a exorbitant price if sold.",
+"140:Timepiece - Fetches a high price if sold.",
+"141:Rusty Cup - Fetches a modest price if sold.",
+"142:Glossy Gold Coin - Fetches a modest price if sold.",
+"143:Cloth Map - Fetches a modest price if sold.",
+"301:Church History - The annals of the Church of the Flame.",
+"302:Translated Tome - A partly translated manuscript of From the Far Reaches of Hell.",
+"303:Original Tome - A tome detailing how to unleash the power sealed away by the twelve gods.",
+"304:Letter from Master - 'In a village called stillsnow there is a seer by the name of Susanna. Surely she shall knoweth what to don about this petrification'",
+"305:Herb-of-grace - A plant that wards off petrification.",
+"307:Blue swordfish - A big, meaty swordfish.",
+"308:Bottle of Wine - Quality wine from Rippletide.",
+"309:Sleepweed - An herb for insomniacs. It might be effective against a certain pair of pirates.",
+"310:Anonymous Diary - The written records of a nameless traveler.",
+"311:Nondescript Stone - A dull, black stone. It gives off a bright shine when polished properly",
+"312:Skystone - A dazzling, sky-colored gem.",
+"313:Edbart's Shield - A legendary shield. Its impressive weight makes it difficult for the untrained arm to grasp.",
+"314:Ancient Map - An old map detailing the location of Baltazar's treasure.",
+"315:Eldrite - The only stone of its kind in the world.",
+"316:Letter from Baltazar - A letter from Baltazar to Leon.",
+"317:Aelfric's Lanthorn - A lantern illuminated by an ember of the Sacred Flame.",
+"318:Letter of Introduction - A letter bestowed only upon the privileged few who have earned the trust of House Ravus.",
+"319:Fool's Bangle - Humiliating proof of a thief caught in the act.",
+"320:Oasis Water - Rare and refreshing water filtered tthough the desert sands.",
+"321:Wyvern Scale - A highly prized processing material.",
+"322:Crystal Ore - A transparent crystal with a metallic nature.",
+"323:Crystal Key - Opens the door to Orlick's Residence.",
+"324:Ruby Dragonstone - One of the four dragonstones, treasure of House Ravus.",
+"325:Aristrocrat's Mask - A mask that grants access into the exclusive black market while concealing one's indentity.",
+"326:Attendant's Mask - A mask that grants access into the exclusive black market while concealing one's indentity.",
+"327:Black Market Inventory - A list detailing the items and sellers at the black market.",
+"328:Brigand Leader's Garb - Clothes worn by the leader of the thieves.",
+"329:Brigand's Garb - Clothes wornn by a common thief.",
+"330:Emerald Dragonstone - One of the four dragonstones, treasure of House Ravus.",
+"331:Gold Dragonstone - One of the four dragonstones, treasure of House Ravus.",
+"332:Alfyn's Satchel - Alfyn's beloved medicine bag.",
+"333:Viper Venom - A deadly poison. It can be used to make antidotes.",
+"334:Zeph's Satchel - Zeph's beloved medicine bag.",
+"335:Glowworm Moss - A plant effective against the Gaborra whooping cough.",
+"336:Ore Eagle's Pinion - A rainbow-colored feather used in medicines to alleviate pain.",
+"337:House Azelhart Dagger - A dagger engraved with the crest and motto of House Azelhart.",
+"338:Yusufa's Handkerchief - While threadbare, this handerkerchief is soft and gentle to the touch.",
+"339:Left-hand Man's Map - A clue about the Left-hand Man's whereabouts.",
+"340:Dungeon Key - Unlocks the cell of an allegedly innocent man.",
+"344:Ambrosial Milk - Ingredient used in a dish for the king.",
+"345:Emperor Crab - Ingredient used in a dish for the king.",
+"346:Roc Egg - Ingredient used in a dish for the king.",
+"348:Final Masterpiece - The lst painting of an unsuccesful artist.",
+"349:Cow Droppings - The perfect poop for fertilizer.",
+"350:Lorie's Diary - Contains entries about a special someone.",
+"351:Diva Dress - The last dress a certain dancing star wore on stage.",
+"352:Saucy Prawns - The perfect bait for plounder.",
+"354:Rebel's Axe - A weapon fit for a rebel.",
+"355:Revolutionary Sword - A weapon fit for a revolutionary.",
+"356:Spear of Justice - A weapon fit for a soldier of justice.",
+"357:Giant Tusk - Used in a coming-of-age ceremony.",
+"358:Satisfactory Coal - Material for a heat-producing invention.",
+"359:Adequate Flax - Material for a heat-producing invention.",
+"360:Portable Pot - Material for a heat-producing invention.",
+"361:Codget-Friendly Bow - For elderly allies of justice.",
+"363:Leviathan Egg - The egg of a great sea beast found in a Captain's Bane.",
+"365:Beetroot - An ingredient grown for its sweet, full-bodied flavor.",
+"369:Orewell Whetstone - A stone rumored to sharpen even dullest tool in the shed.",
+"370:Gendy's Footcloth - A strong warm fabric.",
+"375:Byron's Ring - The hierloom of a once-noble house.",
+"379:Sword of Sokrath - The ancient sword of a legendary knight. Perhaps now it holds some theatrical use...",
+"380:Tales from a Faraway Land - Records of a journey through an unexplored land.",
+"381:House Landar Records - Contains notes about the location of the highborn family's secret treasure trove.",
+"384:Memorial Sword - A sword wielded by a certain knight long ago.",
+"385:Tools of Learning - school materials for children.",
+"386:Adventurer's Attire - All the equipment an adventurer needs on a journey.",
+"387:Timeworn Tapestry - A wall tapestry full of historical value.",
+"388:Tightly Sealed Envelope - An envelope stolen from its rightful owner.",
+"389:Snakesbane - A magical sword capable of cutting down any serpent. Its rusted exterior renders it useless against other enemies.",
+"390:Letter from Zeph - Confidential!",
+"391:Letter from Mercedes - Confidential!",
+"392:River Blossom - The favored flower of many in town.",
+"394:Memorial Necklace - A family hierloom of famous lord's wife.",
+"395:Jotunn Horn - Taken from giant found in frozen land.",
+"396:Giant Egg - An egg that fell from a cliff and floated down a river.",
+"397:Mercenary Crest - Proof of a traitor.",
+"398:Hugo's Journal - A journal found drifting down a river.",
+"399:Mind-me-always - An extremely rare flower that blooms only on high mountains.",
+"400:Astonishing Object - A cure for diarist writer's block.",
+"401:Incredible Item - A cure for diarist writer's block.",
+"402:Marvelous Memento - A cure for diarist writer's block.",
+"403:Quatrait Bloom - A flower from an exotic continent far to the south.",
+"404:Dragon Egg - A dragon egg entrusted to Kaia.",
+"405:Direwolf Fang - the fang of an intimidating predator.",
+"406:Letter from Noa - A letter from Noa to Cordelia.",
+"407:Lapis Lazuli - An ore with a blue pigment.",
+"408:High Hornburgian Dictionary - Used to translate the runes of an ancient language.",
+"409:Red Apple - Grants full BP to a single ally.",
+"506:An Eyewitness Account - It seems someone else was there that day, and can prove a certain man's innocence.",
+"507:Where the Ice Giant Sleeps - Information about the jotunn in Hoarfrost Grotto.",
+"518:Rumors of Knight Ardante - Hearsay about a knight revered by his peers.",
+"524:History of the Frostlands - Everything one coul dever want to know about the Frostlands.",
+"525:Dragon of the Frostlands - Information about the dragon in the Frostlands.",
+"549:Where the Giant Boar Roams - The whereabouts of Hunter's Rites quarry.",
+"563:Librarian's Testimony - 'Only the headmaster and the guard possess keys to the archieves.'",
+"564:The Guardian's Situation - He knows little of the true value of the books he guards archive keys he keeps.",
+"565:Russell's Situation - He has accrued quite a debt and understands the true value of tomes.",
+"569:The Song of Sokrath - Lyrical information about legendary knight.",
+"570:The Jellypeno - A tip from a reliable source about a potentially portfitable vegetable.",
+"573:The Headmaster's Situation - He keeps the archive keys safe at all times and hasn't left his office lately.",
+"586:A Use for Textiles - Instructions on how to create pantaloons with Gendy's fabrics.",
+"600:A Lecture to Remember - N/A",
+"603:Where the Direwolf Prowls - Sources say the wolf has been spotted in the Forest of Purgation.",
+"624:Gossip of Glowworm Moss - It seems Vanessa has been talking about a plant called 'glowworm moss'.",
+"625:Vaness's Carriage - It seems Vanessa has been making good use of a carriage lately.",
+"634:Donovan's Condition - An update on His Excellency's health.",
+"655:Lara's New Life - News of Lara, who now leads a happy life with her family.",
+"658:A Safe Route - Details on a safe travel route for merchants.",
+"671:Dragon of the highlands - Information about the dragon in the Highlands.",
+"675:The Book's Whereabouts - It seems the book was sold to a man named Dominic.",
+"676:Dominic's Seclusion - Dominic has closed himself off from the world since losing his only daughter.",
+"677:Dominic's Remorse - Dominic regrets translating a certain tome for money.",
+"678:Bookbinding Estimate - N/A",
+"681:The Fortress of Everhold - Details about the fortress built by King Beowulf to fight a dragon.",
+"685:The Leather's Whereabouts - It seems the bookbinding leather was sold to a merchant name Eren.",
+"686:The Materials' Whereabouts - It seems the bookbinding materials were sold to a bindery.",
+"694:The Paper's Whereabouts - It seems the paper was sold to a merchant name Eren.",
+"695:Dominic's Troubles - Fifteen years ago, Dominiccame many times to buy medicine, byt had money troubles.",
+"696:The Fall of House Landar - Details on the final moments of the highborn house that lost its riches.",
+"718:Gravekeeper's Information - Information about the Ventus Dynasty.",
+"743:The Giant Serpent's - Information about the giant serpent in the Quicksand Caves.",
+"752:City of Gold - A Legend about the mystical golden city.",
+"758:Chieftain's Schedule - The vistings chief's agenda in Marsalim.",
+"760:Nina's Secret - It seems like Nina was bitten by a blotted viper in the Cave of Rhiyo.",
+"761:Elixir Recipe - The elixir requires the feather of an ogre eagle, used to alleviate pain.",
+"773:Meryl's Past - Knowledge that Meryl's mother and father are not her birth parents.",
+"776:Old Woman to the Southeast - It seems she is sick and unable to visit her best friend.",
+"780:Tidings of Elderly Friends - It seems nobody of late has seen the old ladies who typically frequent the town square.",
+"781:Old Woman to the Northwest - It seems back pain is preventing her from going grape-picking.",
+"799:Early Ice Thawing - The reason behind the rising river waters.",
+"808:History of the Cliftlands - Everything one could ever want to know about the Cliftlands.",
+"809:Project Plans - Plans created to improve the living conditions of the impoverished people.",
+"823:Where the Incidents Happened - It seems the people who have goine missing disappeared by the inn.",
+"824:Witness Testimony - Day and night, people who turn the corner by the inn have been known to just vanish…",
+"825:The Sewers - Behind the inn is an entrance to the sewers.",
+"826:Why She Doesn't Visit Geoffrey - The reason Odette has never gone to Geoffrey's grave.",
+"843:Ogen's Mutterings - 'Melyssa…'",
+"844:Dragon of the Cliftlands - Information about the dragon in the Cliftlands.",
+"852:How to Train a Tiger - Details on the little-known art of tiger rearing.",
+"853:Tale of the Beast Tamers - The beast tamers of the Greenwood tribe used forbidden magic and lost their minds to the monsters they sought to control.",
+"860:Marta's Gang - Details about the chivalrous actions of Marta's Gang.",
+"864:Father and Fighter - Information abouut the boy's father, who was a swordsman.",
+"865:Estadas's Condition - A report on the fighter's condition.",
+"866:Mont D'Or's Condition - A report on the fighter's condition.",
+"867:Joshua's Weak Points - Joshua's weakness: Axes, staves, fire, light.",
+"868:Archibold's Weak Points - Archibold's weakness: Daggers, bows, ice, dark.",
+"869:Gustav's Weak Points - Gustav's weakness: Polearms, axes, bows, fire, dark.",
+"878:Byron Family Lineage - The history of the once-noble house of Byron.",
+"879:History of the Woodlands - Everything one could ever want to know about Woodlands.",
+"882:The Mural's Meaning - Written in glyphs warning about widespread death and destruction.",
+"883:Trial of the Twelve, Volume VII - 'The twelve gods sealed away a terrible power…'",
+"884:Forbidden Gold - 'Even the gods refused this power. No matter how tempting, it can never be unleashed…'",
+"885:From the Far Reaches of Hell - A tome detailing how to unleash a sealed power unto this world.",
+"886:Alphas's Poem - A poem expressing the writer's innermost emotions.",
+"1001:Battle-tested Blade - Phys. Atk. +400 Critical +150 Attack: Augments physical abilities",
+"1002:Harald's Sword - Phys. Atk. +380 Elem. Atk. +120 Equip: Increases fdire damage dealt",
+"1003:Enchanted Sword - Phys. Atk. +240 Elem. Atk. + 220 Critical +40",
+"1004:Forbidden Blade - Phys. Atk. +310 Speed +120 Attack: Occasionally increases target's Phys. Atk.",
+"1005:Werner's Sword - Phys. Atk. +299 Elem. Atk. +120 Attack: All successful attacks become critical hits",
+"1006:Dragon Saber - Phys. Atk. +273 Critical +120",
+"1007:Emperor's Blade - Phys. Atk. +251 Accuracy +100",
+"1008:Unseen Saber - Phys. Atk. +235 Evasion +100 Attack: Occasionally confuses target",
+"1009:Deathly Blade - Phys. Atk. +219 Accuracy +98 Attack: Ocassionally kills target instantly",
+"1010:Trinity Sword - Phys. Atk. +222 Speed +100",
+"1011:Great Blade - Phys. Atk. +212 Critical +80",
+"1012:Blade of Bravery - Phys. Atk. +198 Critical +90",
+"1013:Angel Saber - Phys. Atk. +185 Accuracy +80 Attack: Occasionally puts target to sleep",
+"1014:Platinum Sword - Phys. Atk. +166 Speed +92",
+"1015:Divine Blade - Phys. Atk. +152 Critical +84",
+"1016:Carnage Blade - Phys. Atk. +200 Attack: Occasionally decreases target's Phys. Atk.",
+"1017:Knight's Sword - Phys. Atk. +140 Speed +88",
+"1018:Refined Sword - Phys. Atk. +132 Speed +80",
+"1019:Snipe Saber - Phys. Atk. +120 Accuracy +78",
+"1020:Moonblade - Phys. Atk. +115 Critical +70",
+"1021:Mirage Blade - Phys. Atk. +108 Critical +50 Attack: Occasionally confuses target",
+"1022:Eagle Saber - Phys. Atk. +102 Accuracy +70",
+"1023:Bastard Sword - Phys. Atk. +92 Speed +60",
+"1024:Heavy Blade - Phys. Atk. +85 Critical +30",
+"1025:Falcon Saber - Phys. Atk. +80 Accuracy +60",
+"1026:Spirit Sword - Phys. Atk. +60 Elem. Atk. +60",
+"1027:Captain Sword - Phys. Atk. +60 Speed +40 Attack: Occasionally decreases target's Phys. Def.",
+"1028:Greatsword - Phys. Atk. +65 Speed +4",
+"1029:Silver Sword - Phys. Atk. +52 Speed +30",
+"1030:Feather Saber - Phys. Atk. +34 Accuracy +40 Attack: Occasionally puts target to sleep",
+"1031:Broadsword - Phys. Atk. +28 Speed +22",
+"1032:Iron Sword - Phys. Atk. +22 Speed +18",
+"1033:Long Sword - Phys. Atk. +8 Speed +2",
+"1034:Makeshift Sword - It's not much of a sword, but it'll have to do.",
+"1101:Battle-tested Spear - Phys. Atk. +390 Critical +148 Attack: Occasionally blinds target",
+"1102:Tradewinds Spear - Phys. Atk. +150 Elem. Atk. +380 Equip: Increases wind damage delt",
+"1103:Master's Spear - Phys. Atk. +355 Critical +151",
+"1104:Rune Glaive - Phys. Atk. +120 Elem. Atk. +363 Evasion +48",
+"1105:Forbidden Spear - Phys. Atk. +320 Elem. Atk +303 Speed -98",
+"1106:Seraphim Spear - Phys. Atk. +275 Speed +126 Attack: Occsionally confuses target",
+"1107:Scourge Lance - Phys. Atk. +262 Critical +122",
+"1108:Soul Glaive - Phys. Atk. +121 Elem. Atk. +252",
+"1109:Jade Lance - Phys. Atk. +228 Critical +115",
+"1110:Victor's Spear - Phys. Atk. +212 Speed +99",
+"1111:Platinum Spear - Phys. Atk. +196 Speed +92",
+"1112:Miguel's Spear - Phys. Atk. +200 Accuracy +88 Attack: Occasionally reduces target's evasion",
+"1113:Imperial Lance - Phys. Atk. +180 Critical +88",
+"1114:Magus Glaive - Phys. Atk. +96 Elem. Atk. +162",
+"1115:Hedgehog Spear - Phys. Atk. +142 Speed +84",
+"1116:Bridge Lance - Phys. Atk. +128 Critical +71 Attack: Occasionally blinds target",
+"1117:Elemental Glaive - Phys. Atk. +104 Elem. Atk. +173",
+"1118:Jaguar Lance - Phys. Atk. +112 Critical +66",
+"1119:Heavy Lance - Phys. Atk. +96 Critical +53",
+"1120:Calamity Spear - Phys. Atk. +111 Accuracy -30",
+"1121:Bandit's Spear - Phys. Atk. +81 Speed +31",
+"1122:Sunlands Spear - Phys. Atk. +72 Speed +6 Attack: Occasionally reduces target's evasion",
+"1123:War Lance - Phys. Atk. +71 Critical +41",
+"1124:Silver Spear - Phys. Atk. +56 Speed +24",
+"1125:Arcane Glaive - Phys. Atk. +36 Elem. Atk. +38",
+"1126:War Spear - Phys. Atk. +34 Speed +10",
+"1127:Memorial Harpoon - Phys. Atk. +38 Attack: Occasionally slows target",
+"1128:Iron Spear - Phys. Atk. +23 Speed +6",
+"1129:Spear - Phys. Atk. +8 Speed +2",
+"1130:Makeshift Spear - It's not much of a spear, but it'll have to do.",
+"1201:Battle-tested Dagger - Phys. Atk. +380 Evasion +140 Attack: Occasionally decreases target's accuracy",
+"1202:Heathcote's Dagger - Phys. Atk. +199 Elem. Atk. +346 Equip: Increases fire damage delt",
+"1203:Viper Dagger - Phys. Atk. +332 Speed +132 Attack: Occasionally poisons target",
+"1204:Adamatine Dagger - Phys. Atk. +167 Elem. Atk. +299 Equip: Increases dark damage delt",
+"1205:Forbidden Dagger - Phys. Atk. +285 Elem. Atk. +155 Equip: Reduces fire and dark damage dealt",
+"1206:Legion Dagger - Phys. Atk. +263 Evasion +129",
+"1207:Rune Knife - Phys. Atk. +128 Elem. Atk. +242",
+"1208:Ultimate Breaker - Phys. Atk. +242 Speed +128 Attack: Occasionally confuses target",
+"1209:Doombreaker - Phys. Atk. +202 Critical +123",
+"1210:Assassin's Dagger - Phys. Atk. +196 Evasion +119",
+"1211:Soul Knife - Phys. Atk. +98 Elem. Atk. +188",
+"1212:Crimson Dagger - Phys. Atk. +172 Evasion +101 Attack: Occasionally decreases target's Phys. Atk.",
+"1213:Justice Breaker - Phys. Atk. +166 Speed +98",
+"1214:Skybreaker - Phys. Atk. +162 Critical +73",
+"1215:Magus Knife - Phys. Atk. +75 Elem. Atk. +144 Attack: Occasionally puts target to sleep",
+"1216:Gaolbreaker - Phys. Atk. +132 Critical +65",
+"1217:Gideon's Dagger - Phys. Atk. +118 Speed +61 Attack: Occasionally decreases target's Phys. Atk.",
+"1218:Trickster's Dagger - Phys. Atk. +98 Evasion +68",
+"1219:Crescent Dagger - Phys. Atk. +88 Evasion +57 Attack: Occasionally poisons target",
+"1220:Chainbreaker - Phys. Atk. +82 Speed +58",
+"1221:Swordbreaker - Phys. Atk. +76 Critical +46",
+"1222:Silver Dagger - Phys. Atk. +69 Evasion +42",
+"1223:Piercing Dagger - Phys. Atk. +59 Evasion +27",
+"1224:Falcon Dagger - Phys. Atk. +52 Evasion +22",
+"1225:Befuddling Dagger - Phys. Atk. +48 Speed +20 Attack: Occasionally decreases target's accuracy",
+"1226:Arcane Knife - Phys. Atk. +32 Elem. Atk. +42",
+"1227:Stinging Dagger - Phys. Atk. +26 Evasion +18 Attack: Occasionally poisons target",
+"1228:Iron Dagger - Phys. Atk. +20 Evasion +16",
+"1229:Dagger - Phys. Atk. +7 Evasion +6",
+"1230:Makeshift Knife - It's not much of a dagger, but it'll have to do.",
+"1301:Battle-tested Axe - Phys. Atk. +350 Elem. Atk. +250 Equip: Increases lightning and ice damage dealt",
+"1302:Memorial Axe - Phys. Atk. +400 Speed +150 Attack: Ocassionaly decreases target's Elem. Def.",
+"1303:Death Cleaver - Phys. Atk. +380 Critical +140 Attack: Occasionally poisons target",
+"1304:Double Tomahawk - Phys. Atk. +95 Accuracy +198 Attack: Regular attacks strike twice",
+"1305:Forbidden Axe - Phys. Atk. +391 Accuracy -50 Speed +80",
+"1306:Ogre Cleaver - Phys. Atk. +286 Critical +110",
+"1307:Rune Hatchet - Phys. Atk. +100 Elem. Atk. +278",
+"1308:Golden Axe - Phys. Atk. +265 Critical +100",
+"1309:Gargantuan Axe - Phys. Atk. +248 Accuracy +98 Attack: Occasionally decreases target's Phys. Def.",
+"1310:Adamatine Hatchet - Phys. Atk. +112 Elem. Atk. +230",
+"1311:Hill Cleaver - Phys Atk. +221 Critical +86",
+"1312:Spirit Hatchet - Phys. Atk. +102 Elem. Atk. +211",
+"1313:Elemental Hatchet - Phys. Atk. +98 Elem. Atk. +206",
+"1314:Inferno Axe - Phys. Atk. +199 Accuracy +82 Attack: Occasionally decreases target's Elem. Def.",
+"1315:Lizardking's Axe - Phys. Atk. +192 Elem. Atk. +88 Equip: Increases lightning damage dealt",
+"1316:Graviton Axe - Phys. Atk. +186 Accuracy +74",
+"1317:Bear Cleaver - Phys. Atk. +181 Critical +72 Attack: Occasionally decreases target's Phys. Atk.",
+"1318:Rocket Cleaver - Phys. Atk. +156 Critical +64",
+"1319:Soul Hatchet - Phys. Atk. +78 Elem. Atk. +147",
+"1320:Horn Cleaver - Phys. Atk. +134 Critical +52",
+"1321:Argent Axe - Phys. Atk. +122 Critical +48",
+"1322:Magus Hatchet - Phys. Atk. +62 Elem. Atk. +120",
+"1323:Viking Axe - Phys. Atk. +113 Accuracy +38",
+"1324:Omar's Axe - Phys. Atk. +102 Accuracy +44",
+"1325:Steel Axe - Phys. Atk. +96 Elem. Atk. -20 Attack: Occasionally decreases target's Elem. Atk.",
+"1326:Cleaver - Phys. Atk. +70 Critical +14",
+"1327:Enchanted Axe - Phys. Atk. +40 Elem. Atk. +98 Attack: Occasionally puts target to sleep",
+"1328:Heavy Axe - Phys. Atk. +76 Accuracy +24",
+"1329:Silver Axe - Phys. Atk. +43 Accuracy +12",
+"1330:Battle Axe - Phys. Atk. +40 Accuracy +6",
+"1331:Arcane Hatchet - Phys. Atk. +36 Elem. Atk. +36",
+"1332:Iron Axe - Phys. Atk. +24 Accuracy +12",
+"1333:Handaxe - Phys. Atk. +8 Accuracy +4",
+"1334:Makeshift Axe - It's not much of a axe, but it'll have to do.",
+"1401:Battle-tested Bow - Phys. Atk. +384 Critical +186 Attack: Occasionally decreases target's Phys. Def.",
+"1402:Primeval Bow of Storms - Phys. Atk. +241 Elem. Atk. +342 Equip: incases wind damage dealt",
+"1403:Transcendant Bow of Shadows - Phys. Atk. +306 Elem. Atk. +245 Attack: Occasionally confuses target",
+"1404:Improved bow of the Eagle - Phys. Atk. +276 Elem. Atk. +204 Critical +70",
+"1405:Forbidden Bow - Phys. Atk. +282 Critical +121 Equip: Increases the chance of encountering enemies",
+"1406:Hyperion Bow - Phys. Atk. +219 Elem. Atk. +261 Accuracy +115",
+"1407:Holy Longbow - Phys. Atk. +246 Critical +103",
+"1408:Rune Bow - Phys. Atk. +198 Elem. Atk. +202 Accuracy +96",
+"1409:Yeti's Long Bow - Phys. Atk. +229 Critical +95 Attack: Occasionally blinds target",
+"1410:Adamatine Bow - Phys. Atk. +178 Elem. Atk. +209",
+"1411:Augmented Bow of the Falcon - Phys. Atk. +182 Elem. Atk. +182 Critical +62",
+"1412:Master's Longbow - Phys. Atk. +192 Critical +85 Attack: Occasionally poisons target",
+"1413:Brilliant Bow - Phys. Atk. +152 Elem. Atk. +176 Accuracy +88",
+"1414:Pirate's Longbow - Phys. Atk. +181 Critical +77",
+"1415:Spirtit Bow - Phys. Atk. +101 Elem. Atk. +142 Attack: Occasionally puts target to sleep",
+"1416:Huntress's Longbow - Phys. Atk. +128 Critical +43",
+"1417:Elemental Bow - Phys. Atk. +108 Elem. Atk. +98 Accuracy +74",
+"1418:Shadow Bow - Phys. Atk. +103 Accuracy +82 Attack: Occasionally blinds target",
+"1419:Tomahawk Bow - Phys. Atk. +96 Elem. Atk. +84 Accuracy +61",
+"1420:Marksman's Longbow - Phys. Atk. +105 Critical +22",
+"1421:Soul Bow - Phys. Atk. +82 Elem. Atk. +72 Accuracy +52",
+"1422:Soldier's Longbow - Phys. Atk. +98 Critical +14 Attack: Occasionally decreases target's Phys. Def.",
+"1423:Heavy Bow - Phys. Atk. +69 Elem. Atk. +66 Accuracy +44",
+"1424:Magus's Bow - Phys. Atk. +58 Elem. Atk. +62",
+"1425:Killer Bow - Phys. Atk. +60 Elem. Atk. +30 Accuracy +30",
+"1426:Arcane Bow - Phys. Atk. +38 Elem. Atk. +52 Attack: Occasionally decreases target's Elem. Atk.",
+"1427:Wolf's Bow - Phys. Atk. +42 Elem. Atk. +34 Accuracy +22",
+"1428:Stone Bow - Phys. Atk. +29 Accuracy +33 Attack: Occasionally blinds target",
+"1429:Composite Bow - Phys. Atk. +18 Elem. Atk. +16 Accuracy +20",
+"1430:Longbow - Phys. Atk. +8 Elem. Atk. +1 Accuract +2",
+"1431:Makeshift Bow - It's not much of a bow, but it'll have to do.",
+"1501:Battle-tested Staff - Phys. Atk. +212 Elem. Atk. +399 Attack: Occasionally slows target",
+"1502:Bishop's Staff - Phys. Atk. +187 Elem. Atk. +352 Equip: Increases light damage dealt",
+"1503:Knowledge Staff - Phys. Atk. +111 Elem. Atk. +333 Speed +99",
+"1504:Wizard's Rod - Phys. Atk. +113 Elem. Atk. +300 Attack: Occasionally poisons target",
+"1505:Absolute Zero Staff - Phys. Atk. +132 Elem. Atk. +293 Equip: Increases ice damage dealt",
+"1506:Yddgrasil Staff - Phys. Atk. +121 Elem. Atk. +289",
+"1507:Mattias's Scepter - Phys. Atk. +116 Elem. Atk. +268 Attack: Occasionally decreases target's Elem. Atk.",
+"1508:Forbidden Staff - Phys. Atk. -100 Elem. Atk. +285 Critical -50",
+"1509:Enchanted Rod - Phys. Atk. +91 Elem. Atk. +242 Attack: Occasionally decreases target's Elem. Def.",
+"1510:Giant's Club - Phys. Atk. +229 Elem. Atk. +112 Critical +86",
+"1511:Meteorite Rod - Phys. Atk. +98 Elem. Atk. +216 Evasion +77",
+"1512:Morning Star - Phys. Atk. +196 Elem. Atk. +102 Critical +72",
+"1513:Wisdom Staff - Phys. Atk. +98 Elem. Atk. +188 Attack: Occasionally confuses target",
+"1514:Sturdy Sapphire Rod - Phys. Atk. +89 Elem. Atk. +176 Evasion +62",
+"1515:Sledgehammer - Phys. Atk. +171 Elem. Atk. +98 Critical +60",
+"1516:Sapphire Rod - Phys. Atk. +82 Elem. Atk. +158 Evasion +49",
+"1517:War Hammer - Phys. Atk. +152 Elem. Atk. +66 Critical +42",
+"1518:Black Staff - Phys. Atk. +71 Elem. Atk. +112 Attack: Occasionally blinds target",
+"1519:Mage's Staff - Phys. Atk. +62 Elem. Atk. +98",
+"1520:Sturdy Quartz Rod - Phys. Atk. +42 Elem. Atk. +89 Evasion +26",
+"1521:Staff of Wonders - Phys. Atk. +56 Elem. Atk. +92 Attack: Occasionally decreases target's Elem. Atk.",
+"1522:Pole Mace - Phys. Atk. +76 Elem. Atk. +51 Critical +23",
+"1523:Oak Staff - Phys. Atk. +16 Elem. Atk. +68",
+"1524:Flail - Phys. Atk. +68 Elem. Atk. +42 Critical +14",
+"1525:Psychic Staff - Elem. Atk. +78 Attack: Occasionally decreases target's Elem. Def.",
+"1526:Mace - Phys. Atk. +62 Elem. Atk. +33 Critical +8",
+"1527:Laurel Staff - Phys. Atk. +24 Elem. Atk. +52",
+"1528:Composite Staff - Phys. Atk. +18 Elem. Atk. +44 Attack: Occasionally puts target to sleep",
+"1529:Quartz Rod - Phys. Atk. +12 Elem. Atk. +38 Evasion +10",
+"1530:Light Staff - Phys. Atk. +8 Elem. Atk. +24",
+"1531:Stone Rod - Phys. Atk. +4 Elem. Atk. +22 Evasion +16",
+"1532:Staff - Phys. Atk. +1 Elem. Atk. +8 Critical +2",
+"1533:Makeshift Staff - it's not much of a staff. but it'll have to do.",
+"1601:Battle-tested Shield - Phys. Def. +132 Evasion -88 Equip: Restores HP and SP afrer every action",
+"1602:Mikk and Makk's Shield - Phys. Def. +80 Elem. Def. +80 Evasion +178",
+"1603:Forbidden Shield - Phys. Def. +116 Elem. Def. +133 Evasion -171",
+"1604:Force Shield - Phys. Def. +102 Elem. Def. +102 Evasion -69",
+"1605:Gargantuan Shield - Phys. Def. +121 Evasion -101",
+"1606:Leviathan Shield - Phys. Def. +110 Evasion -79 Equip: Reduces ice damage taken",
+"1607:Knight's Shield - Phys. Def. +92 Elem. Def. +95 Evasion -95",
+"1608:Gustav's Shield - Phys. Def. +64 Elem. Def. +58 Evasion +64",
+"1609:Adamantine Shield - Phys. Def. +76 Elem. Def. +131 Evasion -81",
+"1610:Tower Shield - Phys. Def. +68 Evasion -25",
+"1611:Spiked Shield - Phys. Def. +44 Elem. Def. +53 Evasion -20",
+"1612:Elemental Shield - Phys. Def. +36 Elem. Def. +74 Evasion -20",
+"1613:Elusive Shield - Phys. Def. +21 Elem. Def. +24 Evasion +56",
+"1614:Plate Shield - Phys. Def. +45 Evasion -4",
+"1615:Kite Shield - Phys. Def. +26 Elem. Def. +31",
+"1616:Sturdy Shield - Phys. Def. +20",
+"1617:Round Shield - Phys. Def. +13 Elem. Def. +15",
+"1618:Buckler - Phys. Def. +3 Elem. Def. +3",
+"1701:Crystal Helm - Phys. Def. +180",
+"1702:Hypnos Crown - Phys. Def. +98 Elem. Def +162 Max. SP +72",
+"1703:Adamantine Hat - Phys. Def. +104 Elem. Def +180 Elem. Atk. +88",
+"1704:Dragon's Helm - Phys. Def. +152",
+"1705:Monster Trainer's Hat - Phys. Def. +115 Elem. Def +115 Equip: Slightly reduces wind damage taken",
+"1706:Teacher's Hat - Phys. Def. +96 Elem. Def +133 Equip: Slightly reduces lightning damage taken",
+"1707:Adventurer's Hat - Phys. Def. +133 Equip: Slightly reduces light damage taken",
+"1708:Platinum Helm - Phys. Def. +137",
+"1709:Histoarian's Hat - Phys. Def. +82 Elem. Def +134 Equip: Restores SP after every action",
+"1710:Oasis Hat - Phys. Def. +103 Elem. Def +112",
+"1711:Revello's Helm - Phys. Def. +108 Elem. Def +78 Equip: Slightly reduces dark damage taken",
+"1712:Imperial Helm - Phys. Def. +124",
+"1713:Silent Bandana - Phys. Def. +82 Elem. Def +78 Evasion +111",
+"1714:Fur Cap - Phys. Def. +91 Elem. Def +96",
+"1715:Enchanted Criclet - Phys. Def. +79 Elem. Def +104 Max. SP +53",
+"1716:Elemental Hat - Phys. Def. +68 Elem. Def +112 Elem. Atk. +61",
+"1717:Veteran's Helm - Phys. Def. +82 Elem. Def +58 Equip: Restores HP after every action",
+"1718:Gareth's Helm - Phys. Def. +78 Elem. Def +73 Critical +53",
+"1719:Grand Helm - Phys. Def. +89",
+"1720:Horned Helm - Phys. Def. +71",
+"1721:Starlight Helm - Phys. Def. +61 Elem. Def +79",
+"1722:Hasty Helm - Phys. Def. +50 Elem. Def +58 Speed +78",
+"1723:Falcon Hat - Phys. Def. +48 Elem. Def +54 Evasion +79",
+"1724:Bishop's Hat - Phys. Def. +54 Elem. Def +96 Elem. Atk. +56",
+"1725:Golden Hairpiece - Phys. Def. +52 Elem. Def +88 Max. SP +36",
+"1726:Silver Helm - Phys. Def. +55",
+"1727:Snowy Hood - Phys. Def. +38 Elem. Def +42 Evasion +47",
+"1728:Saintly Tiara - Phys. Def. +36 Elem. Def +48 Max. SP +21",
+"1729:Chakra Band - Phys. Def. +40 Elem. Def +52 Elem. Atk. +38",
+"1730:Sturdy Helm - Phys. Def. +35",
+"1731:Flying Helm - Phys. Def. +26 Elem. Def +30 Critical +21",
+"1732:Black Cap - Phys. Def. +15 Elem. Def +20 Evasion +31",
+"1733:Headgear - Phys. Def. +25 Elem. Def +28",
+"1734:Circlet - Phys. Def. +15 Elem. Def +25 Max. SP +15",
+"1735:Iron Helm - Phys. Def. +29",
+"1736:Silver Hairpiece - Phys. Def. +10 Elem. Def +18 Max. SP +10",
+"1737:Bronze Helm - Phys. Def. +20",
+"1738:Feathered Hat - Phys. Def. +15 Elem. Def +15",
+"1739:Pointed Hat - Phys. Def. +9 Elem. Def +21 Elem. Atk. +8",
+"1740:Leather Helm - Phys. Def. +4",
+"1741:Leather Hat - Phys. Def. +3 Elem. Def +3",
+"1742:Oridinary Hat - Phys. Def. +2 Elem. Def +5 Elem. Atk. +3",
+"1801:Crystal Armor - Phys. Def. +300",
+"1802:Crystal Vest - Phys. Def. +205 Elem. Def. +205",
+"1803:Robe of the Flame - Phys. Def. +126 Elem. Def. +317 Max. SP +56",
+"1804:Dragonscale Armor - Phys. Def. +235 Critical +108",
+"1805:Dragon's Vest - Phys. Def. +183 Elem. Def. +185",
+"1806:Ethereal Dancer Garb - Phys. Def. +122 Elem. Def. +134 Evasion +166",
+"1807:Sorcerer's Robe - Phys. Def. +107 Elem. Def. +282 Elem. Atk. +50",
+"1808:Confessional Armor - Phys. Def. +212 Equip: Slightly reduces ice damage taken",
+"1809:High House's Armor - Phys. Def. +158 Elem. Def. +78 Equip: Slightly reduces fire damage taken",
+"1810:Princess's Coat - Phys. Def. +136 Elem. Def. +155 Equip: Restores HP after every action",
+"1811:Ardante Attire - Phys. Def. +108 Elem. Def. +186 Max. SP +42",
+"1812:Robe of the Dragon Princess - Phys. Def. +121 Elem. Def. +136 Critical +129",
+"1813:Platinum Armor - Phys. Def. +202",
+"1814:Vandetta Coat - Phys. Def. +116 Elem. Def. +128 Max. HP +617",
+"1815:Imperial Armor - Phys. Def. +173",
+"1816:Platinum Vest - Phys. Def. +140 Elem. Def. +154",
+"1817:Imperial Vest - Phys. Def. +120 Elem. Def. +132",
+"1818:Elemental Heavy Armor - Phys. Def. +90 Elem. Def. +116 Elem. Atk. +42",
+"1819:Silent Cape - Phys. Def. +102 Elem. Def. +114 Evasion +147",
+"1820:Primeval Robe - Phys. Def. +99 Elem. Def. +198 Max. SP +35",
+"1821:Rainbow Robe - Phys. Def. +82 Elem. Def. +167",
+"1822:Elemental Light Armor - Phys. Def. +88 Elem. Def. +108 Speed +72",
+"1823:Fur Coat - Phys. Def. +112 Elem. Def. +112",
+"1824:Exotic Garb - Phys. Def. +102 Elem. Def. +121 Equip: Restores SP after every action",
+"1825:Grand Armor - Phys. Def. +122",
+"1826:Obsidian Garb - Phys. Def. +98 Elem. Def. +112 Critical +96",
+"1827:Grand Vest - Phys. Def. +90 Elem. Def. +102",
+"1828:Falcon Garb - Phys. Def. +78 Elem. Def. +84 Evasion +82",
+"1829:Elemental Robe - Phys. Def. +72 Elem. Def. +124 Elem. Atk. +36",
+"1830:Spiked Armor - Phys. Def. +92",
+"1831:Silver Armor - Phys. Def. +86",
+"1832:Spiked Vest - Phys. Def. +80 Elem. Def. +100",
+"1833:Silver Vest - Phys. Def. +60 Elem. Def. +68",
+"1834:Charm Robe - Phys. Def. +43 Elem. Def. +82 Max. SP +21",
+"1835:Snowy Cape - Phys. Def. +39 Elem. Def. +43 Evasion +51",
+"1836:Iron Armor - Phys. Def. +50",
+"1837:Sturdy Armor - Phys. Def. +42",
+"1838:Iron Vest - Phys. Def. +36 Elem. Def +49",
+"1839:Peacebringer's Garb - Phys. Def. +30 Elem. Def +39 Max. HP +98",
+"1840:Sturdy Vest - Phys. Def. +32 Elem. Def +42",
+"1841:Fur Robe - Phys. Def. +24 Elem. Def +64 Elem. Atk. +14",
+"1842:Black Attire - Phys. Def. +20 Elem. Def +28 Evasion +42",
+"1843:Wind Attire - Phys. Def. +24 Elem. Def +26 Speed +22",
+"1844:Traditional Dancer Garb - Phys. Def. +20 Elem. Def +22 Max. SP +12",
+"1845:Bronze Armor - Phys. Def. +28",
+"1846:Bronze Vest - Phys. Def. +19 Elem. Def +24",
+"1847:Linen Robe - Phys. Def. +13 Elem. Def +33 Elem. Atk. +8",
+"1848:Leather Armor - Phys. Def. +7",
+"1849:Leather Vest - Phys. Def. +4 Elem. Def +5",
+"1850:Robe - Phys. Def. +3 Elem. Def +7",
+"1901:Spurning Ribbon - Equip: Wards off all enemy encounters",
+"1903:Alluring Ribbon - Equip: Increases the chance of encountering enemies",
+"1904:Captain's Badge - Equip: Grants addtional EXP",
+"1905:Badge of Friendship - Equip: Grants addtional JP",
+"1906:Dragon's Scarf - Equip: Restores SP after every action",
+"1907:Beastly Scarf - Equip: Restores HP after every action",
+"1908:Royal Crest - Max. HP +600",
+"1909:Gravekeeper's Mark - Max. SP +50",
+"1910:Physical Belt - Phys. Atk. +65 Phys. Def. +50",
+"1911:Mental Belt - Elem. Atk. +65 Elem. Def. +50",
+"1912:Blessed Blazon - Phys. Def. +100 Elem. Def. +100",
+"1913:Blazon of Protection - Phys. Def. +30 Elem. Def. +30",
+"1914:Mighty Belt - Phys. Atk. +50",
+"1915:Elemental Augmentor - Elem. Atk. +100",
+"1916:Guardian Amulet - Phys. Def. +65",
+"1917:Elemental Ward - Elem. Def. +65",
+"1918:Empowering Necklace - Max. HP +1000",
+"1919:Stimulating Necklace - Max. SP +80",
+"1920:Protective Necklace - Phys. Def. +80 Elem. Def. +80",
+"1921:Unearring Necklace - Accuracy +80",
+"1922:Enlightening Necklace - Evasion +80",
+"1923:Sprightly Necklace - Speed +80",
+"1924:Critical Necklace - Critical +80",
+"1925:Empowering Bracelet - Max. HP +500",
+"1926:Stimulating Bracelet - Max. SP +50",
+"1927:Protective Bracelet - Phys. Def. +50 Elem. Def. +50",
+"1928:Unerring Bracelet - Accuracy +50",
+"1929:Enlightening Bracelet - Evasion +50",
+"1930:Sprightly Bracelet - Speed +50",
+"1931:Critical Bracelet - Critical +50",
+"1932:Empowering Ring - Max. HP +200",
+"1933:Stimulating Ring - Max. SP +30",
+"1934:Protective Ring - Phys. Def. +20 Elem. Def. +20",
+"1935:Unerring Ring - Accuracy +20",
+"1936:Enlightening Ring - Evasion +20",
+"1937:Sprightly Ring - Speed +20",
+"1938:Critical Ring - Critical +20",
+"1939:Empowering Earring - Max. HP +50",
+"1940:Stimulating Earring - Max. SP +10",
+"1941:Protective Earring - Phys. Def. +10 Elem. Def. +10",
+"1942:Unerring Earring - Accuracy +10",
+"1943:Enlightening Earring - Evasion +10",
+"1944:Sprightly Earring - Speed +10",
+"1945:Critical Earring - Critical +10",
+"1946:Weaver's Charm - Equip: Slightly reduces fire and light damage taken",
+"1947:Gentleman's Charm - Equip: Slightly reduces lightning and dark damage taken",
+"1948:Gourmet's Charm - Equip: Slightly reduces ice and wind damage taken",
+"1949:Inferno Amulet - Equip: Greatly reduces fire damage taken",
+"1950:Blizzard Amulet - Equip: Greatly reduces ice damage taken",
+"1951:Tempest Amulet - Equip: Greatly reduces wind damage taken",
+"1952:Thunderstorm Amulet - Equip: Greatly reduces lightning damage taken",
+"1953:Void Amulet - Equip: Greatly reduces dark damage taken",
+"1954:Gleaming Amulet - Equip: Greatly reduces light damage taken",
+"1955:Fire Amulet - Equip: Reduces fire damage taken",
+"1956:Ice Amulet - Equip: Reduces ice damage taken",
+"1957:Wind Amulet - Equip: Reduces wind damage taken",
+"1958:Lightning Amulet - Equip: Reduces lightning damage taken",
+"1959:Dark Amulet - Equip: Reduces dark damage taken",
+"1960:Light Amulet - Equip: Reduces light damage taken",
+"1961:Antidote Stone - Equip: Prevents poison",
+"1962:Wakeful Stone - Equip: Prevents sleep",
+"1963:Articulate Stone - Equip: Prevents silence",
+"1964:Bright Stone - Equip: Prevents blindess",
+"1965:Claming Stone - Equip: Prevents terror",
+"1966:Clarity Stone - Equip: Prevents confusion",
+"1967:Conscious Stone - Equip: Prevents unconsciouness",
+"1968:Vivifying Stone - Equip: Prevents instant death",
+"2500:Soothing Seed - Mild medicinal component of small volume.",
+"2501:Soothing Dust - Mild medicinal component of large volume.",
+"2502:Purifying Seed - Potent medicinal component of small volume.",
+"2503:Purifying Dust - Potent medicinal component of large volume.",
+"2504:Injurious Seed - Mild hazardous substance of small volume.",
+"2505:Injurious Dust - Mild hazardous substance of large volume.",
+"2506:Ruinous Seed - Potent hazardous substance of small volume.",
+"2507:Ruinous Dust - Potent hazardous substance of large volume.",
+"2516:Noxroot - Component with poisonous effects.",
+"2517:Sleepweed - Component with soporific effects.",
+"2518:Addlewort - Component with befuddling effects.",
+"2519:Essence of Grape - Component that restores health.",
+"2520:Essence of Plum - Component that restores spirit.",
+"2521:Essence of Pomegranate - Component that restores fighting spirit.",
+"2522:Olive Bloom - Component that restores life.",
+"2523:Curious Bloom - Component bearing unknown effects."
+}
+
+-- Load H'aanit Monster Summon Drop Down List
+local MonsterList = {
+"4294967295:Nothing",
+"1:Highland Ratkin I - Attack(Dagger)",
+"2:Highland Ratkin II - Attack All(Dagger)",
+"3:Highland Ratkin III - Double Strike(Dagger)",
+"4:Highland Ratkin IV - Double Strike(Dagger)",
+"5:Highland Ratkin V - Double Attack All(Dagger)",
+"6:Highland Ratkin VI - Triple Attack(Dagger)",
+"7:Highland Ratking I - Triple Attack(Axe)",
+"8:Highland Ratking II - Triple Attack All(Axe)",
+"9:Highland Ratking III - Retaliative Axe(Axe)",
+"10:Rockadillo - Lunge(Spear)",
+"11:Giant Falcon - Wind Slash(Wind)",
+"12:Highland Goat - Mighty Charge (All)(Spear)",
+"13:Army Ant - Stab(Dagger)",
+"14:Shaggy Aurochs - Mighty Lunge(Spear)",
+"15:Wild Weasel - Convincing Blow(Staff)",
+"17:Lightning Elemental - Electrocute (All)(Lightning)",
+"18:Winged Serpent - Toxic Wind(Wind)",
+"19:Devourer of Dreams - Vorpal Claw (All)(None)",
+"20:Dread Falcon - Wind Slash(Wind)",
+"21:Dread Viper - Venomous Fang(Dagger)",
+"22:Mountain Goat - Mighty Charge (All)(Spear)",
+"24:Blood Remnant - Incinerate(Fire)",
+"25:Dark Remnant - Enshadow(Dark)",
+"26:Shadow Raven - Enshadow(Dark)",
+"27:Demon Goat - Soporific Strike (All)(Spear)",
+"28:Dire Army Ant - Acid Blue(None)",
+"29:Forest Ratkin I - Attack(Bow)",
+"30:Forest Ratkin II - Attack All(Bow)",
+"31:Forest Ratkin III - Double Strike(Bow)",
+"32:Forest Ratkin IV - Double Strike(Bow)",
+"33:Forest Ratkin V - Double Attack All(Bow)",
+"34:Forest Ratkin VI - Triple Attack(Bow)",
+"35:Forest Ratking I - Triple Attack(Spear)",
+"36:Forest Ratking II - Triple Attack All(Spear)",
+"37:Forest Ratking III - Double Blessed Spear(Spear)",
+"38:Marmot - Slash(Sword)",
+"39:Shambling Weed - Mighty Lunge(Spear)",
+"40:Giant Boar - Mighty Charge (All)(Spear)",
+"41:Howler - Wind Slash(Wind)",
+"42:Mutant Mushroom - Millennial Frond(None)",
+"43:Demon Deer - Mighty Lunge(Spear)",
+"45:Peek-a-boo - Endanger Life (All)(Bow)",
+"47:Carnivorous Plant - Continual Light (SP) (All)(None)",
+"48:Majestic Marmot - Slash(Sword)",
+"49:Mossy Meep - Restore Health(None)",
+"50:Gabbrodillo - Lunge(Spear)",
+"51:Red Fox - Blinding Claw(Sword)",
+"52:Rampant Weed - Great Healing Mist(None)",
+"53:Horned Howler - Wind Slash(Wind)",
+"54:Gargantuan Boar - Mighty Charge (All)(Spear)",
+"55:Green Scissors - Toxic Mist (All)(None)",
+"56:Sea Scorpion - Steel Defenses(None)",
+"57:Ettin Serpent - Befuddling Fang (All)(Dagger)",
+"58:Buccaneer Bones - Befuddling Claw(Sword)",
+"59:Davy Bones - Befuddling Claw(Sword)",
+"60:Black Howler - Soporific Wind(Wind)",
+"61:Raging Treant - Blinding Shot(Bow)",
+"62:Sand Lizardman I - Attack(Staff)",
+"63:Sand Lizardman II - Attack All(Staff)",
+"64:Sand Lizardman III - Double Strike(Staff)",
+"65:Sand Lizardman IV - Double Strike(Staff)",
+"66:Sand Lizardman V - Double Attack All(Staff)",
+"67:Sand Lizardman VI - Triple Attack(Staff)",
+"68:Sand Lizardking I - Triple Attack(Staff)",
+"69:Sand Lizardking II - Triple Attack All(Staff)",
+"70:Sand Lizardking III - Double Rapid Staff Dance(Staff)",
+"71:Cactus Roller - Lunge(Spear)",
+"72:Light Wisp - Luminescence(Light)",
+"73:Sandworm - Sand Strike (All)(Staff)",
+"74:Giant Scorpion - Venomous Claw (All)(Sword)",
+"75:Wanderweed - Befuddling Shot (All)(Bow)",
+"76:Spiked Skink - Hurricane Lunge (All)(Spear)",
+"78:Kartikeya - Rainbow Flash (All)(None)",
+"80:Lord of the Sands - Sandstorm Slash (All)(Staff)",
+"81:Killer Bug - Lunge(Spear)",
+"82:Skull Roller - Poison Strike(Spear)",
+"83:Dark Roller - Poison Strike(Spear)",
+"84:Savage Scorpion - Venemous Claw (All)(Sword)",
+"85:Desert Worm - Sand Strike (All)(Staff)",
+"86:Withered Wanderweed - Soporific Shot (All)(Bow)",
+"87:Vampire Bat - Soporific Fang(Dagger)",
+"88:Slayer Bug - Lunge(Spear)",
+"89:Carmine Eagle - Wind Slash(Wind)",
+"90:Warrior Bones - Slash(Sword)",
+"91:Brawler Bones - Mighty Slash(Sword)",
+"92:Venomous Scorpion - Venomous Claw (All)(Sword)",
+"93:Brigand Bones - Slash(Sword)",
+"94:Stone Bug - Blinding Claw(Sword)",
+"95:Stone Serpent - Double Stab(Dagger)",
+"96:Stone Lizard - Hurricane Lunge (All)(Spear)",
+"97:Dire Skull Roller - Poison Strike(Spear)",
+"98:Ice Lizardman I - Attack(Spear)",
+"99:Ice Lizardman II - Attack All(Spear)",
+"100:Ice Lizardman III - Double Strike(Spear)",
+"101:Ice Lizardman IV - Double Strike(Spear)",
+"102:Ice Lizardman V - Double Attack All(Spear)",
+"103:Ice Lizardman VI - Triple Attack(Sword)",
+"104:Ice Lizardking I - Triple Attack(Sword)",
+"105:Ice Lizardking II - Triple Attack All(Sword)",
+"106:Ice Lizardking III - Swordwall Dance(Sword)",
+"107:Wolf - Stab(Dagger)",
+"108:Shadow Wisp - Enshadow(Dark)",
+"109:Frost Bear - Enraged Bash (All)(Staff)",
+"110:Forest Fox - Blinding Claw(Sword)",
+"111:Portly Penguin - Double Body Press(Staff)",
+"112:Snow Leopard - Double Soporific Claw(Sword)",
+"114:Animated Armor - Invincible Cleave(Sword)",
+"115:Plains Drake - Crushing Wing (All)(Wind)",
+"116:Dreadwolf - Wild Scratch (All)(Sword)",
+"117:Snow Marmot - Slash(Sword)",
+"118:High Wolf - Soporific Claw(Sword)",
+"119:Snow Fox - Freeze(Ice)",
+"120:Frost Fox - Freeze(Ice)",
+"121:White Bat - Stab(Dagger)",
+"122:Albino Bat - Soporific Fang(Dagger)",
+"123:White Howler - Mighty Stab(Dagger)",
+"124:Hoary Howler - Mighty Stab(Dagger)",
+"125:Majestic Snow Marmot - Mighty Slash(Sword)",
+"126:Hoary Bear - Enraged Bash (All)(Staff)",
+"127:Snow Yak - Lunge(Spear)",
+"128:Ash Raven - Enshadow(Dark)",
+"129:Frostwing Serpent - Wind Slash(Wind)",
+"130:Avalanche Mushroom - Restore Great Health(None)",
+"131:Winter Wanderweed - Shoot(Bow)",
+"132:Snow Lizard - Lunge(Spear)",
+"133:War Wolf - Double Stab(Dagger)",
+"134:Accursed Armor - Armor Break (All)(Sword)",
+"135:Reptalios - Enfettering Slash (All)(Sword)",
+"136:Carnivorous Bat - Soporific Fang (All)(Dagger)",
+"137:Bandit Bones - Mighty Slash(Sword)",
+"138:Flatlands Froggen I - Attack(Spear)",
+"139:Flatlands Froggen II - Attack All(Spear)",
+"140:Flatlands Froggen III - Double Strike(Spear)",
+"141:Flatlands Froggen IV - Double Strike(Spear)",
+"142:Flatlands Froggen V - Double Attack All(Spear)",
+"143:Flatlands Froggen VI - Triple Attack(Spear)",
+"144:Flatlands Frogking I - Triple Attack(Axe)",
+"145:Flatlands Frogking II - Triple Attack All(Axe)",
+"146:Flatlands Frogking III - Double Guard Break(Axe)",
+"147:Meep - Lunge(Spear)",
+"148:Wind Wisp - Wind Slash(Wind)",
+"149:Giant Sheep - Grooming (All)(None)",
+"150:Night Raven - Slash(Sword)",
+"151:Bloody Bull - Repeated Thrust(Spear)",
+"152:Skulking Fungoid - Continual Light (HP)(None)",
+"154:Raging Rhino - Lunge(Spear)",
+"155:Snow Drake - Blizzard Breath (All)(Ice)",
+"156:Behemoth - Incredible Heal (All)(None)",
+"157:Aggressive Ant - Lunge(Spear)",
+"158:Shaggy Meep - Lunge(Spear)",
+"159:Dire Night Raven - Slash(Sword)",
+"160:Antagonistic Ant - Lunge(Spear)",
+"161:Mammoth Sheep - Great Healing Mist(None)",
+"162:Dire Ash Raven - Enshadow(Dark)",
+"163:Icky Slug - Black Bile(None)",
+"164:Shaggy Spider - Soporific Claw(Sword)",
+"165:Mortal Mushroom - Crimson Powder (All)(None)",
+"166:Furious Fungoid - Continual Light (HP)(None)",
+"167:River Froggen I - Attack(Dagger)",
+"168:River Froggen II - Attack All(Dagger)",
+"169:River Froggen III - Double Strike(Dagger)",
+"170:River Froggen IV - Double Strike(Dagger)",
+"171:River Froggen V - Double Attack All(Dagger)",
+"172:River Froggen VI - Triple Attack(Dagger)",
+"173:River Frogking I - Triple Attack(Axe)",
+"174:River Frogking II - Triple Attack All(Axe)",
+"175:River Frogking III - Double Armor Crush(Axe)",
+"176:River Wasp - Poison Shot(Bow)",
+"177:Giant Slug - Lunge(Spear)",
+"178:Salamander - Blinding Charge(Spear)",
+"179:River Fly - Befuddling Claw(Sword)",
+"180:Reptalion - Great Sweep (All)(Sword)",
+"181:Lord of the Flies - Offensive Claw(Sword)",
+"183:Dreadwing - Icy Breath (All)(Ice)",
+"184:Giant Gator - Wreak Havoc (All)(Dagger)",
+"185:Gigantes - Fell Swoop (All)(Spear)",
+"186:Warrio Wasp - Poison Shot(Bow)",
+"187:Motley Slug - Restore Health(None)",
+"188:Red Viper - Incinerate(Fire)",
+"189:Blood Viper - Incinerate(Fire)",
+"190:Horse Fly - Befuddling Claw(Sword)",
+"191:River Bug - Mighty Slash(Sword)",
+"192:Collarded Salamander - Blinding Charge(Spear)",
+"193:Horned Fly - Befuddling Claw(Sword)",
+"194:Mad Ratkin - Attack(Dagger)",
+"195:Blue Bull - Repeated Thrust(Spear)",
+"196:Sea Birdian I - Attack(Bow)",
+"197:Sea Birdian II - Attack All(Bow)",
+"198:Sea Birdian III - Double Strike(Bow)",
+"199:Sea Birdian IV - Double Strike(Bow)",
+"200:Sea Birdian V - Double Attack All(Bow)",
+"201:Sea Birdian VI - Triple Attack(Bow)",
+"202:Sea Birdking I - Triple Attack(Sword)",
+"203:Sea Birdking II - Triple Attack All(Sword)",
+"204:Sea BirdKing III - Striking Sword Dance(Sword)",
+"205:Hermit Conch - Lunge(Spear)",
+"206:Flying Fish - Lunge(Spear)",
+"207:Rock Tortoise - Warding Thunder(Lightning)",
+"208:Scissor Crab - Freeze(Ice)",
+"209:Kingfisher - Ice Floe(Ice)",
+"210:Sea Anemone - Poison Shot(Bow)",
+"212:Cetus Maximus - Soporific Mist (All)(None)",
+"213:Reaper Crab - Freeze (All)(Ice)",
+"214:Deep One - Ice Floe (All)(Ice)",
+"215:Sailfish - Lunge(Spear)",
+"216:Sea Snake - Venomous Fang(Dagger)",
+"217:Scythe Crab - Freeze(Ice)",
+"218:Mossy Tortoise - Warding Thunder(Lightning)",
+"219:Barnicle Bat - Slumber Wave (All)(None)",
+"220:Sea Slug - Blinding Mist (All)(None)",
+"221:Banacle Crab - Toxic Mist (All)(None)",
+"222:Barnicle Tortoise - Befuddling Spark (All)(Lightning)",
+"223:Azure Urchin - Physical Boost(None)",
+"224:Black Scissors - Toxic Ice(Ice)",
+"225:Greater Kingfisher - Ice Floe(Ice)",
+"226:Cliff Birdian I - Attack(Dagger)",
+"227:Cliff Birdian II - Attack All(Dagger)",
+"228:Cliff Birdian III - Double Strike(Dagger)",
+"229:Cliff Birdian IV - Double Strike(Dagger)",
+"230:Cliff Birdian V - Double Attack All(Dagger)",
+"231:Cliff Birdian VI - Triple Attack(Dagger)",
+"232:Cliff Birdking I - Triple Attack(Bow)",
+"233:Cliff Birdking II - Triple Attack All(Bow)",
+"234:Cliff Birdking III - Double Elemental Arrow Dance(Bow)",
+"235:Eggling - Lunge(Spear)",
+"236:Laughing Hyaena - Venomous Fang(Dagger)",
+"237:Great Condor - Thousand Scythes(Wind)",
+"238:Lloris - Mighty Slash(Sword)",
+"239:Creeping Treant - Blinding Shot (All)(Bow)",
+"240:Armor Eater - Retaliative Posture(None)",
+"242:Wooly Spider - Soporific Claw(Sword)",
+"243:Giant Eagle - Wind Slash(Wind)",
+"244:Heavenwing - Crimson Flame (All)(Fire)",
+"245:Hatchling - Lunge(Spear)",
+"246:Long-eared Lloris - Mighty Slash(Sword)",
+"247:Two-handed Hatchling - Restore Great Health(None)",
+"248:King Condor - Thousand Scythes(Wind)",
+"249:Creepy Fledgling - Poison Shot(Bow)",
+"250:Guard Dog - Slash(Sword)",
+"251:War Dog - Slash(Sword)",
+"252:Tempest Falcon - Wind Slash(Wind)",
+"253:Marionette Bones - Slash(Sword)",
+"254:Puppet Bones - Mighty Slash(Sword)",
+"255:Bloody Rhino - Lunge(Spear)",
+"256:Devil Deer - Mighty Lunge(Spear)",
+"257:Ettin Snake - Mighty Double Stab(Dagger)",
+"258:Killer Chameleon - Sharp Scratch (All)(Sword)",
+"259:Scaled Viper - Venomous Fang(Dagger)",
+"262:Black Bat - Stab(Dagger)",
+"266:Ettin Asp - Double Stab(Dagger)",
+"267:Ettin Ophidian - Double Stab(Dagger)",
+"270:Fire Elemental - Incinerate (All)(Fire)",
+"271:Light Elemental - Luminescence (All)(Light)",
+"272:Dark Elemental - Enshadow (All)(Dark)",
+"273:Tyrannodrake - Double-blind Attack (All)(Spear)",
+"274:Shadow Bat - Enshadow(Dark)",
+"275:Ice Elemental - Freeze (All)(Ice)",
+"276:Wind Elemental - Wind Slash (All)(Wind)",
+"277:Assassin Bug - Lunge(Spear)",
+"281:Ambling Bones - Mighty Slash(Sword)",
+"285:Revenant - Impact Clock(None)",
+"286:Blood Revenant - Guardian Axe(Axe)",
+"287:Dark Revenant - Bulwark Axe(Axe)",
+"288:Sticky Slug - Red Bile(None)",
+"289:Gooey Slug - Viscous Bite(None)",
+"291:Flame Revenant - Inferno Clock (All)(Fire)",
+"292:Shadow Revenant - Eclipse Clock (All)(Dark)",
+"293:Thunder Revenant - Vortex Clock (All)(Lightning)",
+"294:Flame Remnant Mk.II - Incinerate(Fire)",
+"295:Shadow Remnant Mk.II - Enshadow(Dark)",
+"296:Thunder Remnant Mk.II - Electrocute(Lightning)",
+"297:Ice Revenant - Diamond Clock (All)(Ice)",
+"298:Light Revenant - Solar Clock (All)(Light)",
+"299:Wind Revenant - Tempest Clock (All)(Wind)",
+"300:Remnant Mk.II - Bite(Dagger)",
+"301:Ice Remnant Mk.II - Freeze(Ice)",
+"302:Light Remnant Mk.II - Luminescence(Light)",
+"303:Wind Remnant Mk.II - Wind Slash(Wind)",
+"304:Remnant - Bite(Dagger)",
+"306:Ice Remnant - Freeze(Ice)",
+"307:Wind Remnant - Wind Slash(Wind)",
+"308:Thunder Remnant - Electrocute(Lightning)",
+"309:Light Remnant - Luminescence(Light)",
+"311:Manticore - Mighty Stab(Dagger)",
+"312:Menacing Manticore - Blinding Claw(Sword)",
+"315:Spud Bug - Lunge(Spear)",
+"319:Manymaws - Horrible Breath (All)(None)",
+"322:Monarch - Butterfly Effect (All)(Wind)",
+"323:Crawly Fledgling - Poison Shot(Bow)",
+"324:Sentinel - Chop(Axe)",
+"325:Light Sentinel - Luminescence(Light)",
+"326:Dark Sentinel - Enshadow(Dark)",
+"328:Guardian - Chop(Axe)",
+"329:Flame Guardian - Incinerate (All)(Fire)",
+"330:Ice Guardian - Freeze (All)(Ice)",
+"331:Wind Guardian - Wind Slash (All)(Wind)",
+"332:Thunder Guardian - Shock Stream(Lightning)",
+"333:Light Guardian - Liight Stream(Light)",
+"334:Dark Guardian - Shadow Stream(Dark)",
+"335:Fire Sentinel - Incinerate(Fire)",
+"336:Ice Sentinel - Freeze(Ice)",
+"337:Fire Guardian Mk.II - Incinerate (All)(Fire)",
+"338:Dark Guardian Mk.II - Enshadow (All)(Dark)",
+"339:Flame Curator Mk.II - Incinerate(Fire)",
+"340:Dark Curator Mk.II - Enshadow(Dark)",
+"341:Wind Sentinel - Wind Slash(Wind)",
+"342:Thunder Sentinel - Electrocute(Lightning)",
+"343:Sentinel Mk.II - Chop(Axe)",
+"344:Flame Sentinel Mk.II - Incinerate(Fire)",
+"345:Ice Sentinel Mk.II - Freeze(Ice)",
+"346:Wind Sentinel Mk.II - Wind Slash(Wind)",
+"347:Thunder Sentinel Mk.II - Electrocute(Lightning)",
+"348:Light Sentinel Mk.II - Luminescence(Light)",
+"349:Dark Sentinel Mk.II - Enshadow(Dark)",
+"350:Curator - Mental Boost(None)",
+"351:Flame Curator - Incinerate(Fire)",
+"352:Ice Curator - Freeze(Ice)",
+"353:Wind Curator - Wind Slash(Wind)",
+"354:Thunder Curator - Electrocute(Lightning)",
+"355:Light Curator - Luminescence(Light)",
+"356:Dark Curator - Enshadow(Dark)",
+"357:Guardian Mk.II - Mighty Chop(Axe)",
+"358:Ice Guardian Mk.II - Freeze (All)(Ice)",
+"359:Wind Guardian Mk.II - Wind Slash (All)(Wind)",
+"360:Thunder Guardian Mk.II - Electrocute (All)(Lightning)",
+"361:Light Guardian Mk.II - Luminescence (All)(Light)",
+"362:Curator Mk.II - Mental Boost (All)(None)",
+"363:Ice Curator Mk.II - Freeze(Ice)",
+"364:Wind Curator Mk.II - Wind Slash(Wind)",
+"365:Thunder Curator Mk.II - Electrocute(Lightning)",
+"366:Light Curator Mk.II - Luminescence(Light)",
+"367:Cait - Luck of the Cait(None)",
+"368:Cultured Cait - Deluxe Luck of the Cait(None)",
+"369:Chubby Cait - Supreme Luck of the Cait(None)",
+"370:Fire Wisp - Incinerate(Fire)",
+"371:Ice Wisp - Freeze(Ice)",
+"372:Thunder Wisp - Electrocute(Lightning)",
+"373:373-??????? - Attack (Hits for 9999)()",
+"374:374-??????? - Buffs Enemies With Good Buff()",
+"375:375-??????? - ()",
+"376:376-??????? - ()",
+"377:377-??????? - ()",
+"378:378-??????? - ()",
+"379:379-??????? - ()",
+"380:380-??????? - ()",
+"381:381-??????? - ()",
+"382:382-??????? - ()",
+"383:383-??????? - ()",
+"384:384-??????? - ()",
+"385:385-??????? - ()",
+"386:386-??????? - ()",
+"387:387-??????? - ()",
+"388:388-??????? - ()",
+"389:389-??????? - ()",
+"390:390-??????? - ()",
+"391:391-??????? - ()",
+"392:392-??????? - ()",
+"393:393-??????? - ()",
+"394:394-??????? - ()",
+}
+
+local DropDownListITM = createStringlist()
+for i,j in ipairs(ItemList) do
+	DropDownListITM.add(string.format("%s",j))
+end
+
+local mr = al.getMemoryRecordByDescription("Inventory Slot 1 Item ID")
+
+al[mr.Index].DropDownList.Text = DropDownListITM.Text
+al[mr.Index].DropDownReadOnly = false
+al[mr.Index].DropDownDescriptionOnly = true
+al[mr.Index].DisplayAsDropDownListItem = true
+
+local mr2 = al.getMemoryRecordByDescription("Inventory Editor")
+
+al[mr2.Index+1].DropDownList.Text = DropDownListITM.Text
+al[mr2.Index+1].DropDownReadOnly = false
+al[mr2.Index+1].DropDownDescriptionOnly = true
+al[mr2.Index+1].DisplayAsDropDownListItem = true
+
+al[mr2.Index+2].DropDownList.Text = DropDownListITM.Text
+al[mr2.Index+2].DropDownReadOnly = false
+al[mr2.Index+2].DropDownDescriptionOnly = true
+al[mr2.Index+2].DisplayAsDropDownListItem = true
+
+local DropDownListMNST = createStringlist()
+for i,j in ipairs(MonsterList) do
+	DropDownListMNST.add(string.format("%s",j))
+end
+
+local mr3 = al.getMemoryRecordByDescription("H'aanit Summon Monsters")
+
+al[mr3.Index+1].DropDownList.Text = DropDownListMNST.Text
+al[mr3.Index+1].DropDownReadOnly = false
+al[mr3.Index+1].DropDownDescriptionOnly = true
+al[mr3.Index+1].DisplayAsDropDownListItem = true
+al[mr3.Index+3].DropDownList.Text = DropDownListMNST.Text
+al[mr3.Index+3].DropDownReadOnly = false
+al[mr3.Index+3].DropDownDescriptionOnly = true
+al[mr3.Index+3].DisplayAsDropDownListItem = true
+al[mr3.Index+5].DropDownList.Text = DropDownListMNST.Text
+al[mr3.Index+5].DropDownReadOnly = false
+al[mr3.Index+5].DropDownDescriptionOnly = true
+al[mr3.Index+5].DisplayAsDropDownListItem = true
+al[mr3.Index+7].DropDownList.Text = DropDownListMNST.Text
+al[mr3.Index+7].DropDownReadOnly = false
+al[mr3.Index+7].DropDownDescriptionOnly = true
+al[mr3.Index+7].DisplayAsDropDownListItem = true
+al[mr3.Index+9].DropDownList.Text = DropDownListMNST.Text
+al[mr3.Index+9].DropDownReadOnly = false
+al[mr3.Index+9].DropDownDescriptionOnly = true
+al[mr3.Index+9].DisplayAsDropDownListItem = true
+al[mr3.Index+11].DropDownList.Text = DropDownListMNST.Text
+al[mr3.Index+11].DropDownReadOnly = false
+al[mr3.Index+11].DropDownDescriptionOnly = true
+al[mr3.Index+11].DisplayAsDropDownListItem = true
+al[mr3.Index+13].DropDownList.Text = DropDownListMNST.Text
+al[mr3.Index+13].DropDownReadOnly = false
+al[mr3.Index+13].DropDownDescriptionOnly = true
+al[mr3.Index+13].DisplayAsDropDownListItem = true
+al[mr3.Index+15].DropDownList.Text = DropDownListMNST.Text
+al[mr3.Index+15].DropDownReadOnly = false
+al[mr3.Index+15].DropDownDescriptionOnly = true
+al[mr3.Index+15].DisplayAsDropDownListItem = true
+al[mr3.Index+17].DropDownList.Text = DropDownListMNST.Text
+al[mr3.Index+17].DropDownReadOnly = false
+al[mr3.Index+17].DropDownDescriptionOnly = true
+al[mr3.Index+17].DisplayAsDropDownListItem = true
+al[mr3.Index+19].DropDownList.Text = DropDownListMNST.Text
+al[mr3.Index+19].DropDownReadOnly = false
+al[mr3.Index+19].DropDownDescriptionOnly = true
+al[mr3.Index+19].DisplayAsDropDownListItem = true
+
+{$asm}
+label(MainBaseAddr)
+registersymbol(MainBaseAddr)
+label(BattleMainBaseAddr)
+registersymbol(BattleMainBaseAddr)
+label(NoEncounterBaseAddr)
+registersymbol(NoEncounterBaseAddr)
+label(SavedGP)
+registersymbol(SavedGP)
+label(GPInitialized)
+registersymbol(GPInitialized)
+label(GPMultiplier)
+registersymbol(GPMultiplier)
+label(InfiniteGP)
+registersymbol(InfiniteGP)
+label(SavedJP)
+registersymbol(SavedJP)
+label(JPInitialized)
+registersymbol(JPInitialized)
+label(JPMultiplier)
+registersymbol(JPMultiplier)
+label(InfiniteJP)
+registersymbol(InfiniteJP)
+label(SavedEXP)
+registersymbol(SavedEXP)
+label(EXPInitialized)
+registersymbol(EXPInitialized)
+label(EXPMultiplier)
+registersymbol(EXPMultiplier)
+label(MinItemQty)
+registersymbol(MinItemQty)
+label(TtlItems)
+registersymbol(TtlItems)
+label(ValidItems)
+registersymbol(ValidItems)
+label(ItemToReplace)
+registersymbol(ItemToReplace)
+label(ReplacedItemID)
+registersymbol(ReplacedItemID)
+alloc(newmem,4096)
+alloc(newmem2,4096)
+
+"Octopath_Traveler-Win64-Shipping.exe"+0289EA48:
+MainBaseAddr:
+
+"Octopath_Traveler-Win64-Shipping.exe"+0289E9C8:
+BattleMainBaseAddr:
+
+"Octopath_Traveler-Win64-Shipping.exe"+029E7CE8:
+NoEncounterBaseAddr:
+
+newmem:
+
+GPMultiplier:
+dq #100
+InfiniteGP:
+dq 1
+GPInitialized:
+dq 0
+SavedGP:
+dq 0
+JPMultiplier:
+dq #5
+InfiniteJP:
+dq 1
+JPInitialized:
+dq 0
+SavedJP:
+dq 0
+dq 0
+dq 0
+dq 0
+EXPMultiplier:
+dq #5
+EXPInitialized:
+dq 0
+SavedEXP:
+dq 0
+dq 0
+dq 0
+dq 0
+
+newmem2:
+
+ItemToReplace:
+dq 1
+ReplacedItemID:
+dq FFFFFFFF
+MinItemQty:
+dq #10
+TtlItems:
+dq #509
+ValidItems:
+dd #1
+dd #2
+dd #3
+dd #4
+dd #5
+dd #6
+dd #7
+dd #8
+dd #9
+dd #10
+dd #11
+dd #12
+dd #13
+dd #14
+dd #20
+dd #21
+dd #22
+dd #23
+dd #24
+dd #25
+dd #26
+dd #30
+dd #31
+dd #32
+dd #33
+dd #40
+dd #41
+dd #42
+dd #43
+dd #44
+dd #45
+dd #46
+dd #47
+dd #48
+dd #49
+dd #50
+dd #51
+dd #52
+dd #53
+dd #54
+dd #55
+dd #56
+dd #57
+dd #60
+dd #61
+dd #62
+dd #63
+dd #64
+dd #65
+dd #66
+dd #67
+dd #68
+dd #69
+dd #70
+dd #71
+dd #72
+dd #73
+dd #74
+dd #75
+dd #76
+dd #77
+dd #78
+dd #79
+dd #80
+dd #81
+dd #82
+dd #83
+dd #84
+dd #85
+dd #86
+dd #87
+dd #88
+dd #89
+dd #90
+dd #91
+dd #92
+dd #93
+dd #94
+dd #95
+dd #96
+dd #97
+dd #98
+dd #99
+dd #100
+dd #101
+dd #102
+dd #103
+dd #104
+dd #105
+dd #106
+dd #107
+dd #108
+dd #109
+dd #110
+dd #111
+dd #112
+dd #113
+dd #114
+dd #115
+dd #116
+dd #117
+dd #119
+dd #121
+dd #122
+dd #123
+dd #124
+dd #125
+dd #126
+dd #127
+dd #128
+dd #130
+dd #131
+dd #132
+dd #133
+dd #134
+dd #135
+dd #136
+dd #138
+dd #139
+dd #140
+dd #141
+dd #142
+dd #143
+dd #409
+dd #1001
+dd #1002
+dd #1003
+dd #1004
+dd #1005
+dd #1006
+dd #1007
+dd #1008
+dd #1009
+dd #1010
+dd #1011
+dd #1012
+dd #1013
+dd #1014
+dd #1015
+dd #1016
+dd #1017
+dd #1018
+dd #1019
+dd #1020
+dd #1021
+dd #1022
+dd #1023
+dd #1024
+dd #1025
+dd #1026
+dd #1027
+dd #1028
+dd #1029
+dd #1030
+dd #1031
+dd #1032
+dd #1033
+dd #1034
+dd #1101
+dd #1102
+dd #1103
+dd #1104
+dd #1105
+dd #1106
+dd #1107
+dd #1108
+dd #1109
+dd #1110
+dd #1111
+dd #1112
+dd #1113
+dd #1114
+dd #1115
+dd #1116
+dd #1117
+dd #1118
+dd #1119
+dd #1120
+dd #1121
+dd #1122
+dd #1123
+dd #1124
+dd #1125
+dd #1126
+dd #1127
+dd #1128
+dd #1129
+dd #1130
+dd #1201
+dd #1202
+dd #1203
+dd #1204
+dd #1205
+dd #1206
+dd #1207
+dd #1208
+dd #1209
+dd #1210
+dd #1211
+dd #1212
+dd #1213
+dd #1214
+dd #1215
+dd #1216
+dd #1217
+dd #1218
+dd #1219
+dd #1220
+dd #1221
+dd #1222
+dd #1223
+dd #1224
+dd #1225
+dd #1226
+dd #1227
+dd #1228
+dd #1229
+dd #1230
+dd #1301
+dd #1302
+dd #1303
+dd #1304
+dd #1305
+dd #1306
+dd #1307
+dd #1308
+dd #1309
+dd #1310
+dd #1311
+dd #1312
+dd #1313
+dd #1314
+dd #1315
+dd #1316
+dd #1317
+dd #1318
+dd #1319
+dd #1320
+dd #1321
+dd #1322
+dd #1323
+dd #1324
+dd #1325
+dd #1326
+dd #1327
+dd #1328
+dd #1329
+dd #1330
+dd #1331
+dd #1332
+dd #1333
+dd #1334
+dd #1401
+dd #1402
+dd #1403
+dd #1404
+dd #1405
+dd #1406
+dd #1407
+dd #1408
+dd #1409
+dd #1410
+dd #1411
+dd #1412
+dd #1413
+dd #1414
+dd #1415
+dd #1416
+dd #1417
+dd #1418
+dd #1419
+dd #1420
+dd #1421
+dd #1422
+dd #1423
+dd #1424
+dd #1425
+dd #1426
+dd #1427
+dd #1428
+dd #1429
+dd #1430
+dd #1431
+dd #1501
+dd #1502
+dd #1503
+dd #1504
+dd #1505
+dd #1506
+dd #1507
+dd #1508
+dd #1509
+dd #1510
+dd #1511
+dd #1512
+dd #1513
+dd #1514
+dd #1515
+dd #1516
+dd #1517
+dd #1518
+dd #1519
+dd #1520
+dd #1521
+dd #1522
+dd #1523
+dd #1524
+dd #1525
+dd #1526
+dd #1527
+dd #1528
+dd #1529
+dd #1530
+dd #1531
+dd #1532
+dd #1533
+dd #1601
+dd #1602
+dd #1603
+dd #1604
+dd #1605
+dd #1606
+dd #1607
+dd #1608
+dd #1609
+dd #1610
+dd #1611
+dd #1612
+dd #1613
+dd #1614
+dd #1615
+dd #1616
+dd #1617
+dd #1618
+dd #1701
+dd #1702
+dd #1703
+dd #1704
+dd #1705
+dd #1706
+dd #1707
+dd #1708
+dd #1709
+dd #1710
+dd #1711
+dd #1712
+dd #1713
+dd #1714
+dd #1715
+dd #1716
+dd #1717
+dd #1718
+dd #1719
+dd #1720
+dd #1721
+dd #1722
+dd #1723
+dd #1724
+dd #1725
+dd #1726
+dd #1727
+dd #1728
+dd #1729
+dd #1730
+dd #1731
+dd #1732
+dd #1733
+dd #1734
+dd #1735
+dd #1736
+dd #1737
+dd #1738
+dd #1739
+dd #1740
+dd #1741
+dd #1742
+dd #1801
+dd #1802
+dd #1803
+dd #1804
+dd #1805
+dd #1806
+dd #1807
+dd #1808
+dd #1809
+dd #1810
+dd #1811
+dd #1812
+dd #1813
+dd #1814
+dd #1815
+dd #1816
+dd #1817
+dd #1818
+dd #1819
+dd #1820
+dd #1821
+dd #1822
+dd #1823
+dd #1824
+dd #1825
+dd #1826
+dd #1827
+dd #1828
+dd #1829
+dd #1830
+dd #1831
+dd #1832
+dd #1833
+dd #1834
+dd #1835
+dd #1836
+dd #1837
+dd #1838
+dd #1839
+dd #1840
+dd #1841
+dd #1842
+dd #1843
+dd #1844
+dd #1845
+dd #1846
+dd #1847
+dd #1848
+dd #1849
+dd #1850
+dd #1901
+dd #1903
+dd #1904
+dd #1905
+dd #1906
+dd #1907
+dd #1908
+dd #1909
+dd #1910
+dd #1911
+dd #1912
+dd #1913
+dd #1914
+dd #1915
+dd #1916
+dd #1917
+dd #1918
+dd #1919
+dd #1920
+dd #1921
+dd #1922
+dd #1923
+dd #1924
+dd #1925
+dd #1926
+dd #1927
+dd #1928
+dd #1929
+dd #1930
+dd #1931
+dd #1932
+dd #1933
+dd #1934
+dd #1935
+dd #1936
+dd #1937
+dd #1938
+dd #1939
+dd #1940
+dd #1941
+dd #1942
+dd #1943
+dd #1944
+dd #1945
+dd #1946
+dd #1947
+dd #1948
+dd #1949
+dd #1950
+dd #1951
+dd #1952
+dd #1953
+dd #1954
+dd #1955
+dd #1956
+dd #1957
+dd #1958
+dd #1959
+dd #1960
+dd #1961
+dd #1962
+dd #1963
+dd #1964
+dd #1965
+dd #1966
+dd #1967
+dd #1968
+dd #2500
+dd #2501
+dd #2502
+dd #2503
+dd #2504
+dd #2505
+dd #2506
+dd #2507
+dd #2516
+dd #2517
+dd #2518
+dd #2519
+dd #2520
+dd #2521
+dd #2522
+dd #2523
+
+[DISABLE]
+
+unregistersymbol(MainBaseAddr)
+unregistersymbol(BattleMainBaseAddr)
+unregistersymbol(NoEncounterBaseAddr)
+unregistersymbol(SavedGP)
+unregistersymbol(GPMultiplier)
+unregistersymbol(GPInitialized)
+unregistersymbol(InfiniteGP)
+unregistersymbol(SavedJP)
+unregistersymbol(JPMultiplier)
+unregistersymbol(JPInitialized)
+unregistersymbol(InfiniteJP)
+unregistersymbol(SavedEXP)
+unregistersymbol(EXPMultiplier)
+unregistersymbol(EXPInitialized)
+
+unregistersymbol(ValidItems)
+unregistersymbol(MinItemQty)
+unregistersymbol(TtlItems)
+unregistersymbol(ItemToReplace)
+unregistersymbol(ReplacedItemID)
+
+dealloc(newmem)
+dealloc(newmem2)
+</AssemblerScript>
+        <CheatEntries>
+			<CheatEntry>
+              <ID>100</ID>
+              <Description>"[Scripts]"</Description>
+              <Options moHideChildren="1"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+				<CheatEntry>
+				  <ID>7000</ID>
+				  <Description>"Scripts By TheByteSize"</Description>
+				  <Options moHideChildren="1" moDeactivateChildrenAsWell="1"/>
+				  <GroupHeader>1</GroupHeader>
+				  <CheatEntries>
+					<CheatEntry>
+					  <ID>7010</ID>
+					  <Description>"Battle Result"</Description>
+					  <Options moHideChildren="1" moDeactivateChildrenAsWell="1"/>
+					  <LastState/>
+					  <VariableType>Auto Assembler Script</VariableType>
+					  <AssemblerScript>[ENABLE]
+
+aobscanmodule(8PathBattleResult,Octopath_Traveler-Win64-Shipping.exe,41 FF 54 C5 00 48 85) // should be unique
+alloc(newmem,$1000,8PathBattleResult)
+
+
+registersymbol(moneyMult)
+registersymbol(expMult)
+registersymbol(jpMult)
+registersymbol(brPtr)
+label(moneyMult)
+label(expMult)
+label(jpMult)
+label(brPtr)
+label(code)
+label(return)
+
+newmem:
+  call qword ptr [r13+rax*8+00]
+  cmp r8d,#4
+  jne code
+  cmp rbx,0
+  jne code
+  cmp r15d,0
+  jne code
+  cmp rbp,8CED90
+  jne code
+  cmp r10,8CEEF4
+  jne code
+  push rcx
+  mov ecx,[rax+00]
+  imul ecx,[moneyMult]
+  mov [rax],ecx
+  mov ecx,[rax+4]
+  imul ecx,[expMult]
+  mov [rax+4],ecx
+  mov ecx,[rax+8]
+  imul ecx,[jpMult]
+  mov [rax+8],ecx
+  pop rcx
+  mov [brPtr],rax
+code:
+
+  jmp return
+brPtr:
+dq #0
+moneyMult:
+dq #100
+expMult:
+dq #1
+jpMult:
+dq #10
+8PathBattleResult:
+  jmp newmem
+return:
+registersymbol(8PathBattleResult)
+
+[DISABLE]
+
+8PathBattleResult:
+  db 41 FF 54 C5 00
+
+
+unregistersymbol(moneyMult)
+unregistersymbol(expMult)
+unregistersymbol(jpMult)
+unregistersymbol(8PathBattleResult)
+unregistersymbol(brPtr)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Octopath_Traveler-Win64-Shipping.exe"+605BA87
+
+"Octopath_Traveler-Win64-Shipping.exe"+605BA66: 48 89 F1                       -  mov rcx,rsi
+"Octopath_Traveler-Win64-Shipping.exe"+605BA69: FF 50 08                       -  call qword ptr [rax+08]
+"Octopath_Traveler-Win64-Shipping.exe"+605BA6C: 49 8B 46 20                    -  mov rax,[r14+20]
+"Octopath_Traveler-Win64-Shipping.exe"+605BA70: 4C 89 F2                       -  mov rdx,r14
+"Octopath_Traveler-Win64-Shipping.exe"+605BA73: 4D 8B 46 38                    -  mov r8,[r14+38]
+"Octopath_Traveler-Win64-Shipping.exe"+605BA77: 0F B6 08                       -  movzx ecx,byte ptr [rax]
+"Octopath_Traveler-Win64-Shipping.exe"+605BA7A: 48 FF C0                       -  inc rax
+"Octopath_Traveler-Win64-Shipping.exe"+605BA7D: 49 89 46 20                    -  mov [r14+20],rax
+"Octopath_Traveler-Win64-Shipping.exe"+605BA81: 89 C8                          -  mov eax,ecx
+"Octopath_Traveler-Win64-Shipping.exe"+605BA83: 49 8B 4E 18                    -  mov rcx,[r14+18]
+// ---------- INJECTING HERE ----------
+"Octopath_Traveler-Win64-Shipping.exe"+605BA87: 41 FF 54 C5 00                 -  call qword ptr [r13+rax*8+00]
+// ---------- DONE INJECTING  ----------
+"Octopath_Traveler-Win64-Shipping.exe"+605BA8C: 48 85 DB                       -  test rbx,rbx
+"Octopath_Traveler-Win64-Shipping.exe"+605BA8F: 74 24                          -  je Octopath_Traveler-Win64-Shipping.exe+605BAB5
+"Octopath_Traveler-Win64-Shipping.exe"+605BA91: 48 85 FF                       -  test rdi,rdi
+"Octopath_Traveler-Win64-Shipping.exe"+605BA94: 74 1F                          -  je Octopath_Traveler-Win64-Shipping.exe+605BAB5
+"Octopath_Traveler-Win64-Shipping.exe"+605BA96: 48 B8 00 00 00 00 10 00 00 00  -  mov rax,0000001000000000
+"Octopath_Traveler-Win64-Shipping.exe"+605BAA0: 48 85 47 38                    -  test [rdi+38],rax
+"Octopath_Traveler-Win64-Shipping.exe"+605BAA4: 75 0F                          -  jne Octopath_Traveler-Win64-Shipping.exe+605BAB5
+"Octopath_Traveler-Win64-Shipping.exe"+605BAA6: 48 8B 07                       -  mov rax,[rdi]
+"Octopath_Traveler-Win64-Shipping.exe"+605BAA9: 48 89 DA                       -  mov rdx,rbx
+"Octopath_Traveler-Win64-Shipping.exe"+605BAAC: 48 89 F9                       -  mov rcx,rdi
+}
+</AssemblerScript>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>7011</ID>
+						  <Description>"Money Multiplier"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>moneyMult</Address>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>7012</ID>
+						  <Description>"EXP Multiplier"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>expMult</Address>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>7013</ID>
+						  <Description>"JP Multiplier"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>jpMult</Address>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>7020</ID>
+						  <Description>"BR Values"</Description>
+						  <Options moHideChildren="1" moDeactivateChildrenAsWell="1"/>
+						  <GroupHeader>1</GroupHeader>
+						  <CheatEntries>
+							<CheatEntry>
+							  <ID>7021</ID>
+							  <Description>"Money"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>brPtr</Address>
+							  <Offsets>
+								<Offset>0</Offset>
+							  </Offsets>
+							  <CheatEntries>
+								<CheatEntry>
+								  <ID>7022</ID>
+								  <Description>"EXP"</Description>
+								  <VariableType>4 Bytes</VariableType>
+								  <Address>+4</Address>
+								</CheatEntry>
+								<CheatEntry>
+								  <ID>7023</ID>
+								  <Description>"JP"</Description>
+								  <VariableType>4 Bytes</VariableType>
+								  <Address>+8</Address>
+								</CheatEntry>
+							  </CheatEntries>
+							</CheatEntry>
+						  </CheatEntries>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>7030</ID>
+					  <Description>"Easy Check for Field Commands (Steal, Scrutinize, Inquire)"</Description>
+					  <LastState/>
+					  <VariableType>Auto Assembler Script</VariableType>
+					  <AssemblerScript>[ENABLE]
+
+aobscanmodule(8PathSteal,Octopath_Traveler-Win64-Shipping.exe,E8 90 F9 64 01) // should be unique
+alloc(newmem,$1000,8PathSteal)
+
+label(scrutinize)
+label(allure)
+label(thieving)
+label(inquiry)
+label(lvl99)
+label(newvalue)
+label(code)
+label(return)
+
+newmem:
+  call Octopath_Traveler-Win64-Shipping.exe+19B6B80
+  push rbx
+  mov rbx,Octopath_Traveler-Win64-Shipping.exe+0289EA48
+  mov rbx,[rbx]
+  cmp r14d,#1
+  jne code
+  cmp r8d,#4
+  jne code
+  mov rbx,[rbx+370]
+  mov rbx,[rbx+1C8]
+  cmp [rdx-4],#3
+  je scrutinize
+  cmp [rdx-4],#4
+  je allure
+  cmp [rdx-4],#6
+  je thieving
+  cmp [rdx-4],#8
+  je inquiry
+  jmp code
+scrutinize:
+  lea rbx,[rbx+194]
+  cmp rdx,rbx
+  jne code
+  cmp r15,8C7028
+  je lvl99
+  cmp r15,8CE488
+  je lvl99
+  jmp code
+allure:
+  lea rbx,[rbx+25C]
+  cmp rdx,rbx
+  jne code
+  cmp r15,8CDE18  //subnemu
+  je lvl99
+  cmp r15,8C65F8  //action
+  je lvl99
+  jmp code
+thieving:
+  lea rbx,[rbx+3EC]
+  cmp rdx,rbx
+  jne code
+  cmp r15,8CDE48
+  je newvalue
+  jmp code
+inquiry:
+  lea rbx,[rbx+57C]
+  cmp rdx,rbx
+  jne code
+  cmp r15,8CC3E8 //field commands preview
+  je newvalue
+  cmp r15,8CDFE8 //submenu
+  je newvalue
+  cmp r15,8C6108 //inquiry
+  je newvalue
+  jmp code
+lvl99:
+  cmp [rdx],#0
+  jl code
+  cmp [rdx],#99
+  jg code
+  mov ecx,#99
+  mov [rax],#99
+  jmp code
+newvalue:
+  cmp [rdx],#0
+  jl code
+  cmp [rdx],#99
+  jg code
+  mov ecx,#200
+  mov [rax],#200
+code:
+  pop rbx
+  jmp return
+
+8PathSteal:
+  jmp newmem
+return:
+registersymbol(8PathSteal)
+
+[DISABLE]
+
+8PathSteal:
+  db E8 90 F9 64 01
+
+unregistersymbol(8PathSteal)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Octopath_Traveler-Win64-Shipping.exe"+3671EB
+
+"Octopath_Traveler-Win64-Shipping.exe"+3671CB: 4E 8D 14 39                       -  lea r10,[rcx+r15]
+"Octopath_Traveler-Win64-Shipping.exe"+3671CF: 4C 3B D2                          -  cmp r10,rdx
+"Octopath_Traveler-Win64-Shipping.exe"+3671D2: 74 34                             -  je Octopath_Traveler-Win64-Shipping.exe+367208
+"Octopath_Traveler-Win64-Shipping.exe"+3671D4: 8B 46 38                          -  mov eax,[rsi+38]
+"Octopath_Traveler-Win64-Shipping.exe"+3671D7: 48 0F BA E0 1E                    -  bt rax,1E
+"Octopath_Traveler-Win64-Shipping.exe"+3671DC: 73 14                             -  jae Octopath_Traveler-Win64-Shipping.exe+3671F2
+"Octopath_Traveler-Win64-Shipping.exe"+3671DE: 8B 46 34                          -  mov eax,[rsi+34]
+"Octopath_Traveler-Win64-Shipping.exe"+3671E1: 49 8B CA                          -  mov rcx,r10
+"Octopath_Traveler-Win64-Shipping.exe"+3671E4: 0F AF 46 30                       -  imul eax,[rsi+30]
+"Octopath_Traveler-Win64-Shipping.exe"+3671E8: 4C 63 C0                          -  movsxd  r8,eax
+// ---------- INJECTING HERE ----------
+"Octopath_Traveler-Win64-Shipping.exe"+3671EB: E8 90 F9 64 01                    -  call Octopath_Traveler-Win64-Shipping.exe+19B6B80
+// ---------- DONE INJECTING  ----------
+"Octopath_Traveler-Win64-Shipping.exe"+3671F0: EB 16                             -  jmp Octopath_Traveler-Win64-Shipping.exe+367208
+"Octopath_Traveler-Win64-Shipping.exe"+3671F2: 48 8B 06                          -  mov rax,[rsi]
+"Octopath_Traveler-Win64-Shipping.exe"+3671F5: 4C 8B C2                          -  mov r8,rdx
+"Octopath_Traveler-Win64-Shipping.exe"+3671F8: 44 8B 4E 30                       -  mov r9d,[rsi+30]
+"Octopath_Traveler-Win64-Shipping.exe"+3671FC: 49 8B D2                          -  mov rdx,r10
+"Octopath_Traveler-Win64-Shipping.exe"+3671FF: 48 8B CE                          -  mov rcx,rsi
+"Octopath_Traveler-Win64-Shipping.exe"+367202: FF 90 98 02 00 00                 -  call qword ptr [rax+00000298]
+"Octopath_Traveler-Win64-Shipping.exe"+367208: 49 03 DC                          -  add rbx,r12
+"Octopath_Traveler-Win64-Shipping.exe"+36720B: 49 83 EE 01                       -  sub r14,01
+"Octopath_Traveler-Win64-Shipping.exe"+36720F: 75 AF                             -  jne Octopath_Traveler-Win64-Shipping.exe+3671C0
+}
+</AssemblerScript>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>7031</ID>
+					  <Description>"Inf Hannit Summon QTY (Original By TheByteSize)"</Description>
+					  <LastState/>
+					  <VariableType>Auto Assembler Script</VariableType>
+					  <AssemblerScript>[ENABLE]
+{$lua}
+tHannitInfSummon = createTimer(nil, false)
+tHannitInfSummon.OnTimer = function(fHannitInfSummon)
+  errorOnLookupFailure = false
+  if (getAddress("MainBaseAddr") == 0) then
+	tHannitInfSummon.Destroy()
+  end
+  local MainAddr = ReadQword(getAddress("MainBaseAddr"))
+  if (MainAddr ~= nil) then
+	local HannitSummonPtr = ReadQword(MainAddr + 0x3A0)
+    HannitSummonPtr = ReadQword(HannitSummonPtr + 0x1E8)
+
+	if (HannitSummonPtr ~= nil) then
+
+		local CurrentSlot = 0
+		local CurrentSummonID = ReadInteger(HannitSummonPtr)
+
+		while (CurrentSlot &lt; 10) do
+		  if (ReadInteger(HannitSummonPtr + (CurrentSlot * 0x0C)) ~= 0xFFFFFFFF) then
+            WriteInteger(HannitSummonPtr + (CurrentSlot * 0x0C) + 0x04,99)
+		  end
+		  
+		  CurrentSlot = CurrentSlot + 1
+		end
+	end
+  end
+
+end
+tHannitInfSummon.Interval = 1000
+tHannitInfSummon.Enabled = true
+{$asm}
+
+[DISABLE]
+{$lua}
+tHannitInfSummon.Destroy()
+
+{$asm}
+</AssemblerScript>
+					</CheatEntry>					
+				  </CheatEntries>
+				</CheatEntry>			  
+				<CheatEntry>
+				  <ID>1100</ID>
+				  <Description>"Infinite HP All Chars"</Description>
+				  <Options moHideChildren="1"/>
+				  <VariableType>Auto Assembler Script</VariableType>
+				  <AssemblerScript>[ENABLE]
+{$lua}
+tInfHP = createTimer(nil, false)
+tInfHP.OnTimer = function(fInfHP)
+  errorOnLookupFailure = false
+  if (getAddress("BattleMainBaseAddr") == 0) then
+	tInfHP.Destroy()
+  end
+  local BattleMainAddr = ReadQword(getAddress("BattleMainBaseAddr"))
+  if (BattleMainAddr ~= nil) then
+	local BattleChar1Ptr1 = ReadQword(BattleMainAddr + 0x150)
+	
+	if (BattleChar1Ptr1 ~= nil) then
+		local NumChars = 5
+		local CurrentChar = 0
+		
+		while (CurrentChar &lt; NumChars) do		
+		  local BattleChar1Ptr2 = ReadQword(BattleChar1Ptr1 + ((CurrentChar + 1) * 0x08))
+
+		  if (BattleChar1Ptr2 ~= nil) then
+		    local CurrentBP = ReadInteger(BattleChar1Ptr2 + 0x430)
+		    if (CurrentBP == 5) then  
+			  local MaxHP = 9999
+			  WriteInteger(BattleChar1Ptr2 + 0x3E4,MaxHP)
+		    end
+		  end
+		  
+		  CurrentChar = CurrentChar + 1
+		end
+	end  
+  end
+
+end
+tInfHP.Interval = 1000
+tInfHP.Enabled = true
+{$asm}
+
+[DISABLE]
+{$lua}
+tInfHP.Destroy()
+
+{$asm}
+</AssemblerScript>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>1101</ID>
+				  <Description>"Infinite SP All Chars"</Description>
+				  <Options moHideChildren="1"/>
+				  <VariableType>Auto Assembler Script</VariableType>
+				  <AssemblerScript>[ENABLE]
+{$lua}
+tInfSP = createTimer(nil, false)
+tInfSP.OnTimer = function(fInfSP)
+  errorOnLookupFailure = false
+  if (getAddress("BattleMainBaseAddr") == 0) then
+	tInfSP.Destroy()
+  end
+  local BattleMainAddr = ReadQword(getAddress("BattleMainBaseAddr"))
+  if (BattleMainAddr ~= nil) then
+	local BattleChar1Ptr1 = ReadQword(BattleMainAddr + 0x150)
+	
+	if (BattleChar1Ptr1 ~= nil) then
+		local NumChars = 5
+		local CurrentChar = 0
+		
+		while (CurrentChar &lt; NumChars) do		
+		  local BattleChar1Ptr2 = ReadQword(BattleChar1Ptr1 + ((CurrentChar + 1) * 0x08))
+	  
+		  if (BattleChar1Ptr2 ~= nil) then
+			local CurrentBP = ReadInteger(BattleChar1Ptr2 + 0x430)
+		    if (CurrentBP == 5) then  
+			  local MaxSP = 9999
+			  WriteInteger(BattleChar1Ptr2 + 0x3E8,MaxSP)
+			end
+		  end
+		  CurrentChar = CurrentChar + 1
+		end
+	end
+  end
+
+end
+tInfSP.Interval = 1000
+tInfSP.Enabled = true
+{$asm}
+
+[DISABLE]
+{$lua}
+tInfSP.Destroy()
+
+{$asm}
+</AssemblerScript>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>1102</ID>
+				  <Description>"Max BP All Chars"</Description>
+				  <Options moHideChildren="1"/>
+				  <VariableType>Auto Assembler Script</VariableType>
+				  <AssemblerScript>[ENABLE]
+{$lua}
+tMaxBP = createTimer(nil, false)
+tMaxBP.OnTimer = function(fMaxBP)
+  errorOnLookupFailure = false
+  if (getAddress("BattleMainBaseAddr") == 0) then
+	tMaxBP.Destroy()
+  end
+  local BattleMainAddr = ReadQword(getAddress("BattleMainBaseAddr"))
+  if (BattleMainAddr ~= nil) then
+	local BattleChar1Ptr1 = ReadQword(BattleMainAddr + 0x150)
+	if (BattleChar1Ptr1 ~= nil) then
+		local NumChars = 5
+		local CurrentChar = 0
+		
+		while (CurrentChar &lt; NumChars) do		
+		  local BattleChar1Ptr2 = ReadQword(BattleChar1Ptr1 + ((CurrentChar + 1) * 0x08))
+
+		  if (BattleChar1Ptr2 ~= nil) then
+			local CurrentBP = ReadInteger(BattleChar1Ptr2 + 0x430)
+			if (CurrentBP == 5) then  
+			  WriteInteger(BattleChar1Ptr2 + 0x428,5)
+			end
+		  end
+		  CurrentChar = CurrentChar + 1
+		end
+		
+	end
+  end
+
+end
+tMaxBP.Interval = 1000
+tMaxBP.Enabled = true
+{$asm}
+
+[DISABLE]
+{$lua}
+tMaxBP.Destroy()
+
+{$asm}
+</AssemblerScript>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>1150</ID>
+				  <Description>"One Hit Kill All Enemies"</Description>
+				  <Options moHideChildren="1"/>
+				  <VariableType>Auto Assembler Script</VariableType>
+				  <AssemblerScript>[ENABLE]
+{$lua}
+tOHKOEnemy = createTimer(nil, false)
+tOHKOEnemy.OnTimer = function(fOHKOEnemy)
+  errorOnLookupFailure = false
+  if (getAddress("BattleMainBaseAddr") == 0) then
+	tOHKOEnemy.Destroy()
+  end
+  local BattleMainAddr = ReadQword(getAddress("BattleMainBaseAddr"))
+  if (BattleMainAddr ~= nil) then
+	local BattleEnemy1Ptr1 = ReadQword(BattleMainAddr + 0x4C0)
+	
+	if (BattleEnemy1Ptr1 ~= nil) then
+		local NumEnemies = 6
+		local CurrentEnemy = 0
+		
+		while (CurrentEnemy &lt; NumEnemies) do		
+		  local BattleEnemy1Ptr2 = ReadQword(BattleEnemy1Ptr1 + ((CurrentEnemy + 1) * 0x08))
+
+		  if (BattleEnemy1Ptr2 ~= nil) then
+			local BattleEnemy1Ptr3 = ReadQword(BattleEnemy1Ptr2 + 0x160)
+			if (BattleEnemy1Ptr3 ~= nil) then
+			  local BattleEnemy1Ptr4 = ReadQword(BattleEnemy1Ptr3 + 0x20)
+			  if (BattleEnemy1Ptr4 ~= nil) then
+			    local BattleEnemy1Ptr5 = ReadQword(BattleEnemy1Ptr4 + 0x3D8)
+				if (BattleEnemy1Ptr5 ~= nil) then
+				  local BattleEnemy1Ptr6 = ReadQword(BattleEnemy1Ptr5 + 0xE0)
+				  if (BattleEnemy1Ptr6 ~= nil) then
+					local CurrentBP = ReadInteger(BattleEnemy1Ptr6 + 0x430)
+					if (ReadInteger(BattleEnemy1Ptr6 + 0x3E4) &gt; 1) then
+					  WriteInteger(BattleEnemy1Ptr6 + 0x3E4,1)
+					end
+				  end
+				end
+			  end
+			end
+		  end
+		  
+		  CurrentEnemy = CurrentEnemy + 1
+		end
+	end  
+  end
+
+end
+tOHKOEnemy.Interval = 1000
+tOHKOEnemy.Enabled = true
+{$asm}
+
+[DISABLE]
+{$lua}
+tOHKOEnemy.Destroy()
+
+{$asm}
+</AssemblerScript>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>1151</ID>
+				  <Description>"All Enemies Have No SP or BP"</Description>
+				  <Options moHideChildren="1"/>
+				  <VariableType>Auto Assembler Script</VariableType>
+				  <AssemblerScript>[ENABLE]
+{$lua}
+tNoSPBPEnemy = createTimer(nil, false)
+tNoSPBPEnemy.OnTimer = function(fNoSPBPEnemy)
+  errorOnLookupFailure = false
+  if (getAddress("BattleMainBaseAddr") == 0) then
+	tNoSPBPEnemy.Destroy()
+  end
+  local BattleMainAddr = ReadQword(getAddress("BattleMainBaseAddr"))
+  if (BattleMainAddr ~= nil) then
+	local BattleEnemy1Ptr1 = ReadQword(BattleMainAddr + 0x4C0)
+	
+	if (BattleEnemy1Ptr1 ~= nil) then
+		local NumEnemies = 5
+		local CurrentEnemy = 0
+		
+		while (CurrentEnemy &lt; NumEnemies) do		
+		  local BattleEnemy1Ptr2 = ReadQword(BattleEnemy1Ptr1 + ((CurrentEnemy + 1) * 0x08))
+
+		  if (BattleEnemy1Ptr2 ~= nil) then
+			local BattleEnemy1Ptr3 = ReadQword(BattleEnemy1Ptr2 + 0x160)
+			if (BattleEnemy1Ptr3 ~= nil) then
+			  local BattleEnemy1Ptr4 = ReadQword(BattleEnemy1Ptr3 + 0x20)
+			  if (BattleEnemy1Ptr4 ~= nil) then
+			    local BattleEnemy1Ptr5 = ReadQword(BattleEnemy1Ptr4 + 0x3D8)
+				if (BattleEnemy1Ptr5 ~= nil) then
+				  local BattleEnemy1Ptr6 = ReadQword(BattleEnemy1Ptr5 + 0xE0)
+				  if (BattleEnemy1Ptr6 ~= nil) then
+					local CurrentBP = ReadInteger(BattleEnemy1Ptr6 + 0x430)
+					if (CurrentBP &lt;= 5) then  
+				      WriteInteger(BattleEnemy1Ptr6 + 0x3E8,0)
+				      WriteInteger(BattleEnemy1Ptr6 + 0x428,0)
+					end
+				  end
+				end
+			  end
+			end
+		  end
+		  
+		  CurrentEnemy = CurrentEnemy + 1
+		end
+	end  
+  end
+
+end
+tNoSPBPEnemy.Interval = 1000
+tNoSPBPEnemy.Enabled = true
+{$asm}
+
+[DISABLE]
+{$lua}
+tNoSPBPEnemy.Destroy()
+
+{$asm}
+</AssemblerScript>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>1152</ID>
+				  <Description>"All Enemies Shields Set To 1"</Description>
+				  <Options moHideChildren="1"/>
+				  <VariableType>Auto Assembler Script</VariableType>
+				  <AssemblerScript>[ENABLE]
+{$lua}
+tNoShieldEnemy = createTimer(nil, false)
+tNoShieldEnemy.OnTimer = function(fNoShieldEnemy)
+  errorOnLookupFailure = false
+  if (getAddress("BattleMainBaseAddr") == 0) then
+	tNoShieldEnemy.Destroy()
+  end
+  local BattleMainAddr = ReadQword(getAddress("BattleMainBaseAddr"))
+  if (BattleMainAddr ~= nil) then
+	local BattleEnemy1Ptr1 = ReadQword(BattleMainAddr + 0x4C0)
+	
+	if (BattleEnemy1Ptr1 ~= nil) then
+		local NumEnemies = 5
+		local CurrentEnemy = 0
+		
+		while (CurrentEnemy &lt; NumEnemies) do		
+		  local BattleEnemy1Ptr2 = ReadQword(BattleEnemy1Ptr1 + ((CurrentEnemy + 1) * 0x08))
+
+		  if (BattleEnemy1Ptr2 ~= nil) then
+			local BattleEnemy1Ptr3 = ReadQword(BattleEnemy1Ptr2 + 0x160)
+			if (BattleEnemy1Ptr3 ~= nil) then
+			  local BattleEnemy1Ptr4 = ReadQword(BattleEnemy1Ptr3 + 0x20)
+			  if (BattleEnemy1Ptr4 ~= nil) then
+			    local BattleEnemy1Ptr5 = ReadQword(BattleEnemy1Ptr4 + 0x3D8)
+				if (BattleEnemy1Ptr5 ~= nil) then
+				  local BattleEnemy1Ptr6 = ReadQword(BattleEnemy1Ptr5 + 0xE0)
+				  if (BattleEnemy1Ptr6 ~= nil) then
+					local CurrentBP = ReadInteger(BattleEnemy1Ptr6 + 0x430)
+					if (CurrentBP &lt;= 5) then  
+					  if (ReadInteger(BattleEnemy1Ptr6 + 0x42C) &gt; 1) then
+						WriteInteger(BattleEnemy1Ptr6 + 0x42C,1)
+					  end
+					end
+				  end
+				end
+			  end
+			end
+		  end
+		  
+		  CurrentEnemy = CurrentEnemy + 1
+		end
+	end  
+  end
+
+end
+tNoShieldEnemy.Interval = 1000
+tNoShieldEnemy.Enabled = true
+{$asm}
+
+[DISABLE]
+{$lua}
+tNoShieldEnemy.Destroy()
+
+{$asm}
+</AssemblerScript>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>1110</ID>
+				  <Description>"JP Multiplier/Infinite JP (Enable After Loading Save/Starting New Game, Not At Title Menu)"</Description>
+				  <Options moHideChildren="1"/>
+				  <VariableType>Auto Assembler Script</VariableType>
+				  <AssemblerScript>[ENABLE]
+{$lua}
+tJPMult = createTimer(nil, false)
+tJPMult.OnTimer = function(fJPMult)
+  errorOnLookupFailure = false
+  if (getAddress("MainBaseAddr") == 0) then
+	tJPMult.Destroy()
+  end
+  local MainAddr = ReadQword(getAddress("MainBaseAddr"))
+  local JPMult = ReadQword(getAddress(getAddress("JPMultiplier")))
+  local JPInitialized = ReadQword(getAddress("JPInitialized"))
+  local JPSaved = getAddress("SavedJP")
+  local InfJP = ReadQword(getAddress("InfiniteJP"))
+  local NumChars = 8
+  local CharOffset = 0xC8
+  local JPStartOffset = 0x30
+  
+  if (MainAddr ~= nil) then
+	local StatPtr1 = ReadQword(MainAddr + 0x370)
+	
+	if (StatPtr1 ~= nil) then
+		local StatPtr2 = ReadQword(StatPtr1 + 0x1C8)
+
+		if (StatPtr2 ~= nil) then
+		  if (JPInitialized == 0) then
+		   local CurrentChar = 0
+		   while (CurrentChar &lt; NumChars) do
+		     WriteInteger(getAddress("JPInitialized"),1)
+			 WriteInteger(JPSaved + (CurrentChar * 0x04),ReadInteger(StatPtr2 + JPStartOffset + (CurrentChar * CharOffset)))
+			 CurrentChar = CurrentChar + 1
+		   end
+		  else
+		    local CurrentChar = 0
+			while (CurrentChar &lt; NumChars) do
+			  local JPDifference = ReadInteger(StatPtr2 + JPStartOffset + (CurrentChar * CharOffset)) - ReadInteger(JPSaved + (CurrentChar * 0x04))
+			  if (JPDifference &lt;= 0) then
+			    if (InfJP == 1) then
+				  WriteInteger(StatPtr2 + JPStartOffset + (CurrentChar * CharOffset),ReadInteger(JPSaved + (CurrentChar * 0x04)))
+				else
+				  WriteInteger(JPSaved + (CurrentChar * 0x04),ReadInteger(StatPtr2 + JPStartOffset + (CurrentChar * CharOffset)))
+				end
+			  else
+			    local JPMultiplied = JPDifference * JPMult
+				local NewJP = ReadInteger(JPSaved + (CurrentChar * 0x04)) + JPMultiplied
+				WriteInteger(StatPtr2 + JPStartOffset + (CurrentChar * CharOffset),NewJP)
+				WriteInteger(JPSaved + (CurrentChar * 0x04),NewJP)
+			  end
+   			  CurrentChar = CurrentChar + 1
+			end
+		  end		  
+		end
+	end  
+  end
+
+end
+tJPMult.Interval = 1000
+tJPMult.Enabled = true
+{$asm}
+
+[DISABLE]
+{$lua}
+tJPMult.Destroy()
+WriteInteger(getAddress("JPInitialized"),0)
+
+{$asm}
+</AssemblerScript>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1111</ID>
+                      <Description>"Infinite JP"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+1:On
+</DropDownList>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>InfiniteJP</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1112</ID>
+                      <Description>"JP Multiplier"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>JPMultiplier</Address>
+                    </CheatEntry>
+				  </CheatEntries>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>1150</ID>
+				  <Description>"EXP Multiplier (Enable After Loading Save/Starting New Game, Not At Title Menu)"</Description>
+				  <Options moHideChildren="1"/>
+				  <VariableType>Auto Assembler Script</VariableType>
+				  <AssemblerScript>[ENABLE]
+{$lua}
+tEXPMult = createTimer(nil, false)
+tEXPMult.OnTimer = function(fEXPMult)
+  errorOnLookupFailure = false
+  if (getAddress("MainBaseAddr") == 0) then
+	tEXPMult.Destroy()
+  end
+  local MainAddr = ReadQword(getAddress("MainBaseAddr"))
+  local EXPMult = ReadQword(getAddress(getAddress("EXPMultiplier")))
+  local EXPInitialized = ReadQword(getAddress("EXPInitialized"))
+  local EXPSaved = getAddress("SavedEXP")
+  local NumChars = 8
+  local CharOffset = 0xC8
+  local EXPStartOffset = 0x08
+  
+  if (MainAddr ~= nil) then
+	local StatPtr1 = ReadQword(MainAddr + 0x370)
+	
+	if (StatPtr1 ~= nil) then
+		local StatPtr2 = ReadQword(StatPtr1 + 0x1C8)
+
+		if (StatPtr2 ~= nil) then
+		  if (EXPInitialized == 0) then
+		   local CurrentChar = 0
+		   while (CurrentChar &lt; NumChars) do
+		     WriteInteger(getAddress("EXPInitialized"),1)
+			 WriteInteger(EXPSaved + (CurrentChar * 0x04),ReadInteger(StatPtr2 + EXPStartOffset + (CurrentChar * CharOffset)))
+			 CurrentChar = CurrentChar + 1
+		   end
+		  else
+		    local CurrentChar = 0
+			while (CurrentChar &lt; NumChars) do
+			  local EXPDifference = ReadInteger(StatPtr2 + EXPStartOffset + (CurrentChar * CharOffset)) - ReadInteger(EXPSaved + (CurrentChar * 0x04))
+			  if (EXPDifference &gt; 0) then
+			    local EXPMultiplied = EXPDifference * EXPMult
+				local NewEXP = ReadInteger(EXPSaved + (CurrentChar * 0x04)) + EXPMultiplied
+				WriteInteger(StatPtr2 + EXPStartOffset + (CurrentChar * CharOffset),NewEXP)
+				WriteInteger(EXPSaved + (CurrentChar * 0x04),NewEXP)
+			  end
+   			  CurrentChar = CurrentChar + 1
+			end
+		  end		  
+		end
+	end  
+  end
+
+end
+tEXPMult.Interval = 1000
+tEXPMult.Enabled = true
+{$asm}
+
+[DISABLE]
+{$lua}
+tEXPMult.Destroy()
+WriteInteger(getAddress("EXPInitialized"),0)
+
+{$asm}
+</AssemblerScript>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1116</ID>
+                      <Description>"EXP Multiplier"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>EXPMultiplier</Address>
+                    </CheatEntry>
+				  </CheatEntries>
+				</CheatEntry>				
+				<CheatEntry>
+				  <ID>1117</ID>
+				  <Description>"Leaf(Gold) Multiplier/Infinite Leaf(Gold) (Enable After Loading Save/Starting New Game, Not At Title Menu)"</Description>
+				  <Options moHideChildren="1"/>
+				  <VariableType>Auto Assembler Script</VariableType>
+				  <AssemblerScript>[ENABLE]
+{$lua}
+tGPMult = createTimer(nil, false)
+tGPMult.OnTimer = function(fGPMult)
+  errorOnLookupFailure = false
+  if (getAddress("MainBaseAddr") == 0) then
+	tGPMult.Destroy()
+  end
+  local MainAddr = ReadQword(getAddress("MainBaseAddr"))
+  local GPMult = ReadQword(getAddress(getAddress("GPMultiplier")))
+  local GPInitialized = ReadQword(getAddress("GPInitialized"))
+  local GPSaved = getAddress("SavedGP")
+  local InfGP = ReadQword(getAddress("InfiniteGP"))
+  
+  if (MainAddr ~= nil) then
+	local StatPtr1 = ReadQword(MainAddr + 0x370)
+	
+	if (StatPtr1 ~= nil) then
+	  if (GPInitialized == 0) then
+		 WriteInteger(getAddress("GPInitialized"),1)
+		 WriteInteger(GPSaved,ReadInteger(StatPtr1 + 0x158))
+	  else
+	    local GPDifference = ReadInteger(StatPtr1 + 0x158) - ReadInteger(GPSaved)
+	    if (GPDifference &lt;= 0) then
+		  if (InfGP == 1) then
+		    WriteInteger(StatPtr1 + 0x158,ReadInteger(GPSaved))
+		  else
+		    WriteInteger(GPSaved,ReadInteger(StatPtr1 + 0x158))
+		  end
+	    else
+		  local GPMultiplied = GPDifference * GPMult
+		  local NewGP = ReadInteger(GPSaved) + GPMultiplied
+		  WriteInteger(StatPtr1 + 0x158,NewGP)
+		  WriteInteger(GPSaved,NewGP)
+	    end
+	  end		  
+	end  
+  end
+
+end
+tGPMult.Interval = 1000
+tGPMult.Enabled = true
+{$asm}
+
+[DISABLE]
+{$lua}
+tGPMult.Destroy()
+WriteInteger(getAddress("GPInitialized"),0)
+
+{$asm}
+</AssemblerScript>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1118</ID>
+                      <Description>"Infinite Leaf(Gold)"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+1:On
+</DropDownList>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>InfiniteGP</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1119</ID>
+                      <Description>"Leaf(Gold) Multiplier"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GPMultiplier</Address>
+                    </CheatEntry>
+				  </CheatEntries>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>1120</ID>
+				  <Description>"Set Minimum Item Quantity"</Description>
+				  <Options moHideChildren="1"/>
+				  <VariableType>Auto Assembler Script</VariableType>
+				  <AssemblerScript>[ENABLE]
+{$lua}
+tMinItemQty = createTimer(nil, false)
+tMinItemQty.OnTimer = function(fMinItemQty)
+  errorOnLookupFailure = false
+  if (getAddress("MainBaseAddr") == 0) then
+	tMinItemQty.Destroy()
+  end
+  local MainAddr = ReadQword(getAddress("MainBaseAddr"))
+  if (MainAddr ~= nil) then
+	local InventoryPtr1 = ReadQword(MainAddr + 0x3A8)
+	local NumInventoryItems = ReadInteger(MainAddr + 0x3B0)
+	
+	if (InventoryPtr1 ~= nil) then
+		local MinQty = ReadInteger(getAddress("MinItemQty"))
+		local TotalItems = ReadInteger(getAddress("TtlItems"))
+		local ValidItemsPtr = getAddress("ValidItems")
+		
+		local CurrentItemIDNbr = 0
+		local CurrentItemID = ReadInteger(InventoryPtr1 + (CurrentItemIDNbr * 0x10))
+		local CurrentItemNbr = 0
+		
+		while (CurrentItemIDNbr &lt; NumInventoryItems) do
+		  CurrentItemNbr = 0
+		  while (CurrentItemNbr &lt; TotalItems) do
+		    if (ReadInteger(ValidItemsPtr + (CurrentItemNbr * 0x04)) == CurrentItemID) then
+			  if (ReadInteger(InventoryPtr1 + (CurrentItemIDNbr * 0x10) + 0x04) &lt; MinQty) then
+			    WriteInteger(InventoryPtr1 + (CurrentItemIDNbr * 0x10) + 0x04,MinQty)
+			  end
+		    end
+		  
+		    CurrentItemNbr = CurrentItemNbr + 1
+		  end
+
+		  CurrentItemIDNbr = CurrentItemIDNbr + 1
+ 	      CurrentItemID = ReadInteger(InventoryPtr1 + (CurrentItemIDNbr * 0x10))
+		end
+	end  
+  end
+
+end
+tMinItemQty.Interval = 1000
+tMinItemQty.Enabled = true
+{$asm}
+
+[DISABLE]
+{$lua}
+tMinItemQty.Destroy()
+
+{$asm}
+</AssemblerScript>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1121</ID>
+                      <Description>"Minimum Item Qty"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>MinItemQty</Address>
+                    </CheatEntry>
+				  </CheatEntries>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>1170</ID>
+				  <Description>"No Random Encounters"</Description>
+				  <VariableType>Auto Assembler Script</VariableType>
+				  <AssemblerScript>[ENABLE]
+{$lua}
+tNoEncounter = createTimer(nil, false)
+tNoEncounter.OnTimer = function(fNoEncounter)
+  errorOnLookupFailure = false
+  if (getAddress("MainBaseAddr") == 0) then
+	tNoEncounter.Destroy()
+  end
+
+  local MainAddr = ReadQword(getAddress("MainBaseAddr"))
+  if (MainAddr ~= nil) then
+    local NoEncounterPtr1 = ReadQword(MainAddr + 0x78)
+
+    if (NoEncounterPtr1 ~= nil) then
+	  local NoEncounterPtr2 = ReadQword(NoEncounterPtr1 + 0x370)
+	  if (NoEncounterPtr2 ~= nil) then
+	    if (ReadInteger(NoEncounterPtr2 + 0x2A8) ~= 4292967266) then
+		  WriteInteger(NoEncounterPtr2 + 0x2A8,4292967266)
+		end
+	  end
+    end
+  end
+
+  local NoEncounterAddr = ReadQword(getAddress("NoEncounterBaseAddr"))
+  if (NoEncounterAddr ~= nil) then
+    local NoEncounter2Ptr1 = ReadQword(NoEncounterAddr + 0x350)
+
+    if (NoEncounter2Ptr1 ~= nil) then
+	  local NoEncounter2Ptr2 = ReadQword(NoEncounter2Ptr1 + 0x0)
+	  if (NoEncounter2Ptr2 ~= nil) then
+		local NoEncounter2Ptr3 = ReadQword(NoEncounter2Ptr2 + 0x1A80)
+		  if (NoEncounter2Ptr3 ~= nil) then
+			local NoEncounter2Ptr4 = ReadQword(NoEncounter2Ptr3 + 0x1B8)
+			  if (NoEncounter2Ptr4 ~= nil) then
+				if (ReadInteger(NoEncounter2Ptr3 + 0x1BD8) ~= 1) then
+				  WriteInteger(NoEncounter2Ptr4 + 0x1BD8,1)
+				end
+			  end
+		  end
+	  end
+    end
+  end
+end
+tNoEncounter.Interval = 1000
+tNoEncounter.Enabled = true
+
+{$asm}
+
+[DISABLE]
+{$lua}
+tNoEncounter.Destroy()
+
+local MainAddr = ReadQword(getAddress("MainBaseAddr"))
+if (MainAddr ~= nil) then
+  local NoEncounterPtr1 = ReadQword(MainAddr + 0x78)
+
+  if (NoEncounterPtr1 ~= nil) then
+	  local NoEncounterPtr2 = ReadQword(NoEncounterPtr1 + 0x370)
+	  if (NoEncounterPtr2 ~= nil) then
+		  WriteInteger(NoEncounterPtr2 + 0x2A8,0)
+	  end
+  end
+end
+
+local NoEncounterAddr = ReadQword(getAddress("NoEncounterBaseAddr"))
+if (NoEncounterAddr ~= nil) then
+  local NoEncounter2Ptr1 = ReadQword(NoEncounterAddr + 0x350)
+
+  if (NoEncounter2Ptr1 ~= nil) then
+	  local NoEncounter2Ptr2 = ReadQword(NoEncounter2Ptr1 + 0x0)
+	  if (NoEncounter2Ptr2 ~= nil) then
+		local NoEncounter2Ptr3 = ReadQword(NoEncounter2Ptr2 + 0x1A80)
+		  if (NoEncounter2Ptr3 ~= nil) then
+			local NoEncounter2Ptr4 = ReadQword(NoEncounter2Ptr3 + 0x1B8)
+			  if (NoEncounter2Ptr4 ~= nil) then
+				WriteInteger(NoEncounter2Ptr4 + 0x1BD8,0)
+			  end
+		  end
+	  end
+  end
+end
+
+{$asm}
+</AssemblerScript>
+				</CheatEntry>				
+			  </CheatEntries>
+			</CheatEntry>
+            <CheatEntry>
+              <ID>4000</ID>
+              <Description>"Pointers"</Description>
+              <Options moHideChildren="1"/>
+			  <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>4100</ID>
+                  <Description>"Leaf (Gold)"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>MainBaseAddr</Address>
+				  <Offsets>
+					<Offset>158</Offset>
+					<Offset>370</Offset>
+				  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>4200</ID>
+                  <Description>"Inventory Slot 1 Item ID"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>MainBaseAddr</Address>
+				  <Offsets>
+					<Offset>0</Offset>
+					<Offset>3A8</Offset>
+				  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>4201</ID>
+                  <Description>"Inventory Slot 1 Item Qty"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>MainBaseAddr</Address>
+				  <Offsets>
+					<Offset>4</Offset>
+					<Offset>3A8</Offset>
+				  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6000</ID>
+                  <Description>"Inventory Editor"</Description>
+				  <Options moHideChildren="1"/>
+				  <GroupHeader>1</GroupHeader>				  
+				  <CheatEntries>
+					<CheatEntry>
+					  <ID>6001</ID>
+					  <Description>"Item To Replace (An Item In Your Inventory You Want To Replace)"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>ItemToReplace</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>6002</ID>
+					  <Description>"Replace Item With (The Item You Want)"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>ReplacedItemID</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>6003</ID>
+					  <Description>"Perform Item Replacement (Searches Your Items And Replaces With One You Select)"</Description>
+					  <VariableType>Auto Assembler Script</VariableType>
+					  <AssemblerScript>[ENABLE]
+{$lua}
+local MainAddr = ReadQword(getAddress("MainBaseAddr"))
+if (MainAddr ~= nil) then
+  local InventoryPtr1 = ReadQword(MainAddr + 0x3A8)
+  local NumInventoryItems = ReadInteger(MainAddr + 0x3B0)
+
+  if (InventoryPtr1 ~= nil) then
+	local ItemToReplace = ReadInteger(getAddress("ItemToReplace"))
+	local ReplacedItemID = ReadInteger(getAddress("ReplacedItemID"))
+
+	if (ReplacedItemID ~= 0xFFFFFFFF) then
+	  local CurrentItemIDNbr = 0
+	  local CurrentItemID = ReadInteger(InventoryPtr1 + (CurrentItemIDNbr * 0x10))
+	
+	  while(CurrentItemIDNbr &lt; NumInventoryItems) do
+	    if (CurrentItemID == ItemToReplace) then
+		  WriteInteger(InventoryPtr1 + (CurrentItemIDNbr * 0x10),ReplacedItemID)
+	    end
+
+	    CurrentItemIDNbr = CurrentItemIDNbr + 1
+	    CurrentItemID = ReadInteger(InventoryPtr1 + (CurrentItemIDNbr * 0x10))
+	  end
+	end
+  end
+end  
+{$asm}
+
+[DISABLE]
+{$lua}
+
+{$asm}
+</AssemblerScript>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>6004</ID>
+					  <Description>"Set All Items To 1 Quantity (Use To Fix Key Items)"</Description>
+					  <VariableType>Auto Assembler Script</VariableType>
+					  <AssemblerScript>[ENABLE]
+{$lua}
+local MainAddr = ReadQword(getAddress("MainBaseAddr"))
+if (MainAddr ~= nil) then
+  local InventoryPtr1 = ReadQword(MainAddr + 0x3A8)
+  local NumInventoryItems = ReadInteger(MainAddr + 0x3B0)
+
+  if (InventoryPtr1 ~= nil) then
+	  local CurrentItemIDNbr = 0
+	  local CurrentItemID = ReadInteger(InventoryPtr1 + (CurrentItemIDNbr * 0x10))
+	
+	  while(CurrentItemIDNbr &lt; NumInventoryItems) do
+	    WriteInteger(InventoryPtr1 + (CurrentItemIDNbr * 0x10)+0x04,1)
+
+	    CurrentItemIDNbr = CurrentItemIDNbr + 1
+	    CurrentItemID = ReadInteger(InventoryPtr1 + (CurrentItemIDNbr * 0x10))
+	  end
+  end
+end  
+{$asm}
+
+[DISABLE]
+{$lua}
+
+{$asm}
+</AssemblerScript>
+					</CheatEntry>
+				  </CheatEntries>
+				</CheatEntry>				
+                <CheatEntry>
+                  <ID>4300</ID>
+                  <Description>"Battle Pointers"</Description>
+				  <Options moHideChildren="1"/>
+				  <GroupHeader>1</GroupHeader>
+				  <CheatEntries>
+					<CheatEntry>
+					  <ID>4310</ID>
+					  <Description>"Character 1"</Description>
+					  <Options moHideChildren="1"/>
+					  <GroupHeader>1</GroupHeader>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>4311</ID>
+						  <Description>"Current HP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>BattleMainBaseAddr</Address>
+						  <Offsets>
+							<Offset>3E4</Offset>
+							<Offset>8</Offset>
+							<Offset>150</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4312</ID>
+						  <Description>"Current SP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>BattleMainBaseAddr</Address>
+						  <Offsets>
+							<Offset>3E8</Offset>
+							<Offset>8</Offset>
+							<Offset>150</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4313</ID>
+						  <Description>"Current BP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>BattleMainBaseAddr</Address>
+						  <Offsets>
+							<Offset>428</Offset>
+							<Offset>8</Offset>
+							<Offset>150</Offset>
+						  </Offsets>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4320</ID>
+					  <Description>"Character 2"</Description>
+					  <Options moHideChildren="1"/>
+					  <GroupHeader>1</GroupHeader>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>4321</ID>
+						  <Description>"Current HP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>BattleMainBaseAddr</Address>
+						  <Offsets>
+							<Offset>3E4</Offset>
+							<Offset>10</Offset>
+							<Offset>150</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4322</ID>
+						  <Description>"Current SP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>BattleMainBaseAddr</Address>
+						  <Offsets>
+							<Offset>3E8</Offset>
+							<Offset>10</Offset>
+							<Offset>150</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4323</ID>
+						  <Description>"Current BP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>BattleMainBaseAddr</Address>
+						  <Offsets>
+							<Offset>428</Offset>
+							<Offset>10</Offset>
+							<Offset>150</Offset>
+						  </Offsets>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4330</ID>
+					  <Description>"Character 3"</Description>
+					  <Options moHideChildren="1"/>
+					  <GroupHeader>1</GroupHeader>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>4331</ID>
+						  <Description>"Current HP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>BattleMainBaseAddr</Address>
+						  <Offsets>
+							<Offset>3E4</Offset>
+							<Offset>18</Offset>
+							<Offset>150</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4332</ID>
+						  <Description>"Current SP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>BattleMainBaseAddr</Address>
+						  <Offsets>
+							<Offset>3E8</Offset>
+							<Offset>18</Offset>
+							<Offset>150</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4333</ID>
+						  <Description>"Current BP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>BattleMainBaseAddr</Address>
+						  <Offsets>
+							<Offset>428</Offset>
+							<Offset>18</Offset>
+							<Offset>150</Offset>
+						  </Offsets>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4340</ID>
+					  <Description>"Character 4"</Description>
+					  <Options moHideChildren="1"/>
+					  <GroupHeader>1</GroupHeader>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>4341</ID>
+						  <Description>"Current HP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>BattleMainBaseAddr</Address>
+						  <Offsets>
+							<Offset>3E4</Offset>
+							<Offset>20</Offset>
+							<Offset>150</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4342</ID>
+						  <Description>"Current SP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>BattleMainBaseAddr</Address>
+						  <Offsets>
+							<Offset>3E8</Offset>
+							<Offset>20</Offset>
+							<Offset>150</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4343</ID>
+						  <Description>"Current BP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>BattleMainBaseAddr</Address>
+						  <Offsets>
+							<Offset>428</Offset>
+							<Offset>20</Offset>
+							<Offset>150</Offset>
+						  </Offsets>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4350</ID>
+					  <Description>"Character 5"</Description>
+					  <Options moHideChildren="1"/>
+					  <GroupHeader>1</GroupHeader>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>4351</ID>
+						  <Description>"Current HP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>BattleMainBaseAddr</Address>
+						  <Offsets>
+							<Offset>3E4</Offset>
+							<Offset>28</Offset>
+							<Offset>150</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4352</ID>
+						  <Description>"Current SP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>BattleMainBaseAddr</Address>
+						  <Offsets>
+							<Offset>3E8</Offset>
+							<Offset>28</Offset>
+							<Offset>150</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4353</ID>
+						  <Description>"Current BP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>BattleMainBaseAddr</Address>
+						  <Offsets>
+							<Offset>428</Offset>
+							<Offset>28</Offset>
+							<Offset>150</Offset>
+						  </Offsets>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>
+				  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>8000</ID>
+                  <Description>"Enemy Battle Pointers"</Description>
+				  <Options moHideChildren="1"/>
+				  <GroupHeader>1</GroupHeader>
+				  <CheatEntries>
+					<CheatEntry>
+					  <ID>8010</ID>
+					  <Description>"Enemy 1"</Description>
+					  <Options moHideChildren="1"/>
+					  <GroupHeader>1</GroupHeader>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>8011</ID>
+						  <Description>"Current HP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>BattleMainBaseAddr</Address>
+						  <Offsets>
+							<Offset>3E4</Offset>
+							<Offset>E0</Offset>
+							<Offset>3D8</Offset>
+							<Offset>20</Offset>
+							<Offset>160</Offset>
+							<Offset>8</Offset>
+							<Offset>4C0</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>8012</ID>
+						  <Description>"Current SP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>BattleMainBaseAddr</Address>
+						  <Offsets>
+							<Offset>3E8</Offset>
+							<Offset>E0</Offset>
+							<Offset>3D8</Offset>
+							<Offset>20</Offset>
+							<Offset>160</Offset>
+							<Offset>8</Offset>
+							<Offset>4C0</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>8013</ID>
+						  <Description>"Current BP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>BattleMainBaseAddr</Address>
+						  <Offsets>
+							<Offset>428</Offset>
+							<Offset>E0</Offset>
+							<Offset>3D8</Offset>
+							<Offset>20</Offset>
+							<Offset>160</Offset>
+							<Offset>8</Offset>
+							<Offset>4C0</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>8013</ID>
+						  <Description>"Current Shields"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>BattleMainBaseAddr</Address>
+						  <Offsets>
+							<Offset>42C</Offset>
+							<Offset>E0</Offset>
+							<Offset>3D8</Offset>
+							<Offset>20</Offset>
+							<Offset>160</Offset>
+							<Offset>8</Offset>
+							<Offset>4C0</Offset>
+						  </Offsets>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>8020</ID>
+					  <Description>"Enemy 2"</Description>
+					  <Options moHideChildren="1"/>
+					  <GroupHeader>1</GroupHeader>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>8021</ID>
+						  <Description>"Current HP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>BattleMainBaseAddr</Address>
+						  <Offsets>
+							<Offset>3E4</Offset>
+							<Offset>E0</Offset>
+							<Offset>3D8</Offset>
+							<Offset>20</Offset>
+							<Offset>160</Offset>
+							<Offset>10</Offset>
+							<Offset>4C0</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>8022</ID>
+						  <Description>"Current SP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>BattleMainBaseAddr</Address>
+						  <Offsets>
+							<Offset>3E8</Offset>
+							<Offset>E0</Offset>
+							<Offset>3D8</Offset>
+							<Offset>20</Offset>
+							<Offset>160</Offset>
+							<Offset>10</Offset>
+							<Offset>4C0</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>8023</ID>
+						  <Description>"Current BP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>BattleMainBaseAddr</Address>
+						  <Offsets>
+							<Offset>428</Offset>
+							<Offset>E0</Offset>
+							<Offset>3D8</Offset>
+							<Offset>20</Offset>
+							<Offset>160</Offset>
+							<Offset>10</Offset>
+							<Offset>4C0</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>8023</ID>
+						  <Description>"Current Shields"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>BattleMainBaseAddr</Address>
+						  <Offsets>
+							<Offset>42C</Offset>
+							<Offset>E0</Offset>
+							<Offset>3D8</Offset>
+							<Offset>20</Offset>
+							<Offset>160</Offset>
+							<Offset>10</Offset>
+							<Offset>4C0</Offset>
+						  </Offsets>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>8030</ID>
+					  <Description>"Enemy 3"</Description>
+					  <Options moHideChildren="1"/>
+					  <GroupHeader>1</GroupHeader>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>8031</ID>
+						  <Description>"Current HP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>BattleMainBaseAddr</Address>
+						  <Offsets>
+							<Offset>3E4</Offset>
+							<Offset>E0</Offset>
+							<Offset>3D8</Offset>
+							<Offset>20</Offset>
+							<Offset>160</Offset>
+							<Offset>18</Offset>
+							<Offset>4C0</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>8032</ID>
+						  <Description>"Current SP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>BattleMainBaseAddr</Address>
+						  <Offsets>
+							<Offset>3E8</Offset>
+							<Offset>E0</Offset>
+							<Offset>3D8</Offset>
+							<Offset>20</Offset>
+							<Offset>160</Offset>
+							<Offset>18</Offset>
+							<Offset>4C0</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>8033</ID>
+						  <Description>"Current BP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>BattleMainBaseAddr</Address>
+						  <Offsets>
+							<Offset>428</Offset>
+							<Offset>E0</Offset>
+							<Offset>3D8</Offset>
+							<Offset>20</Offset>
+							<Offset>160</Offset>
+							<Offset>18</Offset>
+							<Offset>4C0</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>8033</ID>
+						  <Description>"Current Shields"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>BattleMainBaseAddr</Address>
+						  <Offsets>
+							<Offset>42C</Offset>
+							<Offset>E0</Offset>
+							<Offset>3D8</Offset>
+							<Offset>20</Offset>
+							<Offset>160</Offset>
+							<Offset>18</Offset>
+							<Offset>4C0</Offset>
+						  </Offsets>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>8040</ID>
+					  <Description>"Enemy 4"</Description>
+					  <Options moHideChildren="1"/>
+					  <GroupHeader>1</GroupHeader>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>8041</ID>
+						  <Description>"Current HP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>BattleMainBaseAddr</Address>
+						  <Offsets>
+							<Offset>3E4</Offset>
+							<Offset>E0</Offset>
+							<Offset>3D8</Offset>
+							<Offset>20</Offset>
+							<Offset>160</Offset>
+							<Offset>20</Offset>
+							<Offset>4C0</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>8042</ID>
+						  <Description>"Current SP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>BattleMainBaseAddr</Address>
+						  <Offsets>
+							<Offset>3E8</Offset>
+							<Offset>E0</Offset>
+							<Offset>3D8</Offset>
+							<Offset>20</Offset>
+							<Offset>160</Offset>
+							<Offset>20</Offset>
+							<Offset>4C0</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>8043</ID>
+						  <Description>"Current BP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>BattleMainBaseAddr</Address>
+						  <Offsets>
+							<Offset>428</Offset>
+							<Offset>E0</Offset>
+							<Offset>3D8</Offset>
+							<Offset>20</Offset>
+							<Offset>160</Offset>
+							<Offset>20</Offset>
+							<Offset>4C0</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>8043</ID>
+						  <Description>"Current Shields"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>BattleMainBaseAddr</Address>
+						  <Offsets>
+							<Offset>42C</Offset>
+							<Offset>E0</Offset>
+							<Offset>3D8</Offset>
+							<Offset>20</Offset>
+							<Offset>160</Offset>
+							<Offset>20</Offset>
+							<Offset>4C0</Offset>
+						  </Offsets>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>8050</ID>
+					  <Description>"Enemy 5"</Description>
+					  <Options moHideChildren="1"/>
+					  <GroupHeader>1</GroupHeader>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>8051</ID>
+						  <Description>"Current HP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>BattleMainBaseAddr</Address>
+						  <Offsets>
+							<Offset>3E4</Offset>
+							<Offset>E0</Offset>
+							<Offset>3D8</Offset>
+							<Offset>20</Offset>
+							<Offset>160</Offset>
+							<Offset>28</Offset>
+							<Offset>4C0</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>8052</ID>
+						  <Description>"Current SP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>BattleMainBaseAddr</Address>
+						  <Offsets>
+							<Offset>3E8</Offset>
+							<Offset>E0</Offset>
+							<Offset>3D8</Offset>
+							<Offset>20</Offset>
+							<Offset>160</Offset>
+							<Offset>28</Offset>
+							<Offset>4C0</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>8053</ID>
+						  <Description>"Current BP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>BattleMainBaseAddr</Address>
+						  <Offsets>
+							<Offset>428</Offset>
+							<Offset>E0</Offset>
+							<Offset>3D8</Offset>
+							<Offset>20</Offset>
+							<Offset>160</Offset>
+							<Offset>28</Offset>
+							<Offset>4C0</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>8053</ID>
+						  <Description>"Current Shields"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>BattleMainBaseAddr</Address>
+						  <Offsets>
+							<Offset>42C</Offset>
+							<Offset>E0</Offset>
+							<Offset>3D8</Offset>
+							<Offset>20</Offset>
+							<Offset>160</Offset>
+							<Offset>28</Offset>
+							<Offset>4C0</Offset>
+						  </Offsets>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>
+				  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>7000</ID>
+                  <Description>"Summon Characters"</Description>
+				  <Options moHideChildren="1"/>
+				  <GroupHeader>1</GroupHeader>
+				  <CheatEntries>
+					<CheatEntry>
+					  <ID>7010</ID>
+					  <Description>"Ophilia"</Description>
+					  <Options moHideChildren="1"/>
+					  <GroupHeader>1</GroupHeader>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>7011</ID>
+						  <Description>"Times Left To Summon"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>36C</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>7020</ID>
+					  <Description>"Primrose"</Description>
+					  <Options moHideChildren="1"/>
+					  <GroupHeader>1</GroupHeader>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>7021</ID>
+						  <Description>"Times Left To Summon"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>368</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>7100</ID>
+					  <Description>"H'aanit Summon Monsters"</Description>
+					  <Options moHideChildren="1"/>
+					  <GroupHeader>1</GroupHeader>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>7110</ID>
+						  <Description>"Slot 1 Type"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>0</Offset>
+							<Offset>1E8</Offset>
+							<Offset>3A0</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>7111</ID>
+						  <Description>"Slot 1 Times Left"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>04</Offset>
+							<Offset>1E8</Offset>
+							<Offset>3A0</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>7112</ID>
+						  <Description>"Slot 2 Type"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>0C</Offset>
+							<Offset>1E8</Offset>
+							<Offset>3A0</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>7113</ID>
+						  <Description>"Slot 2 Times Left"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>10</Offset>
+							<Offset>1E8</Offset>
+							<Offset>3A0</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>7114</ID>
+						  <Description>"Slot 3 Type"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>18</Offset>
+							<Offset>1E8</Offset>
+							<Offset>3A0</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>7115</ID>
+						  <Description>"Slot 3 Times Left"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>1C</Offset>
+							<Offset>1E8</Offset>
+							<Offset>3A0</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>7116</ID>
+						  <Description>"Slot 4 Type"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>24</Offset>
+							<Offset>1E8</Offset>
+							<Offset>3A0</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>7117</ID>
+						  <Description>"Slot 4 Times Left"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>28</Offset>
+							<Offset>1E8</Offset>
+							<Offset>3A0</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>7118</ID>
+						  <Description>"Slot 5 Type"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>30</Offset>
+							<Offset>1E8</Offset>
+							<Offset>3A0</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>7119</ID>
+						  <Description>"Slot 5 Times Left"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>34</Offset>
+							<Offset>1E8</Offset>
+							<Offset>3A0</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>7120</ID>
+						  <Description>"Slot 6 Type"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>3C</Offset>
+							<Offset>1E8</Offset>
+							<Offset>3A0</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>7121</ID>
+						  <Description>"Slot 6 Times Left"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>40</Offset>
+							<Offset>1E8</Offset>
+							<Offset>3A0</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>7122</ID>
+						  <Description>"Slot 7 Type"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>48</Offset>
+							<Offset>1E8</Offset>
+							<Offset>3A0</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>7123</ID>
+						  <Description>"Slot 7 Times Left"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>4C</Offset>
+							<Offset>1E8</Offset>
+							<Offset>3A0</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>7124</ID>
+						  <Description>"Slot 8 Type"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>54</Offset>
+							<Offset>1E8</Offset>
+							<Offset>3A0</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>7125</ID>
+						  <Description>"Slot 8 Times Left"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>58</Offset>
+							<Offset>1E8</Offset>
+							<Offset>3A0</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>7126</ID>
+						  <Description>"Slot 9 Type"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>60</Offset>
+							<Offset>1E8</Offset>
+							<Offset>3A0</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>7127</ID>
+						  <Description>"Slot 9 Times Left"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>64</Offset>
+							<Offset>1E8</Offset>
+							<Offset>3A0</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>7128</ID>
+						  <Description>"Slot 10 Type"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>6C</Offset>
+							<Offset>1E8</Offset>
+							<Offset>3A0</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>7129</ID>
+						  <Description>"Slot 10 Times Left"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>70</Offset>
+							<Offset>1E8</Offset>
+							<Offset>3A0</Offset>
+						  </Offsets>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>
+				  </CheatEntries>
+				</CheatEntry>
+                <CheatEntry>
+                  <ID>4400</ID>
+                  <Description>"Character Pointers"</Description>
+				  <Options moHideChildren="1"/>
+				  <GroupHeader>1</GroupHeader>
+				  <CheatEntries>
+					<CheatEntry>
+					  <ID>4800</ID>
+					  <Description>"Olberic"</Description>
+					  <Options moHideChildren="1"/>
+					  <GroupHeader>1</GroupHeader>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>4801</ID>
+						  <Description>"Base Character/Sprite/Special Skill (Found By chaos915)"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">1: Olberic
+2: Tressa
+3: Cyrus
+4: Primrose
+5: H'annit
+6: Therion
+7: Ophilia
+8: Alfyn
+</DropDownList>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>0</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4802</ID>
+						  <Description>"Level (Affects Path Action Percent for some)"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>4</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4803</ID>
+						  <Description>"EXP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>8</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4805</ID>
+						  <Description>"Primary Job (Found by chaos915)"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">4294967295:Nothing
+0: Merchant
+1: Thief
+2: Warrior
+3: Hunter
+4: Cleric
+5: Dancer
+6: Scholar
+7: Apothecary
+8: Warmaster (Special Class)
+9: Sorcerer (Special Class)
+10: Starseeker (Special Class)
+11: Runelord (Special Class)
+</DropDownList>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>28</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4806</ID>
+						  <Description>"Secondary Job (Found by chaos915)"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">4294967295:Nothing
+0: Merchant
+1: Thief
+2: Warrior
+3: Hunter
+4: Cleric
+5: Dancer
+6: Scholar
+7: Apothecary
+8: Warmaster (Special Class)
+9: Sorcerer (Special Class)
+10: Starseeker (Special Class)
+11: Runelord (Special Class)
+</DropDownList>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>2C</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4807</ID>
+						  <Description>"JP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>30</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4820</ID>
+						  <Description>"Extra Stats"</Description>
+						  <Options moHideChildren="1" moRecursiveSetValue="1"/>
+						  <GroupHeader>1</GroupHeader>
+						  <CheatEntries>
+							<CheatEntry>
+							  <ID>4821</ID>
+							  <Description>"Extra HP"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>98</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4822</ID>
+							  <Description>"Extra SP"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>9C</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4823</ID>
+							  <Description>"Extra Physical Attack"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>A8</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4824</ID>
+							  <Description>"Extra Physical Defense"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>AC</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4825</ID>
+							  <Description>"Extra Elemental Attack"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>B0</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4826</ID>
+							  <Description>"Extra Elemental Defense"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>B4</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4827</ID>
+							  <Description>"Extra Accuracy"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>B8</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4828</ID>
+							  <Description>"Extra Evasion"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>BC</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4829</ID>
+							  <Description>"Extra Critical"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>C0</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4830</ID>
+							  <Description>"Extra Speed"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>C4</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+						  </CheatEntries>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4410</ID>
+					  <Description>"Tressa"</Description>
+					  <Options moHideChildren="1"/>
+					  <GroupHeader>1</GroupHeader>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>4411</ID>
+						  <Description>"Base Character/Sprite/Special Skill (Found By chaos915)"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">1: Olberic
+2: Tressa
+3: Cyrus
+4: Primrose
+5: H'annit
+6: Therion
+7: Ophilia
+8: Alfyn
+</DropDownList>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>C8</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>					  
+						<CheatEntry>
+						  <ID>4412</ID>
+						  <Description>"Level (Affects Path Action Percent for some)"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>CC</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4413</ID>
+						  <Description>"EXP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>D0</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4414</ID>
+						  <Description>"Primary Job (Found by chaos915)"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0: Merchant
+1: Thief
+2: Warrior
+3: Hunter
+4: Cleric
+5: Dancer
+6: Scholar
+7: Apothecary
+8: Warmaster (Special Class)
+9: Sorcerer (Special Class)
+10: Starseeker (Special Class)
+11: Runelord (Special Class)
+</DropDownList>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>F0</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4415</ID>
+						  <Description>"Secondary Job (Found by chaos915)"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0: Merchant
+1: Thief
+2: Warrior
+3: Hunter
+4: Cleric
+5: Dancer
+6: Scholar
+7: Apothecary
+8: Warmaster (Special Class)
+9: Sorcerer (Special Class)
+10: Starseeker (Special Class)
+11: Runelord (Special Class)
+</DropDownList>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>F4</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4416</ID>
+						  <Description>"JP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>F8</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4420</ID>
+						  <Description>"Extra Stats"</Description>
+						  <Options moHideChildren="1" moRecursiveSetValue="1"/>
+						  <GroupHeader>1</GroupHeader>
+						  <CheatEntries>
+							<CheatEntry>
+							  <ID>4421</ID>
+							  <Description>"Extra HP"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>160</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4422</ID>
+							  <Description>"Extra SP"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>164</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4423</ID>
+							  <Description>"Extra Physical Attack"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>170</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4424</ID>
+							  <Description>"Extra Physical Defense"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>174</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4425</ID>
+							  <Description>"Extra Elemental Attack"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>178</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4426</ID>
+							  <Description>"Extra Elemental Defense"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>17C</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4427</ID>
+							  <Description>"Extra Accuracy"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>180</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4428</ID>
+							  <Description>"Extra Evasion"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>184</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4429</ID>
+							  <Description>"Extra Critical"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>188</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4430</ID>
+							  <Description>"Extra Speed"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>18C</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+						  </CheatEntries>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4500</ID>
+					  <Description>"Cryus"</Description>
+					  <Options moHideChildren="1"/>
+					  <GroupHeader>1</GroupHeader>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>4501</ID>
+						  <Description>"Base Character/Sprite/Special Skill (Found By chaos915)"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">1: Olberic
+2: Tressa
+3: Cyrus
+4: Primrose
+5: H'annit
+6: Therion
+7: Ophilia
+8: Alfyn
+</DropDownList>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>190</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>					  
+						<CheatEntry>
+						  <ID>4502</ID>
+						  <Description>"Level (Affects Path Action Percent for some)"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>194</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4503</ID>
+						  <Description>"Current EXP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>198</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4504</ID>
+						  <Description>"Primary Job (Found by chaos915)"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0: Merchant
+1: Thief
+2: Warrior
+3: Hunter
+4: Cleric
+5: Dancer
+6: Scholar
+7: Apothecary
+8: Warmaster (Special Class)
+9: Sorcerer (Special Class)
+10: Starseeker (Special Class)
+11: Runelord (Special Class)
+</DropDownList>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>1B8</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4505</ID>
+						  <Description>"Secondary Job (Found by chaos915)"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0: Merchant
+1: Thief
+2: Warrior
+3: Hunter
+4: Cleric
+5: Dancer
+6: Scholar
+7: Apothecary
+8: Warmaster (Special Class)
+9: Sorcerer (Special Class)
+10: Starseeker (Special Class)
+11: Runelord (Special Class)
+</DropDownList>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>1BC</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>						
+						<CheatEntry>
+						  <ID>4506</ID>
+						  <Description>"Current JP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>1C0</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4420</ID>
+						  <Description>"Extra Stats"</Description>
+						  <Options moHideChildren="1" moRecursiveSetValue="1"/>
+						  <GroupHeader>1</GroupHeader>
+						  <CheatEntries>
+							<CheatEntry>
+							  <ID>4421</ID>
+							  <Description>"Extra HP"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>228</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4422</ID>
+							  <Description>"Extra SP"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>22C</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4423</ID>
+							  <Description>"Extra Physical Attack"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>238</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4424</ID>
+							  <Description>"Extra Physical Defense"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>23C</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4425</ID>
+							  <Description>"Extra Elemental Attack"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>240</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4426</ID>
+							  <Description>"Extra Elemental Defense"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>244</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4427</ID>
+							  <Description>"Extra Accuracy"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>248</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4428</ID>
+							  <Description>"Extra Evasion"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>24C</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4429</ID>
+							  <Description>"Extra Critical"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>250</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4430</ID>
+							  <Description>"Extra Speed"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>254</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+						  </CheatEntries>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4900</ID>
+					  <Description>"Primrose"</Description>
+					  <Options moHideChildren="1"/>
+					  <GroupHeader>1</GroupHeader>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>4901</ID>
+						  <Description>"Base Character/Sprite/Special Skill (Found By chaos915)"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">1: Olberic
+2: Tressa
+3: Cyrus
+4: Primrose
+5: H'annit
+6: Therion
+7: Ophilia
+8: Alfyn
+</DropDownList>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>258</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>					  
+						<CheatEntry>
+						  <ID>4902</ID>
+						  <Description>"Level (Affects Path Action Percent for some)"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>25C</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4903</ID>
+						  <Description>"EXP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>260</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4904</ID>
+						  <Description>"Primary Job (Found by chaos915)"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0: Merchant
+1: Thief
+2: Warrior
+3: Hunter
+4: Cleric
+5: Dancer
+6: Scholar
+7: Apothecary
+8: Warmaster (Special Class)
+9: Sorcerer (Special Class)
+10: Starseeker (Special Class)
+11: Runelord (Special Class)
+</DropDownList>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>280</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4905</ID>
+						  <Description>"Secondary Job (Found by chaos915)"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0: Merchant
+1: Thief
+2: Warrior
+3: Hunter
+4: Cleric
+5: Dancer
+6: Scholar
+7: Apothecary
+8: Warmaster (Special Class)
+9: Sorcerer (Special Class)
+10: Starseeker (Special Class)
+11: Runelord (Special Class)
+</DropDownList>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>284</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4906</ID>
+						  <Description>"JP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>288</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4920</ID>
+						  <Description>"Extra Stats"</Description>
+						  <Options moHideChildren="1" moRecursiveSetValue="1"/>
+						  <GroupHeader>1</GroupHeader>
+						  <CheatEntries>
+							<CheatEntry>
+							  <ID>4921</ID>
+							  <Description>"Extra HP"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>2F0</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4922</ID>
+							  <Description>"Extra SP"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>2F4</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4923</ID>
+							  <Description>"Extra Physical Attack"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>300</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4924</ID>
+							  <Description>"Extra Physical Defense"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>304</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4925</ID>
+							  <Description>"Extra Elemental Attack"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>308</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4926</ID>
+							  <Description>"Extra Elemental Defense"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>30C</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4927</ID>
+							  <Description>"Extra Accuracy"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>310</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4928</ID>
+							  <Description>"Extra Evasion"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>314</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4929</ID>
+							  <Description>"Extra Critical"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>318</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4930</ID>
+							  <Description>"Extra Speed"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>31C</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+						  </CheatEntries>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>					
+					<CheatEntry>
+					  <ID>4700</ID>
+					  <Description>"H'aanit"</Description>
+					  <Options moHideChildren="1"/>
+					  <GroupHeader>1</GroupHeader>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>4701</ID>
+						  <Description>"Base Character/Sprite/Special Skill (Found By chaos915)"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">1: Olberic
+2: Tressa
+3: Cyrus
+4: Primrose
+5: H'annit
+6: Therion
+7: Ophilia
+8: Alfyn
+</DropDownList>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>320</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>					  
+						<CheatEntry>
+						  <ID>4702</ID>
+						  <Description>"Level (Affects Path Action Percent for some)"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>324</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4703</ID>
+						  <Description>"EXP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>328</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4704</ID>
+						  <Description>"Primary Job (Found by chaos915)"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0: Merchant
+1: Thief
+2: Warrior
+3: Hunter
+4: Cleric
+5: Dancer
+6: Scholar
+7: Apothecary
+8: Warmaster (Special Class)
+9: Sorcerer (Special Class)
+10: Starseeker (Special Class)
+11: Runelord (Special Class)
+</DropDownList>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>348</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4705</ID>
+						  <Description>"Secondary Job (Found by chaos915)"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0: Merchant
+1: Thief
+2: Warrior
+3: Hunter
+4: Cleric
+5: Dancer
+6: Scholar
+7: Apothecary
+8: Warmaster (Special Class)
+9: Sorcerer (Special Class)
+10: Starseeker (Special Class)
+11: Runelord (Special Class)
+</DropDownList>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>34C</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>						
+						<CheatEntry>
+						  <ID>4706</ID>
+						  <Description>"JP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>350</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4720</ID>
+						  <Description>"Extra Stats"</Description>
+						  <Options moHideChildren="1" moRecursiveSetValue="1"/>
+						  <GroupHeader>1</GroupHeader>
+						  <CheatEntries>
+							<CheatEntry>
+							  <ID>4721</ID>
+							  <Description>"Extra HP"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>3B8</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4722</ID>
+							  <Description>"Extra SP"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>3BC</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4723</ID>
+							  <Description>"Extra Physical Attack"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>3C8</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4724</ID>
+							  <Description>"Extra Physical Defense"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>3CC</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4725</ID>
+							  <Description>"Extra Elemental Attack"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>3D0</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4726</ID>
+							  <Description>"Extra Elemental Defense"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>3D4</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4727</ID>
+							  <Description>"Extra Accuracy"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>3D8</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4728</ID>
+							  <Description>"Extra Evasion"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>3DC</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4729</ID>
+							  <Description>"Extra Critical"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>3E0</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4730</ID>
+							  <Description>"Extra Speed"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>3E4</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+						  </CheatEntries>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>5000</ID>
+					  <Description>"Therion"</Description>
+					  <Options moHideChildren="1"/>
+					  <GroupHeader>1</GroupHeader>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>5001</ID>
+						  <Description>"Base Character/Sprite/Special Skill (Found By chaos915)"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">1: Olberic
+2: Tressa
+3: Cyrus
+4: Primrose
+5: H'annit
+6: Therion
+7: Ophilia
+8: Alfyn
+</DropDownList>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>3E8</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>					  
+						<CheatEntry>
+						  <ID>5002</ID>
+						  <Description>"Level (Affects Path Action Percent for some)"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>3EC</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>5003</ID>
+						  <Description>"EXP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>3F0</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>5004</ID>
+						  <Description>"Primary Job (Found by chaos915)"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0: Merchant
+1: Thief
+2: Warrior
+3: Hunter
+4: Cleric
+5: Dancer
+6: Scholar
+7: Apothecary
+8: Warmaster (Special Class)
+9: Sorcerer (Special Class)
+10: Starseeker (Special Class)
+11: Runelord (Special Class)
+</DropDownList>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>410</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>5005</ID>
+						  <Description>"Secondary Job (Found by chaos915)"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0: Merchant
+1: Thief
+2: Warrior
+3: Hunter
+4: Cleric
+5: Dancer
+6: Scholar
+7: Apothecary
+8: Warmaster (Special Class)
+9: Sorcerer (Special Class)
+10: Starseeker (Special Class)
+11: Runelord (Special Class)
+</DropDownList>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>414</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>5006</ID>
+						  <Description>"JP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>418</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>5020</ID>
+						  <Description>"Extra Stats"</Description>
+						  <Options moHideChildren="1" moRecursiveSetValue="1"/>
+						  <GroupHeader>1</GroupHeader>
+						  <CheatEntries>
+							<CheatEntry>
+							  <ID>5021</ID>
+							  <Description>"Extra HP"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>480</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>5022</ID>
+							  <Description>"Extra SP"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>484</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>5023</ID>
+							  <Description>"Extra Physical Attack"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>490</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>5024</ID>
+							  <Description>"Extra Physical Defense"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>494</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>5025</ID>
+							  <Description>"Extra Elemental Attack"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>498</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>5026</ID>
+							  <Description>"Extra Elemental Defense"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>49C</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>5027</ID>
+							  <Description>"Extra Accuracy"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>4A0</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>5028</ID>
+							  <Description>"Extra Evasion"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>4A4</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>5029</ID>
+							  <Description>"Extra Critical"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>4A8</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>5030</ID>
+							  <Description>"Extra Speed"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>4AC</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+						  </CheatEntries>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4600</ID>
+					  <Description>"Ophilia"</Description>
+					  <Options moHideChildren="1"/>
+					  <GroupHeader>1</GroupHeader>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>4601</ID>
+						  <Description>"Base Character/Sprite/Special Skill (Found By chaos915)"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">1: Olberic
+2: Tressa
+3: Cyrus
+4: Primrose
+5: H'annit
+6: Therion
+7: Ophilia
+8: Alfyn
+</DropDownList>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>4B0</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>					  
+						<CheatEntry>
+						  <ID>4602</ID>
+						  <Description>"Level (Affects Path Action Percent for some)"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>4B4</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4603</ID>
+						  <Description>"EXP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>4B8</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4604</ID>
+						  <Description>"Primary Job (Found by chaos915)"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0: Merchant
+1: Thief
+2: Warrior
+3: Hunter
+4: Cleric
+5: Dancer
+6: Scholar
+7: Apothecary
+8: Warmaster (Special Class)
+9: Sorcerer (Special Class)
+10: Starseeker (Special Class)
+11: Runelord (Special Class)
+</DropDownList>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>4D8</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4605</ID>
+						  <Description>"Secondary Job (Found by chaos915)"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0: Merchant
+1: Thief
+2: Warrior
+3: Hunter
+4: Cleric
+5: Dancer
+6: Scholar
+7: Apothecary
+8: Warmaster (Special Class)
+9: Sorcerer (Special Class)
+10: Starseeker (Special Class)
+11: Runelord (Special Class)
+</DropDownList>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>4DC</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4606</ID>
+						  <Description>"JP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>4E0</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4620</ID>
+						  <Description>"Extra Stats"</Description>
+						  <Options moHideChildren="1" moRecursiveSetValue="1"/>
+						  <GroupHeader>1</GroupHeader>
+						  <CheatEntries>
+							<CheatEntry>
+							  <ID>4621</ID>
+							  <Description>"Extra HP"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>548</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4622</ID>
+							  <Description>"Extra SP"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>54C</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4623</ID>
+							  <Description>"Extra Physical Attack"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>558</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4624</ID>
+							  <Description>"Extra Physical Defense"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>55C</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4625</ID>
+							  <Description>"Extra Elemental Attack"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>560</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4626</ID>
+							  <Description>"Extra Elemental Defense"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>564</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4627</ID>
+							  <Description>"Extra Accuracy"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>568</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4628</ID>
+							  <Description>"Extra Evasion"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>56C</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4629</ID>
+							  <Description>"Extra Critical"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>570</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>4630</ID>
+							  <Description>"Extra Speed"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>574</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+						  </CheatEntries>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>5100</ID>
+					  <Description>"Alfin"</Description>
+					  <Options moHideChildren="1"/>
+					  <GroupHeader>1</GroupHeader>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>5101</ID>
+						  <Description>"Base Character/Sprite/Special Skill (Found By chaos915)"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">1: Olberic
+2: Tressa
+3: Cyrus
+4: Primrose
+5: H'annit
+6: Therion
+7: Ophilia
+8: Alfyn
+</DropDownList>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>578</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>					  
+						<CheatEntry>
+						  <ID>5102</ID>
+						  <Description>"Level (Affects Path Action Percent for some)"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>57C</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>5103</ID>
+						  <Description>"EXP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>580</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>5104</ID>
+						  <Description>"Primary Job (Found by chaos915)"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0: Merchant
+1: Thief
+2: Warrior
+3: Hunter
+4: Cleric
+5: Dancer
+6: Scholar
+7: Apothecary
+8: Warmaster (Special Class)
+9: Sorcerer (Special Class)
+10: Starseeker (Special Class)
+11: Runelord (Special Class)
+</DropDownList>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>5A0</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>5105</ID>
+						  <Description>"Secondary Job (Found by chaos915)"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0: Merchant
+1: Thief
+2: Warrior
+3: Hunter
+4: Cleric
+5: Dancer
+6: Scholar
+7: Apothecary
+8: Warmaster (Special Class)
+9: Sorcerer (Special Class)
+10: Starseeker (Special Class)
+11: Runelord (Special Class)
+</DropDownList>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>5A4</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>5106</ID>
+						  <Description>"JP"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>MainBaseAddr</Address>
+						  <Offsets>
+							<Offset>5A8</Offset>
+							<Offset>1C8</Offset>
+							<Offset>370</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>5120</ID>
+						  <Description>"Extra Stats"</Description>
+						  <Options moHideChildren="1" moRecursiveSetValue="1"/>
+						  <GroupHeader>1</GroupHeader>
+						  <CheatEntries>
+							<CheatEntry>
+							  <ID>5121</ID>
+							  <Description>"Extra HP"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>610</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>5122</ID>
+							  <Description>"Extra SP"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>614</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>5123</ID>
+							  <Description>"Extra Physical Attack"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>620</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>5124</ID>
+							  <Description>"Extra Physical Defense"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>624</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>5125</ID>
+							  <Description>"Extra Elemental Attack"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>628</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>5126</ID>
+							  <Description>"Extra Elemental Defense"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>62C</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>5127</ID>
+							  <Description>"Extra Accuracy"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>630</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>5128</ID>
+							  <Description>"Extra Evasion"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>634</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>5129</ID>
+							  <Description>"Extra Critical"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>638</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+							<CheatEntry>
+							  <ID>5130</ID>
+							  <Description>"Extra Speed"</Description>
+							  <VariableType>4 Bytes</VariableType>
+							  <Address>MainBaseAddr</Address>
+							  <Offsets>
+								<Offset>63C</Offset>
+								<Offset>1C8</Offset>
+								<Offset>370</Offset>
+							  </Offsets>
+							</CheatEntry>
+						  </CheatEntries>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>
+				  </CheatEntries>
+                </CheatEntry>
+			  </CheatEntries>
+			</CheatEntry>
+		</CheatEntries>
+		</CheatEntry>
+	   </CheatEntries>
+	</CheatEntry>
+	</CheatEntries>
+</CheatTable>
