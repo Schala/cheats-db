@@ -323,7 +323,7 @@ unregistersymbol(infls)
     <CheatEntry>
       <ID>8250</ID>
       <Description>"Inf Ammo"</Description>
-      <LastState Activated="1"/>
+      <LastState/>
       <Color>000000</Color>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : NMS.exe
@@ -351,7 +351,7 @@ unregistersymbol(infammo)
     <CheatEntry>
       <ID>8025</ID>
       <Description>"Inf Grenades"</Description>
-      <LastState Activated="1"/>
+      <LastState/>
       <Color>000000</Color>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : NMS.exe
@@ -535,7 +535,7 @@ unregistersymbol(infmb)
     <CheatEntry>
       <ID>8068</ID>
       <Description>"Inf Blaze Javelin"</Description>
-      <LastState Activated="1"/>
+      <LastState/>
       <Color>000000</Color>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : NMS.exe
@@ -826,7 +826,7 @@ unregistersymbol(infexmj)
     <CheatEntry>
       <ID>8084</ID>
       <Description>"Inf Exocraft Boost"</Description>
-      <LastState Activated="1"/>
+      <LastState/>
       <Color>000000</Color>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : NMS.exe
@@ -854,7 +854,7 @@ unregistersymbol(infexb)
     <CheatEntry>
       <ID>8075</ID>
       <Description>"Inf Fusion Engine"</Description>
-      <LastState Activated="1"/>
+      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : NMS.exe
   Version: 
@@ -881,7 +881,7 @@ unregistersymbol(infee)
     <CheatEntry>
       <ID>8139</ID>
       <Description>"Inf Exocraft Mining Laser"</Description>
-      <LastState Activated="1"/>
+      <LastState/>
       <Color>000000</Color>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : NMS.exe
@@ -909,7 +909,7 @@ unregistersymbol(infexml)
     <CheatEntry>
       <ID>8140</ID>
       <Description>"Inf Exocraft Cannon"</Description>
-      <LastState Activated="1"/>
+      <LastState/>
       <Color>000000</Color>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : NMS.exe
@@ -1469,196 +1469,6 @@ dealloc(newmem)
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
-      <ID>8211</ID>
-      <Description>"Universal Translator"</Description>
-      <LastState/>
-      <Color>0000FF</Color>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>{ Game   : NMS.exe
-  Version:
-  Date   : 2018-07-27
-  Author : Cedric
-}
-
-[ENABLE]
-
-aobscanmodule(translator,NMS.exe,75 E8 3? C0 84 C0 0F 84 AE 00 00 00)
-
-translator:
-  db 90 90 B0 01
-registersymbol(translator)
-
-[DISABLE]
-
-translator:
-  db 75 E8 32 C0
-
-unregistersymbol(translator)
-
-{
-// ORIGINAL CODE - INJECTION POINT: "NMS.exe"+EB3200
-
-"NMS.exe"+EB31DC: 74 22                 -  je NMS.exe+EB3200
-"NMS.exe"+EB31DE: 48 8B 44 24 38        -  mov rax,[rsp+38]
-"NMS.exe"+EB31E3: 4C 8B 44 24 30        -  mov r8,[rsp+30]
-"NMS.exe"+EB31E8: 4C 39 01              -  cmp [rcx],r8
-"NMS.exe"+EB31EB: 75 0A                 -  jne NMS.exe+EB31F7
-"NMS.exe"+EB31ED: 48 39 41 08           -  cmp [rcx+08],rax
-"NMS.exe"+EB31F1: 0F 84 B6 00 00 00     -  je NMS.exe+EB32AD
-"NMS.exe"+EB31F7: 48 83 C1 18           -  add rcx,18
-"NMS.exe"+EB31FB: 48 3B CA              -  cmp rcx,rdx
-"NMS.exe"+EB31FE: 75 E8                 -  jne NMS.exe+EB31E8
-// ---------- INJECTING HERE ----------
-"NMS.exe"+EB3200: 32 C0                 -  xor al,al
-"NMS.exe"+EB3202: 84 C0                 -  test al,al
-"NMS.exe"+EB3204: 0F 84 AE 00 00 00     -  je NMS.exe+EB32B8
-// ---------- DONE INJECTING  ----------
-"NMS.exe"+EB320A: 48 8D 05 6F 73 E4 00  -  lea rax,[NMS.exe+1CFA580]
-"NMS.exe"+EB3211: C6 45 50 00           -  mov byte ptr [rbp+50],00
-"NMS.exe"+EB3215: 48 89 44 24 40        -  mov [rsp+40],rax
-"NMS.exe"+EB321A: 4C 8D 4D 80           -  lea r9,[rbp-80]
-"NMS.exe"+EB321E: 48 8D 05 57 73 E4 00  -  lea rax,[NMS.exe+1CFA57C]
-"NMS.exe"+EB3225: 48 89 44 24 48        -  mov [rsp+48],rax
-"NMS.exe"+EB322A: 48 8D 15 2F 14 E8 00  -  lea rdx,[NMS.exe+1D34660]
-"NMS.exe"+EB3231: 48 8D 05 40 73 E4 00  -  lea rax,[NMS.exe+1CFA578]
-"NMS.exe"+EB3238: 48 89 44 24 50        -  mov [rsp+50],rax
-"NMS.exe"+EB323D: 48 8D 4D 50           -  lea rcx,[rbp+50]
-}
-</AssemblerScript>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>8244</ID>
-      <Description>"Always Summon Freighter Battle"</Description>
-      <LastState/>
-      <Color>0000FF</Color>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>{ Game   : NMS.exe
-  Version:
-  Date   : 2018-08-05
-  Author : Cedric
-
-  Always summons freighter battle after teleport
-}
-
-[ENABLE]
-
-aobscanmodule(alwaysbattle,NMS.exe,85 C0 75 27 48 8B 0D * * * * 48) // should be unique
-
-alwaysbattle+02:
-  db 90 90
-registersymbol(alwaysbattle)
-
-[DISABLE]
-
-alwaysbattle+02:
-  db 75 27
-
-unregistersymbol(alwaysbattle)
-
-{
-// ORIGINAL CODE - INJECTION POINT: "NMS.exe"+7D9E58
-
-"NMS.exe"+7D9E26: 0F B7 05 DF 64 52 01           -  movzx eax,word ptr [NMS.exe+1D0030C]
-"NMS.exe"+7D9E2D: 66 89 45 F4                    -  mov [rbp-0C],ax
-"NMS.exe"+7D9E31: FF 15 31 C5 35 01              -  call qword ptr [NMS.exe+1B36368]
-"NMS.exe"+7D9E37: 48 8B 0D 0A 50 DB 01           -  mov rcx,[NMS.exe+258EE48]
-"NMS.exe"+7D9E3E: 4C 8D 4D 28                    -  lea r9,[rbp+28]
-"NMS.exe"+7D9E42: 48 81 C1 C8 37 03 00           -  add rcx,000337C8
-"NMS.exe"+7D9E49: 4C 8D 45 D8                    -  lea r8,[rbp-28]
-"NMS.exe"+7D9E4D: 48 8D 55 E8                    -  lea rdx,[rbp-18]
-"NMS.exe"+7D9E51: E8 3A B1 E1 FF                 -  call NMS.exe+5F4F90
-"NMS.exe"+7D9E56: 85 C0                          -  test eax,eax
-// ---------- INJECTING HERE ----------
-"NMS.exe"+7D9E58: 75 27                          -  jne NMS.exe+7D9E81
-"NMS.exe"+7D9E5A: 48 8B 0D E7 4F DB 01           -  mov rcx,[NMS.exe+258EE48]
-// ---------- DONE INJECTING  ----------
-"NMS.exe"+7D9E61: 48 81 C1 00 73 37 00           -  add rcx,00377300
-"NMS.exe"+7D9E68: E8 53 8F FA FF                 -  call NMS.exe+782DC0
-"NMS.exe"+7D9E6D: 84 C0                          -  test al,al
-"NMS.exe"+7D9E6F: 75 10                          -  jne NMS.exe+7D9E81
-"NMS.exe"+7D9E71: F7 05 D9 4F DB 01 FD FF FF FF  -  test [NMS.exe+258EE54],FFFFFFFD
-"NMS.exe"+7D9E7B: 74 04                          -  je NMS.exe+7D9E81
-"NMS.exe"+7D9E7D: B2 01                          -  mov dl,01
-"NMS.exe"+7D9E7F: EB 02                          -  jmp NMS.exe+7D9E83
-"NMS.exe"+7D9E81: 32 D2                          -  xor dl,dl
-"NMS.exe"+7D9E83: 48 8B 0D BE 4F DB 01           -  mov rcx,[NMS.exe+258EE48]
-}
-</AssemblerScript>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>8245</ID>
-      <Description>"Kill All Pirates"</Description>
-      <LastState/>
-      <Color>0000FF</Color>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>{ Game   : NMS.exe
-  Version:
-  Date   : 2018-08-05
-  Author : Cedric
-
-  Instantly kills pirate ships
-}
-
-[ENABLE]
-
-aobscanmodule(killpirates,NMS.exe,41 2B 96 C4 01 00 00) // should be unique
-alloc(newmem,$1000,"NMS.exe"+A69896)
-
-label(code)
-label(return)
-
-newmem:
-  mov [r14+000001C4], edx
-
-code:
-  sub edx,[r14+000001C4]
-  jmp return
-
-killpirates:
-  jmp newmem
-  nop
-  nop
-return:
-registersymbol(killpirates)
-
-[DISABLE]
-
-killpirates:
-  db 41 2B 96 C4 01 00 00
-
-unregistersymbol(killpirates)
-dealloc(newmem)
-
-{
-// ORIGINAL CODE - INJECTION POINT: "NMS.exe"+A69896
-
-"NMS.exe"+A6986D: 4A 8B 0C E9                 -  mov rcx,[rcx+r13*8]
-"NMS.exe"+A69871: E8 EA 80 FC FF              -  call NMS.exe+A31960
-"NMS.exe"+A69876: 4C 8B F0                    -  mov r14,rax
-"NMS.exe"+A69879: 48 85 C0                    -  test rax,rax
-"NMS.exe"+A6987C: 0F 84 FB 02 00 00           -  je NMS.exe+A69B7D
-"NMS.exe"+A69882: 8B 80 C0 01 00 00           -  mov eax,[rax+000001C0]
-"NMS.exe"+A69888: F3 0F 10 25 3C 78 30 01     -  movss xmm4,[NMS.exe+1D710CC]
-"NMS.exe"+A69890: 85 C0                       -  test eax,eax
-"NMS.exe"+A69892: 7E 43                       -  jle NMS.exe+A698D7
-"NMS.exe"+A69894: 8B D0                       -  mov edx,eax
-// ---------- INJECTING HERE ----------
-"NMS.exe"+A69896: 41 2B 96 C4 01 00 00        -  sub edx,[r14+000001C4]
-// ---------- DONE INJECTING  ----------
-"NMS.exe"+A6989D: B9 00 00 00 00              -  mov ecx,00000000
-"NMS.exe"+A698A2: 0F 49 CA                    -  cmovns ecx,edx
-"NMS.exe"+A698A5: 66 0F 6E C9                 -  movd xmm1,ecx
-"NMS.exe"+A698A9: 0F 5B C9                    -  cvtdq2ps xmm1,xmm1
-"NMS.exe"+A698AC: 66 0F 6E C0                 -  movd xmm0,eax
-"NMS.exe"+A698B0: 0F 5B C0                    -  cvtdq2ps xmm0,xmm0
-"NMS.exe"+A698B3: F3 0F 5E C8                 -  divss xmm1,xmm0
-"NMS.exe"+A698B7: 41 0F 2F CB                 -  comiss xmm1,xmm11
-"NMS.exe"+A698BB: 77 0B                       -  ja NMS.exe+A698C8
-"NMS.exe"+A698BD: 41 0F 28 CB                 -  movaps xmm1,xmm11
-}
-</AssemblerScript>
-    </CheatEntry>
-    <CheatEntry>
       <ID>8121</ID>
       <Description>"Galactic Map Speed"</Description>
       <Options moHideChildren="1"/>
@@ -1890,7 +1700,7 @@ unregistersymbol(reflistp)
       <ID>8086</ID>
       <Description>"Wanted Level"</Description>
       <Options moHideChildren="1"/>
-      <LastState/>
+      <LastState Activated="1"/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : NMS.exe
   Version: 
@@ -1938,7 +1748,7 @@ dealloc(newmem)
         <CheatEntry>
           <ID>8123</ID>
           <Description>"Wanted Level Wont Increase"</Description>
-          <LastState/>
+          <LastState Activated="1"/>
           <Color>000000</Color>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : NMS.exe
@@ -1966,6 +1776,7 @@ unregistersymbol(nowl)
         <CheatEntry>
           <ID>8087</ID>
           <Description>"Wanted Level Pointer"</Description>
+          <LastState Value="0" RealAddress="1E4B312EE88"/>
           <VariableType>4 Bytes</VariableType>
           <Address>wlpp</Address>
           <Offsets>
