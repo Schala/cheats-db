@@ -4,7 +4,7 @@
     <CheatEntry>
       <ID>17</ID>
       <Description>"GodMode (Invulnerability)"</Description>
-      <LastState Activated="1"/>
+      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
 
@@ -72,6 +72,58 @@ unregistersymbol(ret_point)
 "Spyro-Win64-Shipping.exe"+1D341F7: 48 8B 44 24 68        -  mov rax,[rsp+68]
 "Spyro-Win64-Shipping.exe"+1D341FC: 4C 8D 44 24 30        -  lea r8,[rsp+30]
 "Spyro-Win64-Shipping.exe"+1D34201: 48 8B 54 24 28        -  mov rdx,[rsp+28]
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>22</ID>
+      <Description>"Undead (Unable to die)"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+aobscanmodule(undead,Spyro-Win64-Shipping.exe,74 31 48 6B C0 38) // should be unique
+registersymbol(undead)
+
+
+undead:
+db EB
+
+
+[DISABLE]
+
+undead:
+db 74
+
+unregistersymbol(undead)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Spyro-Win64-Shipping.exe"+1D91CA4
+
+"Spyro-Win64-Shipping.exe"+1D91C77: 74 0F                       -  je Spyro-Win64-Shipping.exe+1D91C88
+"Spyro-Win64-Shipping.exe"+1D91C79: 48 8B 01                    -  mov rax,[rcx]
+"Spyro-Win64-Shipping.exe"+1D91C7C: F3 0F 10 8C 24 80 00 00 00  -  movss xmm1,[rsp+00000080]
+"Spyro-Win64-Shipping.exe"+1D91C85: FF 50 10                    -  call qword ptr [rax+10]
+"Spyro-Win64-Shipping.exe"+1D91C88: 4C 8B C3                    -  mov r8,rbx
+"Spyro-Win64-Shipping.exe"+1D91C8B: 48 8D 54 24 70              -  lea rdx,[rsp+70]
+"Spyro-Win64-Shipping.exe"+1D91C90: 48 8D 8D 58 01 00 00        -  lea rcx,[rbp+00000158]
+"Spyro-Win64-Shipping.exe"+1D91C97: E8 04 C1 FE FF              -  call Spyro-Win64-Shipping.exe+1D7DDA0
+"Spyro-Win64-Shipping.exe"+1D91C9C: 48 63 44 24 70              -  movsxd  rax,dword ptr [rsp+70]
+"Spyro-Win64-Shipping.exe"+1D91CA1: 83 F8 FF                    -  cmp eax,-01
+// ---------- INJECTING HERE ----------
+"Spyro-Win64-Shipping.exe"+1D91CA4: 74 31                       -  je Spyro-Win64-Shipping.exe+1D91CD7
+"Spyro-Win64-Shipping.exe"+1D91CA6: 48 6B C0 38                 -  imul rax,rax,38
+// ---------- DONE INJECTING  ----------
+"Spyro-Win64-Shipping.exe"+1D91CAA: 48 03 85 58 01 00 00        -  add rax,[rbp+00000158]
+"Spyro-Win64-Shipping.exe"+1D91CB1: 74 24                       -  je Spyro-Win64-Shipping.exe+1D91CD7
+"Spyro-Win64-Shipping.exe"+1D91CB3: 48 8D 48 20                 -  lea rcx,[rax+20]
+"Spyro-Win64-Shipping.exe"+1D91CB7: 48 85 C9                    -  test rcx,rcx
+"Spyro-Win64-Shipping.exe"+1D91CBA: 74 1B                       -  je Spyro-Win64-Shipping.exe+1D91CD7
+"Spyro-Win64-Shipping.exe"+1D91CBC: 48 8B 09                    -  mov rcx,[rcx]
+"Spyro-Win64-Shipping.exe"+1D91CBF: F3 0F 10 84 24 80 00 00 00  -  movss xmm0,[rsp+00000080]
+"Spyro-Win64-Shipping.exe"+1D91CC8: F3 0F 11 81 FC 00 00 00     -  movss [rcx+000000FC],xmm0
+"Spyro-Win64-Shipping.exe"+1D91CD0: E8 0B 4F FE FF              -  call Spyro-Win64-Shipping.exe+1D76BE0
+"Spyro-Win64-Shipping.exe"+1D91CD5: EB 29                       -  jmp Spyro-Win64-Shipping.exe+1D91D00
 }
 </AssemblerScript>
     </CheatEntry>
