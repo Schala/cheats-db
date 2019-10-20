@@ -565,6 +565,13 @@ for i=0,12-1,1 do
 	al[mr.Index+1+i].DisplayAsDropDownListItem = true
 end
 
+local mr2 = al.getMemoryRecordByDescription("Stash Inventory Editor")
+
+al[mr2.Index+1].DropDownList.Text = DropDownListITM.Text
+al[mr2.Index+1].DropDownReadOnly = false
+al[mr2.Index+1].DropDownDescriptionOnly = true
+al[mr2.Index+1].DisplayAsDropDownListItem = true
+
 {$asm}
 ///
 aobscanmodule(GetStashPtrAOB,"grandia.exe",89 4D E0 89 45 E8 80 38 00)
@@ -572,11 +579,11 @@ registersymbol(GetStashPtrAOB)
 alloc(newmem,1024,GetStashPtrAOB)
 
 ///
-aobscanmodule(GetGoldPtrAOB,"grandia.exe",6A 05 8A 46 16 88 44 24 16)
+aobscanmodule(GetGoldPtrAOB,"grandia.exe",6A 05 8A 46 ?? 88 44 24 ??)
 registersymbol(GetGoldPtrAOB)
 alloc(newmem2,1024,GetGoldPtrAOB)
 
-aobscanmodule(GetPartyMembersAOB1,"grandia.exe",0F B6 84 80 ?? ?? ?? 00 66 A3 ?? ?? ?? ?? 89 45 F4)
+aobscanmodule(GetPartyMembersAOB1,"grandia.exe",0F B6 84 80 ?? ?? ?? ?? 66 A3 ?? ?? ?? ?? 89 45 F4)
 registersymbol(GetPartyMembersAOB1)
 
 ///
@@ -585,6 +592,8 @@ label(StashPtr)
 registersymbol(StashPtr)
 label(ItemQuantity)
 registersymbol(ItemQuantity)
+label(CurrentStashItemSelected)
+registersymbol(CurrentStashItemSelected)
 
 ///
 label(return2)
@@ -613,6 +622,8 @@ StashPtr:
 dq 0
 ItemQuantity:
 dq #25
+CurrentStashItemSelected:
+dq 0
 
 newmem2:
   mov [GoldPtr],esi
@@ -658,6 +669,7 @@ GetStashPtrAOB:
 unregistersymbol(GetStashPtrAOB)
 unregistersymbol(StashPtr)
 unregistersymbol(ItemQuantity)
+unregistersymbol(CurrentStashItemSelected)
 
 ///
 GetGoldPtrAOB:
@@ -1104,6 +1116,26 @@ end
 					  <Offsets>
 					    <Offset>4</Offset>
 					  </Offsets>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4500</ID>
+					  <Description>"Stash Inventory Editor"</Description>
+					  <Options moHideChildren="1"/>
+					  <GroupHeader>1</GroupHeader>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>4501</ID>
+						  <Description>"Selected Stash Item"</Description>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>CurrentStashItemSelected</Address>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>4502</ID>
+						  <Description>"Quantity In Stash"</Description>
+						  <VariableType>Byte</VariableType>
+						  <Address>[StashPtr] + [CurrentStashItemSelected] - 1</Address>
+						</CheatEntry>
+					  </CheatEntries>
 					</CheatEntry>
 					<CheatEntry>
 					  <ID>4400</ID>
