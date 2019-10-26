@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CheatTable CheatEngineTableVersion="24">
+<CheatTable CheatEngineTableVersion="29">
   <CheatEntries>
     <CheatEntry>
       <ID>1</ID>
       <Description>"Grandia HD Remaster (Steam Edition)"</Description>
       <Options moHideChildren="1"/>
+      <LastState Value="" RealAddress="00000000"/>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
           <ID>10</ID>
           <Description>"Enable"</Description>
           <Options moHideChildren="1"/>
+          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>[ENABLE]
 {$lua}
@@ -688,19 +690,21 @@ unregistersymbol(CurrentParty)
 dealloc(newmem)
 dealloc(newmem2)
 </AssemblerScript>
-			<CheatEntries>
-				<CheatEntry>
-				  <ID>100</ID>
-				  <Description>"[Scripts]"</Description>
-				  <Options moHideChildren="1"/>
-				  <GroupHeader>1</GroupHeader>
-				  <CheatEntries>
-					<CheatEntry>
-					  <ID>200</ID>
-					  <Description>"Damage Modifier (God Mode, One Hit Kill, etc.)"</Description>
-					  <Options moHideChildren="1"/>
-					  <VariableType>Auto Assembler Script</VariableType>
-					  <AssemblerScript>[ENABLE]
+          <CheatEntries>
+            <CheatEntry>
+              <ID>100</ID>
+              <Description>"[Scripts]"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>200</ID>
+                  <Description>"Damage Modifier (God Mode, One Hit Kill, etc.)"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
 
 
 aobscanmodule(DamageModAOB,"grandia.exe",2B C1 0F B7 D1 66 89 86 00 01 00 00)
@@ -810,54 +814,55 @@ unregistersymbol(DamageModAOB)
 
 dealloc(newmem)
 </AssemblerScript>
-					  <CheatEntries>
-						<CheatEntry>
-						  <ID>201</ID>
-						  <Description>"Enemy Damage Multiplier (Set to Zero = Off; Otherwise multiplier)"</Description>
-						  <VariableType>Float</VariableType>
-						  <Address>EnemyDamageMultiplier</Address>
-						</CheatEntry>
-						<CheatEntry>
-						  <ID>202</ID>
-						  <Description>"One Hit Kill"</Description>
-						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>201</ID>
+                      <Description>"Enemy Damage Multiplier (Set to Zero = Off; Otherwise multiplier)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>EnemyDamageMultiplier</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>202</ID>
+                      <Description>"One Hit Kill"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
 1:On
 </DropDownList>
-						  <VariableType>4 Bytes</VariableType>
-						  <Address>OneHitKill</Address>
-						</CheatEntry>
-						<CheatEntry>
-						  <ID>204</ID>
-						  <Description>"God Mode"</Description>
-						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>OneHitKill</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>204</ID>
+                      <Description>"God Mode"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
 1:On
 </DropDownList>
-						  <VariableType>4 Bytes</VariableType>
-						  <Address>GodMode</Address>
-						</CheatEntry>
-						<CheatEntry>
-						  <ID>205</ID>
-						  <Description>"Hero Cannot Die (Lose HP Unless The Hit Will Kill You If On)"</Description>
-						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GodMode</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>205</ID>
+                      <Description>"Hero Cannot Die (Lose HP Unless The Hit Will Kill You If On)"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
 1:On
 </DropDownList>
-						  <VariableType>4 Bytes</VariableType>
-						  <Address>HeroCannotDie</Address>
-						</CheatEntry>
-						<CheatEntry>
-						  <ID>206</ID>
-						  <Description>"Hero Damage Multiplier (Set to Zero = Off; Otherwise multiplier, e.g. 0.5 is half damage)"</Description>
-						  <VariableType>Float</VariableType>
-						  <Address>HeroDamageMultiplier</Address>
-						</CheatEntry>
-					  </CheatEntries>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>210</ID>
-					  <Description>"Infinite SP"</Description>
-					  <Options moHideChildren="1"/>
-					  <VariableType>Auto Assembler Script</VariableType>
-					  <AssemblerScript>[ENABLE]
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>HeroCannotDie</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>206</ID>
+                      <Description>"Hero Damage Multiplier (Set to Zero = Off; Otherwise multiplier, e.g. 0.5 is half damage)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>HeroDamageMultiplier</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>210</ID>
+                  <Description>"Infinite SP"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
 
 
 aobscanmodule(InfSPAOB,"grandia.exe",2B C8 33 C0 5F 66 89 8E 6E 01 00 00)
@@ -896,13 +901,183 @@ unregistersymbol(InfSPAOB)
 
 dealloc(newmem)
 </AssemblerScript>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>215</ID>
-					  <Description>"EXP Multiplier"</Description>
-					  <Options moHideChildren="1"/>
-					  <VariableType>Auto Assembler Script</VariableType>
-					  <AssemblerScript>[ENABLE]
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>4515</ID>
+                  <Description>"Infinite MP Lv1"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+
+aobscanmodule(InfMPLv1AOB,grandia.exe,8A 8E 12 01 00 00 0F B7 57 02)
+registersymbol(InfMPLv1AOB)
+alloc(newmem,1024)
+
+///
+label(originalcode)
+label(return)
+
+///
+newmem:
+  mov word ptr [edi+02],0
+
+originalcode:
+  mov cl,[esi+00000112]
+  jmp return
+
+InfMPLv1AOB:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+InfMPLv1AOB:
+  db 8A 8E 12 01 00 00
+
+unregistersymbol(InfMPLv1AOB)
+dealloc(newmem)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>4516</ID>
+                  <Description>"Infinite MP Lv2"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+
+aobscanmodule(InfMPLv2AOB,grandia.exe,8A 8E 13 01 00 00 0F B7 57 02)
+registersymbol(InfMPLv2AOB)
+alloc(newmem,1024)
+
+///
+label(originalcode)
+label(return)
+
+///
+newmem:
+  mov word ptr [edi+02],0
+
+originalcode:
+  mov cl,[esi+00000113]
+  jmp return
+
+InfMPLv2AOB:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+InfMPLv2AOB:
+  db 8A 8E 13 01 00 00
+
+unregistersymbol(InfMPLv2AOB)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "grandia.exe"+A4834
+
+"grandia.exe"+A481B: 66 3B C2              -  cmp ax,dx
+"grandia.exe"+A481E: 0F 82 09 01 00 00     -  jb grandia.exe+A492D
+"grandia.exe"+A4824: 2A CA                 -  sub cl,dl
+"grandia.exe"+A4826: 33 C0                 -  xor eax,eax
+"grandia.exe"+A4828: 5F                    -  pop edi
+"grandia.exe"+A4829: 88 8E 12 01 00 00     -  mov [esi+00000112],cl
+"grandia.exe"+A482F: 5E                    -  pop esi
+"grandia.exe"+A4830: 8B E5                 -  mov esp,ebp
+"grandia.exe"+A4832: 5D                    -  pop ebp
+"grandia.exe"+A4833: C3                    -  ret 
+// ---------- INJECTING HERE ----------
+"grandia.exe"+A4834: 8A 8E 13 01 00 00     -  mov cl,[esi+00000113]
+// ---------- DONE INJECTING  ----------
+"grandia.exe"+A483A: 0F B7 57 02           -  movzx edx,word ptr [edi+02]
+"grandia.exe"+A483E: 0F B6 C1              -  movzx eax,cl
+"grandia.exe"+A4841: 66 3B C2              -  cmp ax,dx
+"grandia.exe"+A4844: 0F 82 E3 00 00 00     -  jb grandia.exe+A492D
+"grandia.exe"+A484A: 2A CA                 -  sub cl,dl
+"grandia.exe"+A484C: 33 C0                 -  xor eax,eax
+"grandia.exe"+A484E: 5F                    -  pop edi
+"grandia.exe"+A484F: 88 8E 13 01 00 00     -  mov [esi+00000113],cl
+"grandia.exe"+A4855: 5E                    -  pop esi
+"grandia.exe"+A4856: 8B E5                 -  mov esp,ebp
+}
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>4517</ID>
+                  <Description>"Infinite MP Lv3"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+
+aobscanmodule(InfMPLv3AOB,grandia.exe,8A 8E 14 01 00 00 0F B7 57 02)
+registersymbol(InfMPLv3AOB)
+alloc(newmem,1024)
+
+///
+label(originalcode)
+label(return)
+
+///
+newmem:
+  mov word ptr [edi+02],0
+
+originalcode:
+  mov cl,[esi+00000114]
+  jmp return
+
+InfMPLv3AOB:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+InfMPLv3AOB:
+  db 8A 8E 14 01 00 00
+
+unregistersymbol(InfMPLv3AOB)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "grandia.exe"+A485A
+
+"grandia.exe"+A4841: 66 3B C2              -  cmp ax,dx
+"grandia.exe"+A4844: 0F 82 E3 00 00 00     -  jb grandia.exe+A492D
+"grandia.exe"+A484A: 2A CA                 -  sub cl,dl
+"grandia.exe"+A484C: 33 C0                 -  xor eax,eax
+"grandia.exe"+A484E: 5F                    -  pop edi
+"grandia.exe"+A484F: 88 8E 13 01 00 00     -  mov [esi+00000113],cl
+"grandia.exe"+A4855: 5E                    -  pop esi
+"grandia.exe"+A4856: 8B E5                 -  mov esp,ebp
+"grandia.exe"+A4858: 5D                    -  pop ebp
+"grandia.exe"+A4859: C3                    -  ret 
+// ---------- INJECTING HERE ----------
+"grandia.exe"+A485A: 8A 8E 14 01 00 00     -  mov cl,[esi+00000114]
+// ---------- DONE INJECTING  ----------
+"grandia.exe"+A4860: 0F B7 57 02           -  movzx edx,word ptr [edi+02]
+"grandia.exe"+A4864: 0F B6 C1              -  movzx eax,cl
+"grandia.exe"+A4867: 66 3B C2              -  cmp ax,dx
+"grandia.exe"+A486A: 0F 82 BD 00 00 00     -  jb grandia.exe+A492D
+"grandia.exe"+A4870: 2A CA                 -  sub cl,dl
+"grandia.exe"+A4872: 33 C0                 -  xor eax,eax
+"grandia.exe"+A4874: 5F                    -  pop edi
+"grandia.exe"+A4875: 88 8E 14 01 00 00     -  mov [esi+00000114],cl
+"grandia.exe"+A487B: 5E                    -  pop esi
+"grandia.exe"+A487C: 8B E5                 -  mov esp,ebp
+}
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>215</ID>
+                  <Description>"EXP Multiplier"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
 
 
 aobscanmodule(EXPMultAOB,"grandia.exe",8B 87 88 00 00 00 33 C9 89 45 E0)
@@ -945,21 +1120,22 @@ unregistersymbol(EXPMultiplier)
  
 dealloc(newmem)
 </AssemblerScript>
-					  <CheatEntries>
-						<CheatEntry>
-						  <ID>216</ID>
-						  <Description>"EXP Multiplier"</Description>
-						  <VariableType>Float</VariableType>
-						  <Address>EXPMultiplier</Address>
-						</CheatEntry>
-					  </CheatEntries>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>220</ID>
-					  <Description>"Weapon EXP Multiplier"</Description>
-					  <Options moHideChildren="1"/>
-					  <VariableType>Auto Assembler Script</VariableType>
-					  <AssemblerScript>[ENABLE]
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>216</ID>
+                      <Description>"EXP Multiplier"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>EXPMultiplier</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>220</ID>
+                  <Description>"Weapon EXP Multiplier"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
 
 
 aobscanmodule(WeaponEXPMultAOB,"grandia.exe",05 BF 00 00 00 66 01 34 43)
@@ -1001,21 +1177,191 @@ unregistersymbol(WeaponEXPMultiplier)
  
 dealloc(newmem)
 </AssemblerScript>
-					  <CheatEntries>
-						<CheatEntry>
-						  <ID>221</ID>
-						  <Description>"Weapon EXP Multiplier"</Description>
-						  <VariableType>Float</VariableType>
-						  <Address>WeaponEXPMultiplier</Address>
-						</CheatEntry>
-					  </CheatEntries>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>225</ID>
-					  <Description>"Gold Multiplier"</Description>
-					  <Options moHideChildren="1"/>
-					  <VariableType>Auto Assembler Script</VariableType>
-					  <AssemblerScript>[ENABLE]
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>221</ID>
+                      <Description>"Weapon EXP Multiplier"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>WeaponEXPMultiplier</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>4509</ID>
+                  <Description>"Always level Weapons"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+
+aobscanmodule(WeaponEXPFixAOB,"grandia.exe",05 BF 00 00 00 66 01 34 43)
+registersymbol(WeaponEXPFixAOB)
+alloc(newmem,1024,WeaponEXPFixAOB)
+
+///
+label(originalcode)
+label(return)
+label(WeaponEXPFixed)
+registersymbol(WeaponEXPFixed)
+
+///
+newmem:
+  push [WeaponEXPFixed]
+  pop esi
+  
+originalcode:
+  add eax,000000BF
+  jmp return
+
+WeaponEXPFixed:
+DW 64
+ 
+WeaponEXPFixAOB:
+  jmp newmem
+  return:
+ 
+[DISABLE]
+
+WeaponEXPFixAOB:
+  db 05 BF 00 00 00
+
+unregistersymbol(WeaponEXPFixAOB)
+unregistersymbol(WeaponEXPFixed)
+ 
+dealloc(newmem)
+</AssemblerScript>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>4510</ID>
+                      <Description>"Weapon EXP"</Description>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>WeaponEXPFixed</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>4505</ID>
+                  <Description>"Magic EXP Multiplier"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+
+aobscanmodule(MagicEXPMultAOB,grandia.exe,66 01 07 66 01 47 0A B8 E7 03 00 00)
+registersymbol(MagicEXPMultAOB)
+alloc(newmem,1024,MagicEXPMultAOB)
+
+///
+label(originalcode)
+label(return)
+label(MagicEXPMultiplier)
+registersymbol(MagicEXPMultiplier)
+
+///
+newmem:
+  push eax
+  fild dword ptr [rsp]
+  fmul dword ptr [MagicEXPMultiplier]
+  fistp dword ptr [rsp]
+  pop eax
+
+originalcode:
+  add [edi],ax
+  add [edi+0A],ax
+  jmp return
+
+MagicEXPMultiplier:
+dq (float)3.0
+
+MagicEXPMultAOB:
+  jmp newmem
+  nop
+  nop
+  return:
+
+[DISABLE]
+MagicEXPMultAOB:
+  db 66 01 07 66 01 47 0A
+
+unregistersymbol(MagicEXPMultAOB)
+unregistersymbol(MagicEXPMultiplier)
+
+dealloc(newmem)
+</AssemblerScript>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>4506</ID>
+                      <Description>"Magic EXP Multiplier"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MagicEXPMultiplier</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>4507</ID>
+                  <Description>"Always Level Magic"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+
+aobscanmodule(MagicEXPFixAOB,grandia.exe,66 01 07 66 01 47 0A B8 E7 03 00 00)
+registersymbol(MagicEXPFixAOB)
+alloc(newmem,1024,MagicEXPFixAOB)
+
+///
+label(originalcode)
+label(return)
+label(MagicEXPFixed)
+registersymbol(MagicEXPFixed)
+
+///
+newmem:
+  push [MagicEXPFixed]
+  pop eax
+
+originalcode:
+  add [edi],ax
+  add [edi+0A],ax
+  jmp return
+
+MagicEXPFixed:
+DW 64
+
+MagicEXPFixAOB:
+  jmp newmem
+  nop
+  nop
+  return:
+
+[DISABLE]
+MagicEXPFixAOB:
+  db 66 01 07 66 01 47 0A
+
+unregistersymbol(MagicEXPFixAOB)
+unregistersymbol(MagicEXPFixed)
+
+dealloc(newmem)
+</AssemblerScript>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>4508</ID>
+                      <Description>"Magic EXP"</Description>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>MagicEXPFixed</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>225</ID>
+                  <Description>"Gold Multiplier"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
 
 
 aobscanmodule(GoldMultAOB,"grandia.exe",0F B7 86 80 01 00 00 01 81 8C 00 00 00)
@@ -1059,21 +1405,22 @@ unregistersymbol(GoldMultiplier)
  
 dealloc(newmem)
 </AssemblerScript>
-					  <CheatEntries>
-						<CheatEntry>
-						  <ID>226</ID>
-						  <Description>"Gold Multiplier"</Description>
-						  <VariableType>Float</VariableType>
-						  <Address>GoldMultiplier</Address>
-						</CheatEntry>
-					  </CheatEntries>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>230</ID>
-					  <Description>"Get All Items In Stash (View Get Stash Item At Least One Time)"</Description>
-					  <Options moHideChildren="1"/>
-					  <VariableType>Auto Assembler Script</VariableType>
-					  <AssemblerScript>[ENABLE]
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>226</ID>
+                      <Description>"Gold Multiplier"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>GoldMultiplier</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>230</ID>
+                  <Description>"Get All Items In Stash (View Get Stash Item At Least One Time)"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
 {$lua}
 
 local StashPtr = ReadPointer(getAddress("StashPtr"))
@@ -1093,66 +1440,574 @@ end
 [DISABLE]
 
 </AssemblerScript>
-					</CheatEntry>
-				  </CheatEntries>
-				</CheatEntry>
-				<CheatEntry>
-				  <ID>4000</ID>
-				  <Description>"Pointers"</Description>
-				  <Options moHideChildren="1"/>
-				  <GroupHeader>1</GroupHeader>
-				  <CheatEntries>
-					<CheatEntry>
-					  <ID>4001</ID>
-					  <Description>"Item Quantity To Use For All Items Script"</Description>
-					  <VariableType>4 Bytes</VariableType>
-					  <Address>ItemQuantity</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>4002</ID>
-					  <Description>"Gold"</Description>
-					  <VariableType>4 Bytes</VariableType>
-					  <Address>GoldPtr</Address>
-					  <Offsets>
-					    <Offset>4</Offset>
-					  </Offsets>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>4500</ID>
-					  <Description>"Stash Inventory Editor"</Description>
-					  <Options moHideChildren="1"/>
-					  <GroupHeader>1</GroupHeader>
-					  <CheatEntries>
-						<CheatEntry>
-						  <ID>4501</ID>
-						  <Description>"Selected Stash Item"</Description>
-						  <VariableType>4 Bytes</VariableType>
-						  <Address>CurrentStashItemSelected</Address>
-						</CheatEntry>
-						<CheatEntry>
-						  <ID>4502</ID>
-						  <Description>"Quantity In Stash"</Description>
-						  <VariableType>Byte</VariableType>
-						  <Address>[StashPtr] + [CurrentStashItemSelected] - 1</Address>
-						</CheatEntry>
-					  </CheatEntries>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>4400</ID>
-					  <Description>"Character Party Editor (View Main Menu First) (Reload Map To See Changes)"</Description>
-					  <Options moHideChildren="1"/>
-					  <GroupHeader>1</GroupHeader>
-					  <CheatEntries>
-						<CheatEntry>
-						  <ID>4401</ID>
-						  <Description>"Num Party Members (Up To 4)"</Description>
-						  <VariableType>Byte</VariableType>
-						  <Address>[PartyMemberBasePtr] + [CurrentParty] + [CurrentParty] * 4</Address>
-						</CheatEntry>
-						<CheatEntry>
-						  <ID>4402</ID>
-						  <Description>"Party Member 1"</Description>
-						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Nobody
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>4000</ID>
+              <Description>"Pointers"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>4001</ID>
+                  <Description>"Item Quantity To Use For All Items Script"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>ItemQuantity</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>4002</ID>
+                  <Description>"Gold"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>GoldPtr</Address>
+                  <Offsets>
+                    <Offset>4</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>4500</ID>
+                  <Description>"Stash Inventory Editor"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>4501</ID>
+                      <Description>"Selected Stash Item"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Nothing
+10:Spirit Stone
+11:Hero's Armband
+12:Horn of Knowledge
+13:Medal of Wisdom
+14:Medal of Knowledge
+15:Gaia Sprout
+16:Gantz's Key
+17:Intro Letter
+18:Key to the Café
+19:Java's Wallet
+20:Steamer Pass
+21:Lilly's Letter
+22:Cabin Key
+23:Sulfa Weed
+24:Jail Key
+25:Master Key
+26:Nectar of the Gods
+27:Mist-Clearing Nut
+28:Sue's Shoes
+29:Warrior's Spear
+30:Teleportation Orb
+31:Apron
+32:Pot Lid
+33:Iron Pot
+34:Wooden Sword
+35:Spirit Sword
+36:Biscuits
+37:Marie's Pin
+38:Coal Candy
+39:Letter to Clara
+40:Pearl
+41:Rainbow Key
+42:Boiled Egg
+43:Chocolate
+44:Jawbreaker
+45:Ring of Protection
+46:Frost Herb
+47:Amulet of Relief
+48:Prohibited
+49:Prohibited
+50:Prohibited
+51:Prohibited
+52:Prohibited
+53:Prohibited
+54:Prohibited
+55:Prohibited
+56:Prohibited
+57:Prohibited
+58:Prohibited
+59:Prohibited
+60:Prohibited
+61:Prohibited
+62:Prohibited
+63:Knife of Judgment
+64:Rusty Knife
+65:Paring Knife
+66:Hunter's Knife
+67:Flint Knife
+68:Azure Knife
+69:Shocking Knife
+70:Poisoned Knife
+71:Assassin's Dagger
+72:Bloody Knife
+73:Ice Pick
+74:Force Knife
+75:Godspeed Knife
+76:Gust Knife
+77:Ruination Knife
+78:Thief Cutter
+79:Zero Knife
+80:Ceramic Sword
+81:Prohibited
+82:Admiral's Sword
+83:Great Sword
+84:Army Saber
+85:The Sword Himmler
+86:Angel's Darts
+87:Swordfish Sword
+88:Dragon Killer
+89:Fire Sword
+90:Shadow Sword
+91:Gil Sword
+92:Silence Sword
+93:Prohibited
+94:Wobbly Sword
+95:Main Gauche
+96:Holy Sword Lorenzo
+97:Ice Blade
+98:Lightning Sword
+99:Battle Saber
+100:Zero Sword
+101:Wooden Pole
+102:Metal Bat
+103:Zero Rod
+104:Officer's Baton
+105:Magic Rod
+106:Miner's Hammer
+107:Iron Mace
+108:Army Darts
+109:Lassic Hammer
+110:War Hammer
+111:Hertz Spike
+112:Oracle's Staff
+113:Raincloud Staff
+114:Staff of Life
+115:Warp Staff
+116:Holy Mace
+117:Fire Rod
+118:Aromatic Tree Root
+119:Sparkling Rod
+120:Spirit Staff
+121:Home Run Hammer
+122:Rusty Shovel
+123:Hand Ax
+124:Ceremonial Rock Ax
+125:Big Hatchet
+126:Woodchopper's Ax
+127:Dragon Bone Ax
+128:Klepp's Sickle
+129:Frog Ax
+130:Bone Splitter Ax
+131:Earthen Ax
+132:Buster Ax
+133:Wrecking Ax
+134:Bent Mattock
+135:Zero Ax
+136:Toy Bow and Arrow
+137:Handmade Darts
+138:Hunter's Bow
+139:Flying Fish Bow
+140:Hail Bow
+141:Flint Bow
+142:Exorcising Bow
+143:Cafu Shuriken
+144:Boomerang
+145:Fire Darts
+146:Evil Shuriken
+147:Demonslayer Boomer
+148:Discus
+149:Cactus Thorns
+150:Ice Boomerang
+151:Thunder Arrow
+152:Zero Shuriken
+153:Zero Whip
+154:Mist-Cracking Whip
+155:Leather Whip
+156:Thorny Whip
+157:Catfish Whiskers
+158:Giant Snake Whip
+159:Binding Whip
+160:Morning Star
+161:Whip of Light
+162:Burning Hot Whip
+163:Gale Whip
+164:Adventure Clothes
+165:Sunday Best
+166:Sports Wear
+167:Work Clothes
+168:Cactus Armor
+169:Soldier's Uniform
+170:Officer's Uniform
+171:Fairy Robe
+172:Flying Dragon Vest
+173:Frog Shirt
+174:Spy Clothes
+175:Chain Mail
+176:Battle Bikini
+177:Mogay Clothes
+178:Mink Coat
+179:Enchantress' Robe
+180:Angel's Robe
+181:Robe of the Sun
+182:Breastplate
+183:Outdated Armor
+184:Bamboo Armor
+185:Shell Armor
+186:Thick Armor
+187:Swordfish Armor
+188:Skull Armor
+189:Chameleon Armor
+190:Plug Suit
+191:Aura Armor
+192:Dark Armor
+193:Warrior's Mail
+194:Spirit Armor
+195:Devil's Robe
+196:Magic Robe
+197:Cutting Board
+198:Woolen Mittens
+199:Leather Gloves
+200:Escargot Shield
+201:Oaken Shield
+202:Shell Shield
+203:Seashell Shield
+204:Mushroom Shield
+205:MagicMirror Shield
+206:Alligator Gauntlet
+207:Leaf Shield
+208:Lafa Flower Shield
+209:Power Shield
+210:Moonlight Shield
+211:Gauntlets
+212:Dragon Gauntlet
+213:Heavy Shield
+214:Gauntlets of Light
+215:Spirit Shield
+216:Magic Gloves
+217:Zero Shield
+218:Goggles
+219:Ribbon
+220:Fluffy Ribbon
+221:Barrette
+222:Pirate's Hat
+223:Cowboy Hat
+224:Climbing Hat
+225:Odd Hat
+226:Headgear
+227:Iron Bandana
+228:Feathered Turban
+229:Angel's Hat
+230:Pope's Hat
+231:Safety Helmet
+232:Antler Helmet
+233:Pearl Helmet
+234:Pirate's Helmet
+235:Stone Head
+236:Swallowtail Hat
+237:Mystic Mask
+238:Death Mask
+239:Ogre Helm
+240:Charisma Helm
+241:Spirit Helmet
+242:Holy Crown
+243:Cactus Helm
+244:Fairy Tiara
+245:Man's Headband
+246:Battle Helm
+247:Sneakers
+248:Dress Shoes
+249:Air Sneakers
+250:Shiny Shoes
+251:Rubber Boots
+252:Leather Greaves
+253:Hunter's Boots
+254:Army Boots
+255:Curious Clogs
+256:Dragon Boots
+257:Ninja Sandals
+258:Winged Boots
+259:Beach Sandals
+260:Mach 1 Boots
+261:Heavy Boots
+262:Queen Heels
+263:Iron Clogs
+264:Ogre Boots
+265:Rabbit Shoes
+266:Rainbow High Heels
+267:Wolf Boots
+268:Lion Boots
+269:Battle Boots
+270:Spirit Shoes
+271:Glass Slippers
+272:Warp Shoes
+273:Crampons
+274:Zero Boots
+275:Prohibited
+276:Diana's Amulet
+277:Hero's Badge
+278:Demon Sword Amulet
+279:Officer's Badge
+280:Black Belt
+281:Chain Earrings
+282:Titan's Ring
+283:Fireproof Cape
+284:Fire Charm
+285:Water Charm
+286:Wind Charm
+287:Earth Charm
+288:Counter Ring
+289:Secret Move Ring
+290:Hurricane Belt
+291:Mama's Amulet
+292:Jade Charm
+293:Tree God Amulet
+294:Light God Amulet
+295:Ancestor's Amulet
+296:Raincoat
+297:Iridescent Amulet
+298:Move Unblocker
+299:Medal of Yore
+300:Spirit Charm
+301:Phantom Silk
+302:Lightning Charm
+303:Forest Charm
+304:Explosion Charm
+305:Blizzard Charm
+306:Wind Belt
+307:Confusion Charm
+308:Paralysis Charm
+309:Magic Block Charm
+310:Sudden Death Charm
+311:Poison Charm
+312:Talisman
+313:Sonic Belt
+314:Metal Frog
+315:Revival Stone
+316:Use Prohibited
+317:Scarab
+318:Demon Eye Stone
+319:Jewel of Life
+320:Ankh of Temptation
+321:Anklet
+322:Energy Ring
+323:Disease Charm
+324:Paperweight
+325:Combat Anklet
+326:Chain of Gems
+327:Satisfaction Gem
+328:Soul of Asura
+329:Crescent Jade
+330:Dragon Scales
+331:Spectacles
+332:Rune Ring
+333:Tear Jewel
+334:Spirit Potion
+335:Would Salve
+336:Baobab Fruit
+337:Boiled Coconut
+338:Chocolate Cookies
+339:Honey
+340:Ultra Drink
+341:Weeds
+342:Dried Fish
+343:Bamboo Shoots
+344:Beef Jerky
+345:Box Lunch
+346:Herbs
+347:White Sulfa Weed
+348:Smarna Weed
+349:Cholla Flowers
+350:Bamo Fruit
+351:Squid Guts
+352:Move Mushroom
+353:Power Mushroom
+354:Poison Antidote
+355:Ginseng
+356:Banana
+357:Bandage
+358:Box of Sweets
+359:First Aid Kit
+360:Red Medicine
+361:Blue Medicine
+362:Yellow Medicine
+363:Crimson Potion
+364:Deep Blue Potion
+365:Golden Potion
+366:Magic Lamp
+367:Poison Antidote
+368:Vaccine
+369:Eye Drops
+370:Smelling Salts
+371:Paralysis Ointment
+372:Spell Breaker
+373:Move Breaker
+374:Resurrect Potion
+375:Panacea
+376:Bond of Trust
+377:Seed of Power
+378:Seed of Defense
+379:Seed of Speed
+380:Seed of Running
+381:All-Around Seed
+382:Seed of Life
+383:Seed of Magic
+384:Seed of Moves
+385:Mace Coloring Book
+386:Bow Coloring Book
+387:Sword Secrets
+388:Fire Secrets
+389:Earth Secrets
+390:How to Cut 'Em
+391:How to Pound 'Em
+392:How to Chop 'Em
+393:Roach Bomb
+394:Firewood Sparks
+395:Mana Egg
+396:Holy Fire
+397:Hand Grenade
+398:Dynamite
+399:Rocket Fireworks
+400:Launch Fireworks
+401:BOOM! Scroll
+402:Howler Scroll
+403:Vacuum Scroll
+404:Tremor Scroll
+405:Zap! Book
+406:Lightning Scroll
+407:Gale Scroll
+408:Overflowing Walnut
+409:Restraint Walnut
+410:Sonic Walnut
+411:Running Walnut
+412:Snooze Scroll
+413:Poisoned Apple
+414:Culture Medium
+415:Dream Truffle
+416:Paralyze Mushroom
+417:Orb of Silence
+418:Black Onyx
+419:Weak-Knee Weed
+420:Ragged Weed
+421:Slouch Weed
+422:Trudge Weed
+423:Root of Confusion
+424:Torte's Whistle
+425:Freesia Flowers
+426:Cone of Light
+427:Mikeroma Scroll
+428:Shuffle Card
+429:Miracle Drink
+430:Gold Key
+431:Silver Key
+432:Key of Temptation
+433:Soldier's Key
+434:Pretty Jewel
+435:Pretty Jewel
+436:Pretty Jewel
+437:Horn of Inogon
+438:Key
+439:Health Weed
+440:Snake Earrings
+441:Resurrect Potion
+442:Expensive Jewel
+443:Rainbow Weed
+444:Smoked Salmon
+445:Prime Rib
+446:Rescue Set
+447:Black Nail Polish
+448:Prohibited
+449:Thor's Fury
+450:Magic Lipstick
+451:Elite Badge
+452:Fruit of Power
+453:Fruit of Defense
+454:Fruit of Speed
+455:Fruit of Agility
+456:All-Around Fruit
+457:Fruit of Life
+458:Fruit of Magic
+459:Fruit of Moves
+460:Mogay Teachings 1
+461:Mogay Teachings 2
+462:Mogay Teachings 3
+463:Ring of Rage
+464:Holy Ring
+465:Mysterious Veil
+466:Blizzard Scroll
+467:Telescope
+468:Energy Charm
+469:Devil's Anklet
+470:Prohibited
+471:Astral Miracle
+472:Ethereal Miracle
+473:Miraculous Scales
+474:General's Staff
+475:Brown Crayon
+476:Blue Crayon
+477:Red Crayon
+478:Sky-Blue Crayon
+479:Emperor's Whip
+480:Soldier's Soul
+481:Poison of Power
+482:Poison of Defense
+483:Poison of Speed
+484:Poison of Agility
+485:All-Around Poison
+486:Poison of Life
+487:Poison of Magic
+488:Poison of Moves
+489:+1 Dagger Skill
+490:+5 Dagger Skill
+491:+1 Sword Skill
+492:+5 Sword Skill
+493:+1 Mace Skill
+494:+5 Mace Skill
+495:+1 Ax Skill
+496:+5 Ax Skill
+497:+1 Whip Skill
+498:+5 Whip Skill
+499:+1 Bow Skill
+500:+5 Bow Skill
+501:+1 Fire Skill
+502:+5 Fire Skill
+503:+1 Wind Skill
+504:+5 Wind Skill
+505:+1 Water Skill
+506:+5 Water Skill
+507:+1 Earth Skill
+508:+5 Earth Skill
+509:100 Sword
+510:100 Mace
+511:100 Fire Mace
+</DropDownList>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>CurrentStashItemSelected</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4502</ID>
+                      <Description>"Quantity In Stash"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>[StashPtr] + [CurrentStashItemSelected] - 1</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>4400</ID>
+                  <Description>"Character Party Editor (View Main Menu First) (Reload Map To See Changes)"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>4401</ID>
+                      <Description>"Num Party Members (Up To 4)"</Description>
+                      <LastState Value="2" RealAddress="0031E08D"/>
+                      <VariableType>Byte</VariableType>
+                      <Address>[PartyMemberBasePtr] + [CurrentParty] + [CurrentParty] * 4</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4402</ID>
+                      <Description>"Party Member 1"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Nobody
 1:Justin
 2:Feena
 3:Sue
@@ -1162,13 +2017,14 @@ end
 7:Guido
 8:Liete
 </DropDownList>
-						  <VariableType>Byte</VariableType>
-						  <Address>[PartyMemberBasePtr] + [CurrentParty] + [CurrentParty] * 4 + 1</Address>
-						</CheatEntry>
-						<CheatEntry>
-						  <ID>4403</ID>
-						  <Description>"Party Member 2"</Description>
-						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Nobody
+                      <LastState Value="1" RealAddress="0031E08E"/>
+                      <VariableType>Byte</VariableType>
+                      <Address>[PartyMemberBasePtr] + [CurrentParty] + [CurrentParty] * 4 + 1</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4403</ID>
+                      <Description>"Party Member 2"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Nobody
 1:Justin
 2:Feena
 3:Sue
@@ -1178,13 +2034,14 @@ end
 7:Guido
 8:Liete
 </DropDownList>
-						  <VariableType>Byte</VariableType>
-						  <Address>[PartyMemberBasePtr] + [CurrentParty] + [CurrentParty] * 4 + 2</Address>
-						</CheatEntry>
-						<CheatEntry>
-						  <ID>4404</ID>
-						  <Description>"Party Member 3"</Description>
-						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Nobody
+                      <LastState Value="3" RealAddress="0031E08F"/>
+                      <VariableType>Byte</VariableType>
+                      <Address>[PartyMemberBasePtr] + [CurrentParty] + [CurrentParty] * 4 + 2</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4404</ID>
+                      <Description>"Party Member 3"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Nobody
 1:Justin
 2:Feena
 3:Sue
@@ -1194,13 +2051,14 @@ end
 7:Guido
 8:Liete
 </DropDownList>
-						  <VariableType>Byte</VariableType>
-						  <Address>[PartyMemberBasePtr] + [CurrentParty] + [CurrentParty] * 4 + 3</Address>
-						</CheatEntry>
-						<CheatEntry>
-						  <ID>4405</ID>
-						  <Description>"Party Member 4"</Description>
-						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Nobody
+                      <LastState Value="0" RealAddress="0031E090"/>
+                      <VariableType>Byte</VariableType>
+                      <Address>[PartyMemberBasePtr] + [CurrentParty] + [CurrentParty] * 4 + 3</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4405</ID>
+                      <Description>"Party Member 4"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Nobody
 1:Justin
 2:Feena
 3:Sue
@@ -1210,21 +2068,23 @@ end
 7:Guido
 8:Liete
 </DropDownList>
-						  <VariableType>Byte</VariableType>
-						  <Address>[PartyMemberBasePtr] + [CurrentParty] + [CurrentParty] * 4 + 4</Address>
-						</CheatEntry>
-					  </CheatEntries>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>4100</ID>
-					  <Description>"Character Editor"</Description>
-					  <Options moHideChildren="1"/>
-					  <GroupHeader>1</GroupHeader>
-					  <CheatEntries>
-						<CheatEntry>
-						  <ID>4101</ID>
-						  <Description>"Selected Character"</Description>
-						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Justin
+                      <LastState Value="0" RealAddress="0031E091"/>
+                      <VariableType>Byte</VariableType>
+                      <Address>[PartyMemberBasePtr] + [CurrentParty] + [CurrentParty] * 4 + 4</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>4100</ID>
+                  <Description>"Character Editor"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>4101</ID>
+                      <Description>"Selected Character"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Justin
 1:Feena
 2:Sue
 3:Gadwin
@@ -1233,312 +2093,6407 @@ end
 6:Guido
 7:Liete
 </DropDownList>
-						  <VariableType>4 Bytes</VariableType>
-						  <Address>SelectedCharacter</Address>
-						</CheatEntry>
-						<CheatEntry>
-						  <ID>4103</ID>
-						  <Description>"Level"</Description>
-						  <VariableType>Byte</VariableType>
-						  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 3</Address>
-						</CheatEntry>
-						<CheatEntry>
-						  <ID>4104</ID>
-						  <Description>"Experience"</Description>
-						  <VariableType>4 Bytes</VariableType>
-						  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 34</Address>
-						</CheatEntry>
-						<CheatEntry>
-						  <ID>4105</ID>
-						  <Description>"Current HP"</Description>
-						  <VariableType>2 Bytes</VariableType>
-						  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + C</Address>
-						</CheatEntry>
-						<CheatEntry>
-						  <ID>4106</ID>
-						  <Description>"Max HP"</Description>
-						  <VariableType>2 Bytes</VariableType>
-						  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + A</Address>
-						</CheatEntry>
-						<CheatEntry>
-						  <ID>4107</ID>
-						  <Description>"Current SP"</Description>
-						  <VariableType>2 Bytes</VariableType>
-						  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 18</Address>
-						</CheatEntry>
-						<CheatEntry>
-						  <ID>4108</ID>
-						  <Description>"Max SP"</Description>
-						  <VariableType>2 Bytes</VariableType>
-						  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 16</Address>
-						</CheatEntry>
-						<CheatEntry>
-						  <ID>4110</ID>
-						  <Description>"Character Stats"</Description>
-						  <Options moHideChildren="1" moRecursiveSetValue="1"/>
-						  <GroupHeader>1</GroupHeader>
-						  <CheatEntries>
-							<CheatEntry>
-							  <ID>4111</ID>
-							  <Description>"STR"</Description>
-							  <VariableType>2 Bytes</VariableType>
-							  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + E</Address>
-							</CheatEntry>
-							<CheatEntry>
-							  <ID>4112</ID>
-							  <Description>"VIT"</Description>
-							  <VariableType>2 Bytes</VariableType>
-							  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 10</Address>
-							</CheatEntry>
-							<CheatEntry>
-							  <ID>4113</ID>
-							  <Description>"WIT"</Description>
-							  <VariableType>2 Bytes</VariableType>
-							  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 12</Address>
-							</CheatEntry>
-							<CheatEntry>
-							  <ID>4114</ID>
-							  <Description>"AGI"</Description>
-							  <VariableType>2 Bytes</VariableType>
-							  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 14</Address>
-							</CheatEntry>						  
-						  </CheatEntries>
-						</CheatEntry>
-						<CheatEntry>
-						  <ID>4120</ID>
-						  <Description>"Character MP Stats"</Description>
-						  <Options moHideChildren="1" moRecursiveSetValue="1"/>
-						  <GroupHeader>1</GroupHeader>
-						  <CheatEntries>
-							<CheatEntry>
-							  <ID>4121</ID>
-							  <Description>"LV 1 Current"</Description>
-							  <VariableType>Byte</VariableType>
-							  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 3C</Address>
-							</CheatEntry>
-							<CheatEntry>
-							  <ID>4122</ID>
-							  <Description>"LV 1 Max"</Description>
-							  <VariableType>Byte</VariableType>
-							  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 3D</Address>
-							</CheatEntry>
-							<CheatEntry>
-							  <ID>4123</ID>
-							  <Description>"LV 2 Current"</Description>
-							  <VariableType>Byte</VariableType>
-							  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 3E</Address>
-							</CheatEntry>
-							<CheatEntry>
-							  <ID>4124</ID>
-							  <Description>"LV 2 Max"</Description>
-							  <VariableType>Byte</VariableType>
-							  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 3F</Address>
-							</CheatEntry>
-							<CheatEntry>
-							  <ID>4125</ID>
-							  <Description>"LV 3 Current"</Description>
-							  <VariableType>Byte</VariableType>
-							  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 40</Address>
-							</CheatEntry>
-							<CheatEntry>
-							  <ID>4126</ID>
-							  <Description>"LV 3 Max"</Description>
-							  <VariableType>Byte</VariableType>
-							  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 41</Address>
-							</CheatEntry>
-						  </CheatEntries>
-						</CheatEntry>						
-						<CheatEntry>
-						  <ID>4130</ID>
-						  <Description>"Character Weapon Stats"</Description>
-						  <Options moHideChildren="1"/>
-						  <GroupHeader>1</GroupHeader>
-						  <CheatEntries>
-							<CheatEntry>
-							  <ID>4131</ID>
-							  <Description>"Weapon 1 EXP"</Description>
-							  <VariableType>2 Bytes</VariableType>
-							  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 24</Address>
-							</CheatEntry>
-							<CheatEntry>
-							  <ID>4132</ID>
-							  <Description>"Weapon 1 Level"</Description>
-							  <VariableType>Byte</VariableType>
-							  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 30</Address>
-							</CheatEntry>
-							<CheatEntry>
-							  <ID>4133</ID>
-							  <Description>"Weapon 2 EXP"</Description>
-							  <VariableType>2 Bytes</VariableType>
-							  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 26</Address>
-							</CheatEntry>
-							<CheatEntry>
-							  <ID>4134</ID>
-							  <Description>"Weapon 2 Level"</Description>
-							  <VariableType>Byte</VariableType>
-							  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 31</Address>
-							</CheatEntry>
-							<CheatEntry>
-							  <ID>4135</ID>
-							  <Description>"Weapon 3 EXP"</Description>
-							  <VariableType>2 Bytes</VariableType>
-							  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 28</Address>
-							</CheatEntry>
-							<CheatEntry>
-							  <ID>4136</ID>
-							  <Description>"Weapon 3 Level"</Description>
-							  <VariableType>Byte</VariableType>
-							  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 32</Address>
-							</CheatEntry>
-						  </CheatEntries>
-						</CheatEntry>
-						<CheatEntry>
-						  <ID>4140</ID>
-						  <Description>"Character Magic Stats"</Description>
-						  <Options moHideChildren="1"/>
-						  <GroupHeader>1</GroupHeader>
-						  <CheatEntries>
-							<CheatEntry>
-							  <ID>4141</ID>
-							  <Description>"Fire Magic EXP"</Description>
-							  <VariableType>2 Bytes</VariableType>
-							  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 1C</Address>
-							</CheatEntry>
-							<CheatEntry>
-							  <ID>4142</ID>
-							  <Description>"Fire Magic Level"</Description>
-							  <VariableType>Byte</VariableType>
-							  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 2C</Address>
-							</CheatEntry>
-							<CheatEntry>
-							  <ID>4143</ID>
-							  <Description>"Wind Magic EXP"</Description>
-							  <VariableType>2 Bytes</VariableType>
-							  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 20</Address>
-							</CheatEntry>
-							<CheatEntry>
-							  <ID>4144</ID>
-							  <Description>"Wind Magic Level"</Description>
-							  <VariableType>Byte</VariableType>
-							  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 2E</Address>
-							</CheatEntry>
-							<CheatEntry>
-							  <ID>4145</ID>
-							  <Description>"Earth Magic EXP"</Description>
-							  <VariableType>2 Bytes</VariableType>
-							  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 22</Address>
-							</CheatEntry>
-							<CheatEntry>
-							  <ID>4146</ID>
-							  <Description>"Earth Magic Level"</Description>
-							  <VariableType>Byte</VariableType>
-							  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 2F</Address>
-							</CheatEntry>
-							<CheatEntry>
-							  <ID>4147</ID>
-							  <Description>"Water Magic EXP"</Description>
-							  <VariableType>2 Bytes</VariableType>
-							  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 1E</Address>
-							</CheatEntry>
-							<CheatEntry>
-							  <ID>4148</ID>
-							  <Description>"Water Magic Level"</Description>
-							  <VariableType>Byte</VariableType>
-							  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 2D</Address>
-							</CheatEntry>
-						  </CheatEntries>
-						</CheatEntry>
-						<CheatEntry>
-						  <ID>4150</ID>
-						  <Description>"Character Items"</Description>
-						  <Options moHideChildren="1"/>
-						  <GroupHeader>1</GroupHeader>
-						  <CheatEntries>
-							<CheatEntry>
-							  <ID>4151</ID>
-							  <Description>"Slot 1"</Description>
-							  <VariableType>2 Bytes</VariableType>
-							  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 58</Address>
-							</CheatEntry>
-							<CheatEntry>
-							  <ID>4152</ID>
-							  <Description>"Slot 2"</Description>
-							  <VariableType>2 Bytes</VariableType>
-							  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 5A</Address>
-							</CheatEntry>
-							<CheatEntry>
-							  <ID>4153</ID>
-							  <Description>"Slot 3"</Description>
-							  <VariableType>2 Bytes</VariableType>
-							  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 5C</Address>
-							</CheatEntry>
-							<CheatEntry>
-							  <ID>4154</ID>
-							  <Description>"Slot 4"</Description>
-							  <VariableType>2 Bytes</VariableType>
-							  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 5E</Address>
-							</CheatEntry>
-							<CheatEntry>
-							  <ID>4155</ID>
-							  <Description>"Slot 5"</Description>
-							  <VariableType>2 Bytes</VariableType>
-							  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 60</Address>
-							</CheatEntry>
-							<CheatEntry>
-							  <ID>4156</ID>
-							  <Description>"Slot 6"</Description>
-							  <VariableType>2 Bytes</VariableType>
-							  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 62</Address>
-							</CheatEntry>
-							<CheatEntry>
-							  <ID>4157</ID>
-							  <Description>"Slot 7"</Description>
-							  <VariableType>2 Bytes</VariableType>
-							  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 64</Address>
-							</CheatEntry>
-							<CheatEntry>
-							  <ID>4158</ID>
-							  <Description>"Slot 8"</Description>
-							  <VariableType>2 Bytes</VariableType>
-							  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 66</Address>
-							</CheatEntry>
-							<CheatEntry>
-							  <ID>4159</ID>
-							  <Description>"Slot 9"</Description>
-							  <VariableType>2 Bytes</VariableType>
-							  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 68</Address>
-							</CheatEntry>
-							<CheatEntry>
-							  <ID>4160</ID>
-							  <Description>"Slot 10"</Description>
-							  <VariableType>2 Bytes</VariableType>
-							  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 6A</Address>
-							</CheatEntry>
-							<CheatEntry>
-							  <ID>4161</ID>
-							  <Description>"Slot 11"</Description>
-							  <VariableType>2 Bytes</VariableType>
-							  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 6C</Address>
-							</CheatEntry>
-							<CheatEntry>
-							  <ID>4162</ID>
-							  <Description>"Slot 12"</Description>
-							  <VariableType>2 Bytes</VariableType>
-							  <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 6E</Address>
-							</CheatEntry>
-						  </CheatEntries>
-						</CheatEntry>
-					  </CheatEntries>
-					</CheatEntry>
-				  </CheatEntries>
-				</CheatEntry>
-		  </CheatEntries>
-		</CheatEntry>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>SelectedCharacter</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4103</ID>
+                      <Description>"Level"</Description>
+                      <LastState Value="7" RealAddress="1094328F"/>
+                      <VariableType>Byte</VariableType>
+                      <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 3</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4104</ID>
+                      <Description>"Experience"</Description>
+                      <LastState Value="1125" RealAddress="109432C0"/>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 34</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4105</ID>
+                      <Description>"Current HP"</Description>
+                      <LastState Value="64" RealAddress="10943298"/>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>[CharacterPtr] + [SelectedCharacter] * 80 + C</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4106</ID>
+                      <Description>"Max HP"</Description>
+                      <LastState Value="64" RealAddress="10943296"/>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>[CharacterPtr] + [SelectedCharacter] * 80 + A</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4107</ID>
+                      <Description>"Current SP"</Description>
+                      <LastState Value="38" RealAddress="109432A4"/>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 18</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4108</ID>
+                      <Description>"Max SP"</Description>
+                      <LastState Value="38" RealAddress="109432A2"/>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 16</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4110</ID>
+                      <Description>"Character Stats"</Description>
+                      <Options moHideChildren="1" moRecursiveSetValue="1"/>
+                      <LastState Value="" RealAddress="00000000"/>
+                      <GroupHeader>1</GroupHeader>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>4111</ID>
+                          <Description>"STR"</Description>
+                          <LastState Value="31" RealAddress="1094329A"/>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>[CharacterPtr] + [SelectedCharacter] * 80 + E</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4112</ID>
+                          <Description>"VIT"</Description>
+                          <LastState Value="20" RealAddress="1094329C"/>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 10</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4113</ID>
+                          <Description>"WIT"</Description>
+                          <LastState Value="59" RealAddress="1094329E"/>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 12</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4114</ID>
+                          <Description>"AGI"</Description>
+                          <LastState Value="20" RealAddress="109432A0"/>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 14</Address>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4120</ID>
+                      <Description>"Character MP Stats"</Description>
+                      <Options moHideChildren="1" moRecursiveSetValue="1"/>
+                      <LastState Value="" RealAddress="00000000"/>
+                      <GroupHeader>1</GroupHeader>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>4121</ID>
+                          <Description>"LV 1 Current"</Description>
+                          <LastState Value="19" RealAddress="109432C8"/>
+                          <VariableType>Byte</VariableType>
+                          <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 3C</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4122</ID>
+                          <Description>"LV 1 Max"</Description>
+                          <LastState Value="31" RealAddress="109432C9"/>
+                          <VariableType>Byte</VariableType>
+                          <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 3D</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4123</ID>
+                          <Description>"LV 2 Current"</Description>
+                          <LastState Value="9" RealAddress="109432CA"/>
+                          <VariableType>Byte</VariableType>
+                          <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 3E</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4124</ID>
+                          <Description>"LV 2 Max"</Description>
+                          <LastState Value="10" RealAddress="109432CB"/>
+                          <VariableType>Byte</VariableType>
+                          <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 3F</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4125</ID>
+                          <Description>"LV 3 Current"</Description>
+                          <LastState Value="6" RealAddress="109432CC"/>
+                          <VariableType>Byte</VariableType>
+                          <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 40</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4126</ID>
+                          <Description>"LV 3 Max"</Description>
+                          <LastState Value="9" RealAddress="109432CD"/>
+                          <VariableType>Byte</VariableType>
+                          <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 41</Address>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4130</ID>
+                      <Description>"Character Weapon Stats"</Description>
+                      <Options moHideChildren="1"/>
+                      <LastState Value="" RealAddress="00000000"/>
+                      <GroupHeader>1</GroupHeader>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>4131</ID>
+                          <Description>"Weapon 1 EXP"</Description>
+                          <LastState Value="17" RealAddress="109432B0"/>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 24</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4132</ID>
+                          <Description>"Weapon 1 Level"</Description>
+                          <LastState Value="9" RealAddress="109432BC"/>
+                          <VariableType>Byte</VariableType>
+                          <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 30</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4133</ID>
+                          <Description>"Weapon 2 EXP"</Description>
+                          <LastState Value="85" RealAddress="109432B2"/>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 26</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4134</ID>
+                          <Description>"Weapon 2 Level"</Description>
+                          <LastState Value="4" RealAddress="109432BD"/>
+                          <VariableType>Byte</VariableType>
+                          <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 31</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4135</ID>
+                          <Description>"Weapon 3 EXP"</Description>
+                          <LastState Value="21" RealAddress="109432B4"/>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 28</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4136</ID>
+                          <Description>"Weapon 3 Level"</Description>
+                          <LastState Value="2" RealAddress="109432BE"/>
+                          <VariableType>Byte</VariableType>
+                          <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 32</Address>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4140</ID>
+                      <Description>"Character Magic Stats"</Description>
+                      <Options moHideChildren="1"/>
+                      <LastState Value="" RealAddress="00000000"/>
+                      <GroupHeader>1</GroupHeader>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>4141</ID>
+                          <Description>"Fire Magic EXP"</Description>
+                          <LastState Value="4" RealAddress="109432A8"/>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 1C</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4142</ID>
+                          <Description>"Fire Magic Level"</Description>
+                          <LastState Value="18" RealAddress="109432B8"/>
+                          <VariableType>Byte</VariableType>
+                          <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 2C</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4143</ID>
+                          <Description>"Wind Magic EXP"</Description>
+                          <LastState Value="0" RealAddress="109432AC"/>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 20</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4144</ID>
+                          <Description>"Wind Magic Level"</Description>
+                          <LastState Value="1" RealAddress="109432BA"/>
+                          <VariableType>Byte</VariableType>
+                          <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 2E</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4145</ID>
+                          <Description>"Earth Magic EXP"</Description>
+                          <LastState Value="0" RealAddress="109432AE"/>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 22</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4146</ID>
+                          <Description>"Earth Magic Level"</Description>
+                          <LastState Value="3" RealAddress="109432BB"/>
+                          <VariableType>Byte</VariableType>
+                          <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 2F</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4147</ID>
+                          <Description>"Water Magic EXP"</Description>
+                          <LastState Value="0" RealAddress="109432AA"/>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 1E</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4148</ID>
+                          <Description>"Water Magic Level"</Description>
+                          <LastState Value="1" RealAddress="109432B9"/>
+                          <VariableType>Byte</VariableType>
+                          <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 2D</Address>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4150</ID>
+                      <Description>"Character Items"</Description>
+                      <Options moHideChildren="1"/>
+                      <LastState Value="" RealAddress="00000000"/>
+                      <GroupHeader>1</GroupHeader>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>4151</ID>
+                          <Description>"Slot 1"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Nothing
+10:Spirit Stone
+11:Hero's Armband
+12:Horn of Knowledge
+13:Medal of Wisdom
+14:Medal of Knowledge
+15:Gaia Sprout
+16:Gantz's Key
+17:Intro Letter
+18:Key to the Café
+19:Java's Wallet
+20:Steamer Pass
+21:Lilly's Letter
+22:Cabin Key
+23:Sulfa Weed
+24:Jail Key
+25:Master Key
+26:Nectar of the Gods
+27:Mist-Clearing Nut
+28:Sue's Shoes
+29:Warrior's Spear
+30:Teleportation Orb
+31:Apron
+32:Pot Lid
+33:Iron Pot
+34:Wooden Sword
+35:Spirit Sword
+36:Biscuits
+37:Marie's Pin
+38:Coal Candy
+39:Letter to Clara
+40:Pearl
+41:Rainbow Key
+42:Boiled Egg
+43:Chocolate
+44:Jawbreaker
+45:Ring of Protection
+46:Frost Herb
+47:Amulet of Relief
+48:Prohibited
+49:Prohibited
+50:Prohibited
+51:Prohibited
+52:Prohibited
+53:Prohibited
+54:Prohibited
+55:Prohibited
+56:Prohibited
+57:Prohibited
+58:Prohibited
+59:Prohibited
+60:Prohibited
+61:Prohibited
+62:Prohibited
+63:Knife of Judgment
+64:Rusty Knife
+65:Paring Knife
+66:Hunter's Knife
+67:Flint Knife
+68:Azure Knife
+69:Shocking Knife
+70:Poisoned Knife
+71:Assassin's Dagger
+72:Bloody Knife
+73:Ice Pick
+74:Force Knife
+75:Godspeed Knife
+76:Gust Knife
+77:Ruination Knife
+78:Thief Cutter
+79:Zero Knife
+80:Ceramic Sword
+81:Prohibited
+82:Admiral's Sword
+83:Great Sword
+84:Army Saber
+85:The Sword Himmler
+86:Angel's Darts
+87:Swordfish Sword
+88:Dragon Killer
+89:Fire Sword
+90:Shadow Sword
+91:Gil Sword
+92:Silence Sword
+93:Prohibited
+94:Wobbly Sword
+95:Main Gauche
+96:Holy Sword Lorenzo
+97:Ice Blade
+98:Lightning Sword
+99:Battle Saber
+100:Zero Sword
+101:Wooden Pole
+102:Metal Bat
+103:Zero Rod
+104:Officer's Baton
+105:Magic Rod
+106:Miner's Hammer
+107:Iron Mace
+108:Army Darts
+109:Lassic Hammer
+110:War Hammer
+111:Hertz Spike
+112:Oracle's Staff
+113:Raincloud Staff
+114:Staff of Life
+115:Warp Staff
+116:Holy Mace
+117:Fire Rod
+118:Aromatic Tree Root
+119:Sparkling Rod
+120:Spirit Staff
+121:Home Run Hammer
+122:Rusty Shovel
+123:Hand Ax
+124:Ceremonial Rock Ax
+125:Big Hatchet
+126:Woodchopper's Ax
+127:Dragon Bone Ax
+128:Klepp's Sickle
+129:Frog Ax
+130:Bone Splitter Ax
+131:Earthen Ax
+132:Buster Ax
+133:Wrecking Ax
+134:Bent Mattock
+135:Zero Ax
+136:Toy Bow and Arrow
+137:Handmade Darts
+138:Hunter's Bow
+139:Flying Fish Bow
+140:Hail Bow
+141:Flint Bow
+142:Exorcising Bow
+143:Cafu Shuriken
+144:Boomerang
+145:Fire Darts
+146:Evil Shuriken
+147:Demonslayer Boomer
+148:Discus
+149:Cactus Thorns
+150:Ice Boomerang
+151:Thunder Arrow
+152:Zero Shuriken
+153:Zero Whip
+154:Mist-Cracking Whip
+155:Leather Whip
+156:Thorny Whip
+157:Catfish Whiskers
+158:Giant Snake Whip
+159:Binding Whip
+160:Morning Star
+161:Whip of Light
+162:Burning Hot Whip
+163:Gale Whip
+164:Adventure Clothes
+165:Sunday Best
+166:Sports Wear
+167:Work Clothes
+168:Cactus Armor
+169:Soldier's Uniform
+170:Officer's Uniform
+171:Fairy Robe
+172:Flying Dragon Vest
+173:Frog Shirt
+174:Spy Clothes
+175:Chain Mail
+176:Battle Bikini
+177:Mogay Clothes
+178:Mink Coat
+179:Enchantress' Robe
+180:Angel's Robe
+181:Robe of the Sun
+182:Breastplate
+183:Outdated Armor
+184:Bamboo Armor
+185:Shell Armor
+186:Thick Armor
+187:Swordfish Armor
+188:Skull Armor
+189:Chameleon Armor
+190:Plug Suit
+191:Aura Armor
+192:Dark Armor
+193:Warrior's Mail
+194:Spirit Armor
+195:Devil's Robe
+196:Magic Robe
+197:Cutting Board
+198:Woolen Mittens
+199:Leather Gloves
+200:Escargot Shield
+201:Oaken Shield
+202:Shell Shield
+203:Seashell Shield
+204:Mushroom Shield
+205:MagicMirror Shield
+206:Alligator Gauntlet
+207:Leaf Shield
+208:Lafa Flower Shield
+209:Power Shield
+210:Moonlight Shield
+211:Gauntlets
+212:Dragon Gauntlet
+213:Heavy Shield
+214:Gauntlets of Light
+215:Spirit Shield
+216:Magic Gloves
+217:Zero Shield
+218:Goggles
+219:Ribbon
+220:Fluffy Ribbon
+221:Barrette
+222:Pirate's Hat
+223:Cowboy Hat
+224:Climbing Hat
+225:Odd Hat
+226:Headgear
+227:Iron Bandana
+228:Feathered Turban
+229:Angel's Hat
+230:Pope's Hat
+231:Safety Helmet
+232:Antler Helmet
+233:Pearl Helmet
+234:Pirate's Helmet
+235:Stone Head
+236:Swallowtail Hat
+237:Mystic Mask
+238:Death Mask
+239:Ogre Helm
+240:Charisma Helm
+241:Spirit Helmet
+242:Holy Crown
+243:Cactus Helm
+244:Fairy Tiara
+245:Man's Headband
+246:Battle Helm
+247:Sneakers
+248:Dress Shoes
+249:Air Sneakers
+250:Shiny Shoes
+251:Rubber Boots
+252:Leather Greaves
+253:Hunter's Boots
+254:Army Boots
+255:Curious Clogs
+256:Dragon Boots
+257:Ninja Sandals
+258:Winged Boots
+259:Beach Sandals
+260:Mach 1 Boots
+261:Heavy Boots
+262:Queen Heels
+263:Iron Clogs
+264:Ogre Boots
+265:Rabbit Shoes
+266:Rainbow High Heels
+267:Wolf Boots
+268:Lion Boots
+269:Battle Boots
+270:Spirit Shoes
+271:Glass Slippers
+272:Warp Shoes
+273:Crampons
+274:Zero Boots
+275:Prohibited
+276:Diana's Amulet
+277:Hero's Badge
+278:Demon Sword Amulet
+279:Officer's Badge
+280:Black Belt
+281:Chain Earrings
+282:Titan's Ring
+283:Fireproof Cape
+284:Fire Charm
+285:Water Charm
+286:Wind Charm
+287:Earth Charm
+288:Counter Ring
+289:Secret Move Ring
+290:Hurricane Belt
+291:Mama's Amulet
+292:Jade Charm
+293:Tree God Amulet
+294:Light God Amulet
+295:Ancestor's Amulet
+296:Raincoat
+297:Iridescent Amulet
+298:Move Unblocker
+299:Medal of Yore
+300:Spirit Charm
+301:Phantom Silk
+302:Lightning Charm
+303:Forest Charm
+304:Explosion Charm
+305:Blizzard Charm
+306:Wind Belt
+307:Confusion Charm
+308:Paralysis Charm
+309:Magic Block Charm
+310:Sudden Death Charm
+311:Poison Charm
+312:Talisman
+313:Sonic Belt
+314:Metal Frog
+315:Revival Stone
+316:Use Prohibited
+317:Scarab
+318:Demon Eye Stone
+319:Jewel of Life
+320:Ankh of Temptation
+321:Anklet
+322:Energy Ring
+323:Disease Charm
+324:Paperweight
+325:Combat Anklet
+326:Chain of Gems
+327:Satisfaction Gem
+328:Soul of Asura
+329:Crescent Jade
+330:Dragon Scales
+331:Spectacles
+332:Rune Ring
+333:Tear Jewel
+334:Spirit Potion
+335:Would Salve
+336:Baobab Fruit
+337:Boiled Coconut
+338:Chocolate Cookies
+339:Honey
+340:Ultra Drink
+341:Weeds
+342:Dried Fish
+343:Bamboo Shoots
+344:Beef Jerky
+345:Box Lunch
+346:Herbs
+347:White Sulfa Weed
+348:Smarna Weed
+349:Cholla Flowers
+350:Bamo Fruit
+351:Squid Guts
+352:Move Mushroom
+353:Power Mushroom
+354:Poison Antidote
+355:Ginseng
+356:Banana
+357:Bandage
+358:Box of Sweets
+359:First Aid Kit
+360:Red Medicine
+361:Blue Medicine
+362:Yellow Medicine
+363:Crimson Potion
+364:Deep Blue Potion
+365:Golden Potion
+366:Magic Lamp
+367:Poison Antidote
+368:Vaccine
+369:Eye Drops
+370:Smelling Salts
+371:Paralysis Ointment
+372:Spell Breaker
+373:Move Breaker
+374:Resurrect Potion
+375:Panacea
+376:Bond of Trust
+377:Seed of Power
+378:Seed of Defense
+379:Seed of Speed
+380:Seed of Running
+381:All-Around Seed
+382:Seed of Life
+383:Seed of Magic
+384:Seed of Moves
+385:Mace Coloring Book
+386:Bow Coloring Book
+387:Sword Secrets
+388:Fire Secrets
+389:Earth Secrets
+390:How to Cut 'Em
+391:How to Pound 'Em
+392:How to Chop 'Em
+393:Roach Bomb
+394:Firewood Sparks
+395:Mana Egg
+396:Holy Fire
+397:Hand Grenade
+398:Dynamite
+399:Rocket Fireworks
+400:Launch Fireworks
+401:BOOM! Scroll
+402:Howler Scroll
+403:Vacuum Scroll
+404:Tremor Scroll
+405:Zap! Book
+406:Lightning Scroll
+407:Gale Scroll
+408:Overflowing Walnut
+409:Restraint Walnut
+410:Sonic Walnut
+411:Running Walnut
+412:Snooze Scroll
+413:Poisoned Apple
+414:Culture Medium
+415:Dream Truffle
+416:Paralyze Mushroom
+417:Orb of Silence
+418:Black Onyx
+419:Weak-Knee Weed
+420:Ragged Weed
+421:Slouch Weed
+422:Trudge Weed
+423:Root of Confusion
+424:Torte's Whistle
+425:Freesia Flowers
+426:Cone of Light
+427:Mikeroma Scroll
+428:Shuffle Card
+429:Miracle Drink
+430:Gold Key
+431:Silver Key
+432:Key of Temptation
+433:Soldier's Key
+434:Pretty Jewel
+435:Pretty Jewel
+436:Pretty Jewel
+437:Horn of Inogon
+438:Key
+439:Health Weed
+440:Snake Earrings
+441:Resurrect Potion
+442:Expensive Jewel
+443:Rainbow Weed
+444:Smoked Salmon
+445:Prime Rib
+446:Rescue Set
+447:Black Nail Polish
+448:Prohibited
+449:Thor's Fury
+450:Magic Lipstick
+451:Elite Badge
+452:Fruit of Power
+453:Fruit of Defense
+454:Fruit of Speed
+455:Fruit of Agility
+456:All-Around Fruit
+457:Fruit of Life
+458:Fruit of Magic
+459:Fruit of Moves
+460:Mogay Teachings 1
+461:Mogay Teachings 2
+462:Mogay Teachings 3
+463:Ring of Rage
+464:Holy Ring
+465:Mysterious Veil
+466:Blizzard Scroll
+467:Telescope
+468:Energy Charm
+469:Devil's Anklet
+470:Prohibited
+471:Astral Miracle
+472:Ethereal Miracle
+473:Miraculous Scales
+474:General's Staff
+475:Brown Crayon
+476:Blue Crayon
+477:Red Crayon
+478:Sky-Blue Crayon
+479:Emperor's Whip
+480:Soldier's Soul
+481:Poison of Power
+482:Poison of Defense
+483:Poison of Speed
+484:Poison of Agility
+485:All-Around Poison
+486:Poison of Life
+487:Poison of Magic
+488:Poison of Moves
+489:+1 Dagger Skill
+490:+5 Dagger Skill
+491:+1 Sword Skill
+492:+5 Sword Skill
+493:+1 Mace Skill
+494:+5 Mace Skill
+495:+1 Ax Skill
+496:+5 Ax Skill
+497:+1 Whip Skill
+498:+5 Whip Skill
+499:+1 Bow Skill
+500:+5 Bow Skill
+501:+1 Fire Skill
+502:+5 Fire Skill
+503:+1 Wind Skill
+504:+5 Wind Skill
+505:+1 Water Skill
+506:+5 Water Skill
+507:+1 Earth Skill
+508:+5 Earth Skill
+509:100 Sword
+510:100 Mace
+511:100 Fire Mace
+</DropDownList>
+                          <LastState Value="359" RealAddress="109432E4"/>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 58</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4152</ID>
+                          <Description>"Slot 2"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Nothing
+10:Spirit Stone
+11:Hero's Armband
+12:Horn of Knowledge
+13:Medal of Wisdom
+14:Medal of Knowledge
+15:Gaia Sprout
+16:Gantz's Key
+17:Intro Letter
+18:Key to the Café
+19:Java's Wallet
+20:Steamer Pass
+21:Lilly's Letter
+22:Cabin Key
+23:Sulfa Weed
+24:Jail Key
+25:Master Key
+26:Nectar of the Gods
+27:Mist-Clearing Nut
+28:Sue's Shoes
+29:Warrior's Spear
+30:Teleportation Orb
+31:Apron
+32:Pot Lid
+33:Iron Pot
+34:Wooden Sword
+35:Spirit Sword
+36:Biscuits
+37:Marie's Pin
+38:Coal Candy
+39:Letter to Clara
+40:Pearl
+41:Rainbow Key
+42:Boiled Egg
+43:Chocolate
+44:Jawbreaker
+45:Ring of Protection
+46:Frost Herb
+47:Amulet of Relief
+48:Prohibited
+49:Prohibited
+50:Prohibited
+51:Prohibited
+52:Prohibited
+53:Prohibited
+54:Prohibited
+55:Prohibited
+56:Prohibited
+57:Prohibited
+58:Prohibited
+59:Prohibited
+60:Prohibited
+61:Prohibited
+62:Prohibited
+63:Knife of Judgment
+64:Rusty Knife
+65:Paring Knife
+66:Hunter's Knife
+67:Flint Knife
+68:Azure Knife
+69:Shocking Knife
+70:Poisoned Knife
+71:Assassin's Dagger
+72:Bloody Knife
+73:Ice Pick
+74:Force Knife
+75:Godspeed Knife
+76:Gust Knife
+77:Ruination Knife
+78:Thief Cutter
+79:Zero Knife
+80:Ceramic Sword
+81:Prohibited
+82:Admiral's Sword
+83:Great Sword
+84:Army Saber
+85:The Sword Himmler
+86:Angel's Darts
+87:Swordfish Sword
+88:Dragon Killer
+89:Fire Sword
+90:Shadow Sword
+91:Gil Sword
+92:Silence Sword
+93:Prohibited
+94:Wobbly Sword
+95:Main Gauche
+96:Holy Sword Lorenzo
+97:Ice Blade
+98:Lightning Sword
+99:Battle Saber
+100:Zero Sword
+101:Wooden Pole
+102:Metal Bat
+103:Zero Rod
+104:Officer's Baton
+105:Magic Rod
+106:Miner's Hammer
+107:Iron Mace
+108:Army Darts
+109:Lassic Hammer
+110:War Hammer
+111:Hertz Spike
+112:Oracle's Staff
+113:Raincloud Staff
+114:Staff of Life
+115:Warp Staff
+116:Holy Mace
+117:Fire Rod
+118:Aromatic Tree Root
+119:Sparkling Rod
+120:Spirit Staff
+121:Home Run Hammer
+122:Rusty Shovel
+123:Hand Ax
+124:Ceremonial Rock Ax
+125:Big Hatchet
+126:Woodchopper's Ax
+127:Dragon Bone Ax
+128:Klepp's Sickle
+129:Frog Ax
+130:Bone Splitter Ax
+131:Earthen Ax
+132:Buster Ax
+133:Wrecking Ax
+134:Bent Mattock
+135:Zero Ax
+136:Toy Bow and Arrow
+137:Handmade Darts
+138:Hunter's Bow
+139:Flying Fish Bow
+140:Hail Bow
+141:Flint Bow
+142:Exorcising Bow
+143:Cafu Shuriken
+144:Boomerang
+145:Fire Darts
+146:Evil Shuriken
+147:Demonslayer Boomer
+148:Discus
+149:Cactus Thorns
+150:Ice Boomerang
+151:Thunder Arrow
+152:Zero Shuriken
+153:Zero Whip
+154:Mist-Cracking Whip
+155:Leather Whip
+156:Thorny Whip
+157:Catfish Whiskers
+158:Giant Snake Whip
+159:Binding Whip
+160:Morning Star
+161:Whip of Light
+162:Burning Hot Whip
+163:Gale Whip
+164:Adventure Clothes
+165:Sunday Best
+166:Sports Wear
+167:Work Clothes
+168:Cactus Armor
+169:Soldier's Uniform
+170:Officer's Uniform
+171:Fairy Robe
+172:Flying Dragon Vest
+173:Frog Shirt
+174:Spy Clothes
+175:Chain Mail
+176:Battle Bikini
+177:Mogay Clothes
+178:Mink Coat
+179:Enchantress' Robe
+180:Angel's Robe
+181:Robe of the Sun
+182:Breastplate
+183:Outdated Armor
+184:Bamboo Armor
+185:Shell Armor
+186:Thick Armor
+187:Swordfish Armor
+188:Skull Armor
+189:Chameleon Armor
+190:Plug Suit
+191:Aura Armor
+192:Dark Armor
+193:Warrior's Mail
+194:Spirit Armor
+195:Devil's Robe
+196:Magic Robe
+197:Cutting Board
+198:Woolen Mittens
+199:Leather Gloves
+200:Escargot Shield
+201:Oaken Shield
+202:Shell Shield
+203:Seashell Shield
+204:Mushroom Shield
+205:MagicMirror Shield
+206:Alligator Gauntlet
+207:Leaf Shield
+208:Lafa Flower Shield
+209:Power Shield
+210:Moonlight Shield
+211:Gauntlets
+212:Dragon Gauntlet
+213:Heavy Shield
+214:Gauntlets of Light
+215:Spirit Shield
+216:Magic Gloves
+217:Zero Shield
+218:Goggles
+219:Ribbon
+220:Fluffy Ribbon
+221:Barrette
+222:Pirate's Hat
+223:Cowboy Hat
+224:Climbing Hat
+225:Odd Hat
+226:Headgear
+227:Iron Bandana
+228:Feathered Turban
+229:Angel's Hat
+230:Pope's Hat
+231:Safety Helmet
+232:Antler Helmet
+233:Pearl Helmet
+234:Pirate's Helmet
+235:Stone Head
+236:Swallowtail Hat
+237:Mystic Mask
+238:Death Mask
+239:Ogre Helm
+240:Charisma Helm
+241:Spirit Helmet
+242:Holy Crown
+243:Cactus Helm
+244:Fairy Tiara
+245:Man's Headband
+246:Battle Helm
+247:Sneakers
+248:Dress Shoes
+249:Air Sneakers
+250:Shiny Shoes
+251:Rubber Boots
+252:Leather Greaves
+253:Hunter's Boots
+254:Army Boots
+255:Curious Clogs
+256:Dragon Boots
+257:Ninja Sandals
+258:Winged Boots
+259:Beach Sandals
+260:Mach 1 Boots
+261:Heavy Boots
+262:Queen Heels
+263:Iron Clogs
+264:Ogre Boots
+265:Rabbit Shoes
+266:Rainbow High Heels
+267:Wolf Boots
+268:Lion Boots
+269:Battle Boots
+270:Spirit Shoes
+271:Glass Slippers
+272:Warp Shoes
+273:Crampons
+274:Zero Boots
+275:Prohibited
+276:Diana's Amulet
+277:Hero's Badge
+278:Demon Sword Amulet
+279:Officer's Badge
+280:Black Belt
+281:Chain Earrings
+282:Titan's Ring
+283:Fireproof Cape
+284:Fire Charm
+285:Water Charm
+286:Wind Charm
+287:Earth Charm
+288:Counter Ring
+289:Secret Move Ring
+290:Hurricane Belt
+291:Mama's Amulet
+292:Jade Charm
+293:Tree God Amulet
+294:Light God Amulet
+295:Ancestor's Amulet
+296:Raincoat
+297:Iridescent Amulet
+298:Move Unblocker
+299:Medal of Yore
+300:Spirit Charm
+301:Phantom Silk
+302:Lightning Charm
+303:Forest Charm
+304:Explosion Charm
+305:Blizzard Charm
+306:Wind Belt
+307:Confusion Charm
+308:Paralysis Charm
+309:Magic Block Charm
+310:Sudden Death Charm
+311:Poison Charm
+312:Talisman
+313:Sonic Belt
+314:Metal Frog
+315:Revival Stone
+316:Use Prohibited
+317:Scarab
+318:Demon Eye Stone
+319:Jewel of Life
+320:Ankh of Temptation
+321:Anklet
+322:Energy Ring
+323:Disease Charm
+324:Paperweight
+325:Combat Anklet
+326:Chain of Gems
+327:Satisfaction Gem
+328:Soul of Asura
+329:Crescent Jade
+330:Dragon Scales
+331:Spectacles
+332:Rune Ring
+333:Tear Jewel
+334:Spirit Potion
+335:Would Salve
+336:Baobab Fruit
+337:Boiled Coconut
+338:Chocolate Cookies
+339:Honey
+340:Ultra Drink
+341:Weeds
+342:Dried Fish
+343:Bamboo Shoots
+344:Beef Jerky
+345:Box Lunch
+346:Herbs
+347:White Sulfa Weed
+348:Smarna Weed
+349:Cholla Flowers
+350:Bamo Fruit
+351:Squid Guts
+352:Move Mushroom
+353:Power Mushroom
+354:Poison Antidote
+355:Ginseng
+356:Banana
+357:Bandage
+358:Box of Sweets
+359:First Aid Kit
+360:Red Medicine
+361:Blue Medicine
+362:Yellow Medicine
+363:Crimson Potion
+364:Deep Blue Potion
+365:Golden Potion
+366:Magic Lamp
+367:Poison Antidote
+368:Vaccine
+369:Eye Drops
+370:Smelling Salts
+371:Paralysis Ointment
+372:Spell Breaker
+373:Move Breaker
+374:Resurrect Potion
+375:Panacea
+376:Bond of Trust
+377:Seed of Power
+378:Seed of Defense
+379:Seed of Speed
+380:Seed of Running
+381:All-Around Seed
+382:Seed of Life
+383:Seed of Magic
+384:Seed of Moves
+385:Mace Coloring Book
+386:Bow Coloring Book
+387:Sword Secrets
+388:Fire Secrets
+389:Earth Secrets
+390:How to Cut 'Em
+391:How to Pound 'Em
+392:How to Chop 'Em
+393:Roach Bomb
+394:Firewood Sparks
+395:Mana Egg
+396:Holy Fire
+397:Hand Grenade
+398:Dynamite
+399:Rocket Fireworks
+400:Launch Fireworks
+401:BOOM! Scroll
+402:Howler Scroll
+403:Vacuum Scroll
+404:Tremor Scroll
+405:Zap! Book
+406:Lightning Scroll
+407:Gale Scroll
+408:Overflowing Walnut
+409:Restraint Walnut
+410:Sonic Walnut
+411:Running Walnut
+412:Snooze Scroll
+413:Poisoned Apple
+414:Culture Medium
+415:Dream Truffle
+416:Paralyze Mushroom
+417:Orb of Silence
+418:Black Onyx
+419:Weak-Knee Weed
+420:Ragged Weed
+421:Slouch Weed
+422:Trudge Weed
+423:Root of Confusion
+424:Torte's Whistle
+425:Freesia Flowers
+426:Cone of Light
+427:Mikeroma Scroll
+428:Shuffle Card
+429:Miracle Drink
+430:Gold Key
+431:Silver Key
+432:Key of Temptation
+433:Soldier's Key
+434:Pretty Jewel
+435:Pretty Jewel
+436:Pretty Jewel
+437:Horn of Inogon
+438:Key
+439:Health Weed
+440:Snake Earrings
+441:Resurrect Potion
+442:Expensive Jewel
+443:Rainbow Weed
+444:Smoked Salmon
+445:Prime Rib
+446:Rescue Set
+447:Black Nail Polish
+448:Prohibited
+449:Thor's Fury
+450:Magic Lipstick
+451:Elite Badge
+452:Fruit of Power
+453:Fruit of Defense
+454:Fruit of Speed
+455:Fruit of Agility
+456:All-Around Fruit
+457:Fruit of Life
+458:Fruit of Magic
+459:Fruit of Moves
+460:Mogay Teachings 1
+461:Mogay Teachings 2
+462:Mogay Teachings 3
+463:Ring of Rage
+464:Holy Ring
+465:Mysterious Veil
+466:Blizzard Scroll
+467:Telescope
+468:Energy Charm
+469:Devil's Anklet
+470:Prohibited
+471:Astral Miracle
+472:Ethereal Miracle
+473:Miraculous Scales
+474:General's Staff
+475:Brown Crayon
+476:Blue Crayon
+477:Red Crayon
+478:Sky-Blue Crayon
+479:Emperor's Whip
+480:Soldier's Soul
+481:Poison of Power
+482:Poison of Defense
+483:Poison of Speed
+484:Poison of Agility
+485:All-Around Poison
+486:Poison of Life
+487:Poison of Magic
+488:Poison of Moves
+489:+1 Dagger Skill
+490:+5 Dagger Skill
+491:+1 Sword Skill
+492:+5 Sword Skill
+493:+1 Mace Skill
+494:+5 Mace Skill
+495:+1 Ax Skill
+496:+5 Ax Skill
+497:+1 Whip Skill
+498:+5 Whip Skill
+499:+1 Bow Skill
+500:+5 Bow Skill
+501:+1 Fire Skill
+502:+5 Fire Skill
+503:+1 Wind Skill
+504:+5 Wind Skill
+505:+1 Water Skill
+506:+5 Water Skill
+507:+1 Earth Skill
+508:+5 Earth Skill
+509:100 Sword
+510:100 Mace
+511:100 Fire Mace
+</DropDownList>
+                          <LastState Value="10" RealAddress="109432E6"/>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 5A</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4153</ID>
+                          <Description>"Slot 3"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Nothing
+10:Spirit Stone
+11:Hero's Armband
+12:Horn of Knowledge
+13:Medal of Wisdom
+14:Medal of Knowledge
+15:Gaia Sprout
+16:Gantz's Key
+17:Intro Letter
+18:Key to the Café
+19:Java's Wallet
+20:Steamer Pass
+21:Lilly's Letter
+22:Cabin Key
+23:Sulfa Weed
+24:Jail Key
+25:Master Key
+26:Nectar of the Gods
+27:Mist-Clearing Nut
+28:Sue's Shoes
+29:Warrior's Spear
+30:Teleportation Orb
+31:Apron
+32:Pot Lid
+33:Iron Pot
+34:Wooden Sword
+35:Spirit Sword
+36:Biscuits
+37:Marie's Pin
+38:Coal Candy
+39:Letter to Clara
+40:Pearl
+41:Rainbow Key
+42:Boiled Egg
+43:Chocolate
+44:Jawbreaker
+45:Ring of Protection
+46:Frost Herb
+47:Amulet of Relief
+48:Prohibited
+49:Prohibited
+50:Prohibited
+51:Prohibited
+52:Prohibited
+53:Prohibited
+54:Prohibited
+55:Prohibited
+56:Prohibited
+57:Prohibited
+58:Prohibited
+59:Prohibited
+60:Prohibited
+61:Prohibited
+62:Prohibited
+63:Knife of Judgment
+64:Rusty Knife
+65:Paring Knife
+66:Hunter's Knife
+67:Flint Knife
+68:Azure Knife
+69:Shocking Knife
+70:Poisoned Knife
+71:Assassin's Dagger
+72:Bloody Knife
+73:Ice Pick
+74:Force Knife
+75:Godspeed Knife
+76:Gust Knife
+77:Ruination Knife
+78:Thief Cutter
+79:Zero Knife
+80:Ceramic Sword
+81:Prohibited
+82:Admiral's Sword
+83:Great Sword
+84:Army Saber
+85:The Sword Himmler
+86:Angel's Darts
+87:Swordfish Sword
+88:Dragon Killer
+89:Fire Sword
+90:Shadow Sword
+91:Gil Sword
+92:Silence Sword
+93:Prohibited
+94:Wobbly Sword
+95:Main Gauche
+96:Holy Sword Lorenzo
+97:Ice Blade
+98:Lightning Sword
+99:Battle Saber
+100:Zero Sword
+101:Wooden Pole
+102:Metal Bat
+103:Zero Rod
+104:Officer's Baton
+105:Magic Rod
+106:Miner's Hammer
+107:Iron Mace
+108:Army Darts
+109:Lassic Hammer
+110:War Hammer
+111:Hertz Spike
+112:Oracle's Staff
+113:Raincloud Staff
+114:Staff of Life
+115:Warp Staff
+116:Holy Mace
+117:Fire Rod
+118:Aromatic Tree Root
+119:Sparkling Rod
+120:Spirit Staff
+121:Home Run Hammer
+122:Rusty Shovel
+123:Hand Ax
+124:Ceremonial Rock Ax
+125:Big Hatchet
+126:Woodchopper's Ax
+127:Dragon Bone Ax
+128:Klepp's Sickle
+129:Frog Ax
+130:Bone Splitter Ax
+131:Earthen Ax
+132:Buster Ax
+133:Wrecking Ax
+134:Bent Mattock
+135:Zero Ax
+136:Toy Bow and Arrow
+137:Handmade Darts
+138:Hunter's Bow
+139:Flying Fish Bow
+140:Hail Bow
+141:Flint Bow
+142:Exorcising Bow
+143:Cafu Shuriken
+144:Boomerang
+145:Fire Darts
+146:Evil Shuriken
+147:Demonslayer Boomer
+148:Discus
+149:Cactus Thorns
+150:Ice Boomerang
+151:Thunder Arrow
+152:Zero Shuriken
+153:Zero Whip
+154:Mist-Cracking Whip
+155:Leather Whip
+156:Thorny Whip
+157:Catfish Whiskers
+158:Giant Snake Whip
+159:Binding Whip
+160:Morning Star
+161:Whip of Light
+162:Burning Hot Whip
+163:Gale Whip
+164:Adventure Clothes
+165:Sunday Best
+166:Sports Wear
+167:Work Clothes
+168:Cactus Armor
+169:Soldier's Uniform
+170:Officer's Uniform
+171:Fairy Robe
+172:Flying Dragon Vest
+173:Frog Shirt
+174:Spy Clothes
+175:Chain Mail
+176:Battle Bikini
+177:Mogay Clothes
+178:Mink Coat
+179:Enchantress' Robe
+180:Angel's Robe
+181:Robe of the Sun
+182:Breastplate
+183:Outdated Armor
+184:Bamboo Armor
+185:Shell Armor
+186:Thick Armor
+187:Swordfish Armor
+188:Skull Armor
+189:Chameleon Armor
+190:Plug Suit
+191:Aura Armor
+192:Dark Armor
+193:Warrior's Mail
+194:Spirit Armor
+195:Devil's Robe
+196:Magic Robe
+197:Cutting Board
+198:Woolen Mittens
+199:Leather Gloves
+200:Escargot Shield
+201:Oaken Shield
+202:Shell Shield
+203:Seashell Shield
+204:Mushroom Shield
+205:MagicMirror Shield
+206:Alligator Gauntlet
+207:Leaf Shield
+208:Lafa Flower Shield
+209:Power Shield
+210:Moonlight Shield
+211:Gauntlets
+212:Dragon Gauntlet
+213:Heavy Shield
+214:Gauntlets of Light
+215:Spirit Shield
+216:Magic Gloves
+217:Zero Shield
+218:Goggles
+219:Ribbon
+220:Fluffy Ribbon
+221:Barrette
+222:Pirate's Hat
+223:Cowboy Hat
+224:Climbing Hat
+225:Odd Hat
+226:Headgear
+227:Iron Bandana
+228:Feathered Turban
+229:Angel's Hat
+230:Pope's Hat
+231:Safety Helmet
+232:Antler Helmet
+233:Pearl Helmet
+234:Pirate's Helmet
+235:Stone Head
+236:Swallowtail Hat
+237:Mystic Mask
+238:Death Mask
+239:Ogre Helm
+240:Charisma Helm
+241:Spirit Helmet
+242:Holy Crown
+243:Cactus Helm
+244:Fairy Tiara
+245:Man's Headband
+246:Battle Helm
+247:Sneakers
+248:Dress Shoes
+249:Air Sneakers
+250:Shiny Shoes
+251:Rubber Boots
+252:Leather Greaves
+253:Hunter's Boots
+254:Army Boots
+255:Curious Clogs
+256:Dragon Boots
+257:Ninja Sandals
+258:Winged Boots
+259:Beach Sandals
+260:Mach 1 Boots
+261:Heavy Boots
+262:Queen Heels
+263:Iron Clogs
+264:Ogre Boots
+265:Rabbit Shoes
+266:Rainbow High Heels
+267:Wolf Boots
+268:Lion Boots
+269:Battle Boots
+270:Spirit Shoes
+271:Glass Slippers
+272:Warp Shoes
+273:Crampons
+274:Zero Boots
+275:Prohibited
+276:Diana's Amulet
+277:Hero's Badge
+278:Demon Sword Amulet
+279:Officer's Badge
+280:Black Belt
+281:Chain Earrings
+282:Titan's Ring
+283:Fireproof Cape
+284:Fire Charm
+285:Water Charm
+286:Wind Charm
+287:Earth Charm
+288:Counter Ring
+289:Secret Move Ring
+290:Hurricane Belt
+291:Mama's Amulet
+292:Jade Charm
+293:Tree God Amulet
+294:Light God Amulet
+295:Ancestor's Amulet
+296:Raincoat
+297:Iridescent Amulet
+298:Move Unblocker
+299:Medal of Yore
+300:Spirit Charm
+301:Phantom Silk
+302:Lightning Charm
+303:Forest Charm
+304:Explosion Charm
+305:Blizzard Charm
+306:Wind Belt
+307:Confusion Charm
+308:Paralysis Charm
+309:Magic Block Charm
+310:Sudden Death Charm
+311:Poison Charm
+312:Talisman
+313:Sonic Belt
+314:Metal Frog
+315:Revival Stone
+316:Use Prohibited
+317:Scarab
+318:Demon Eye Stone
+319:Jewel of Life
+320:Ankh of Temptation
+321:Anklet
+322:Energy Ring
+323:Disease Charm
+324:Paperweight
+325:Combat Anklet
+326:Chain of Gems
+327:Satisfaction Gem
+328:Soul of Asura
+329:Crescent Jade
+330:Dragon Scales
+331:Spectacles
+332:Rune Ring
+333:Tear Jewel
+334:Spirit Potion
+335:Would Salve
+336:Baobab Fruit
+337:Boiled Coconut
+338:Chocolate Cookies
+339:Honey
+340:Ultra Drink
+341:Weeds
+342:Dried Fish
+343:Bamboo Shoots
+344:Beef Jerky
+345:Box Lunch
+346:Herbs
+347:White Sulfa Weed
+348:Smarna Weed
+349:Cholla Flowers
+350:Bamo Fruit
+351:Squid Guts
+352:Move Mushroom
+353:Power Mushroom
+354:Poison Antidote
+355:Ginseng
+356:Banana
+357:Bandage
+358:Box of Sweets
+359:First Aid Kit
+360:Red Medicine
+361:Blue Medicine
+362:Yellow Medicine
+363:Crimson Potion
+364:Deep Blue Potion
+365:Golden Potion
+366:Magic Lamp
+367:Poison Antidote
+368:Vaccine
+369:Eye Drops
+370:Smelling Salts
+371:Paralysis Ointment
+372:Spell Breaker
+373:Move Breaker
+374:Resurrect Potion
+375:Panacea
+376:Bond of Trust
+377:Seed of Power
+378:Seed of Defense
+379:Seed of Speed
+380:Seed of Running
+381:All-Around Seed
+382:Seed of Life
+383:Seed of Magic
+384:Seed of Moves
+385:Mace Coloring Book
+386:Bow Coloring Book
+387:Sword Secrets
+388:Fire Secrets
+389:Earth Secrets
+390:How to Cut 'Em
+391:How to Pound 'Em
+392:How to Chop 'Em
+393:Roach Bomb
+394:Firewood Sparks
+395:Mana Egg
+396:Holy Fire
+397:Hand Grenade
+398:Dynamite
+399:Rocket Fireworks
+400:Launch Fireworks
+401:BOOM! Scroll
+402:Howler Scroll
+403:Vacuum Scroll
+404:Tremor Scroll
+405:Zap! Book
+406:Lightning Scroll
+407:Gale Scroll
+408:Overflowing Walnut
+409:Restraint Walnut
+410:Sonic Walnut
+411:Running Walnut
+412:Snooze Scroll
+413:Poisoned Apple
+414:Culture Medium
+415:Dream Truffle
+416:Paralyze Mushroom
+417:Orb of Silence
+418:Black Onyx
+419:Weak-Knee Weed
+420:Ragged Weed
+421:Slouch Weed
+422:Trudge Weed
+423:Root of Confusion
+424:Torte's Whistle
+425:Freesia Flowers
+426:Cone of Light
+427:Mikeroma Scroll
+428:Shuffle Card
+429:Miracle Drink
+430:Gold Key
+431:Silver Key
+432:Key of Temptation
+433:Soldier's Key
+434:Pretty Jewel
+435:Pretty Jewel
+436:Pretty Jewel
+437:Horn of Inogon
+438:Key
+439:Health Weed
+440:Snake Earrings
+441:Resurrect Potion
+442:Expensive Jewel
+443:Rainbow Weed
+444:Smoked Salmon
+445:Prime Rib
+446:Rescue Set
+447:Black Nail Polish
+448:Prohibited
+449:Thor's Fury
+450:Magic Lipstick
+451:Elite Badge
+452:Fruit of Power
+453:Fruit of Defense
+454:Fruit of Speed
+455:Fruit of Agility
+456:All-Around Fruit
+457:Fruit of Life
+458:Fruit of Magic
+459:Fruit of Moves
+460:Mogay Teachings 1
+461:Mogay Teachings 2
+462:Mogay Teachings 3
+463:Ring of Rage
+464:Holy Ring
+465:Mysterious Veil
+466:Blizzard Scroll
+467:Telescope
+468:Energy Charm
+469:Devil's Anklet
+470:Prohibited
+471:Astral Miracle
+472:Ethereal Miracle
+473:Miraculous Scales
+474:General's Staff
+475:Brown Crayon
+476:Blue Crayon
+477:Red Crayon
+478:Sky-Blue Crayon
+479:Emperor's Whip
+480:Soldier's Soul
+481:Poison of Power
+482:Poison of Defense
+483:Poison of Speed
+484:Poison of Agility
+485:All-Around Poison
+486:Poison of Life
+487:Poison of Magic
+488:Poison of Moves
+489:+1 Dagger Skill
+490:+5 Dagger Skill
+491:+1 Sword Skill
+492:+5 Sword Skill
+493:+1 Mace Skill
+494:+5 Mace Skill
+495:+1 Ax Skill
+496:+5 Ax Skill
+497:+1 Whip Skill
+498:+5 Whip Skill
+499:+1 Bow Skill
+500:+5 Bow Skill
+501:+1 Fire Skill
+502:+5 Fire Skill
+503:+1 Wind Skill
+504:+5 Wind Skill
+505:+1 Water Skill
+506:+5 Water Skill
+507:+1 Earth Skill
+508:+5 Earth Skill
+509:100 Sword
+510:100 Mace
+511:100 Fire Mace
+</DropDownList>
+                          <LastState Value="286" RealAddress="109432E8"/>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 5C</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4154</ID>
+                          <Description>"Slot 4"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Nothing
+10:Spirit Stone
+11:Hero's Armband
+12:Horn of Knowledge
+13:Medal of Wisdom
+14:Medal of Knowledge
+15:Gaia Sprout
+16:Gantz's Key
+17:Intro Letter
+18:Key to the Café
+19:Java's Wallet
+20:Steamer Pass
+21:Lilly's Letter
+22:Cabin Key
+23:Sulfa Weed
+24:Jail Key
+25:Master Key
+26:Nectar of the Gods
+27:Mist-Clearing Nut
+28:Sue's Shoes
+29:Warrior's Spear
+30:Teleportation Orb
+31:Apron
+32:Pot Lid
+33:Iron Pot
+34:Wooden Sword
+35:Spirit Sword
+36:Biscuits
+37:Marie's Pin
+38:Coal Candy
+39:Letter to Clara
+40:Pearl
+41:Rainbow Key
+42:Boiled Egg
+43:Chocolate
+44:Jawbreaker
+45:Ring of Protection
+46:Frost Herb
+47:Amulet of Relief
+48:Prohibited
+49:Prohibited
+50:Prohibited
+51:Prohibited
+52:Prohibited
+53:Prohibited
+54:Prohibited
+55:Prohibited
+56:Prohibited
+57:Prohibited
+58:Prohibited
+59:Prohibited
+60:Prohibited
+61:Prohibited
+62:Prohibited
+63:Knife of Judgment
+64:Rusty Knife
+65:Paring Knife
+66:Hunter's Knife
+67:Flint Knife
+68:Azure Knife
+69:Shocking Knife
+70:Poisoned Knife
+71:Assassin's Dagger
+72:Bloody Knife
+73:Ice Pick
+74:Force Knife
+75:Godspeed Knife
+76:Gust Knife
+77:Ruination Knife
+78:Thief Cutter
+79:Zero Knife
+80:Ceramic Sword
+81:Prohibited
+82:Admiral's Sword
+83:Great Sword
+84:Army Saber
+85:The Sword Himmler
+86:Angel's Darts
+87:Swordfish Sword
+88:Dragon Killer
+89:Fire Sword
+90:Shadow Sword
+91:Gil Sword
+92:Silence Sword
+93:Prohibited
+94:Wobbly Sword
+95:Main Gauche
+96:Holy Sword Lorenzo
+97:Ice Blade
+98:Lightning Sword
+99:Battle Saber
+100:Zero Sword
+101:Wooden Pole
+102:Metal Bat
+103:Zero Rod
+104:Officer's Baton
+105:Magic Rod
+106:Miner's Hammer
+107:Iron Mace
+108:Army Darts
+109:Lassic Hammer
+110:War Hammer
+111:Hertz Spike
+112:Oracle's Staff
+113:Raincloud Staff
+114:Staff of Life
+115:Warp Staff
+116:Holy Mace
+117:Fire Rod
+118:Aromatic Tree Root
+119:Sparkling Rod
+120:Spirit Staff
+121:Home Run Hammer
+122:Rusty Shovel
+123:Hand Ax
+124:Ceremonial Rock Ax
+125:Big Hatchet
+126:Woodchopper's Ax
+127:Dragon Bone Ax
+128:Klepp's Sickle
+129:Frog Ax
+130:Bone Splitter Ax
+131:Earthen Ax
+132:Buster Ax
+133:Wrecking Ax
+134:Bent Mattock
+135:Zero Ax
+136:Toy Bow and Arrow
+137:Handmade Darts
+138:Hunter's Bow
+139:Flying Fish Bow
+140:Hail Bow
+141:Flint Bow
+142:Exorcising Bow
+143:Cafu Shuriken
+144:Boomerang
+145:Fire Darts
+146:Evil Shuriken
+147:Demonslayer Boomer
+148:Discus
+149:Cactus Thorns
+150:Ice Boomerang
+151:Thunder Arrow
+152:Zero Shuriken
+153:Zero Whip
+154:Mist-Cracking Whip
+155:Leather Whip
+156:Thorny Whip
+157:Catfish Whiskers
+158:Giant Snake Whip
+159:Binding Whip
+160:Morning Star
+161:Whip of Light
+162:Burning Hot Whip
+163:Gale Whip
+164:Adventure Clothes
+165:Sunday Best
+166:Sports Wear
+167:Work Clothes
+168:Cactus Armor
+169:Soldier's Uniform
+170:Officer's Uniform
+171:Fairy Robe
+172:Flying Dragon Vest
+173:Frog Shirt
+174:Spy Clothes
+175:Chain Mail
+176:Battle Bikini
+177:Mogay Clothes
+178:Mink Coat
+179:Enchantress' Robe
+180:Angel's Robe
+181:Robe of the Sun
+182:Breastplate
+183:Outdated Armor
+184:Bamboo Armor
+185:Shell Armor
+186:Thick Armor
+187:Swordfish Armor
+188:Skull Armor
+189:Chameleon Armor
+190:Plug Suit
+191:Aura Armor
+192:Dark Armor
+193:Warrior's Mail
+194:Spirit Armor
+195:Devil's Robe
+196:Magic Robe
+197:Cutting Board
+198:Woolen Mittens
+199:Leather Gloves
+200:Escargot Shield
+201:Oaken Shield
+202:Shell Shield
+203:Seashell Shield
+204:Mushroom Shield
+205:MagicMirror Shield
+206:Alligator Gauntlet
+207:Leaf Shield
+208:Lafa Flower Shield
+209:Power Shield
+210:Moonlight Shield
+211:Gauntlets
+212:Dragon Gauntlet
+213:Heavy Shield
+214:Gauntlets of Light
+215:Spirit Shield
+216:Magic Gloves
+217:Zero Shield
+218:Goggles
+219:Ribbon
+220:Fluffy Ribbon
+221:Barrette
+222:Pirate's Hat
+223:Cowboy Hat
+224:Climbing Hat
+225:Odd Hat
+226:Headgear
+227:Iron Bandana
+228:Feathered Turban
+229:Angel's Hat
+230:Pope's Hat
+231:Safety Helmet
+232:Antler Helmet
+233:Pearl Helmet
+234:Pirate's Helmet
+235:Stone Head
+236:Swallowtail Hat
+237:Mystic Mask
+238:Death Mask
+239:Ogre Helm
+240:Charisma Helm
+241:Spirit Helmet
+242:Holy Crown
+243:Cactus Helm
+244:Fairy Tiara
+245:Man's Headband
+246:Battle Helm
+247:Sneakers
+248:Dress Shoes
+249:Air Sneakers
+250:Shiny Shoes
+251:Rubber Boots
+252:Leather Greaves
+253:Hunter's Boots
+254:Army Boots
+255:Curious Clogs
+256:Dragon Boots
+257:Ninja Sandals
+258:Winged Boots
+259:Beach Sandals
+260:Mach 1 Boots
+261:Heavy Boots
+262:Queen Heels
+263:Iron Clogs
+264:Ogre Boots
+265:Rabbit Shoes
+266:Rainbow High Heels
+267:Wolf Boots
+268:Lion Boots
+269:Battle Boots
+270:Spirit Shoes
+271:Glass Slippers
+272:Warp Shoes
+273:Crampons
+274:Zero Boots
+275:Prohibited
+276:Diana's Amulet
+277:Hero's Badge
+278:Demon Sword Amulet
+279:Officer's Badge
+280:Black Belt
+281:Chain Earrings
+282:Titan's Ring
+283:Fireproof Cape
+284:Fire Charm
+285:Water Charm
+286:Wind Charm
+287:Earth Charm
+288:Counter Ring
+289:Secret Move Ring
+290:Hurricane Belt
+291:Mama's Amulet
+292:Jade Charm
+293:Tree God Amulet
+294:Light God Amulet
+295:Ancestor's Amulet
+296:Raincoat
+297:Iridescent Amulet
+298:Move Unblocker
+299:Medal of Yore
+300:Spirit Charm
+301:Phantom Silk
+302:Lightning Charm
+303:Forest Charm
+304:Explosion Charm
+305:Blizzard Charm
+306:Wind Belt
+307:Confusion Charm
+308:Paralysis Charm
+309:Magic Block Charm
+310:Sudden Death Charm
+311:Poison Charm
+312:Talisman
+313:Sonic Belt
+314:Metal Frog
+315:Revival Stone
+316:Use Prohibited
+317:Scarab
+318:Demon Eye Stone
+319:Jewel of Life
+320:Ankh of Temptation
+321:Anklet
+322:Energy Ring
+323:Disease Charm
+324:Paperweight
+325:Combat Anklet
+326:Chain of Gems
+327:Satisfaction Gem
+328:Soul of Asura
+329:Crescent Jade
+330:Dragon Scales
+331:Spectacles
+332:Rune Ring
+333:Tear Jewel
+334:Spirit Potion
+335:Would Salve
+336:Baobab Fruit
+337:Boiled Coconut
+338:Chocolate Cookies
+339:Honey
+340:Ultra Drink
+341:Weeds
+342:Dried Fish
+343:Bamboo Shoots
+344:Beef Jerky
+345:Box Lunch
+346:Herbs
+347:White Sulfa Weed
+348:Smarna Weed
+349:Cholla Flowers
+350:Bamo Fruit
+351:Squid Guts
+352:Move Mushroom
+353:Power Mushroom
+354:Poison Antidote
+355:Ginseng
+356:Banana
+357:Bandage
+358:Box of Sweets
+359:First Aid Kit
+360:Red Medicine
+361:Blue Medicine
+362:Yellow Medicine
+363:Crimson Potion
+364:Deep Blue Potion
+365:Golden Potion
+366:Magic Lamp
+367:Poison Antidote
+368:Vaccine
+369:Eye Drops
+370:Smelling Salts
+371:Paralysis Ointment
+372:Spell Breaker
+373:Move Breaker
+374:Resurrect Potion
+375:Panacea
+376:Bond of Trust
+377:Seed of Power
+378:Seed of Defense
+379:Seed of Speed
+380:Seed of Running
+381:All-Around Seed
+382:Seed of Life
+383:Seed of Magic
+384:Seed of Moves
+385:Mace Coloring Book
+386:Bow Coloring Book
+387:Sword Secrets
+388:Fire Secrets
+389:Earth Secrets
+390:How to Cut 'Em
+391:How to Pound 'Em
+392:How to Chop 'Em
+393:Roach Bomb
+394:Firewood Sparks
+395:Mana Egg
+396:Holy Fire
+397:Hand Grenade
+398:Dynamite
+399:Rocket Fireworks
+400:Launch Fireworks
+401:BOOM! Scroll
+402:Howler Scroll
+403:Vacuum Scroll
+404:Tremor Scroll
+405:Zap! Book
+406:Lightning Scroll
+407:Gale Scroll
+408:Overflowing Walnut
+409:Restraint Walnut
+410:Sonic Walnut
+411:Running Walnut
+412:Snooze Scroll
+413:Poisoned Apple
+414:Culture Medium
+415:Dream Truffle
+416:Paralyze Mushroom
+417:Orb of Silence
+418:Black Onyx
+419:Weak-Knee Weed
+420:Ragged Weed
+421:Slouch Weed
+422:Trudge Weed
+423:Root of Confusion
+424:Torte's Whistle
+425:Freesia Flowers
+426:Cone of Light
+427:Mikeroma Scroll
+428:Shuffle Card
+429:Miracle Drink
+430:Gold Key
+431:Silver Key
+432:Key of Temptation
+433:Soldier's Key
+434:Pretty Jewel
+435:Pretty Jewel
+436:Pretty Jewel
+437:Horn of Inogon
+438:Key
+439:Health Weed
+440:Snake Earrings
+441:Resurrect Potion
+442:Expensive Jewel
+443:Rainbow Weed
+444:Smoked Salmon
+445:Prime Rib
+446:Rescue Set
+447:Black Nail Polish
+448:Prohibited
+449:Thor's Fury
+450:Magic Lipstick
+451:Elite Badge
+452:Fruit of Power
+453:Fruit of Defense
+454:Fruit of Speed
+455:Fruit of Agility
+456:All-Around Fruit
+457:Fruit of Life
+458:Fruit of Magic
+459:Fruit of Moves
+460:Mogay Teachings 1
+461:Mogay Teachings 2
+462:Mogay Teachings 3
+463:Ring of Rage
+464:Holy Ring
+465:Mysterious Veil
+466:Blizzard Scroll
+467:Telescope
+468:Energy Charm
+469:Devil's Anklet
+470:Prohibited
+471:Astral Miracle
+472:Ethereal Miracle
+473:Miraculous Scales
+474:General's Staff
+475:Brown Crayon
+476:Blue Crayon
+477:Red Crayon
+478:Sky-Blue Crayon
+479:Emperor's Whip
+480:Soldier's Soul
+481:Poison of Power
+482:Poison of Defense
+483:Poison of Speed
+484:Poison of Agility
+485:All-Around Poison
+486:Poison of Life
+487:Poison of Magic
+488:Poison of Moves
+489:+1 Dagger Skill
+490:+5 Dagger Skill
+491:+1 Sword Skill
+492:+5 Sword Skill
+493:+1 Mace Skill
+494:+5 Mace Skill
+495:+1 Ax Skill
+496:+5 Ax Skill
+497:+1 Whip Skill
+498:+5 Whip Skill
+499:+1 Bow Skill
+500:+5 Bow Skill
+501:+1 Fire Skill
+502:+5 Fire Skill
+503:+1 Wind Skill
+504:+5 Wind Skill
+505:+1 Water Skill
+506:+5 Water Skill
+507:+1 Earth Skill
+508:+5 Earth Skill
+509:100 Sword
+510:100 Mace
+511:100 Fire Mace
+</DropDownList>
+                          <LastState Value="440" RealAddress="109432EA"/>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 5E</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4155</ID>
+                          <Description>"Slot 5"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Nothing
+10:Spirit Stone
+11:Hero's Armband
+12:Horn of Knowledge
+13:Medal of Wisdom
+14:Medal of Knowledge
+15:Gaia Sprout
+16:Gantz's Key
+17:Intro Letter
+18:Key to the Café
+19:Java's Wallet
+20:Steamer Pass
+21:Lilly's Letter
+22:Cabin Key
+23:Sulfa Weed
+24:Jail Key
+25:Master Key
+26:Nectar of the Gods
+27:Mist-Clearing Nut
+28:Sue's Shoes
+29:Warrior's Spear
+30:Teleportation Orb
+31:Apron
+32:Pot Lid
+33:Iron Pot
+34:Wooden Sword
+35:Spirit Sword
+36:Biscuits
+37:Marie's Pin
+38:Coal Candy
+39:Letter to Clara
+40:Pearl
+41:Rainbow Key
+42:Boiled Egg
+43:Chocolate
+44:Jawbreaker
+45:Ring of Protection
+46:Frost Herb
+47:Amulet of Relief
+48:Prohibited
+49:Prohibited
+50:Prohibited
+51:Prohibited
+52:Prohibited
+53:Prohibited
+54:Prohibited
+55:Prohibited
+56:Prohibited
+57:Prohibited
+58:Prohibited
+59:Prohibited
+60:Prohibited
+61:Prohibited
+62:Prohibited
+63:Knife of Judgment
+64:Rusty Knife
+65:Paring Knife
+66:Hunter's Knife
+67:Flint Knife
+68:Azure Knife
+69:Shocking Knife
+70:Poisoned Knife
+71:Assassin's Dagger
+72:Bloody Knife
+73:Ice Pick
+74:Force Knife
+75:Godspeed Knife
+76:Gust Knife
+77:Ruination Knife
+78:Thief Cutter
+79:Zero Knife
+80:Ceramic Sword
+81:Prohibited
+82:Admiral's Sword
+83:Great Sword
+84:Army Saber
+85:The Sword Himmler
+86:Angel's Darts
+87:Swordfish Sword
+88:Dragon Killer
+89:Fire Sword
+90:Shadow Sword
+91:Gil Sword
+92:Silence Sword
+93:Prohibited
+94:Wobbly Sword
+95:Main Gauche
+96:Holy Sword Lorenzo
+97:Ice Blade
+98:Lightning Sword
+99:Battle Saber
+100:Zero Sword
+101:Wooden Pole
+102:Metal Bat
+103:Zero Rod
+104:Officer's Baton
+105:Magic Rod
+106:Miner's Hammer
+107:Iron Mace
+108:Army Darts
+109:Lassic Hammer
+110:War Hammer
+111:Hertz Spike
+112:Oracle's Staff
+113:Raincloud Staff
+114:Staff of Life
+115:Warp Staff
+116:Holy Mace
+117:Fire Rod
+118:Aromatic Tree Root
+119:Sparkling Rod
+120:Spirit Staff
+121:Home Run Hammer
+122:Rusty Shovel
+123:Hand Ax
+124:Ceremonial Rock Ax
+125:Big Hatchet
+126:Woodchopper's Ax
+127:Dragon Bone Ax
+128:Klepp's Sickle
+129:Frog Ax
+130:Bone Splitter Ax
+131:Earthen Ax
+132:Buster Ax
+133:Wrecking Ax
+134:Bent Mattock
+135:Zero Ax
+136:Toy Bow and Arrow
+137:Handmade Darts
+138:Hunter's Bow
+139:Flying Fish Bow
+140:Hail Bow
+141:Flint Bow
+142:Exorcising Bow
+143:Cafu Shuriken
+144:Boomerang
+145:Fire Darts
+146:Evil Shuriken
+147:Demonslayer Boomer
+148:Discus
+149:Cactus Thorns
+150:Ice Boomerang
+151:Thunder Arrow
+152:Zero Shuriken
+153:Zero Whip
+154:Mist-Cracking Whip
+155:Leather Whip
+156:Thorny Whip
+157:Catfish Whiskers
+158:Giant Snake Whip
+159:Binding Whip
+160:Morning Star
+161:Whip of Light
+162:Burning Hot Whip
+163:Gale Whip
+164:Adventure Clothes
+165:Sunday Best
+166:Sports Wear
+167:Work Clothes
+168:Cactus Armor
+169:Soldier's Uniform
+170:Officer's Uniform
+171:Fairy Robe
+172:Flying Dragon Vest
+173:Frog Shirt
+174:Spy Clothes
+175:Chain Mail
+176:Battle Bikini
+177:Mogay Clothes
+178:Mink Coat
+179:Enchantress' Robe
+180:Angel's Robe
+181:Robe of the Sun
+182:Breastplate
+183:Outdated Armor
+184:Bamboo Armor
+185:Shell Armor
+186:Thick Armor
+187:Swordfish Armor
+188:Skull Armor
+189:Chameleon Armor
+190:Plug Suit
+191:Aura Armor
+192:Dark Armor
+193:Warrior's Mail
+194:Spirit Armor
+195:Devil's Robe
+196:Magic Robe
+197:Cutting Board
+198:Woolen Mittens
+199:Leather Gloves
+200:Escargot Shield
+201:Oaken Shield
+202:Shell Shield
+203:Seashell Shield
+204:Mushroom Shield
+205:MagicMirror Shield
+206:Alligator Gauntlet
+207:Leaf Shield
+208:Lafa Flower Shield
+209:Power Shield
+210:Moonlight Shield
+211:Gauntlets
+212:Dragon Gauntlet
+213:Heavy Shield
+214:Gauntlets of Light
+215:Spirit Shield
+216:Magic Gloves
+217:Zero Shield
+218:Goggles
+219:Ribbon
+220:Fluffy Ribbon
+221:Barrette
+222:Pirate's Hat
+223:Cowboy Hat
+224:Climbing Hat
+225:Odd Hat
+226:Headgear
+227:Iron Bandana
+228:Feathered Turban
+229:Angel's Hat
+230:Pope's Hat
+231:Safety Helmet
+232:Antler Helmet
+233:Pearl Helmet
+234:Pirate's Helmet
+235:Stone Head
+236:Swallowtail Hat
+237:Mystic Mask
+238:Death Mask
+239:Ogre Helm
+240:Charisma Helm
+241:Spirit Helmet
+242:Holy Crown
+243:Cactus Helm
+244:Fairy Tiara
+245:Man's Headband
+246:Battle Helm
+247:Sneakers
+248:Dress Shoes
+249:Air Sneakers
+250:Shiny Shoes
+251:Rubber Boots
+252:Leather Greaves
+253:Hunter's Boots
+254:Army Boots
+255:Curious Clogs
+256:Dragon Boots
+257:Ninja Sandals
+258:Winged Boots
+259:Beach Sandals
+260:Mach 1 Boots
+261:Heavy Boots
+262:Queen Heels
+263:Iron Clogs
+264:Ogre Boots
+265:Rabbit Shoes
+266:Rainbow High Heels
+267:Wolf Boots
+268:Lion Boots
+269:Battle Boots
+270:Spirit Shoes
+271:Glass Slippers
+272:Warp Shoes
+273:Crampons
+274:Zero Boots
+275:Prohibited
+276:Diana's Amulet
+277:Hero's Badge
+278:Demon Sword Amulet
+279:Officer's Badge
+280:Black Belt
+281:Chain Earrings
+282:Titan's Ring
+283:Fireproof Cape
+284:Fire Charm
+285:Water Charm
+286:Wind Charm
+287:Earth Charm
+288:Counter Ring
+289:Secret Move Ring
+290:Hurricane Belt
+291:Mama's Amulet
+292:Jade Charm
+293:Tree God Amulet
+294:Light God Amulet
+295:Ancestor's Amulet
+296:Raincoat
+297:Iridescent Amulet
+298:Move Unblocker
+299:Medal of Yore
+300:Spirit Charm
+301:Phantom Silk
+302:Lightning Charm
+303:Forest Charm
+304:Explosion Charm
+305:Blizzard Charm
+306:Wind Belt
+307:Confusion Charm
+308:Paralysis Charm
+309:Magic Block Charm
+310:Sudden Death Charm
+311:Poison Charm
+312:Talisman
+313:Sonic Belt
+314:Metal Frog
+315:Revival Stone
+316:Use Prohibited
+317:Scarab
+318:Demon Eye Stone
+319:Jewel of Life
+320:Ankh of Temptation
+321:Anklet
+322:Energy Ring
+323:Disease Charm
+324:Paperweight
+325:Combat Anklet
+326:Chain of Gems
+327:Satisfaction Gem
+328:Soul of Asura
+329:Crescent Jade
+330:Dragon Scales
+331:Spectacles
+332:Rune Ring
+333:Tear Jewel
+334:Spirit Potion
+335:Would Salve
+336:Baobab Fruit
+337:Boiled Coconut
+338:Chocolate Cookies
+339:Honey
+340:Ultra Drink
+341:Weeds
+342:Dried Fish
+343:Bamboo Shoots
+344:Beef Jerky
+345:Box Lunch
+346:Herbs
+347:White Sulfa Weed
+348:Smarna Weed
+349:Cholla Flowers
+350:Bamo Fruit
+351:Squid Guts
+352:Move Mushroom
+353:Power Mushroom
+354:Poison Antidote
+355:Ginseng
+356:Banana
+357:Bandage
+358:Box of Sweets
+359:First Aid Kit
+360:Red Medicine
+361:Blue Medicine
+362:Yellow Medicine
+363:Crimson Potion
+364:Deep Blue Potion
+365:Golden Potion
+366:Magic Lamp
+367:Poison Antidote
+368:Vaccine
+369:Eye Drops
+370:Smelling Salts
+371:Paralysis Ointment
+372:Spell Breaker
+373:Move Breaker
+374:Resurrect Potion
+375:Panacea
+376:Bond of Trust
+377:Seed of Power
+378:Seed of Defense
+379:Seed of Speed
+380:Seed of Running
+381:All-Around Seed
+382:Seed of Life
+383:Seed of Magic
+384:Seed of Moves
+385:Mace Coloring Book
+386:Bow Coloring Book
+387:Sword Secrets
+388:Fire Secrets
+389:Earth Secrets
+390:How to Cut 'Em
+391:How to Pound 'Em
+392:How to Chop 'Em
+393:Roach Bomb
+394:Firewood Sparks
+395:Mana Egg
+396:Holy Fire
+397:Hand Grenade
+398:Dynamite
+399:Rocket Fireworks
+400:Launch Fireworks
+401:BOOM! Scroll
+402:Howler Scroll
+403:Vacuum Scroll
+404:Tremor Scroll
+405:Zap! Book
+406:Lightning Scroll
+407:Gale Scroll
+408:Overflowing Walnut
+409:Restraint Walnut
+410:Sonic Walnut
+411:Running Walnut
+412:Snooze Scroll
+413:Poisoned Apple
+414:Culture Medium
+415:Dream Truffle
+416:Paralyze Mushroom
+417:Orb of Silence
+418:Black Onyx
+419:Weak-Knee Weed
+420:Ragged Weed
+421:Slouch Weed
+422:Trudge Weed
+423:Root of Confusion
+424:Torte's Whistle
+425:Freesia Flowers
+426:Cone of Light
+427:Mikeroma Scroll
+428:Shuffle Card
+429:Miracle Drink
+430:Gold Key
+431:Silver Key
+432:Key of Temptation
+433:Soldier's Key
+434:Pretty Jewel
+435:Pretty Jewel
+436:Pretty Jewel
+437:Horn of Inogon
+438:Key
+439:Health Weed
+440:Snake Earrings
+441:Resurrect Potion
+442:Expensive Jewel
+443:Rainbow Weed
+444:Smoked Salmon
+445:Prime Rib
+446:Rescue Set
+447:Black Nail Polish
+448:Prohibited
+449:Thor's Fury
+450:Magic Lipstick
+451:Elite Badge
+452:Fruit of Power
+453:Fruit of Defense
+454:Fruit of Speed
+455:Fruit of Agility
+456:All-Around Fruit
+457:Fruit of Life
+458:Fruit of Magic
+459:Fruit of Moves
+460:Mogay Teachings 1
+461:Mogay Teachings 2
+462:Mogay Teachings 3
+463:Ring of Rage
+464:Holy Ring
+465:Mysterious Veil
+466:Blizzard Scroll
+467:Telescope
+468:Energy Charm
+469:Devil's Anklet
+470:Prohibited
+471:Astral Miracle
+472:Ethereal Miracle
+473:Miraculous Scales
+474:General's Staff
+475:Brown Crayon
+476:Blue Crayon
+477:Red Crayon
+478:Sky-Blue Crayon
+479:Emperor's Whip
+480:Soldier's Soul
+481:Poison of Power
+482:Poison of Defense
+483:Poison of Speed
+484:Poison of Agility
+485:All-Around Poison
+486:Poison of Life
+487:Poison of Magic
+488:Poison of Moves
+489:+1 Dagger Skill
+490:+5 Dagger Skill
+491:+1 Sword Skill
+492:+5 Sword Skill
+493:+1 Mace Skill
+494:+5 Mace Skill
+495:+1 Ax Skill
+496:+5 Ax Skill
+497:+1 Whip Skill
+498:+5 Whip Skill
+499:+1 Bow Skill
+500:+5 Bow Skill
+501:+1 Fire Skill
+502:+5 Fire Skill
+503:+1 Wind Skill
+504:+5 Wind Skill
+505:+1 Water Skill
+506:+5 Water Skill
+507:+1 Earth Skill
+508:+5 Earth Skill
+509:100 Sword
+510:100 Mace
+511:100 Fire Mace
+</DropDownList>
+                          <LastState Value="0" RealAddress="109432EC"/>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 60</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4156</ID>
+                          <Description>"Slot 6"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Nothing
+10:Spirit Stone
+11:Hero's Armband
+12:Horn of Knowledge
+13:Medal of Wisdom
+14:Medal of Knowledge
+15:Gaia Sprout
+16:Gantz's Key
+17:Intro Letter
+18:Key to the Café
+19:Java's Wallet
+20:Steamer Pass
+21:Lilly's Letter
+22:Cabin Key
+23:Sulfa Weed
+24:Jail Key
+25:Master Key
+26:Nectar of the Gods
+27:Mist-Clearing Nut
+28:Sue's Shoes
+29:Warrior's Spear
+30:Teleportation Orb
+31:Apron
+32:Pot Lid
+33:Iron Pot
+34:Wooden Sword
+35:Spirit Sword
+36:Biscuits
+37:Marie's Pin
+38:Coal Candy
+39:Letter to Clara
+40:Pearl
+41:Rainbow Key
+42:Boiled Egg
+43:Chocolate
+44:Jawbreaker
+45:Ring of Protection
+46:Frost Herb
+47:Amulet of Relief
+48:Prohibited
+49:Prohibited
+50:Prohibited
+51:Prohibited
+52:Prohibited
+53:Prohibited
+54:Prohibited
+55:Prohibited
+56:Prohibited
+57:Prohibited
+58:Prohibited
+59:Prohibited
+60:Prohibited
+61:Prohibited
+62:Prohibited
+63:Knife of Judgment
+64:Rusty Knife
+65:Paring Knife
+66:Hunter's Knife
+67:Flint Knife
+68:Azure Knife
+69:Shocking Knife
+70:Poisoned Knife
+71:Assassin's Dagger
+72:Bloody Knife
+73:Ice Pick
+74:Force Knife
+75:Godspeed Knife
+76:Gust Knife
+77:Ruination Knife
+78:Thief Cutter
+79:Zero Knife
+80:Ceramic Sword
+81:Prohibited
+82:Admiral's Sword
+83:Great Sword
+84:Army Saber
+85:The Sword Himmler
+86:Angel's Darts
+87:Swordfish Sword
+88:Dragon Killer
+89:Fire Sword
+90:Shadow Sword
+91:Gil Sword
+92:Silence Sword
+93:Prohibited
+94:Wobbly Sword
+95:Main Gauche
+96:Holy Sword Lorenzo
+97:Ice Blade
+98:Lightning Sword
+99:Battle Saber
+100:Zero Sword
+101:Wooden Pole
+102:Metal Bat
+103:Zero Rod
+104:Officer's Baton
+105:Magic Rod
+106:Miner's Hammer
+107:Iron Mace
+108:Army Darts
+109:Lassic Hammer
+110:War Hammer
+111:Hertz Spike
+112:Oracle's Staff
+113:Raincloud Staff
+114:Staff of Life
+115:Warp Staff
+116:Holy Mace
+117:Fire Rod
+118:Aromatic Tree Root
+119:Sparkling Rod
+120:Spirit Staff
+121:Home Run Hammer
+122:Rusty Shovel
+123:Hand Ax
+124:Ceremonial Rock Ax
+125:Big Hatchet
+126:Woodchopper's Ax
+127:Dragon Bone Ax
+128:Klepp's Sickle
+129:Frog Ax
+130:Bone Splitter Ax
+131:Earthen Ax
+132:Buster Ax
+133:Wrecking Ax
+134:Bent Mattock
+135:Zero Ax
+136:Toy Bow and Arrow
+137:Handmade Darts
+138:Hunter's Bow
+139:Flying Fish Bow
+140:Hail Bow
+141:Flint Bow
+142:Exorcising Bow
+143:Cafu Shuriken
+144:Boomerang
+145:Fire Darts
+146:Evil Shuriken
+147:Demonslayer Boomer
+148:Discus
+149:Cactus Thorns
+150:Ice Boomerang
+151:Thunder Arrow
+152:Zero Shuriken
+153:Zero Whip
+154:Mist-Cracking Whip
+155:Leather Whip
+156:Thorny Whip
+157:Catfish Whiskers
+158:Giant Snake Whip
+159:Binding Whip
+160:Morning Star
+161:Whip of Light
+162:Burning Hot Whip
+163:Gale Whip
+164:Adventure Clothes
+165:Sunday Best
+166:Sports Wear
+167:Work Clothes
+168:Cactus Armor
+169:Soldier's Uniform
+170:Officer's Uniform
+171:Fairy Robe
+172:Flying Dragon Vest
+173:Frog Shirt
+174:Spy Clothes
+175:Chain Mail
+176:Battle Bikini
+177:Mogay Clothes
+178:Mink Coat
+179:Enchantress' Robe
+180:Angel's Robe
+181:Robe of the Sun
+182:Breastplate
+183:Outdated Armor
+184:Bamboo Armor
+185:Shell Armor
+186:Thick Armor
+187:Swordfish Armor
+188:Skull Armor
+189:Chameleon Armor
+190:Plug Suit
+191:Aura Armor
+192:Dark Armor
+193:Warrior's Mail
+194:Spirit Armor
+195:Devil's Robe
+196:Magic Robe
+197:Cutting Board
+198:Woolen Mittens
+199:Leather Gloves
+200:Escargot Shield
+201:Oaken Shield
+202:Shell Shield
+203:Seashell Shield
+204:Mushroom Shield
+205:MagicMirror Shield
+206:Alligator Gauntlet
+207:Leaf Shield
+208:Lafa Flower Shield
+209:Power Shield
+210:Moonlight Shield
+211:Gauntlets
+212:Dragon Gauntlet
+213:Heavy Shield
+214:Gauntlets of Light
+215:Spirit Shield
+216:Magic Gloves
+217:Zero Shield
+218:Goggles
+219:Ribbon
+220:Fluffy Ribbon
+221:Barrette
+222:Pirate's Hat
+223:Cowboy Hat
+224:Climbing Hat
+225:Odd Hat
+226:Headgear
+227:Iron Bandana
+228:Feathered Turban
+229:Angel's Hat
+230:Pope's Hat
+231:Safety Helmet
+232:Antler Helmet
+233:Pearl Helmet
+234:Pirate's Helmet
+235:Stone Head
+236:Swallowtail Hat
+237:Mystic Mask
+238:Death Mask
+239:Ogre Helm
+240:Charisma Helm
+241:Spirit Helmet
+242:Holy Crown
+243:Cactus Helm
+244:Fairy Tiara
+245:Man's Headband
+246:Battle Helm
+247:Sneakers
+248:Dress Shoes
+249:Air Sneakers
+250:Shiny Shoes
+251:Rubber Boots
+252:Leather Greaves
+253:Hunter's Boots
+254:Army Boots
+255:Curious Clogs
+256:Dragon Boots
+257:Ninja Sandals
+258:Winged Boots
+259:Beach Sandals
+260:Mach 1 Boots
+261:Heavy Boots
+262:Queen Heels
+263:Iron Clogs
+264:Ogre Boots
+265:Rabbit Shoes
+266:Rainbow High Heels
+267:Wolf Boots
+268:Lion Boots
+269:Battle Boots
+270:Spirit Shoes
+271:Glass Slippers
+272:Warp Shoes
+273:Crampons
+274:Zero Boots
+275:Prohibited
+276:Diana's Amulet
+277:Hero's Badge
+278:Demon Sword Amulet
+279:Officer's Badge
+280:Black Belt
+281:Chain Earrings
+282:Titan's Ring
+283:Fireproof Cape
+284:Fire Charm
+285:Water Charm
+286:Wind Charm
+287:Earth Charm
+288:Counter Ring
+289:Secret Move Ring
+290:Hurricane Belt
+291:Mama's Amulet
+292:Jade Charm
+293:Tree God Amulet
+294:Light God Amulet
+295:Ancestor's Amulet
+296:Raincoat
+297:Iridescent Amulet
+298:Move Unblocker
+299:Medal of Yore
+300:Spirit Charm
+301:Phantom Silk
+302:Lightning Charm
+303:Forest Charm
+304:Explosion Charm
+305:Blizzard Charm
+306:Wind Belt
+307:Confusion Charm
+308:Paralysis Charm
+309:Magic Block Charm
+310:Sudden Death Charm
+311:Poison Charm
+312:Talisman
+313:Sonic Belt
+314:Metal Frog
+315:Revival Stone
+316:Use Prohibited
+317:Scarab
+318:Demon Eye Stone
+319:Jewel of Life
+320:Ankh of Temptation
+321:Anklet
+322:Energy Ring
+323:Disease Charm
+324:Paperweight
+325:Combat Anklet
+326:Chain of Gems
+327:Satisfaction Gem
+328:Soul of Asura
+329:Crescent Jade
+330:Dragon Scales
+331:Spectacles
+332:Rune Ring
+333:Tear Jewel
+334:Spirit Potion
+335:Would Salve
+336:Baobab Fruit
+337:Boiled Coconut
+338:Chocolate Cookies
+339:Honey
+340:Ultra Drink
+341:Weeds
+342:Dried Fish
+343:Bamboo Shoots
+344:Beef Jerky
+345:Box Lunch
+346:Herbs
+347:White Sulfa Weed
+348:Smarna Weed
+349:Cholla Flowers
+350:Bamo Fruit
+351:Squid Guts
+352:Move Mushroom
+353:Power Mushroom
+354:Poison Antidote
+355:Ginseng
+356:Banana
+357:Bandage
+358:Box of Sweets
+359:First Aid Kit
+360:Red Medicine
+361:Blue Medicine
+362:Yellow Medicine
+363:Crimson Potion
+364:Deep Blue Potion
+365:Golden Potion
+366:Magic Lamp
+367:Poison Antidote
+368:Vaccine
+369:Eye Drops
+370:Smelling Salts
+371:Paralysis Ointment
+372:Spell Breaker
+373:Move Breaker
+374:Resurrect Potion
+375:Panacea
+376:Bond of Trust
+377:Seed of Power
+378:Seed of Defense
+379:Seed of Speed
+380:Seed of Running
+381:All-Around Seed
+382:Seed of Life
+383:Seed of Magic
+384:Seed of Moves
+385:Mace Coloring Book
+386:Bow Coloring Book
+387:Sword Secrets
+388:Fire Secrets
+389:Earth Secrets
+390:How to Cut 'Em
+391:How to Pound 'Em
+392:How to Chop 'Em
+393:Roach Bomb
+394:Firewood Sparks
+395:Mana Egg
+396:Holy Fire
+397:Hand Grenade
+398:Dynamite
+399:Rocket Fireworks
+400:Launch Fireworks
+401:BOOM! Scroll
+402:Howler Scroll
+403:Vacuum Scroll
+404:Tremor Scroll
+405:Zap! Book
+406:Lightning Scroll
+407:Gale Scroll
+408:Overflowing Walnut
+409:Restraint Walnut
+410:Sonic Walnut
+411:Running Walnut
+412:Snooze Scroll
+413:Poisoned Apple
+414:Culture Medium
+415:Dream Truffle
+416:Paralyze Mushroom
+417:Orb of Silence
+418:Black Onyx
+419:Weak-Knee Weed
+420:Ragged Weed
+421:Slouch Weed
+422:Trudge Weed
+423:Root of Confusion
+424:Torte's Whistle
+425:Freesia Flowers
+426:Cone of Light
+427:Mikeroma Scroll
+428:Shuffle Card
+429:Miracle Drink
+430:Gold Key
+431:Silver Key
+432:Key of Temptation
+433:Soldier's Key
+434:Pretty Jewel
+435:Pretty Jewel
+436:Pretty Jewel
+437:Horn of Inogon
+438:Key
+439:Health Weed
+440:Snake Earrings
+441:Resurrect Potion
+442:Expensive Jewel
+443:Rainbow Weed
+444:Smoked Salmon
+445:Prime Rib
+446:Rescue Set
+447:Black Nail Polish
+448:Prohibited
+449:Thor's Fury
+450:Magic Lipstick
+451:Elite Badge
+452:Fruit of Power
+453:Fruit of Defense
+454:Fruit of Speed
+455:Fruit of Agility
+456:All-Around Fruit
+457:Fruit of Life
+458:Fruit of Magic
+459:Fruit of Moves
+460:Mogay Teachings 1
+461:Mogay Teachings 2
+462:Mogay Teachings 3
+463:Ring of Rage
+464:Holy Ring
+465:Mysterious Veil
+466:Blizzard Scroll
+467:Telescope
+468:Energy Charm
+469:Devil's Anklet
+470:Prohibited
+471:Astral Miracle
+472:Ethereal Miracle
+473:Miraculous Scales
+474:General's Staff
+475:Brown Crayon
+476:Blue Crayon
+477:Red Crayon
+478:Sky-Blue Crayon
+479:Emperor's Whip
+480:Soldier's Soul
+481:Poison of Power
+482:Poison of Defense
+483:Poison of Speed
+484:Poison of Agility
+485:All-Around Poison
+486:Poison of Life
+487:Poison of Magic
+488:Poison of Moves
+489:+1 Dagger Skill
+490:+5 Dagger Skill
+491:+1 Sword Skill
+492:+5 Sword Skill
+493:+1 Mace Skill
+494:+5 Mace Skill
+495:+1 Ax Skill
+496:+5 Ax Skill
+497:+1 Whip Skill
+498:+5 Whip Skill
+499:+1 Bow Skill
+500:+5 Bow Skill
+501:+1 Fire Skill
+502:+5 Fire Skill
+503:+1 Wind Skill
+504:+5 Wind Skill
+505:+1 Water Skill
+506:+5 Water Skill
+507:+1 Earth Skill
+508:+5 Earth Skill
+509:100 Sword
+510:100 Mace
+511:100 Fire Mace
+</DropDownList>
+                          <LastState Value="0" RealAddress="109432EE"/>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 62</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4157</ID>
+                          <Description>"Slot 7"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Nothing
+10:Spirit Stone
+11:Hero's Armband
+12:Horn of Knowledge
+13:Medal of Wisdom
+14:Medal of Knowledge
+15:Gaia Sprout
+16:Gantz's Key
+17:Intro Letter
+18:Key to the Café
+19:Java's Wallet
+20:Steamer Pass
+21:Lilly's Letter
+22:Cabin Key
+23:Sulfa Weed
+24:Jail Key
+25:Master Key
+26:Nectar of the Gods
+27:Mist-Clearing Nut
+28:Sue's Shoes
+29:Warrior's Spear
+30:Teleportation Orb
+31:Apron
+32:Pot Lid
+33:Iron Pot
+34:Wooden Sword
+35:Spirit Sword
+36:Biscuits
+37:Marie's Pin
+38:Coal Candy
+39:Letter to Clara
+40:Pearl
+41:Rainbow Key
+42:Boiled Egg
+43:Chocolate
+44:Jawbreaker
+45:Ring of Protection
+46:Frost Herb
+47:Amulet of Relief
+48:Prohibited
+49:Prohibited
+50:Prohibited
+51:Prohibited
+52:Prohibited
+53:Prohibited
+54:Prohibited
+55:Prohibited
+56:Prohibited
+57:Prohibited
+58:Prohibited
+59:Prohibited
+60:Prohibited
+61:Prohibited
+62:Prohibited
+63:Knife of Judgment
+64:Rusty Knife
+65:Paring Knife
+66:Hunter's Knife
+67:Flint Knife
+68:Azure Knife
+69:Shocking Knife
+70:Poisoned Knife
+71:Assassin's Dagger
+72:Bloody Knife
+73:Ice Pick
+74:Force Knife
+75:Godspeed Knife
+76:Gust Knife
+77:Ruination Knife
+78:Thief Cutter
+79:Zero Knife
+80:Ceramic Sword
+81:Prohibited
+82:Admiral's Sword
+83:Great Sword
+84:Army Saber
+85:The Sword Himmler
+86:Angel's Darts
+87:Swordfish Sword
+88:Dragon Killer
+89:Fire Sword
+90:Shadow Sword
+91:Gil Sword
+92:Silence Sword
+93:Prohibited
+94:Wobbly Sword
+95:Main Gauche
+96:Holy Sword Lorenzo
+97:Ice Blade
+98:Lightning Sword
+99:Battle Saber
+100:Zero Sword
+101:Wooden Pole
+102:Metal Bat
+103:Zero Rod
+104:Officer's Baton
+105:Magic Rod
+106:Miner's Hammer
+107:Iron Mace
+108:Army Darts
+109:Lassic Hammer
+110:War Hammer
+111:Hertz Spike
+112:Oracle's Staff
+113:Raincloud Staff
+114:Staff of Life
+115:Warp Staff
+116:Holy Mace
+117:Fire Rod
+118:Aromatic Tree Root
+119:Sparkling Rod
+120:Spirit Staff
+121:Home Run Hammer
+122:Rusty Shovel
+123:Hand Ax
+124:Ceremonial Rock Ax
+125:Big Hatchet
+126:Woodchopper's Ax
+127:Dragon Bone Ax
+128:Klepp's Sickle
+129:Frog Ax
+130:Bone Splitter Ax
+131:Earthen Ax
+132:Buster Ax
+133:Wrecking Ax
+134:Bent Mattock
+135:Zero Ax
+136:Toy Bow and Arrow
+137:Handmade Darts
+138:Hunter's Bow
+139:Flying Fish Bow
+140:Hail Bow
+141:Flint Bow
+142:Exorcising Bow
+143:Cafu Shuriken
+144:Boomerang
+145:Fire Darts
+146:Evil Shuriken
+147:Demonslayer Boomer
+148:Discus
+149:Cactus Thorns
+150:Ice Boomerang
+151:Thunder Arrow
+152:Zero Shuriken
+153:Zero Whip
+154:Mist-Cracking Whip
+155:Leather Whip
+156:Thorny Whip
+157:Catfish Whiskers
+158:Giant Snake Whip
+159:Binding Whip
+160:Morning Star
+161:Whip of Light
+162:Burning Hot Whip
+163:Gale Whip
+164:Adventure Clothes
+165:Sunday Best
+166:Sports Wear
+167:Work Clothes
+168:Cactus Armor
+169:Soldier's Uniform
+170:Officer's Uniform
+171:Fairy Robe
+172:Flying Dragon Vest
+173:Frog Shirt
+174:Spy Clothes
+175:Chain Mail
+176:Battle Bikini
+177:Mogay Clothes
+178:Mink Coat
+179:Enchantress' Robe
+180:Angel's Robe
+181:Robe of the Sun
+182:Breastplate
+183:Outdated Armor
+184:Bamboo Armor
+185:Shell Armor
+186:Thick Armor
+187:Swordfish Armor
+188:Skull Armor
+189:Chameleon Armor
+190:Plug Suit
+191:Aura Armor
+192:Dark Armor
+193:Warrior's Mail
+194:Spirit Armor
+195:Devil's Robe
+196:Magic Robe
+197:Cutting Board
+198:Woolen Mittens
+199:Leather Gloves
+200:Escargot Shield
+201:Oaken Shield
+202:Shell Shield
+203:Seashell Shield
+204:Mushroom Shield
+205:MagicMirror Shield
+206:Alligator Gauntlet
+207:Leaf Shield
+208:Lafa Flower Shield
+209:Power Shield
+210:Moonlight Shield
+211:Gauntlets
+212:Dragon Gauntlet
+213:Heavy Shield
+214:Gauntlets of Light
+215:Spirit Shield
+216:Magic Gloves
+217:Zero Shield
+218:Goggles
+219:Ribbon
+220:Fluffy Ribbon
+221:Barrette
+222:Pirate's Hat
+223:Cowboy Hat
+224:Climbing Hat
+225:Odd Hat
+226:Headgear
+227:Iron Bandana
+228:Feathered Turban
+229:Angel's Hat
+230:Pope's Hat
+231:Safety Helmet
+232:Antler Helmet
+233:Pearl Helmet
+234:Pirate's Helmet
+235:Stone Head
+236:Swallowtail Hat
+237:Mystic Mask
+238:Death Mask
+239:Ogre Helm
+240:Charisma Helm
+241:Spirit Helmet
+242:Holy Crown
+243:Cactus Helm
+244:Fairy Tiara
+245:Man's Headband
+246:Battle Helm
+247:Sneakers
+248:Dress Shoes
+249:Air Sneakers
+250:Shiny Shoes
+251:Rubber Boots
+252:Leather Greaves
+253:Hunter's Boots
+254:Army Boots
+255:Curious Clogs
+256:Dragon Boots
+257:Ninja Sandals
+258:Winged Boots
+259:Beach Sandals
+260:Mach 1 Boots
+261:Heavy Boots
+262:Queen Heels
+263:Iron Clogs
+264:Ogre Boots
+265:Rabbit Shoes
+266:Rainbow High Heels
+267:Wolf Boots
+268:Lion Boots
+269:Battle Boots
+270:Spirit Shoes
+271:Glass Slippers
+272:Warp Shoes
+273:Crampons
+274:Zero Boots
+275:Prohibited
+276:Diana's Amulet
+277:Hero's Badge
+278:Demon Sword Amulet
+279:Officer's Badge
+280:Black Belt
+281:Chain Earrings
+282:Titan's Ring
+283:Fireproof Cape
+284:Fire Charm
+285:Water Charm
+286:Wind Charm
+287:Earth Charm
+288:Counter Ring
+289:Secret Move Ring
+290:Hurricane Belt
+291:Mama's Amulet
+292:Jade Charm
+293:Tree God Amulet
+294:Light God Amulet
+295:Ancestor's Amulet
+296:Raincoat
+297:Iridescent Amulet
+298:Move Unblocker
+299:Medal of Yore
+300:Spirit Charm
+301:Phantom Silk
+302:Lightning Charm
+303:Forest Charm
+304:Explosion Charm
+305:Blizzard Charm
+306:Wind Belt
+307:Confusion Charm
+308:Paralysis Charm
+309:Magic Block Charm
+310:Sudden Death Charm
+311:Poison Charm
+312:Talisman
+313:Sonic Belt
+314:Metal Frog
+315:Revival Stone
+316:Use Prohibited
+317:Scarab
+318:Demon Eye Stone
+319:Jewel of Life
+320:Ankh of Temptation
+321:Anklet
+322:Energy Ring
+323:Disease Charm
+324:Paperweight
+325:Combat Anklet
+326:Chain of Gems
+327:Satisfaction Gem
+328:Soul of Asura
+329:Crescent Jade
+330:Dragon Scales
+331:Spectacles
+332:Rune Ring
+333:Tear Jewel
+334:Spirit Potion
+335:Would Salve
+336:Baobab Fruit
+337:Boiled Coconut
+338:Chocolate Cookies
+339:Honey
+340:Ultra Drink
+341:Weeds
+342:Dried Fish
+343:Bamboo Shoots
+344:Beef Jerky
+345:Box Lunch
+346:Herbs
+347:White Sulfa Weed
+348:Smarna Weed
+349:Cholla Flowers
+350:Bamo Fruit
+351:Squid Guts
+352:Move Mushroom
+353:Power Mushroom
+354:Poison Antidote
+355:Ginseng
+356:Banana
+357:Bandage
+358:Box of Sweets
+359:First Aid Kit
+360:Red Medicine
+361:Blue Medicine
+362:Yellow Medicine
+363:Crimson Potion
+364:Deep Blue Potion
+365:Golden Potion
+366:Magic Lamp
+367:Poison Antidote
+368:Vaccine
+369:Eye Drops
+370:Smelling Salts
+371:Paralysis Ointment
+372:Spell Breaker
+373:Move Breaker
+374:Resurrect Potion
+375:Panacea
+376:Bond of Trust
+377:Seed of Power
+378:Seed of Defense
+379:Seed of Speed
+380:Seed of Running
+381:All-Around Seed
+382:Seed of Life
+383:Seed of Magic
+384:Seed of Moves
+385:Mace Coloring Book
+386:Bow Coloring Book
+387:Sword Secrets
+388:Fire Secrets
+389:Earth Secrets
+390:How to Cut 'Em
+391:How to Pound 'Em
+392:How to Chop 'Em
+393:Roach Bomb
+394:Firewood Sparks
+395:Mana Egg
+396:Holy Fire
+397:Hand Grenade
+398:Dynamite
+399:Rocket Fireworks
+400:Launch Fireworks
+401:BOOM! Scroll
+402:Howler Scroll
+403:Vacuum Scroll
+404:Tremor Scroll
+405:Zap! Book
+406:Lightning Scroll
+407:Gale Scroll
+408:Overflowing Walnut
+409:Restraint Walnut
+410:Sonic Walnut
+411:Running Walnut
+412:Snooze Scroll
+413:Poisoned Apple
+414:Culture Medium
+415:Dream Truffle
+416:Paralyze Mushroom
+417:Orb of Silence
+418:Black Onyx
+419:Weak-Knee Weed
+420:Ragged Weed
+421:Slouch Weed
+422:Trudge Weed
+423:Root of Confusion
+424:Torte's Whistle
+425:Freesia Flowers
+426:Cone of Light
+427:Mikeroma Scroll
+428:Shuffle Card
+429:Miracle Drink
+430:Gold Key
+431:Silver Key
+432:Key of Temptation
+433:Soldier's Key
+434:Pretty Jewel
+435:Pretty Jewel
+436:Pretty Jewel
+437:Horn of Inogon
+438:Key
+439:Health Weed
+440:Snake Earrings
+441:Resurrect Potion
+442:Expensive Jewel
+443:Rainbow Weed
+444:Smoked Salmon
+445:Prime Rib
+446:Rescue Set
+447:Black Nail Polish
+448:Prohibited
+449:Thor's Fury
+450:Magic Lipstick
+451:Elite Badge
+452:Fruit of Power
+453:Fruit of Defense
+454:Fruit of Speed
+455:Fruit of Agility
+456:All-Around Fruit
+457:Fruit of Life
+458:Fruit of Magic
+459:Fruit of Moves
+460:Mogay Teachings 1
+461:Mogay Teachings 2
+462:Mogay Teachings 3
+463:Ring of Rage
+464:Holy Ring
+465:Mysterious Veil
+466:Blizzard Scroll
+467:Telescope
+468:Energy Charm
+469:Devil's Anklet
+470:Prohibited
+471:Astral Miracle
+472:Ethereal Miracle
+473:Miraculous Scales
+474:General's Staff
+475:Brown Crayon
+476:Blue Crayon
+477:Red Crayon
+478:Sky-Blue Crayon
+479:Emperor's Whip
+480:Soldier's Soul
+481:Poison of Power
+482:Poison of Defense
+483:Poison of Speed
+484:Poison of Agility
+485:All-Around Poison
+486:Poison of Life
+487:Poison of Magic
+488:Poison of Moves
+489:+1 Dagger Skill
+490:+5 Dagger Skill
+491:+1 Sword Skill
+492:+5 Sword Skill
+493:+1 Mace Skill
+494:+5 Mace Skill
+495:+1 Ax Skill
+496:+5 Ax Skill
+497:+1 Whip Skill
+498:+5 Whip Skill
+499:+1 Bow Skill
+500:+5 Bow Skill
+501:+1 Fire Skill
+502:+5 Fire Skill
+503:+1 Wind Skill
+504:+5 Wind Skill
+505:+1 Water Skill
+506:+5 Water Skill
+507:+1 Earth Skill
+508:+5 Earth Skill
+509:100 Sword
+510:100 Mace
+511:100 Fire Mace
+</DropDownList>
+                          <LastState Value="0" RealAddress="109432F0"/>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 64</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4158</ID>
+                          <Description>"Slot 8"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Nothing
+10:Spirit Stone
+11:Hero's Armband
+12:Horn of Knowledge
+13:Medal of Wisdom
+14:Medal of Knowledge
+15:Gaia Sprout
+16:Gantz's Key
+17:Intro Letter
+18:Key to the Café
+19:Java's Wallet
+20:Steamer Pass
+21:Lilly's Letter
+22:Cabin Key
+23:Sulfa Weed
+24:Jail Key
+25:Master Key
+26:Nectar of the Gods
+27:Mist-Clearing Nut
+28:Sue's Shoes
+29:Warrior's Spear
+30:Teleportation Orb
+31:Apron
+32:Pot Lid
+33:Iron Pot
+34:Wooden Sword
+35:Spirit Sword
+36:Biscuits
+37:Marie's Pin
+38:Coal Candy
+39:Letter to Clara
+40:Pearl
+41:Rainbow Key
+42:Boiled Egg
+43:Chocolate
+44:Jawbreaker
+45:Ring of Protection
+46:Frost Herb
+47:Amulet of Relief
+48:Prohibited
+49:Prohibited
+50:Prohibited
+51:Prohibited
+52:Prohibited
+53:Prohibited
+54:Prohibited
+55:Prohibited
+56:Prohibited
+57:Prohibited
+58:Prohibited
+59:Prohibited
+60:Prohibited
+61:Prohibited
+62:Prohibited
+63:Knife of Judgment
+64:Rusty Knife
+65:Paring Knife
+66:Hunter's Knife
+67:Flint Knife
+68:Azure Knife
+69:Shocking Knife
+70:Poisoned Knife
+71:Assassin's Dagger
+72:Bloody Knife
+73:Ice Pick
+74:Force Knife
+75:Godspeed Knife
+76:Gust Knife
+77:Ruination Knife
+78:Thief Cutter
+79:Zero Knife
+80:Ceramic Sword
+81:Prohibited
+82:Admiral's Sword
+83:Great Sword
+84:Army Saber
+85:The Sword Himmler
+86:Angel's Darts
+87:Swordfish Sword
+88:Dragon Killer
+89:Fire Sword
+90:Shadow Sword
+91:Gil Sword
+92:Silence Sword
+93:Prohibited
+94:Wobbly Sword
+95:Main Gauche
+96:Holy Sword Lorenzo
+97:Ice Blade
+98:Lightning Sword
+99:Battle Saber
+100:Zero Sword
+101:Wooden Pole
+102:Metal Bat
+103:Zero Rod
+104:Officer's Baton
+105:Magic Rod
+106:Miner's Hammer
+107:Iron Mace
+108:Army Darts
+109:Lassic Hammer
+110:War Hammer
+111:Hertz Spike
+112:Oracle's Staff
+113:Raincloud Staff
+114:Staff of Life
+115:Warp Staff
+116:Holy Mace
+117:Fire Rod
+118:Aromatic Tree Root
+119:Sparkling Rod
+120:Spirit Staff
+121:Home Run Hammer
+122:Rusty Shovel
+123:Hand Ax
+124:Ceremonial Rock Ax
+125:Big Hatchet
+126:Woodchopper's Ax
+127:Dragon Bone Ax
+128:Klepp's Sickle
+129:Frog Ax
+130:Bone Splitter Ax
+131:Earthen Ax
+132:Buster Ax
+133:Wrecking Ax
+134:Bent Mattock
+135:Zero Ax
+136:Toy Bow and Arrow
+137:Handmade Darts
+138:Hunter's Bow
+139:Flying Fish Bow
+140:Hail Bow
+141:Flint Bow
+142:Exorcising Bow
+143:Cafu Shuriken
+144:Boomerang
+145:Fire Darts
+146:Evil Shuriken
+147:Demonslayer Boomer
+148:Discus
+149:Cactus Thorns
+150:Ice Boomerang
+151:Thunder Arrow
+152:Zero Shuriken
+153:Zero Whip
+154:Mist-Cracking Whip
+155:Leather Whip
+156:Thorny Whip
+157:Catfish Whiskers
+158:Giant Snake Whip
+159:Binding Whip
+160:Morning Star
+161:Whip of Light
+162:Burning Hot Whip
+163:Gale Whip
+164:Adventure Clothes
+165:Sunday Best
+166:Sports Wear
+167:Work Clothes
+168:Cactus Armor
+169:Soldier's Uniform
+170:Officer's Uniform
+171:Fairy Robe
+172:Flying Dragon Vest
+173:Frog Shirt
+174:Spy Clothes
+175:Chain Mail
+176:Battle Bikini
+177:Mogay Clothes
+178:Mink Coat
+179:Enchantress' Robe
+180:Angel's Robe
+181:Robe of the Sun
+182:Breastplate
+183:Outdated Armor
+184:Bamboo Armor
+185:Shell Armor
+186:Thick Armor
+187:Swordfish Armor
+188:Skull Armor
+189:Chameleon Armor
+190:Plug Suit
+191:Aura Armor
+192:Dark Armor
+193:Warrior's Mail
+194:Spirit Armor
+195:Devil's Robe
+196:Magic Robe
+197:Cutting Board
+198:Woolen Mittens
+199:Leather Gloves
+200:Escargot Shield
+201:Oaken Shield
+202:Shell Shield
+203:Seashell Shield
+204:Mushroom Shield
+205:MagicMirror Shield
+206:Alligator Gauntlet
+207:Leaf Shield
+208:Lafa Flower Shield
+209:Power Shield
+210:Moonlight Shield
+211:Gauntlets
+212:Dragon Gauntlet
+213:Heavy Shield
+214:Gauntlets of Light
+215:Spirit Shield
+216:Magic Gloves
+217:Zero Shield
+218:Goggles
+219:Ribbon
+220:Fluffy Ribbon
+221:Barrette
+222:Pirate's Hat
+223:Cowboy Hat
+224:Climbing Hat
+225:Odd Hat
+226:Headgear
+227:Iron Bandana
+228:Feathered Turban
+229:Angel's Hat
+230:Pope's Hat
+231:Safety Helmet
+232:Antler Helmet
+233:Pearl Helmet
+234:Pirate's Helmet
+235:Stone Head
+236:Swallowtail Hat
+237:Mystic Mask
+238:Death Mask
+239:Ogre Helm
+240:Charisma Helm
+241:Spirit Helmet
+242:Holy Crown
+243:Cactus Helm
+244:Fairy Tiara
+245:Man's Headband
+246:Battle Helm
+247:Sneakers
+248:Dress Shoes
+249:Air Sneakers
+250:Shiny Shoes
+251:Rubber Boots
+252:Leather Greaves
+253:Hunter's Boots
+254:Army Boots
+255:Curious Clogs
+256:Dragon Boots
+257:Ninja Sandals
+258:Winged Boots
+259:Beach Sandals
+260:Mach 1 Boots
+261:Heavy Boots
+262:Queen Heels
+263:Iron Clogs
+264:Ogre Boots
+265:Rabbit Shoes
+266:Rainbow High Heels
+267:Wolf Boots
+268:Lion Boots
+269:Battle Boots
+270:Spirit Shoes
+271:Glass Slippers
+272:Warp Shoes
+273:Crampons
+274:Zero Boots
+275:Prohibited
+276:Diana's Amulet
+277:Hero's Badge
+278:Demon Sword Amulet
+279:Officer's Badge
+280:Black Belt
+281:Chain Earrings
+282:Titan's Ring
+283:Fireproof Cape
+284:Fire Charm
+285:Water Charm
+286:Wind Charm
+287:Earth Charm
+288:Counter Ring
+289:Secret Move Ring
+290:Hurricane Belt
+291:Mama's Amulet
+292:Jade Charm
+293:Tree God Amulet
+294:Light God Amulet
+295:Ancestor's Amulet
+296:Raincoat
+297:Iridescent Amulet
+298:Move Unblocker
+299:Medal of Yore
+300:Spirit Charm
+301:Phantom Silk
+302:Lightning Charm
+303:Forest Charm
+304:Explosion Charm
+305:Blizzard Charm
+306:Wind Belt
+307:Confusion Charm
+308:Paralysis Charm
+309:Magic Block Charm
+310:Sudden Death Charm
+311:Poison Charm
+312:Talisman
+313:Sonic Belt
+314:Metal Frog
+315:Revival Stone
+316:Use Prohibited
+317:Scarab
+318:Demon Eye Stone
+319:Jewel of Life
+320:Ankh of Temptation
+321:Anklet
+322:Energy Ring
+323:Disease Charm
+324:Paperweight
+325:Combat Anklet
+326:Chain of Gems
+327:Satisfaction Gem
+328:Soul of Asura
+329:Crescent Jade
+330:Dragon Scales
+331:Spectacles
+332:Rune Ring
+333:Tear Jewel
+334:Spirit Potion
+335:Would Salve
+336:Baobab Fruit
+337:Boiled Coconut
+338:Chocolate Cookies
+339:Honey
+340:Ultra Drink
+341:Weeds
+342:Dried Fish
+343:Bamboo Shoots
+344:Beef Jerky
+345:Box Lunch
+346:Herbs
+347:White Sulfa Weed
+348:Smarna Weed
+349:Cholla Flowers
+350:Bamo Fruit
+351:Squid Guts
+352:Move Mushroom
+353:Power Mushroom
+354:Poison Antidote
+355:Ginseng
+356:Banana
+357:Bandage
+358:Box of Sweets
+359:First Aid Kit
+360:Red Medicine
+361:Blue Medicine
+362:Yellow Medicine
+363:Crimson Potion
+364:Deep Blue Potion
+365:Golden Potion
+366:Magic Lamp
+367:Poison Antidote
+368:Vaccine
+369:Eye Drops
+370:Smelling Salts
+371:Paralysis Ointment
+372:Spell Breaker
+373:Move Breaker
+374:Resurrect Potion
+375:Panacea
+376:Bond of Trust
+377:Seed of Power
+378:Seed of Defense
+379:Seed of Speed
+380:Seed of Running
+381:All-Around Seed
+382:Seed of Life
+383:Seed of Magic
+384:Seed of Moves
+385:Mace Coloring Book
+386:Bow Coloring Book
+387:Sword Secrets
+388:Fire Secrets
+389:Earth Secrets
+390:How to Cut 'Em
+391:How to Pound 'Em
+392:How to Chop 'Em
+393:Roach Bomb
+394:Firewood Sparks
+395:Mana Egg
+396:Holy Fire
+397:Hand Grenade
+398:Dynamite
+399:Rocket Fireworks
+400:Launch Fireworks
+401:BOOM! Scroll
+402:Howler Scroll
+403:Vacuum Scroll
+404:Tremor Scroll
+405:Zap! Book
+406:Lightning Scroll
+407:Gale Scroll
+408:Overflowing Walnut
+409:Restraint Walnut
+410:Sonic Walnut
+411:Running Walnut
+412:Snooze Scroll
+413:Poisoned Apple
+414:Culture Medium
+415:Dream Truffle
+416:Paralyze Mushroom
+417:Orb of Silence
+418:Black Onyx
+419:Weak-Knee Weed
+420:Ragged Weed
+421:Slouch Weed
+422:Trudge Weed
+423:Root of Confusion
+424:Torte's Whistle
+425:Freesia Flowers
+426:Cone of Light
+427:Mikeroma Scroll
+428:Shuffle Card
+429:Miracle Drink
+430:Gold Key
+431:Silver Key
+432:Key of Temptation
+433:Soldier's Key
+434:Pretty Jewel
+435:Pretty Jewel
+436:Pretty Jewel
+437:Horn of Inogon
+438:Key
+439:Health Weed
+440:Snake Earrings
+441:Resurrect Potion
+442:Expensive Jewel
+443:Rainbow Weed
+444:Smoked Salmon
+445:Prime Rib
+446:Rescue Set
+447:Black Nail Polish
+448:Prohibited
+449:Thor's Fury
+450:Magic Lipstick
+451:Elite Badge
+452:Fruit of Power
+453:Fruit of Defense
+454:Fruit of Speed
+455:Fruit of Agility
+456:All-Around Fruit
+457:Fruit of Life
+458:Fruit of Magic
+459:Fruit of Moves
+460:Mogay Teachings 1
+461:Mogay Teachings 2
+462:Mogay Teachings 3
+463:Ring of Rage
+464:Holy Ring
+465:Mysterious Veil
+466:Blizzard Scroll
+467:Telescope
+468:Energy Charm
+469:Devil's Anklet
+470:Prohibited
+471:Astral Miracle
+472:Ethereal Miracle
+473:Miraculous Scales
+474:General's Staff
+475:Brown Crayon
+476:Blue Crayon
+477:Red Crayon
+478:Sky-Blue Crayon
+479:Emperor's Whip
+480:Soldier's Soul
+481:Poison of Power
+482:Poison of Defense
+483:Poison of Speed
+484:Poison of Agility
+485:All-Around Poison
+486:Poison of Life
+487:Poison of Magic
+488:Poison of Moves
+489:+1 Dagger Skill
+490:+5 Dagger Skill
+491:+1 Sword Skill
+492:+5 Sword Skill
+493:+1 Mace Skill
+494:+5 Mace Skill
+495:+1 Ax Skill
+496:+5 Ax Skill
+497:+1 Whip Skill
+498:+5 Whip Skill
+499:+1 Bow Skill
+500:+5 Bow Skill
+501:+1 Fire Skill
+502:+5 Fire Skill
+503:+1 Wind Skill
+504:+5 Wind Skill
+505:+1 Water Skill
+506:+5 Water Skill
+507:+1 Earth Skill
+508:+5 Earth Skill
+509:100 Sword
+510:100 Mace
+511:100 Fire Mace
+</DropDownList>
+                          <LastState Value="0" RealAddress="109432F2"/>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 66</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4159</ID>
+                          <Description>"Slot 9"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Nothing
+10:Spirit Stone
+11:Hero's Armband
+12:Horn of Knowledge
+13:Medal of Wisdom
+14:Medal of Knowledge
+15:Gaia Sprout
+16:Gantz's Key
+17:Intro Letter
+18:Key to the Café
+19:Java's Wallet
+20:Steamer Pass
+21:Lilly's Letter
+22:Cabin Key
+23:Sulfa Weed
+24:Jail Key
+25:Master Key
+26:Nectar of the Gods
+27:Mist-Clearing Nut
+28:Sue's Shoes
+29:Warrior's Spear
+30:Teleportation Orb
+31:Apron
+32:Pot Lid
+33:Iron Pot
+34:Wooden Sword
+35:Spirit Sword
+36:Biscuits
+37:Marie's Pin
+38:Coal Candy
+39:Letter to Clara
+40:Pearl
+41:Rainbow Key
+42:Boiled Egg
+43:Chocolate
+44:Jawbreaker
+45:Ring of Protection
+46:Frost Herb
+47:Amulet of Relief
+48:Prohibited
+49:Prohibited
+50:Prohibited
+51:Prohibited
+52:Prohibited
+53:Prohibited
+54:Prohibited
+55:Prohibited
+56:Prohibited
+57:Prohibited
+58:Prohibited
+59:Prohibited
+60:Prohibited
+61:Prohibited
+62:Prohibited
+63:Knife of Judgment
+64:Rusty Knife
+65:Paring Knife
+66:Hunter's Knife
+67:Flint Knife
+68:Azure Knife
+69:Shocking Knife
+70:Poisoned Knife
+71:Assassin's Dagger
+72:Bloody Knife
+73:Ice Pick
+74:Force Knife
+75:Godspeed Knife
+76:Gust Knife
+77:Ruination Knife
+78:Thief Cutter
+79:Zero Knife
+80:Ceramic Sword
+81:Prohibited
+82:Admiral's Sword
+83:Great Sword
+84:Army Saber
+85:The Sword Himmler
+86:Angel's Darts
+87:Swordfish Sword
+88:Dragon Killer
+89:Fire Sword
+90:Shadow Sword
+91:Gil Sword
+92:Silence Sword
+93:Prohibited
+94:Wobbly Sword
+95:Main Gauche
+96:Holy Sword Lorenzo
+97:Ice Blade
+98:Lightning Sword
+99:Battle Saber
+100:Zero Sword
+101:Wooden Pole
+102:Metal Bat
+103:Zero Rod
+104:Officer's Baton
+105:Magic Rod
+106:Miner's Hammer
+107:Iron Mace
+108:Army Darts
+109:Lassic Hammer
+110:War Hammer
+111:Hertz Spike
+112:Oracle's Staff
+113:Raincloud Staff
+114:Staff of Life
+115:Warp Staff
+116:Holy Mace
+117:Fire Rod
+118:Aromatic Tree Root
+119:Sparkling Rod
+120:Spirit Staff
+121:Home Run Hammer
+122:Rusty Shovel
+123:Hand Ax
+124:Ceremonial Rock Ax
+125:Big Hatchet
+126:Woodchopper's Ax
+127:Dragon Bone Ax
+128:Klepp's Sickle
+129:Frog Ax
+130:Bone Splitter Ax
+131:Earthen Ax
+132:Buster Ax
+133:Wrecking Ax
+134:Bent Mattock
+135:Zero Ax
+136:Toy Bow and Arrow
+137:Handmade Darts
+138:Hunter's Bow
+139:Flying Fish Bow
+140:Hail Bow
+141:Flint Bow
+142:Exorcising Bow
+143:Cafu Shuriken
+144:Boomerang
+145:Fire Darts
+146:Evil Shuriken
+147:Demonslayer Boomer
+148:Discus
+149:Cactus Thorns
+150:Ice Boomerang
+151:Thunder Arrow
+152:Zero Shuriken
+153:Zero Whip
+154:Mist-Cracking Whip
+155:Leather Whip
+156:Thorny Whip
+157:Catfish Whiskers
+158:Giant Snake Whip
+159:Binding Whip
+160:Morning Star
+161:Whip of Light
+162:Burning Hot Whip
+163:Gale Whip
+164:Adventure Clothes
+165:Sunday Best
+166:Sports Wear
+167:Work Clothes
+168:Cactus Armor
+169:Soldier's Uniform
+170:Officer's Uniform
+171:Fairy Robe
+172:Flying Dragon Vest
+173:Frog Shirt
+174:Spy Clothes
+175:Chain Mail
+176:Battle Bikini
+177:Mogay Clothes
+178:Mink Coat
+179:Enchantress' Robe
+180:Angel's Robe
+181:Robe of the Sun
+182:Breastplate
+183:Outdated Armor
+184:Bamboo Armor
+185:Shell Armor
+186:Thick Armor
+187:Swordfish Armor
+188:Skull Armor
+189:Chameleon Armor
+190:Plug Suit
+191:Aura Armor
+192:Dark Armor
+193:Warrior's Mail
+194:Spirit Armor
+195:Devil's Robe
+196:Magic Robe
+197:Cutting Board
+198:Woolen Mittens
+199:Leather Gloves
+200:Escargot Shield
+201:Oaken Shield
+202:Shell Shield
+203:Seashell Shield
+204:Mushroom Shield
+205:MagicMirror Shield
+206:Alligator Gauntlet
+207:Leaf Shield
+208:Lafa Flower Shield
+209:Power Shield
+210:Moonlight Shield
+211:Gauntlets
+212:Dragon Gauntlet
+213:Heavy Shield
+214:Gauntlets of Light
+215:Spirit Shield
+216:Magic Gloves
+217:Zero Shield
+218:Goggles
+219:Ribbon
+220:Fluffy Ribbon
+221:Barrette
+222:Pirate's Hat
+223:Cowboy Hat
+224:Climbing Hat
+225:Odd Hat
+226:Headgear
+227:Iron Bandana
+228:Feathered Turban
+229:Angel's Hat
+230:Pope's Hat
+231:Safety Helmet
+232:Antler Helmet
+233:Pearl Helmet
+234:Pirate's Helmet
+235:Stone Head
+236:Swallowtail Hat
+237:Mystic Mask
+238:Death Mask
+239:Ogre Helm
+240:Charisma Helm
+241:Spirit Helmet
+242:Holy Crown
+243:Cactus Helm
+244:Fairy Tiara
+245:Man's Headband
+246:Battle Helm
+247:Sneakers
+248:Dress Shoes
+249:Air Sneakers
+250:Shiny Shoes
+251:Rubber Boots
+252:Leather Greaves
+253:Hunter's Boots
+254:Army Boots
+255:Curious Clogs
+256:Dragon Boots
+257:Ninja Sandals
+258:Winged Boots
+259:Beach Sandals
+260:Mach 1 Boots
+261:Heavy Boots
+262:Queen Heels
+263:Iron Clogs
+264:Ogre Boots
+265:Rabbit Shoes
+266:Rainbow High Heels
+267:Wolf Boots
+268:Lion Boots
+269:Battle Boots
+270:Spirit Shoes
+271:Glass Slippers
+272:Warp Shoes
+273:Crampons
+274:Zero Boots
+275:Prohibited
+276:Diana's Amulet
+277:Hero's Badge
+278:Demon Sword Amulet
+279:Officer's Badge
+280:Black Belt
+281:Chain Earrings
+282:Titan's Ring
+283:Fireproof Cape
+284:Fire Charm
+285:Water Charm
+286:Wind Charm
+287:Earth Charm
+288:Counter Ring
+289:Secret Move Ring
+290:Hurricane Belt
+291:Mama's Amulet
+292:Jade Charm
+293:Tree God Amulet
+294:Light God Amulet
+295:Ancestor's Amulet
+296:Raincoat
+297:Iridescent Amulet
+298:Move Unblocker
+299:Medal of Yore
+300:Spirit Charm
+301:Phantom Silk
+302:Lightning Charm
+303:Forest Charm
+304:Explosion Charm
+305:Blizzard Charm
+306:Wind Belt
+307:Confusion Charm
+308:Paralysis Charm
+309:Magic Block Charm
+310:Sudden Death Charm
+311:Poison Charm
+312:Talisman
+313:Sonic Belt
+314:Metal Frog
+315:Revival Stone
+316:Use Prohibited
+317:Scarab
+318:Demon Eye Stone
+319:Jewel of Life
+320:Ankh of Temptation
+321:Anklet
+322:Energy Ring
+323:Disease Charm
+324:Paperweight
+325:Combat Anklet
+326:Chain of Gems
+327:Satisfaction Gem
+328:Soul of Asura
+329:Crescent Jade
+330:Dragon Scales
+331:Spectacles
+332:Rune Ring
+333:Tear Jewel
+334:Spirit Potion
+335:Would Salve
+336:Baobab Fruit
+337:Boiled Coconut
+338:Chocolate Cookies
+339:Honey
+340:Ultra Drink
+341:Weeds
+342:Dried Fish
+343:Bamboo Shoots
+344:Beef Jerky
+345:Box Lunch
+346:Herbs
+347:White Sulfa Weed
+348:Smarna Weed
+349:Cholla Flowers
+350:Bamo Fruit
+351:Squid Guts
+352:Move Mushroom
+353:Power Mushroom
+354:Poison Antidote
+355:Ginseng
+356:Banana
+357:Bandage
+358:Box of Sweets
+359:First Aid Kit
+360:Red Medicine
+361:Blue Medicine
+362:Yellow Medicine
+363:Crimson Potion
+364:Deep Blue Potion
+365:Golden Potion
+366:Magic Lamp
+367:Poison Antidote
+368:Vaccine
+369:Eye Drops
+370:Smelling Salts
+371:Paralysis Ointment
+372:Spell Breaker
+373:Move Breaker
+374:Resurrect Potion
+375:Panacea
+376:Bond of Trust
+377:Seed of Power
+378:Seed of Defense
+379:Seed of Speed
+380:Seed of Running
+381:All-Around Seed
+382:Seed of Life
+383:Seed of Magic
+384:Seed of Moves
+385:Mace Coloring Book
+386:Bow Coloring Book
+387:Sword Secrets
+388:Fire Secrets
+389:Earth Secrets
+390:How to Cut 'Em
+391:How to Pound 'Em
+392:How to Chop 'Em
+393:Roach Bomb
+394:Firewood Sparks
+395:Mana Egg
+396:Holy Fire
+397:Hand Grenade
+398:Dynamite
+399:Rocket Fireworks
+400:Launch Fireworks
+401:BOOM! Scroll
+402:Howler Scroll
+403:Vacuum Scroll
+404:Tremor Scroll
+405:Zap! Book
+406:Lightning Scroll
+407:Gale Scroll
+408:Overflowing Walnut
+409:Restraint Walnut
+410:Sonic Walnut
+411:Running Walnut
+412:Snooze Scroll
+413:Poisoned Apple
+414:Culture Medium
+415:Dream Truffle
+416:Paralyze Mushroom
+417:Orb of Silence
+418:Black Onyx
+419:Weak-Knee Weed
+420:Ragged Weed
+421:Slouch Weed
+422:Trudge Weed
+423:Root of Confusion
+424:Torte's Whistle
+425:Freesia Flowers
+426:Cone of Light
+427:Mikeroma Scroll
+428:Shuffle Card
+429:Miracle Drink
+430:Gold Key
+431:Silver Key
+432:Key of Temptation
+433:Soldier's Key
+434:Pretty Jewel
+435:Pretty Jewel
+436:Pretty Jewel
+437:Horn of Inogon
+438:Key
+439:Health Weed
+440:Snake Earrings
+441:Resurrect Potion
+442:Expensive Jewel
+443:Rainbow Weed
+444:Smoked Salmon
+445:Prime Rib
+446:Rescue Set
+447:Black Nail Polish
+448:Prohibited
+449:Thor's Fury
+450:Magic Lipstick
+451:Elite Badge
+452:Fruit of Power
+453:Fruit of Defense
+454:Fruit of Speed
+455:Fruit of Agility
+456:All-Around Fruit
+457:Fruit of Life
+458:Fruit of Magic
+459:Fruit of Moves
+460:Mogay Teachings 1
+461:Mogay Teachings 2
+462:Mogay Teachings 3
+463:Ring of Rage
+464:Holy Ring
+465:Mysterious Veil
+466:Blizzard Scroll
+467:Telescope
+468:Energy Charm
+469:Devil's Anklet
+470:Prohibited
+471:Astral Miracle
+472:Ethereal Miracle
+473:Miraculous Scales
+474:General's Staff
+475:Brown Crayon
+476:Blue Crayon
+477:Red Crayon
+478:Sky-Blue Crayon
+479:Emperor's Whip
+480:Soldier's Soul
+481:Poison of Power
+482:Poison of Defense
+483:Poison of Speed
+484:Poison of Agility
+485:All-Around Poison
+486:Poison of Life
+487:Poison of Magic
+488:Poison of Moves
+489:+1 Dagger Skill
+490:+5 Dagger Skill
+491:+1 Sword Skill
+492:+5 Sword Skill
+493:+1 Mace Skill
+494:+5 Mace Skill
+495:+1 Ax Skill
+496:+5 Ax Skill
+497:+1 Whip Skill
+498:+5 Whip Skill
+499:+1 Bow Skill
+500:+5 Bow Skill
+501:+1 Fire Skill
+502:+5 Fire Skill
+503:+1 Wind Skill
+504:+5 Wind Skill
+505:+1 Water Skill
+506:+5 Water Skill
+507:+1 Earth Skill
+508:+5 Earth Skill
+509:100 Sword
+510:100 Mace
+511:100 Fire Mace
+</DropDownList>
+                          <LastState Value="0" RealAddress="109432F4"/>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 68</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4160</ID>
+                          <Description>"Slot 10"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Nothing
+10:Spirit Stone
+11:Hero's Armband
+12:Horn of Knowledge
+13:Medal of Wisdom
+14:Medal of Knowledge
+15:Gaia Sprout
+16:Gantz's Key
+17:Intro Letter
+18:Key to the Café
+19:Java's Wallet
+20:Steamer Pass
+21:Lilly's Letter
+22:Cabin Key
+23:Sulfa Weed
+24:Jail Key
+25:Master Key
+26:Nectar of the Gods
+27:Mist-Clearing Nut
+28:Sue's Shoes
+29:Warrior's Spear
+30:Teleportation Orb
+31:Apron
+32:Pot Lid
+33:Iron Pot
+34:Wooden Sword
+35:Spirit Sword
+36:Biscuits
+37:Marie's Pin
+38:Coal Candy
+39:Letter to Clara
+40:Pearl
+41:Rainbow Key
+42:Boiled Egg
+43:Chocolate
+44:Jawbreaker
+45:Ring of Protection
+46:Frost Herb
+47:Amulet of Relief
+48:Prohibited
+49:Prohibited
+50:Prohibited
+51:Prohibited
+52:Prohibited
+53:Prohibited
+54:Prohibited
+55:Prohibited
+56:Prohibited
+57:Prohibited
+58:Prohibited
+59:Prohibited
+60:Prohibited
+61:Prohibited
+62:Prohibited
+63:Knife of Judgment
+64:Rusty Knife
+65:Paring Knife
+66:Hunter's Knife
+67:Flint Knife
+68:Azure Knife
+69:Shocking Knife
+70:Poisoned Knife
+71:Assassin's Dagger
+72:Bloody Knife
+73:Ice Pick
+74:Force Knife
+75:Godspeed Knife
+76:Gust Knife
+77:Ruination Knife
+78:Thief Cutter
+79:Zero Knife
+80:Ceramic Sword
+81:Prohibited
+82:Admiral's Sword
+83:Great Sword
+84:Army Saber
+85:The Sword Himmler
+86:Angel's Darts
+87:Swordfish Sword
+88:Dragon Killer
+89:Fire Sword
+90:Shadow Sword
+91:Gil Sword
+92:Silence Sword
+93:Prohibited
+94:Wobbly Sword
+95:Main Gauche
+96:Holy Sword Lorenzo
+97:Ice Blade
+98:Lightning Sword
+99:Battle Saber
+100:Zero Sword
+101:Wooden Pole
+102:Metal Bat
+103:Zero Rod
+104:Officer's Baton
+105:Magic Rod
+106:Miner's Hammer
+107:Iron Mace
+108:Army Darts
+109:Lassic Hammer
+110:War Hammer
+111:Hertz Spike
+112:Oracle's Staff
+113:Raincloud Staff
+114:Staff of Life
+115:Warp Staff
+116:Holy Mace
+117:Fire Rod
+118:Aromatic Tree Root
+119:Sparkling Rod
+120:Spirit Staff
+121:Home Run Hammer
+122:Rusty Shovel
+123:Hand Ax
+124:Ceremonial Rock Ax
+125:Big Hatchet
+126:Woodchopper's Ax
+127:Dragon Bone Ax
+128:Klepp's Sickle
+129:Frog Ax
+130:Bone Splitter Ax
+131:Earthen Ax
+132:Buster Ax
+133:Wrecking Ax
+134:Bent Mattock
+135:Zero Ax
+136:Toy Bow and Arrow
+137:Handmade Darts
+138:Hunter's Bow
+139:Flying Fish Bow
+140:Hail Bow
+141:Flint Bow
+142:Exorcising Bow
+143:Cafu Shuriken
+144:Boomerang
+145:Fire Darts
+146:Evil Shuriken
+147:Demonslayer Boomer
+148:Discus
+149:Cactus Thorns
+150:Ice Boomerang
+151:Thunder Arrow
+152:Zero Shuriken
+153:Zero Whip
+154:Mist-Cracking Whip
+155:Leather Whip
+156:Thorny Whip
+157:Catfish Whiskers
+158:Giant Snake Whip
+159:Binding Whip
+160:Morning Star
+161:Whip of Light
+162:Burning Hot Whip
+163:Gale Whip
+164:Adventure Clothes
+165:Sunday Best
+166:Sports Wear
+167:Work Clothes
+168:Cactus Armor
+169:Soldier's Uniform
+170:Officer's Uniform
+171:Fairy Robe
+172:Flying Dragon Vest
+173:Frog Shirt
+174:Spy Clothes
+175:Chain Mail
+176:Battle Bikini
+177:Mogay Clothes
+178:Mink Coat
+179:Enchantress' Robe
+180:Angel's Robe
+181:Robe of the Sun
+182:Breastplate
+183:Outdated Armor
+184:Bamboo Armor
+185:Shell Armor
+186:Thick Armor
+187:Swordfish Armor
+188:Skull Armor
+189:Chameleon Armor
+190:Plug Suit
+191:Aura Armor
+192:Dark Armor
+193:Warrior's Mail
+194:Spirit Armor
+195:Devil's Robe
+196:Magic Robe
+197:Cutting Board
+198:Woolen Mittens
+199:Leather Gloves
+200:Escargot Shield
+201:Oaken Shield
+202:Shell Shield
+203:Seashell Shield
+204:Mushroom Shield
+205:MagicMirror Shield
+206:Alligator Gauntlet
+207:Leaf Shield
+208:Lafa Flower Shield
+209:Power Shield
+210:Moonlight Shield
+211:Gauntlets
+212:Dragon Gauntlet
+213:Heavy Shield
+214:Gauntlets of Light
+215:Spirit Shield
+216:Magic Gloves
+217:Zero Shield
+218:Goggles
+219:Ribbon
+220:Fluffy Ribbon
+221:Barrette
+222:Pirate's Hat
+223:Cowboy Hat
+224:Climbing Hat
+225:Odd Hat
+226:Headgear
+227:Iron Bandana
+228:Feathered Turban
+229:Angel's Hat
+230:Pope's Hat
+231:Safety Helmet
+232:Antler Helmet
+233:Pearl Helmet
+234:Pirate's Helmet
+235:Stone Head
+236:Swallowtail Hat
+237:Mystic Mask
+238:Death Mask
+239:Ogre Helm
+240:Charisma Helm
+241:Spirit Helmet
+242:Holy Crown
+243:Cactus Helm
+244:Fairy Tiara
+245:Man's Headband
+246:Battle Helm
+247:Sneakers
+248:Dress Shoes
+249:Air Sneakers
+250:Shiny Shoes
+251:Rubber Boots
+252:Leather Greaves
+253:Hunter's Boots
+254:Army Boots
+255:Curious Clogs
+256:Dragon Boots
+257:Ninja Sandals
+258:Winged Boots
+259:Beach Sandals
+260:Mach 1 Boots
+261:Heavy Boots
+262:Queen Heels
+263:Iron Clogs
+264:Ogre Boots
+265:Rabbit Shoes
+266:Rainbow High Heels
+267:Wolf Boots
+268:Lion Boots
+269:Battle Boots
+270:Spirit Shoes
+271:Glass Slippers
+272:Warp Shoes
+273:Crampons
+274:Zero Boots
+275:Prohibited
+276:Diana's Amulet
+277:Hero's Badge
+278:Demon Sword Amulet
+279:Officer's Badge
+280:Black Belt
+281:Chain Earrings
+282:Titan's Ring
+283:Fireproof Cape
+284:Fire Charm
+285:Water Charm
+286:Wind Charm
+287:Earth Charm
+288:Counter Ring
+289:Secret Move Ring
+290:Hurricane Belt
+291:Mama's Amulet
+292:Jade Charm
+293:Tree God Amulet
+294:Light God Amulet
+295:Ancestor's Amulet
+296:Raincoat
+297:Iridescent Amulet
+298:Move Unblocker
+299:Medal of Yore
+300:Spirit Charm
+301:Phantom Silk
+302:Lightning Charm
+303:Forest Charm
+304:Explosion Charm
+305:Blizzard Charm
+306:Wind Belt
+307:Confusion Charm
+308:Paralysis Charm
+309:Magic Block Charm
+310:Sudden Death Charm
+311:Poison Charm
+312:Talisman
+313:Sonic Belt
+314:Metal Frog
+315:Revival Stone
+316:Use Prohibited
+317:Scarab
+318:Demon Eye Stone
+319:Jewel of Life
+320:Ankh of Temptation
+321:Anklet
+322:Energy Ring
+323:Disease Charm
+324:Paperweight
+325:Combat Anklet
+326:Chain of Gems
+327:Satisfaction Gem
+328:Soul of Asura
+329:Crescent Jade
+330:Dragon Scales
+331:Spectacles
+332:Rune Ring
+333:Tear Jewel
+334:Spirit Potion
+335:Would Salve
+336:Baobab Fruit
+337:Boiled Coconut
+338:Chocolate Cookies
+339:Honey
+340:Ultra Drink
+341:Weeds
+342:Dried Fish
+343:Bamboo Shoots
+344:Beef Jerky
+345:Box Lunch
+346:Herbs
+347:White Sulfa Weed
+348:Smarna Weed
+349:Cholla Flowers
+350:Bamo Fruit
+351:Squid Guts
+352:Move Mushroom
+353:Power Mushroom
+354:Poison Antidote
+355:Ginseng
+356:Banana
+357:Bandage
+358:Box of Sweets
+359:First Aid Kit
+360:Red Medicine
+361:Blue Medicine
+362:Yellow Medicine
+363:Crimson Potion
+364:Deep Blue Potion
+365:Golden Potion
+366:Magic Lamp
+367:Poison Antidote
+368:Vaccine
+369:Eye Drops
+370:Smelling Salts
+371:Paralysis Ointment
+372:Spell Breaker
+373:Move Breaker
+374:Resurrect Potion
+375:Panacea
+376:Bond of Trust
+377:Seed of Power
+378:Seed of Defense
+379:Seed of Speed
+380:Seed of Running
+381:All-Around Seed
+382:Seed of Life
+383:Seed of Magic
+384:Seed of Moves
+385:Mace Coloring Book
+386:Bow Coloring Book
+387:Sword Secrets
+388:Fire Secrets
+389:Earth Secrets
+390:How to Cut 'Em
+391:How to Pound 'Em
+392:How to Chop 'Em
+393:Roach Bomb
+394:Firewood Sparks
+395:Mana Egg
+396:Holy Fire
+397:Hand Grenade
+398:Dynamite
+399:Rocket Fireworks
+400:Launch Fireworks
+401:BOOM! Scroll
+402:Howler Scroll
+403:Vacuum Scroll
+404:Tremor Scroll
+405:Zap! Book
+406:Lightning Scroll
+407:Gale Scroll
+408:Overflowing Walnut
+409:Restraint Walnut
+410:Sonic Walnut
+411:Running Walnut
+412:Snooze Scroll
+413:Poisoned Apple
+414:Culture Medium
+415:Dream Truffle
+416:Paralyze Mushroom
+417:Orb of Silence
+418:Black Onyx
+419:Weak-Knee Weed
+420:Ragged Weed
+421:Slouch Weed
+422:Trudge Weed
+423:Root of Confusion
+424:Torte's Whistle
+425:Freesia Flowers
+426:Cone of Light
+427:Mikeroma Scroll
+428:Shuffle Card
+429:Miracle Drink
+430:Gold Key
+431:Silver Key
+432:Key of Temptation
+433:Soldier's Key
+434:Pretty Jewel
+435:Pretty Jewel
+436:Pretty Jewel
+437:Horn of Inogon
+438:Key
+439:Health Weed
+440:Snake Earrings
+441:Resurrect Potion
+442:Expensive Jewel
+443:Rainbow Weed
+444:Smoked Salmon
+445:Prime Rib
+446:Rescue Set
+447:Black Nail Polish
+448:Prohibited
+449:Thor's Fury
+450:Magic Lipstick
+451:Elite Badge
+452:Fruit of Power
+453:Fruit of Defense
+454:Fruit of Speed
+455:Fruit of Agility
+456:All-Around Fruit
+457:Fruit of Life
+458:Fruit of Magic
+459:Fruit of Moves
+460:Mogay Teachings 1
+461:Mogay Teachings 2
+462:Mogay Teachings 3
+463:Ring of Rage
+464:Holy Ring
+465:Mysterious Veil
+466:Blizzard Scroll
+467:Telescope
+468:Energy Charm
+469:Devil's Anklet
+470:Prohibited
+471:Astral Miracle
+472:Ethereal Miracle
+473:Miraculous Scales
+474:General's Staff
+475:Brown Crayon
+476:Blue Crayon
+477:Red Crayon
+478:Sky-Blue Crayon
+479:Emperor's Whip
+480:Soldier's Soul
+481:Poison of Power
+482:Poison of Defense
+483:Poison of Speed
+484:Poison of Agility
+485:All-Around Poison
+486:Poison of Life
+487:Poison of Magic
+488:Poison of Moves
+489:+1 Dagger Skill
+490:+5 Dagger Skill
+491:+1 Sword Skill
+492:+5 Sword Skill
+493:+1 Mace Skill
+494:+5 Mace Skill
+495:+1 Ax Skill
+496:+5 Ax Skill
+497:+1 Whip Skill
+498:+5 Whip Skill
+499:+1 Bow Skill
+500:+5 Bow Skill
+501:+1 Fire Skill
+502:+5 Fire Skill
+503:+1 Wind Skill
+504:+5 Wind Skill
+505:+1 Water Skill
+506:+5 Water Skill
+507:+1 Earth Skill
+508:+5 Earth Skill
+509:100 Sword
+510:100 Mace
+511:100 Fire Mace
+</DropDownList>
+                          <LastState Value="0" RealAddress="109432F6"/>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 6A</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4161</ID>
+                          <Description>"Slot 11"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Nothing
+10:Spirit Stone
+11:Hero's Armband
+12:Horn of Knowledge
+13:Medal of Wisdom
+14:Medal of Knowledge
+15:Gaia Sprout
+16:Gantz's Key
+17:Intro Letter
+18:Key to the Café
+19:Java's Wallet
+20:Steamer Pass
+21:Lilly's Letter
+22:Cabin Key
+23:Sulfa Weed
+24:Jail Key
+25:Master Key
+26:Nectar of the Gods
+27:Mist-Clearing Nut
+28:Sue's Shoes
+29:Warrior's Spear
+30:Teleportation Orb
+31:Apron
+32:Pot Lid
+33:Iron Pot
+34:Wooden Sword
+35:Spirit Sword
+36:Biscuits
+37:Marie's Pin
+38:Coal Candy
+39:Letter to Clara
+40:Pearl
+41:Rainbow Key
+42:Boiled Egg
+43:Chocolate
+44:Jawbreaker
+45:Ring of Protection
+46:Frost Herb
+47:Amulet of Relief
+48:Prohibited
+49:Prohibited
+50:Prohibited
+51:Prohibited
+52:Prohibited
+53:Prohibited
+54:Prohibited
+55:Prohibited
+56:Prohibited
+57:Prohibited
+58:Prohibited
+59:Prohibited
+60:Prohibited
+61:Prohibited
+62:Prohibited
+63:Knife of Judgment
+64:Rusty Knife
+65:Paring Knife
+66:Hunter's Knife
+67:Flint Knife
+68:Azure Knife
+69:Shocking Knife
+70:Poisoned Knife
+71:Assassin's Dagger
+72:Bloody Knife
+73:Ice Pick
+74:Force Knife
+75:Godspeed Knife
+76:Gust Knife
+77:Ruination Knife
+78:Thief Cutter
+79:Zero Knife
+80:Ceramic Sword
+81:Prohibited
+82:Admiral's Sword
+83:Great Sword
+84:Army Saber
+85:The Sword Himmler
+86:Angel's Darts
+87:Swordfish Sword
+88:Dragon Killer
+89:Fire Sword
+90:Shadow Sword
+91:Gil Sword
+92:Silence Sword
+93:Prohibited
+94:Wobbly Sword
+95:Main Gauche
+96:Holy Sword Lorenzo
+97:Ice Blade
+98:Lightning Sword
+99:Battle Saber
+100:Zero Sword
+101:Wooden Pole
+102:Metal Bat
+103:Zero Rod
+104:Officer's Baton
+105:Magic Rod
+106:Miner's Hammer
+107:Iron Mace
+108:Army Darts
+109:Lassic Hammer
+110:War Hammer
+111:Hertz Spike
+112:Oracle's Staff
+113:Raincloud Staff
+114:Staff of Life
+115:Warp Staff
+116:Holy Mace
+117:Fire Rod
+118:Aromatic Tree Root
+119:Sparkling Rod
+120:Spirit Staff
+121:Home Run Hammer
+122:Rusty Shovel
+123:Hand Ax
+124:Ceremonial Rock Ax
+125:Big Hatchet
+126:Woodchopper's Ax
+127:Dragon Bone Ax
+128:Klepp's Sickle
+129:Frog Ax
+130:Bone Splitter Ax
+131:Earthen Ax
+132:Buster Ax
+133:Wrecking Ax
+134:Bent Mattock
+135:Zero Ax
+136:Toy Bow and Arrow
+137:Handmade Darts
+138:Hunter's Bow
+139:Flying Fish Bow
+140:Hail Bow
+141:Flint Bow
+142:Exorcising Bow
+143:Cafu Shuriken
+144:Boomerang
+145:Fire Darts
+146:Evil Shuriken
+147:Demonslayer Boomer
+148:Discus
+149:Cactus Thorns
+150:Ice Boomerang
+151:Thunder Arrow
+152:Zero Shuriken
+153:Zero Whip
+154:Mist-Cracking Whip
+155:Leather Whip
+156:Thorny Whip
+157:Catfish Whiskers
+158:Giant Snake Whip
+159:Binding Whip
+160:Morning Star
+161:Whip of Light
+162:Burning Hot Whip
+163:Gale Whip
+164:Adventure Clothes
+165:Sunday Best
+166:Sports Wear
+167:Work Clothes
+168:Cactus Armor
+169:Soldier's Uniform
+170:Officer's Uniform
+171:Fairy Robe
+172:Flying Dragon Vest
+173:Frog Shirt
+174:Spy Clothes
+175:Chain Mail
+176:Battle Bikini
+177:Mogay Clothes
+178:Mink Coat
+179:Enchantress' Robe
+180:Angel's Robe
+181:Robe of the Sun
+182:Breastplate
+183:Outdated Armor
+184:Bamboo Armor
+185:Shell Armor
+186:Thick Armor
+187:Swordfish Armor
+188:Skull Armor
+189:Chameleon Armor
+190:Plug Suit
+191:Aura Armor
+192:Dark Armor
+193:Warrior's Mail
+194:Spirit Armor
+195:Devil's Robe
+196:Magic Robe
+197:Cutting Board
+198:Woolen Mittens
+199:Leather Gloves
+200:Escargot Shield
+201:Oaken Shield
+202:Shell Shield
+203:Seashell Shield
+204:Mushroom Shield
+205:MagicMirror Shield
+206:Alligator Gauntlet
+207:Leaf Shield
+208:Lafa Flower Shield
+209:Power Shield
+210:Moonlight Shield
+211:Gauntlets
+212:Dragon Gauntlet
+213:Heavy Shield
+214:Gauntlets of Light
+215:Spirit Shield
+216:Magic Gloves
+217:Zero Shield
+218:Goggles
+219:Ribbon
+220:Fluffy Ribbon
+221:Barrette
+222:Pirate's Hat
+223:Cowboy Hat
+224:Climbing Hat
+225:Odd Hat
+226:Headgear
+227:Iron Bandana
+228:Feathered Turban
+229:Angel's Hat
+230:Pope's Hat
+231:Safety Helmet
+232:Antler Helmet
+233:Pearl Helmet
+234:Pirate's Helmet
+235:Stone Head
+236:Swallowtail Hat
+237:Mystic Mask
+238:Death Mask
+239:Ogre Helm
+240:Charisma Helm
+241:Spirit Helmet
+242:Holy Crown
+243:Cactus Helm
+244:Fairy Tiara
+245:Man's Headband
+246:Battle Helm
+247:Sneakers
+248:Dress Shoes
+249:Air Sneakers
+250:Shiny Shoes
+251:Rubber Boots
+252:Leather Greaves
+253:Hunter's Boots
+254:Army Boots
+255:Curious Clogs
+256:Dragon Boots
+257:Ninja Sandals
+258:Winged Boots
+259:Beach Sandals
+260:Mach 1 Boots
+261:Heavy Boots
+262:Queen Heels
+263:Iron Clogs
+264:Ogre Boots
+265:Rabbit Shoes
+266:Rainbow High Heels
+267:Wolf Boots
+268:Lion Boots
+269:Battle Boots
+270:Spirit Shoes
+271:Glass Slippers
+272:Warp Shoes
+273:Crampons
+274:Zero Boots
+275:Prohibited
+276:Diana's Amulet
+277:Hero's Badge
+278:Demon Sword Amulet
+279:Officer's Badge
+280:Black Belt
+281:Chain Earrings
+282:Titan's Ring
+283:Fireproof Cape
+284:Fire Charm
+285:Water Charm
+286:Wind Charm
+287:Earth Charm
+288:Counter Ring
+289:Secret Move Ring
+290:Hurricane Belt
+291:Mama's Amulet
+292:Jade Charm
+293:Tree God Amulet
+294:Light God Amulet
+295:Ancestor's Amulet
+296:Raincoat
+297:Iridescent Amulet
+298:Move Unblocker
+299:Medal of Yore
+300:Spirit Charm
+301:Phantom Silk
+302:Lightning Charm
+303:Forest Charm
+304:Explosion Charm
+305:Blizzard Charm
+306:Wind Belt
+307:Confusion Charm
+308:Paralysis Charm
+309:Magic Block Charm
+310:Sudden Death Charm
+311:Poison Charm
+312:Talisman
+313:Sonic Belt
+314:Metal Frog
+315:Revival Stone
+316:Use Prohibited
+317:Scarab
+318:Demon Eye Stone
+319:Jewel of Life
+320:Ankh of Temptation
+321:Anklet
+322:Energy Ring
+323:Disease Charm
+324:Paperweight
+325:Combat Anklet
+326:Chain of Gems
+327:Satisfaction Gem
+328:Soul of Asura
+329:Crescent Jade
+330:Dragon Scales
+331:Spectacles
+332:Rune Ring
+333:Tear Jewel
+334:Spirit Potion
+335:Would Salve
+336:Baobab Fruit
+337:Boiled Coconut
+338:Chocolate Cookies
+339:Honey
+340:Ultra Drink
+341:Weeds
+342:Dried Fish
+343:Bamboo Shoots
+344:Beef Jerky
+345:Box Lunch
+346:Herbs
+347:White Sulfa Weed
+348:Smarna Weed
+349:Cholla Flowers
+350:Bamo Fruit
+351:Squid Guts
+352:Move Mushroom
+353:Power Mushroom
+354:Poison Antidote
+355:Ginseng
+356:Banana
+357:Bandage
+358:Box of Sweets
+359:First Aid Kit
+360:Red Medicine
+361:Blue Medicine
+362:Yellow Medicine
+363:Crimson Potion
+364:Deep Blue Potion
+365:Golden Potion
+366:Magic Lamp
+367:Poison Antidote
+368:Vaccine
+369:Eye Drops
+370:Smelling Salts
+371:Paralysis Ointment
+372:Spell Breaker
+373:Move Breaker
+374:Resurrect Potion
+375:Panacea
+376:Bond of Trust
+377:Seed of Power
+378:Seed of Defense
+379:Seed of Speed
+380:Seed of Running
+381:All-Around Seed
+382:Seed of Life
+383:Seed of Magic
+384:Seed of Moves
+385:Mace Coloring Book
+386:Bow Coloring Book
+387:Sword Secrets
+388:Fire Secrets
+389:Earth Secrets
+390:How to Cut 'Em
+391:How to Pound 'Em
+392:How to Chop 'Em
+393:Roach Bomb
+394:Firewood Sparks
+395:Mana Egg
+396:Holy Fire
+397:Hand Grenade
+398:Dynamite
+399:Rocket Fireworks
+400:Launch Fireworks
+401:BOOM! Scroll
+402:Howler Scroll
+403:Vacuum Scroll
+404:Tremor Scroll
+405:Zap! Book
+406:Lightning Scroll
+407:Gale Scroll
+408:Overflowing Walnut
+409:Restraint Walnut
+410:Sonic Walnut
+411:Running Walnut
+412:Snooze Scroll
+413:Poisoned Apple
+414:Culture Medium
+415:Dream Truffle
+416:Paralyze Mushroom
+417:Orb of Silence
+418:Black Onyx
+419:Weak-Knee Weed
+420:Ragged Weed
+421:Slouch Weed
+422:Trudge Weed
+423:Root of Confusion
+424:Torte's Whistle
+425:Freesia Flowers
+426:Cone of Light
+427:Mikeroma Scroll
+428:Shuffle Card
+429:Miracle Drink
+430:Gold Key
+431:Silver Key
+432:Key of Temptation
+433:Soldier's Key
+434:Pretty Jewel
+435:Pretty Jewel
+436:Pretty Jewel
+437:Horn of Inogon
+438:Key
+439:Health Weed
+440:Snake Earrings
+441:Resurrect Potion
+442:Expensive Jewel
+443:Rainbow Weed
+444:Smoked Salmon
+445:Prime Rib
+446:Rescue Set
+447:Black Nail Polish
+448:Prohibited
+449:Thor's Fury
+450:Magic Lipstick
+451:Elite Badge
+452:Fruit of Power
+453:Fruit of Defense
+454:Fruit of Speed
+455:Fruit of Agility
+456:All-Around Fruit
+457:Fruit of Life
+458:Fruit of Magic
+459:Fruit of Moves
+460:Mogay Teachings 1
+461:Mogay Teachings 2
+462:Mogay Teachings 3
+463:Ring of Rage
+464:Holy Ring
+465:Mysterious Veil
+466:Blizzard Scroll
+467:Telescope
+468:Energy Charm
+469:Devil's Anklet
+470:Prohibited
+471:Astral Miracle
+472:Ethereal Miracle
+473:Miraculous Scales
+474:General's Staff
+475:Brown Crayon
+476:Blue Crayon
+477:Red Crayon
+478:Sky-Blue Crayon
+479:Emperor's Whip
+480:Soldier's Soul
+481:Poison of Power
+482:Poison of Defense
+483:Poison of Speed
+484:Poison of Agility
+485:All-Around Poison
+486:Poison of Life
+487:Poison of Magic
+488:Poison of Moves
+489:+1 Dagger Skill
+490:+5 Dagger Skill
+491:+1 Sword Skill
+492:+5 Sword Skill
+493:+1 Mace Skill
+494:+5 Mace Skill
+495:+1 Ax Skill
+496:+5 Ax Skill
+497:+1 Whip Skill
+498:+5 Whip Skill
+499:+1 Bow Skill
+500:+5 Bow Skill
+501:+1 Fire Skill
+502:+5 Fire Skill
+503:+1 Wind Skill
+504:+5 Wind Skill
+505:+1 Water Skill
+506:+5 Water Skill
+507:+1 Earth Skill
+508:+5 Earth Skill
+509:100 Sword
+510:100 Mace
+511:100 Fire Mace
+</DropDownList>
+                          <LastState Value="0" RealAddress="109432F8"/>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 6C</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4162</ID>
+                          <Description>"Slot 12"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Nothing
+10:Spirit Stone
+11:Hero's Armband
+12:Horn of Knowledge
+13:Medal of Wisdom
+14:Medal of Knowledge
+15:Gaia Sprout
+16:Gantz's Key
+17:Intro Letter
+18:Key to the Café
+19:Java's Wallet
+20:Steamer Pass
+21:Lilly's Letter
+22:Cabin Key
+23:Sulfa Weed
+24:Jail Key
+25:Master Key
+26:Nectar of the Gods
+27:Mist-Clearing Nut
+28:Sue's Shoes
+29:Warrior's Spear
+30:Teleportation Orb
+31:Apron
+32:Pot Lid
+33:Iron Pot
+34:Wooden Sword
+35:Spirit Sword
+36:Biscuits
+37:Marie's Pin
+38:Coal Candy
+39:Letter to Clara
+40:Pearl
+41:Rainbow Key
+42:Boiled Egg
+43:Chocolate
+44:Jawbreaker
+45:Ring of Protection
+46:Frost Herb
+47:Amulet of Relief
+48:Prohibited
+49:Prohibited
+50:Prohibited
+51:Prohibited
+52:Prohibited
+53:Prohibited
+54:Prohibited
+55:Prohibited
+56:Prohibited
+57:Prohibited
+58:Prohibited
+59:Prohibited
+60:Prohibited
+61:Prohibited
+62:Prohibited
+63:Knife of Judgment
+64:Rusty Knife
+65:Paring Knife
+66:Hunter's Knife
+67:Flint Knife
+68:Azure Knife
+69:Shocking Knife
+70:Poisoned Knife
+71:Assassin's Dagger
+72:Bloody Knife
+73:Ice Pick
+74:Force Knife
+75:Godspeed Knife
+76:Gust Knife
+77:Ruination Knife
+78:Thief Cutter
+79:Zero Knife
+80:Ceramic Sword
+81:Prohibited
+82:Admiral's Sword
+83:Great Sword
+84:Army Saber
+85:The Sword Himmler
+86:Angel's Darts
+87:Swordfish Sword
+88:Dragon Killer
+89:Fire Sword
+90:Shadow Sword
+91:Gil Sword
+92:Silence Sword
+93:Prohibited
+94:Wobbly Sword
+95:Main Gauche
+96:Holy Sword Lorenzo
+97:Ice Blade
+98:Lightning Sword
+99:Battle Saber
+100:Zero Sword
+101:Wooden Pole
+102:Metal Bat
+103:Zero Rod
+104:Officer's Baton
+105:Magic Rod
+106:Miner's Hammer
+107:Iron Mace
+108:Army Darts
+109:Lassic Hammer
+110:War Hammer
+111:Hertz Spike
+112:Oracle's Staff
+113:Raincloud Staff
+114:Staff of Life
+115:Warp Staff
+116:Holy Mace
+117:Fire Rod
+118:Aromatic Tree Root
+119:Sparkling Rod
+120:Spirit Staff
+121:Home Run Hammer
+122:Rusty Shovel
+123:Hand Ax
+124:Ceremonial Rock Ax
+125:Big Hatchet
+126:Woodchopper's Ax
+127:Dragon Bone Ax
+128:Klepp's Sickle
+129:Frog Ax
+130:Bone Splitter Ax
+131:Earthen Ax
+132:Buster Ax
+133:Wrecking Ax
+134:Bent Mattock
+135:Zero Ax
+136:Toy Bow and Arrow
+137:Handmade Darts
+138:Hunter's Bow
+139:Flying Fish Bow
+140:Hail Bow
+141:Flint Bow
+142:Exorcising Bow
+143:Cafu Shuriken
+144:Boomerang
+145:Fire Darts
+146:Evil Shuriken
+147:Demonslayer Boomer
+148:Discus
+149:Cactus Thorns
+150:Ice Boomerang
+151:Thunder Arrow
+152:Zero Shuriken
+153:Zero Whip
+154:Mist-Cracking Whip
+155:Leather Whip
+156:Thorny Whip
+157:Catfish Whiskers
+158:Giant Snake Whip
+159:Binding Whip
+160:Morning Star
+161:Whip of Light
+162:Burning Hot Whip
+163:Gale Whip
+164:Adventure Clothes
+165:Sunday Best
+166:Sports Wear
+167:Work Clothes
+168:Cactus Armor
+169:Soldier's Uniform
+170:Officer's Uniform
+171:Fairy Robe
+172:Flying Dragon Vest
+173:Frog Shirt
+174:Spy Clothes
+175:Chain Mail
+176:Battle Bikini
+177:Mogay Clothes
+178:Mink Coat
+179:Enchantress' Robe
+180:Angel's Robe
+181:Robe of the Sun
+182:Breastplate
+183:Outdated Armor
+184:Bamboo Armor
+185:Shell Armor
+186:Thick Armor
+187:Swordfish Armor
+188:Skull Armor
+189:Chameleon Armor
+190:Plug Suit
+191:Aura Armor
+192:Dark Armor
+193:Warrior's Mail
+194:Spirit Armor
+195:Devil's Robe
+196:Magic Robe
+197:Cutting Board
+198:Woolen Mittens
+199:Leather Gloves
+200:Escargot Shield
+201:Oaken Shield
+202:Shell Shield
+203:Seashell Shield
+204:Mushroom Shield
+205:MagicMirror Shield
+206:Alligator Gauntlet
+207:Leaf Shield
+208:Lafa Flower Shield
+209:Power Shield
+210:Moonlight Shield
+211:Gauntlets
+212:Dragon Gauntlet
+213:Heavy Shield
+214:Gauntlets of Light
+215:Spirit Shield
+216:Magic Gloves
+217:Zero Shield
+218:Goggles
+219:Ribbon
+220:Fluffy Ribbon
+221:Barrette
+222:Pirate's Hat
+223:Cowboy Hat
+224:Climbing Hat
+225:Odd Hat
+226:Headgear
+227:Iron Bandana
+228:Feathered Turban
+229:Angel's Hat
+230:Pope's Hat
+231:Safety Helmet
+232:Antler Helmet
+233:Pearl Helmet
+234:Pirate's Helmet
+235:Stone Head
+236:Swallowtail Hat
+237:Mystic Mask
+238:Death Mask
+239:Ogre Helm
+240:Charisma Helm
+241:Spirit Helmet
+242:Holy Crown
+243:Cactus Helm
+244:Fairy Tiara
+245:Man's Headband
+246:Battle Helm
+247:Sneakers
+248:Dress Shoes
+249:Air Sneakers
+250:Shiny Shoes
+251:Rubber Boots
+252:Leather Greaves
+253:Hunter's Boots
+254:Army Boots
+255:Curious Clogs
+256:Dragon Boots
+257:Ninja Sandals
+258:Winged Boots
+259:Beach Sandals
+260:Mach 1 Boots
+261:Heavy Boots
+262:Queen Heels
+263:Iron Clogs
+264:Ogre Boots
+265:Rabbit Shoes
+266:Rainbow High Heels
+267:Wolf Boots
+268:Lion Boots
+269:Battle Boots
+270:Spirit Shoes
+271:Glass Slippers
+272:Warp Shoes
+273:Crampons
+274:Zero Boots
+275:Prohibited
+276:Diana's Amulet
+277:Hero's Badge
+278:Demon Sword Amulet
+279:Officer's Badge
+280:Black Belt
+281:Chain Earrings
+282:Titan's Ring
+283:Fireproof Cape
+284:Fire Charm
+285:Water Charm
+286:Wind Charm
+287:Earth Charm
+288:Counter Ring
+289:Secret Move Ring
+290:Hurricane Belt
+291:Mama's Amulet
+292:Jade Charm
+293:Tree God Amulet
+294:Light God Amulet
+295:Ancestor's Amulet
+296:Raincoat
+297:Iridescent Amulet
+298:Move Unblocker
+299:Medal of Yore
+300:Spirit Charm
+301:Phantom Silk
+302:Lightning Charm
+303:Forest Charm
+304:Explosion Charm
+305:Blizzard Charm
+306:Wind Belt
+307:Confusion Charm
+308:Paralysis Charm
+309:Magic Block Charm
+310:Sudden Death Charm
+311:Poison Charm
+312:Talisman
+313:Sonic Belt
+314:Metal Frog
+315:Revival Stone
+316:Use Prohibited
+317:Scarab
+318:Demon Eye Stone
+319:Jewel of Life
+320:Ankh of Temptation
+321:Anklet
+322:Energy Ring
+323:Disease Charm
+324:Paperweight
+325:Combat Anklet
+326:Chain of Gems
+327:Satisfaction Gem
+328:Soul of Asura
+329:Crescent Jade
+330:Dragon Scales
+331:Spectacles
+332:Rune Ring
+333:Tear Jewel
+334:Spirit Potion
+335:Would Salve
+336:Baobab Fruit
+337:Boiled Coconut
+338:Chocolate Cookies
+339:Honey
+340:Ultra Drink
+341:Weeds
+342:Dried Fish
+343:Bamboo Shoots
+344:Beef Jerky
+345:Box Lunch
+346:Herbs
+347:White Sulfa Weed
+348:Smarna Weed
+349:Cholla Flowers
+350:Bamo Fruit
+351:Squid Guts
+352:Move Mushroom
+353:Power Mushroom
+354:Poison Antidote
+355:Ginseng
+356:Banana
+357:Bandage
+358:Box of Sweets
+359:First Aid Kit
+360:Red Medicine
+361:Blue Medicine
+362:Yellow Medicine
+363:Crimson Potion
+364:Deep Blue Potion
+365:Golden Potion
+366:Magic Lamp
+367:Poison Antidote
+368:Vaccine
+369:Eye Drops
+370:Smelling Salts
+371:Paralysis Ointment
+372:Spell Breaker
+373:Move Breaker
+374:Resurrect Potion
+375:Panacea
+376:Bond of Trust
+377:Seed of Power
+378:Seed of Defense
+379:Seed of Speed
+380:Seed of Running
+381:All-Around Seed
+382:Seed of Life
+383:Seed of Magic
+384:Seed of Moves
+385:Mace Coloring Book
+386:Bow Coloring Book
+387:Sword Secrets
+388:Fire Secrets
+389:Earth Secrets
+390:How to Cut 'Em
+391:How to Pound 'Em
+392:How to Chop 'Em
+393:Roach Bomb
+394:Firewood Sparks
+395:Mana Egg
+396:Holy Fire
+397:Hand Grenade
+398:Dynamite
+399:Rocket Fireworks
+400:Launch Fireworks
+401:BOOM! Scroll
+402:Howler Scroll
+403:Vacuum Scroll
+404:Tremor Scroll
+405:Zap! Book
+406:Lightning Scroll
+407:Gale Scroll
+408:Overflowing Walnut
+409:Restraint Walnut
+410:Sonic Walnut
+411:Running Walnut
+412:Snooze Scroll
+413:Poisoned Apple
+414:Culture Medium
+415:Dream Truffle
+416:Paralyze Mushroom
+417:Orb of Silence
+418:Black Onyx
+419:Weak-Knee Weed
+420:Ragged Weed
+421:Slouch Weed
+422:Trudge Weed
+423:Root of Confusion
+424:Torte's Whistle
+425:Freesia Flowers
+426:Cone of Light
+427:Mikeroma Scroll
+428:Shuffle Card
+429:Miracle Drink
+430:Gold Key
+431:Silver Key
+432:Key of Temptation
+433:Soldier's Key
+434:Pretty Jewel
+435:Pretty Jewel
+436:Pretty Jewel
+437:Horn of Inogon
+438:Key
+439:Health Weed
+440:Snake Earrings
+441:Resurrect Potion
+442:Expensive Jewel
+443:Rainbow Weed
+444:Smoked Salmon
+445:Prime Rib
+446:Rescue Set
+447:Black Nail Polish
+448:Prohibited
+449:Thor's Fury
+450:Magic Lipstick
+451:Elite Badge
+452:Fruit of Power
+453:Fruit of Defense
+454:Fruit of Speed
+455:Fruit of Agility
+456:All-Around Fruit
+457:Fruit of Life
+458:Fruit of Magic
+459:Fruit of Moves
+460:Mogay Teachings 1
+461:Mogay Teachings 2
+462:Mogay Teachings 3
+463:Ring of Rage
+464:Holy Ring
+465:Mysterious Veil
+466:Blizzard Scroll
+467:Telescope
+468:Energy Charm
+469:Devil's Anklet
+470:Prohibited
+471:Astral Miracle
+472:Ethereal Miracle
+473:Miraculous Scales
+474:General's Staff
+475:Brown Crayon
+476:Blue Crayon
+477:Red Crayon
+478:Sky-Blue Crayon
+479:Emperor's Whip
+480:Soldier's Soul
+481:Poison of Power
+482:Poison of Defense
+483:Poison of Speed
+484:Poison of Agility
+485:All-Around Poison
+486:Poison of Life
+487:Poison of Magic
+488:Poison of Moves
+489:+1 Dagger Skill
+490:+5 Dagger Skill
+491:+1 Sword Skill
+492:+5 Sword Skill
+493:+1 Mace Skill
+494:+5 Mace Skill
+495:+1 Ax Skill
+496:+5 Ax Skill
+497:+1 Whip Skill
+498:+5 Whip Skill
+499:+1 Bow Skill
+500:+5 Bow Skill
+501:+1 Fire Skill
+502:+5 Fire Skill
+503:+1 Wind Skill
+504:+5 Wind Skill
+505:+1 Water Skill
+506:+5 Water Skill
+507:+1 Earth Skill
+508:+5 Earth Skill
+509:100 Sword
+510:100 Mace
+511:100 Fire Mace
+</DropDownList>
+                          <LastState Value="0" RealAddress="109432FA"/>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>[CharacterPtr] + [SelectedCharacter] * 80 + 6E</Address>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
       </CheatEntries>
-	</CheatEntry>
-</CheatEntries>
-<LuaScript>
-function lua_aobscan(name,module,bytes,index)
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+  <LuaScript>function lua_aobscan(name,module,bytes,index)
   index = index - 1
   if(module == "") then
     local resultSet = AOBScan(bytes)
@@ -1574,5 +8529,5 @@ function lua_aobscan(name,module,bytes,index)
     end
   end
 end
-</LuaScript>	
+</LuaScript>
 </CheatTable>
