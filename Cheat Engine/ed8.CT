@@ -1,0 +1,4072 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="24">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"Trails of Cold Steel 1"</Description>
+      <Options moHideChildren="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>10</ID>
+          <Description>"Enable"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Activated="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanmodule(CrystalReadInStatusAOB,ed8.exe,8B 8A D4 85 12 00 51 68 ?? ?? ?? ?? 50) // should be unique
+registersymbol(CrystalReadInStatusAOB)
+alloc(newmem,8192,CrystalReadInStatusAOB)
+
+aobscanmodule(MiraReadInStatusAOB,ed8.exe,8B 91 F8 85 12 00 52 68 ?? ?? ?? ?? 50) // should be unique
+registersymbol(MiraReadInStatusAOB)
+
+aobscanmodule(BondingPointReadInStatusAOB,ed8.exe,8B 84 81 0C 16 00 00 5D C2 04 00) // should be unique
+registersymbol(BondingPointReadInStatusAOB)
+
+aobscanmodule(EarthSepithReadInItemMenuAOB,ed8.exe,8B 84 81 B8 85 12 00 5D C2 04 00) // should be unique
+registersymbol(EarthSepithReadInItemMenuAOB)
+
+aobscanmodule(EXPReadInStatusMenuAOB,ed8.exe,8D B4 C6 F4 6C 12 00 B9 14 00 00 00 8B FB) // should be unique
+registersymbol(EXPReadInStatusMenuAOB)
+
+aobscanmodule(MasterQuartzReadInStatusMenuAOB,ed8.exe,8D 94 80 8F 28 02 00 8D 34) // should be unique
+registersymbol(MasterQuartzReadInStatusMenuAOB)
+
+aobscanmodule(QuartzReadInStatusMenuAOB,ed8.exe,66 8B 84 42 D8 7B 12 00 5D C2 08 00) // should be unique
+registersymbol(QuartzReadInStatusMenuAOB)
+
+aobscanmodule(DifficultyReadInBattleAOB,ed8.exe,8B 81 3C 16 00 00 C7 45 FC 00 06 FC F7) // should be unique
+registersymbol(DifficultyReadInBattleAOB)
+
+aobscanmodule(ItemQtyReadInStatusAOB,ed8.exe,66 8B 44 96 02 5E 5F 5D C2 08 00) // should be unique
+registersymbol(ItemQtyReadInStatusAOB)
+
+aobscanmodule(WeaponIDReadInStatusAOB,ed8.exe,66 8B 84 51 18 77 12 00) // should be unique
+registersymbol(WeaponIDReadInStatusAOB)
+
+aobscanmodule(APReadInStatusAOB,ed8.exe,8B 84 81 0C 16 00 00 5D C2 04 00) // should be unique
+registersymbol(APReadInStatusAOB)
+
+///
+label(CrystalPtr)
+registersymbol(CrystalPtr)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+///
+label(MiraPtr)
+registersymbol(MiraPtr)
+label(returnhere11)
+label(originalcode11)
+label(exit11)
+
+///
+label(BondingPointPtr)
+registersymbol(BondingPointPtr)
+label(returnhere22)
+label(originalcode22)
+label(exit22)
+
+///
+label(EarthSepithPtr)
+registersymbol(EarthSepithPtr)
+label(returnhere33)
+label(originalcode33)
+label(exit33)
+
+///
+label(CharacterPtr)
+registersymbol(CharacterPtr)
+label(CurrentSelectedCharacter)
+registersymbol(CurrentSelectedCharacter)
+label(returnhere44)
+label(originalcode44)
+label(exit44)
+
+///
+label(SelectedMasterQuartzPtr)
+registersymbol(SelectedMasterQuartzPtr)
+label(returnhere55)
+label(originalcode55)
+label(exit55)
+
+///
+label(SelectedQuartzPtr)
+registersymbol(SelectedQuartzPtr)
+label(SelectedQuartzChar)
+registersymbol(SelectedQuartzChar)
+label(returnhere66)
+label(originalcode66)
+label(exit66)
+
+///
+label(DifficultyPtr)
+registersymbol(DifficultyPtr)
+label(returnhere77)
+label(originalcode77)
+label(exit77)
+
+///
+label(ItemBasePtr)
+registersymbol(ItemBasePtr)
+label(InventorySlotOffset)
+registersymbol(InventorySlotOffset)
+label(returnhere88)
+label(originalcode88)
+label(exit88)
+
+///
+label(EquipBasePtr)
+registersymbol(EquipBasePtr)
+label(SelectedEquipChar)
+registersymbol(SelectedEquipChar)
+label(returnhere99)
+label(originalcode99)
+label(exit99)
+
+///
+label(APPtr)
+registersymbol(APPtr)
+label(returnhereAA)
+label(originalcodeAA)
+label(exitAA)
+
+///
+newmem:
+  mov ecx,edx
+  add ecx,001285D4
+  mov [CrystalPtr],ecx
+  
+originalcode:
+  mov ecx,[edx+001285D4]
+  
+exit:
+  jmp returnhere
+
+///
+newmem11:
+  mov edx,ecx
+  add edx,001285F8
+  mov [MiraPtr],edx
+  
+originalcode11:
+  mov edx,[ecx+001285F8]
+  
+exit11:
+  jmp returnhere11
+
+///
+newmem22:
+  cmp eax,9
+  jne originalcode22
+  push eax
+  imul eax,4
+  add eax,ecx
+  add eax,0000160C
+  mov [BondingPointPtr],eax
+  pop eax
+    
+originalcode22:
+  mov eax,[ecx+eax*4+0000160C]
+  
+exit22:
+  jmp returnhere22
+
+///
+newmem33:
+  cmp eax,0
+  jne originalcode33
+  push eax
+  imul eax,4
+  add eax,ecx
+  add eax,001285B8
+  mov [EarthSepithPtr],eax
+  pop eax
+    
+originalcode33:
+  mov eax,[ecx+eax*4+001285B8]
+  
+exit33:
+  jmp returnhere33
+
+///
+newmem44:
+  push ebx
+  push eax
+  push ecx
+  mov ebx,eax
+  imul ebx,8
+  add ebx,esi
+  add ebx,00126CF4
+  mov eax,CharacterPtr
+  xor ecx,ecx
+  mov [FoundNewChar],1
+StartLoop:
+  cmp [eax+ecx*4],ebx
+  jne @F
+  mov [FoundNewChar],0
+  jmp EndLoop
+@@:
+  inc ecx
+  cmp ecx,#12
+  jl StartLoop
+EndLoop:
+  pop ecx
+  pop eax
+  cmp [FoundNewChar],1
+  jne NotNewChar
+  cmp [NextNewCharLocation],#12
+  jl SetNewCharLocation
+  mov [NextNewCharLocation],0
+SetNewCharLocation:
+  push eax
+  push ecx
+  mov ecx,[NextNewCharLocation]
+  mov eax,CharacterPtr
+  mov [eax+ecx*4],ebx
+  inc [NextNewCharLocation]
+  pop ecx
+  pop eax
+NotNewChar:
+  
+originalcode44:
+  pop ebx
+  lea esi,[esi+eax*8+00126CF4]
+  
+exit44:
+  jmp returnhere44
+
+///
+newmem55:
+  push ebx
+  mov ebx,eax
+  imul ebx,4
+  add ebx,eax
+  add ebx,0002288F
+  imul ebx,8
+  add ebx,ecx
+  mov [SelectedMasterQuartzPtr],ebx
+  pop ebx
+  
+originalcode55:
+  lea edx,[eax+eax*4+0002288F]
+  
+exit55:
+  jmp returnhere55
+
+///
+newmem66:
+  cmp eax,0
+  jne originalcode66
+  push ebx
+  mov ebx,eax
+  imul ebx,2
+  add ebx,edx
+  add ebx,00127BD8
+  mov [SelectedQuartzPtr],ebx
+  pop ebx
+    
+originalcode66:
+  mov ax,[edx+eax*2+00127BD8]
+  
+exit66:
+  jmp returnhere66
+
+///
+newmem77:
+  mov [DifficultyPtr],ecx
+  add [DifficultyPtr],0000163C
+  
+originalcode77:
+  mov eax,[ecx+0000163C]
+  
+exit77:
+  jmp returnhere77
+
+///
+newmem88:
+  mov [ItemBasePtr],esi
+  
+originalcode88:
+  mov ax,[esi+edx*4+02]
+  
+exit88:
+  jmp returnhere88
+
+///
+newmem99:
+  push ebx
+  mov ebx,edx
+  imul ebx,2
+  add ebx,ecx
+  add ebx,00127718
+  mov [EquipBasePtr],ebx
+  pop ebx
+  
+originalcode99:
+  mov ax,[ecx+edx*2+00127718]
+  
+exit99:
+  jmp returnhere99
+
+
+///
+newmemAA:
+  cmp eax,12
+  jne originalcodeAA
+  push eax
+  imul eax,4
+  add eax,ecx
+  add eax,0000160C
+  mov [APPtr],eax
+  pop eax
+  
+originalcodeAA:
+  mov eax,[ecx+eax*4+0000160C]
+  
+exitAA:
+  jmp returnhereAA
+
+APPtr:
+dq 0
+CrystalPtr:
+dq 0
+MiraPtr:
+dq 0
+BondingPointPtr:
+dq 0
+EarthSepithPtr:
+dq 0
+FoundNewChar:
+dd 0
+NextNewCharLocation:
+dd 0
+SelectedMasterQuartzPtr:
+dq 0
+SelectedQuartzPtr:
+dq 0
+SelectedQuartzChar:
+dd 0
+EquipBasePtr:
+dq 0
+SelectedEquipChar:
+dd 0
+DifficultyPtr:
+dq 0
+ItemBasePtr:
+dq 0
+InventorySlotOffset:
+dd 0
+CurrentSelectedCharacter:
+dd 0
+CharacterPtr:
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+
+CrystalReadInStatusAOB:
+  jmp newmem
+  nop
+  returnhere:
+
+MiraReadInStatusAOB:
+  jmp newmem11
+  nop
+  returnhere11:
+
+BondingPointReadInStatusAOB:
+  jmp newmem22
+  nop
+  nop
+  returnhere22:
+
+EarthSepithReadInItemMenuAOB:
+  jmp newmem33
+  nop
+  nop
+  returnhere33:
+
+EXPReadInStatusMenuAOB:
+  jmp newmem44
+  nop
+  nop
+  returnhere44:
+
+MasterQuartzReadInStatusMenuAOB:
+  jmp newmem55
+  nop
+  nop
+  returnhere55:
+
+QuartzReadInStatusMenuAOB:
+  jmp newmem66
+  nop
+  nop
+  nop
+  returnhere66:
+
+DifficultyReadInBattleAOB:
+  jmp newmem77
+  nop
+  returnhere77:
+  
+ItemQtyReadInStatusAOB:
+  jmp newmem88
+  returnhere88:
+
+WeaponIDReadInStatusAOB:
+  jmp newmem99
+  nop
+  nop
+  nop
+  returnhere99:
+
+APReadInStatusAOB:
+  jmp newmemAA
+  nop
+  nop
+  returnhereAA:
+  
+[DISABLE]
+
+CrystalReadInStatusAOB:
+  db 8B 8A D4 85 12 00
+
+MiraReadInStatusAOB:
+  db 8B 91 F8 85 12 00
+  
+BondingPointReadInStatusAOB:
+  db 8B 84 81 0C 16 00 00
+
+EarthSepithReadInItemMenuAOB:
+  db 8B 84 81 B8 85 12 00
+
+EXPReadInStatusMenuAOB:
+  db 8D B4 C6 F4 6C 12 00
+
+MasterQuartzReadInStatusMenuAOB:
+  db 8D 94 80 8F 28 02 00
+
+QuartzReadInStatusMenuAOB:
+  db 66 8B 84 42 D8 7B 12 00
+
+DifficultyReadInBattleAOB:
+  db 8B 81 3C 16 00 00
+
+ItemQtyReadInStatusAOB:
+  db 66 8B 44 96 02
+
+WeaponIDReadInStatusAOB:
+  db 66 8B 84 51 18 77 12 00
+
+APReadInStatusAOB:
+  db 8B 84 81 0C 16 00 00 
+  
+unregistersymbol(CrystalPtr)
+unregistersymbol(CrystalReadInStatusAOB)
+
+unregistersymbol(MiraPtr)
+unregistersymbol(MiraReadInStatusAOB)
+
+unregistersymbol(BondingPointPtr)
+unregistersymbol(BondingPointReadInStatusAOB)
+
+unregistersymbol(CharacterPtr)
+unregistersymbol(CurrentSelectedCharacter)
+unregistersymbol(EXPReadInStatusMenuAOB)
+
+unregistersymbol(SelectedMasterQuartzPtr)
+unregistersymbol(MasterQuartzReadInStatusMenuAOB)
+
+unregistersymbol(SelectedQuartzPtr)
+unregistersymbol(SelectedQuartzChar)
+unregistersymbol(QuartzReadInStatusMenuAOB)
+
+unregistersymbol(DifficultyPtr)
+unregistersymbol(DifficultyReadInBattleAOB)
+
+unregistersymbol(ItemBasePtr)
+unregistersymbol(InventorySlotOffset)
+unregistersymbol(ItemQtyReadInStatusAOB)
+
+unregistersymbol(EquipBasePtr)
+unregistersymbol(SelectedEquipChar)
+unregistersymbol(WeaponIDReadInStatusAOB)
+
+unregistersymbol(APPtr)
+unregistersymbol(APReadInStatusAOB)
+
+dealloc(newmem)
+</AssemblerScript>
+        <CheatEntries>
+		  <CheatEntry>
+              <ID>100</ID>
+              <Description>"[Scripts]"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+				<CheatEntry>
+				  <ID>5000</ID>
+				  <Description>"TheByteSize made Scripts"</Description>
+				  <Options moHideChildren="1"/>
+				  <GroupHeader>1</GroupHeader>
+				  <CheatEntries>
+					<CheatEntry>
+					  <ID>5001</ID>
+					  <Description>"Fast Link EXP Event n Event Item"</Description>
+					  <Options moHideChildren="1"/>
+					  <VariableType>Auto Assembler Script</VariableType>
+					  <AssemblerScript>[ENABLE]
+
+aobscanmodule(ToCS_Fast_Link_AOB,ed8.exe,01 9C 8E 04 05 00 00) // should be unique
+registersymbol(ToCS_Fast_Link_AOB)
+alloc(newmem,$1000)
+label(code)
+label(return)
+label(linkMult)
+registersymbol(linkMult)
+
+newmem:
+  imul ebx,[linkMult]
+code:
+  add [esi+ecx*4+00000504],ebx
+  jmp return
+
+linkMult:
+dd #5
+
+ToCS_Fast_Link_AOB:
+  jmp newmem
+  nop
+  nop
+return:
+
+[DISABLE]
+
+ToCS_Fast_Link_AOB:
+  db 01 9C 8E 04 05 00 00
+
+unregistersymbol(ToCS_Fast_Link_AOB)
+unregistersymbol(linkMult)
+dealloc(newmem)
+					  </AssemblerScript>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>5002</ID>
+						  <Description>"Link EXP Multiplier"</Description>
+						  <VariableType>Byte</VariableType>
+						  <Address>linkMult</Address>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>			  
+					<CheatEntry>
+					  <ID>5010</ID>
+					  <Description>"Bonding Remain &gt;=1"</Description>
+					  <VariableType>Auto Assembler Script</VariableType>
+					  <AssemblerScript>[ENABLE]
+
+aobscanmodule(ToCS_BondingEQG1_AOB,ed8.exe,89 94 81 0C 16 00 00) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+ cmp edx,#1
+ jge code
+ cmp eax,#9
+ je return
+
+code:
+  mov [ecx+eax*4+0000160C],edx
+  jmp return
+
+ToCS_BondingEQG1_AOB:
+  jmp newmem
+  nop
+  nop
+return:
+registersymbol(ToCS_BondingEQG1_AOB)
+
+[DISABLE]
+
+ToCS_BondingEQG1_AOB:
+  db 89 94 81 0C 16 00 00
+
+unregistersymbol(ToCS_BondingEQG1_AOB)
+dealloc(newmem)
+
+					  </AssemblerScript>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>5020</ID>
+					  <Description>"Inf Fishing Attempts"</Description>
+					  <VariableType>Auto Assembler Script</VariableType>
+					  <AssemblerScript>
+[ENABLE]
+
+aobscanmodule(ToCS_Inf_Fishing_AOB,ed8.exe,49 0F 98 C2 4A) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  //dec ecx
+  sets dl
+  dec edx
+  jmp return
+
+ToCS_Inf_Fishing_AOB:
+  jmp newmem
+return:
+registersymbol(ToCS_Inf_Fishing_AOB)
+
+[DISABLE]
+
+ToCS_Inf_Fishing_AOB:
+  db 49 0F 98 C2 4A
+
+unregistersymbol(ToCS_Inf_Fishing_AOB)
+dealloc(newmem)
+
+					</AssemblerScript>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>5030</ID>
+					  <Description>"Fast Angler Points x100"</Description>
+					  <VariableType>Auto Assembler Script</VariableType>
+					  <AssemblerScript>[ENABLE]
+
+aobscanmodule(ToCS_Fast_AnglerP_AOB,ed8.exe,8B 81 94 92 12 00) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+  mov edx,[ebp+08]
+  imul edx,#100
+  mov [ebp+08],edx
+code:
+  mov eax,[ecx+00129294]
+  jmp return
+
+ToCS_Fast_AnglerP_AOB:
+  jmp newmem
+  nop
+return:
+registersymbol(ToCS_Fast_AnglerP_AOB)
+
+[DISABLE]
+
+ToCS_Fast_AnglerP_AOB:
+  db 8B 81 94 92 12 00
+
+unregistersymbol(ToCS_Fast_AnglerP_AOB)
+dealloc(newmem)
+
+					  </AssemblerScript>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>5040</ID>
+					  <Description>"Fast EXP Gain"</Description>
+					  <Options moHideChildren="1"/>
+					  <VariableType>Auto Assembler Script</VariableType>
+					  <AssemblerScript>[ENABLE]
+
+
+aobscanmodule(ToCS_Fast_EXP_AOB,ed8.exe,03 C7 3D 0F 27 00 00) // should be unique
+registersymbol(ToCS_Fast_EXP_AOB)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+label(expMult)
+registersymbol(expMult)
+
+newmem:
+  imul edi,[expMult]
+code:
+  add eax,edi
+  cmp eax,0000270F
+  jmp return
+
+expMult:
+dd #10
+
+ToCS_Fast_EXP_AOB:
+  jmp newmem
+  nop
+  nop
+return:
+
+
+[DISABLE]
+
+ToCS_Fast_EXP_AOB:
+  db 03 C7 3D 0F 27 00 00
+
+unregistersymbol(ToCS_Fast_EXP_AOB)
+unregistersymbol(expMult)
+dealloc(newmem)
+
+					  </AssemblerScript>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>5041</ID>
+						  <Description>"EXP Multiplier"</Description>
+						  <VariableType>Byte</VariableType>
+						  <Address>expMult</Address>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>5050</ID>
+					  <Description>"Fast Link EXP Battle"</Description>
+					  <VariableType>Auto Assembler Script</VariableType>
+					  <AssemblerScript>[ENABLE]
+
+aobscanmodule(ToCS_FastLinkBattle_AOB,ed8.exe,8B 5D 10 8B F9) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov ebx,[ebp+10]
+  imul ebx,#100
+  mov [ebp+10],ebx
+  mov edi,ecx
+  jmp return
+
+ToCS_FastLinkBattle_AOB:
+  jmp newmem
+return:
+registersymbol(ToCS_FastLinkBattle_AOB)
+
+[DISABLE]
+
+ToCS_FastLinkBattle_AOB:
+  db 8B 5D 10 8B F9
+
+unregistersymbol(ToCS_FastLinkBattle_AOB)
+dealloc(newmem)
+
+					  </AssemblerScript>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>5052</ID>
+					  <Description>"Fast Master Quartz Level"</Description>
+					  <VariableType>Auto Assembler Script</VariableType>
+					  <AssemblerScript>
+[ENABLE]
+
+aobscanmodule(ToCS_FastMasterQuartzLeveling,ed8.exe,8B 40 04 5D C2 04 00 33 C0 5D C2 04 00 CC CC CC CC) // should be unique
+alloc(newmem,$1000)
+label(L1)
+label(L2)
+label(L3)
+label(L4)
+label(code)
+label(return)
+
+newmem:
+  cmp [eax],#1
+  je L1
+  cmp [eax],#2
+  je L2
+  cmp [eax],#3
+  je L3
+  cmp [eax],#4
+  je L4
+  jmp code
+
+L1:
+  mov [eax+04],#7299
+  jmp code
+L2:
+  mov [eax+04],#7499
+  jmp code
+L3:
+  mov [eax+04],#14999
+  jmp code
+L4:
+  mov [eax+04],#29999
+  jmp code
+
+code:
+  mov eax,[eax+04]
+  pop ebp
+  ret 0004
+  jmp return
+
+ToCS_FastMasterQuartzLeveling:
+  jmp newmem
+  nop
+  nop
+return:
+registersymbol(ToCS_FastMasterQuartzLeveling)
+
+[DISABLE]
+
+ToCS_FastMasterQuartzLeveling:
+  db 8B 40 04 5D C2 04 00
+
+unregistersymbol(ToCS_FastMasterQuartzLeveling)
+dealloc(newmem)
+</AssemblerScript>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>5053</ID>
+					  <Description>"Bravery Points MAX(3)"</Description>
+					  <VariableType>Auto Assembler Script</VariableType>
+					  <AssemblerScript>
+[ENABLE]
+
+aobscanmodule(ToCS_Bravery_Points_MAX,ed8.exe,8A 86 AC 01 00 00) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+  cmp [esi+000001AC],#3
+  jnl code
+  mov [esi+000001AC],#3
+
+code:
+  mov al,[esi+000001AC]
+  jmp return
+
+ToCS_Bravery_Points_MAX:
+  jmp newmem
+  nop
+return:
+registersymbol(ToCS_Bravery_Points_MAX)
+
+[DISABLE]
+
+ToCS_Bravery_Points_MAX:
+  db 8A 86 AC 01 00 00
+
+unregistersymbol(ToCS_Bravery_Points_MAX)
+dealloc(newmem)
+</AssemblerScript>
+					</CheatEntry>					
+					<CheatEntry>
+					  <ID>5070</ID>
+					  <Description>"Super Stats Active Member"</Description>
+					  <VariableType>Auto Assembler Script</VariableType>
+					  <AssemblerScript>[ENABLE]
+
+aobscanmodule(ToCS_SuperStats_ActiveMember_AOB,ed8.exe,B9 14 00 00 00 8B FB F3 A5 5F 5E 8B C3 5B) // should be unique
+registersymbol(ToCS_SuperStats_ActiveMember_AOB)
+alloc(newmem,$1000)
+label(code)
+label(return)
+
+
+newmem:
+
+code:
+  lea esi,[esi+eax*8+00126CD4]
+  mov ecx,00000014
+  // mov [esi],#9999  //HP - Current
+  // mov word [esi+8],#999  //EP - Current
+  // mov word [esi+C],#200  //CP - Current
+  mov word [esi+10],#999  //STR
+  mov word [esi+12],#999  //DEF
+  mov word [esi+14],#999  //ATS
+  mov word [esi+16],#999  //ADF
+  mov word [esi+1C],#999  //SPD
+  mov word [esi+18],#999  //DEX
+  mov word [esi+1A],#999  //AGL
+  mov word [esi+2C],#100  //ACC+
+  mov word [esi+2e],#100  //EVA+
+  jmp return
+
+
+ToCS_SuperStats_ActiveMember_AOB:
+  jmp newmem
+return:
+
+[DISABLE]
+
+ToCS_SuperStats_ActiveMember_AOB:
+  db B9 14 00 00 00
+
+unregistersymbol(ToCS_SuperStats_ActiveMember_AOB)
+dealloc(newmem)
+
+					</AssemblerScript>
+					</CheatEntry>	
+					<CheatEntry>
+					  <ID>5080</ID>
+					  <Description>"Can Die Quick"</Description>
+					  <VariableType>Auto Assembler Script</VariableType>
+					  <AssemblerScript>[ENABLE]
+
+aobscanmodule(ToCS_CanDie_AOB,ed8.exe,8D 86 CC 01 00 00 5E) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  lea eax,[esi+000001CC]
+  cmp [esi+40],0
+  jne return
+  mov dword [eax],#1
+//  mov word [esi+10],#999  //STR
+  mov word [eax+12],#0  //DEF
+//  mov word [esi+14],#999  //ATS
+  mov word [eax+16],#0  //ADF
+  mov word [eax+1C],#1  //SPD
+  mov word [eax+18],#1  //DEX
+  mov word [eax+1A],#1  //AGL
+//  mov word [eax+2C],#100  //ACC+
+  mov word [eax+2e],#0  //EVA+
+  jmp return
+
+ToCS_CanDie_AOB:
+  jmp newmem
+  nop
+return:
+registersymbol(ToCS_CanDie_AOB)
+
+[DISABLE]
+
+ToCS_CanDie_AOB:
+  db 8D 86 CC 01 00 00
+
+unregistersymbol(ToCS_CanDie_AOB)
+dealloc(newmem)
+
+					</AssemblerScript>
+					</CheatEntry>					
+				  </CheatEntries>
+				</CheatEntry>			  
+                <CheatEntry>
+                  <ID>200</ID>
+                  <Description>"Damage Modifier Script (God Mode, One Hit Kill, etc.)"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+aobscanmodule(DamageModAOB,ed8.exe,8B 86 CC 01 00 00 2B 45 08 8B 8E D0 01 00 00) // should be unique
+registersymbol(DamageModAOB)
+alloc(newmem,4096,DamageModAOB)
+
+label(return)
+label(GodMode)
+registersymbol(GodMode)
+label(OneHitKill)
+registersymbol(OneHitKill)
+label(fEnemyDamageMult)
+registersymbol(fEnemyDamageMult)
+label(fEnemyHealingMult)
+registersymbol(fEnemyHealingMult)
+label(fHeroDamageMult)
+registersymbol(fHeroDamageMult)
+label(fHeroHealingMult)
+registersymbol(fHeroHealingMult)
+label(HeroCannotDie)
+registersymbol(HeroCannotDie)
+
+newmem:
+  mov eax,[esi+000001CC]
+  push ebx
+  mov ebx,[ebp+08]
+  cmp byte ptr [esi+40],0
+  jne EnemyHit
+HeroHit:
+  cmp ebx,0
+  jl HeroHealingHit
+  jg HeroDamageHit
+  jmp CleanUp
+HeroDamageHit:
+  cmp [fHeroDamageMult],(float)0.0
+  je CheckGodMode
+  push ebx
+  fild dword ptr [rsp]
+  fmul dword ptr [fHeroDamageMult]
+  fistp dword ptr [rsp]
+  pop ebx
+CheckGodMode:
+  cmp [GodMode],1
+  jne CheckHeroCannotDie
+  xor ebx,ebx
+  jmp CleanUp
+CheckHeroCannotDie:
+  cmp [HeroCannotDie],1
+  jne CleanUp
+  cmp ebx,eax
+  jl @F
+  xor ebx,ebx
+@@:
+  jmp CleanUp  
+HeroHealingHit:
+  cmp [fHeroHealingMult],(float)0.0
+  je CleanUp
+  neg ebx
+  push ebx
+  fild dword ptr [rsp]
+  fmul dword ptr [fHeroHealingMult]
+  fistp dword ptr [rsp]
+  pop ebx
+  neg ebx
+  jmp CleanUp
+EnemyHit:
+  cmp ebx,0
+  jl EnemyHealingHit
+  jg EnemyDamageHit
+  jmp CheckOneHitKill
+EnemyDamageHit:
+  cmp [fEnemyDamageMult],(float)0.0
+  je CheckOneHitKill
+  push ebx
+  fild dword ptr [rsp]
+  fmul dword ptr [fEnemyDamageMult]
+  fistp dword ptr [rsp]
+  pop ebx
+CheckOneHitKill:
+  cmp [OneHitKill],1
+  jne CleanUp
+  mov ebx,#99999
+  jmp CleanUp
+EnemyHealingHit:
+  cmp [fEnemyHealingMult],(float)0.0
+  je CleanUp
+  neg ebx
+  push ebx
+  fild dword ptr [rsp]
+  fmul dword ptr [fEnemyHealingMult]
+  fistp dword ptr [rsp]
+  pop ebx
+  neg ebx
+
+CleanUp:  
+  mov [ebp+08],ebx
+  pop ebx
+  jmp return
+
+
+GodMode:
+dq 0
+OneHitKill:
+dq 0
+fEnemyDamageMult:
+dq (float)4.0
+fEnemyHealingMult:
+dq (float)0.25
+fHeroDamageMult:
+dq (float)0.25
+fHeroHealingMult:
+dq (float)4.0
+HeroCannotDie:
+dq 1
+
+DamageModAOB:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+
+DamageModAOB:
+  db 8B 86 CC 01 00 00
+
+unregistersymbol(DamageModAOB)
+unregistersymbol(GodMode)
+unregistersymbol(OneHitKill)
+unregistersymbol(fEnemyDamageMult)
+unregistersymbol(fEnemyHealingMult)
+unregistersymbol(fHeroDamageMult)
+unregistersymbol(fHeroHealingMult)
+
+dealloc(newmem)
+</AssemblerScript>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>201</ID>
+                      <Description>"God Mode"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+1:On
+</DropDownList>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GodMode</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>202</ID>
+                      <Description>"Hero Damage Multiplier (Set to 0.0 = Off; Otherwise multiplier so 0.5 is half damage to hero party)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>fHeroDamageMult</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>203</ID>
+                      <Description>"Hero Healing Multiplier (Set to Zero = Off; Otherwise multiplier to hero party healing)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>fHeroHealingMult</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>204</ID>
+                      <Description>"Hero Cannot Die (If On and God Mode Off, Then You Take Damage Until The Hit Will Kill You)"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+1:On
+</DropDownList>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>HeroCannotDie</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>205</ID>
+                      <Description>"One Hit Kill"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+1:On
+</DropDownList>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>OneHitKill</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>206</ID>
+                      <Description>"Enemy Damage Multiplier (Set to Zero = Off; Otherwise multiplier to damage you deal to enemies)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>fEnemyDamageMult</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>207</ID>
+                      <Description>"Enemy Healing Multiplier (Set to 0.0 = Off; Otherwise multiplier so 0.5 is half healing to enemy party)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>fEnemyHealingMult</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>208</ID>
+                  <Description>"Infinite Battle EP"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+aobscanmodule(BattleEPModAOB,ed8.exe,0F B7 86 D4 01 00 00 2B 45 08 0F B7 8E D6 01 00 00) // should be unique
+registersymbol(BattleEPModAOB)
+alloc(newmem,2048,BattleEPModAOB)
+
+label(return)
+
+newmem:
+  movzx eax,word ptr [esi+000001D4]
+  cmp byte ptr [esi+40],0
+  jne _NotPlayer
+  cmp [ebp+08],0
+  jle @F  
+  mov [ebp+08],0
+@@:
+_NotPlayer:
+
+  jmp return
+
+  
+BattleEPModAOB:
+  jmp newmem
+  nop
+  nop
+return:
+  
+[DISABLE]
+
+BattleEPModAOB:
+  db 0F B7 86 D4 01 00 00
+
+unregistersymbol(BattleEPModAOB)
+dealloc(newmem)				
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>210</ID>
+                  <Description>"Battle CP Script"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+aobscanmodule(BattleCPModAOB,ed8.exe,0F B7 86 D8 01 00 00 2B 45 08 0F B7 8E DA 01 00 00) // should be unique
+registersymbol(BattleCPModAOB)
+alloc(newmem,2048,BattleCPModAOB)
+
+label(return)
+label(InfiniteCP)
+registersymbol(InfiniteCP)
+label(MaxCPOnHit)
+registersymbol(MaxCPOnHit)
+
+newmem:
+  movzx eax,word ptr [esi+000001D8]
+  cmp byte ptr [esi+40],0
+  jne _NotPlayer
+  cmp [InfiniteCP],1
+  jne @F
+  cmp [ebp+08],0
+  jle @F
+  mov [ebp+08],0
+@@:
+  cmp [MaxCPOnHit],1
+  jne @F
+  cmp [ebp+08],0
+  jg @F
+  mov [ebp+08],#-200
+@@:
+  _NotPlayer:
+
+  jmp return
+ 
+InfiniteCP:
+dd 1
+MaxCPOnHit:
+dd 0
+
+BattleCPModAOB:
+  jmp newmem
+  nop
+  nop
+return:
+  
+[DISABLE]
+BattleCPModAOB:
+  db 0F B7 86 D8 01 00 00
+
+unregistersymbol(BattleCPModAOB)
+unregistersymbol(InfiniteCP)
+unregistersymbol(MaxCPOnHit)
+
+dealloc(newmem)				
+</AssemblerScript>
+				<CheatEntries>
+                    <CheatEntry>
+                      <ID>211</ID>
+                      <Description>"InfiniteCP"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+1:On
+</DropDownList>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>InfiniteCP</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>212</ID>
+                      <Description>"Max CP On Hit"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+1:On
+</DropDownList>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>MaxCPOnHit</Address>
+                    </CheatEntry>
+				</CheatEntries>
+                </CheatEntry>
+				<CheatEntry>
+				  <ID>2300</ID>
+				  <Description>"Always Critical Hit (Allies)"</Description>
+				  <Options moHideChildren="1"/>
+				  <LastState/>
+				  <VariableType>Auto Assembler Script</VariableType>
+				  <AssemblerScript>[ENABLE]
+
+aobscanmodule(CriticalHitAOB,ed8.exe,80 BE 73 0D 00 00 00 B9 96 00 00 00) // should be unique
+alloc(newmem,2048,CriticalHitAOB)
+registersymbol(CriticalHitAOB)
+
+aobscanmodule(CriticalHitAOB2,ed8.exe,88 85 7C FF FF FF 84 C0 0F 84 27 01 00 00) // should be unique
+alloc(newmem2,2048,CriticalHitAOB2)
+registersymbol(CriticalHitAOB2)
+
+///
+label(return)
+label(originalcode)
+
+///
+label(return2)
+label(originalcode2)
+
+newmem:
+  cmp [ebx+40],0
+  je originalcode
+  mov byte ptr [esi+00000D73],00
+  
+originalcode:
+  cmp byte ptr [esi+00000D73],00
+  jmp return
+
+newmem2:
+  cmp [ebx+40],0
+  je originalcode2
+  mov al,01
+
+originalcode2:
+  mov [ebp-00000084],al
+  jmp return2
+  
+CriticalHitAOB:
+  jmp newmem
+  nop
+  nop
+  return:
+
+CriticalHitAOB2:
+  jmp newmem2
+  nop
+  return2:
+  
+[DISABLE]
+
+CriticalHitAOB:
+  db 80 BE 73 0D 00 00 00
+  
+unregistersymbol(CriticalHitAOB)
+
+CriticalHitAOB2:
+  db 88 85 7C FF FF FF
+
+unregistersymbol(CriticalHitAOB2)
+  
+dealloc(newmem)
+dealloc(newmem2)
+</AssemblerScript>
+				</CheatEntry>				
+                <CheatEntry>
+                  <ID>215</ID>
+                  <Description>"Multiply Stats On Equip"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+aobscanmodule(StatWriteAOB,ed8.exe,66 89 55 B8 89 45 D4 F3 A5) // should be unique
+registersymbol(StatWriteAOB)
+alloc(newmem,2048,StatWriteAOB)
+
+label(return)
+label(fHeroStatMult)
+registersymbol(fHeroStatMult)
+label(ApplyToReanOnly)
+registersymbol(ApplyToReanOnly)
+label(HPStatCap)
+registersymbol(HPStatCap)
+label(OtherStatCap)
+registersymbol(OtherStatCap)
+
+newmem:
+  cmp [ApplyToReanOnly],1
+  jne @F
+  cmp edi,[CharacterPtr]
+  jne originalcode
+@@:
+  push rax
+  xor rax,rax  
+  mov rax,dword ptr [esi]
+  push rax
+  fild dword ptr [rsp]
+  fmul dword ptr [fHeroStatMult]
+  fistp dword ptr [rsp]
+  pop rax
+  cmp eax,[HPStatCap]
+  jle @F
+  mov eax,[HPStatCap]
+@@:
+  mov [esi],eax
+  xor rax,rax  
+  mov rax,dword ptr [esi+04]
+  push rax
+  fild dword ptr [rsp]
+  fmul dword ptr [fHeroStatMult]
+  fistp dword ptr [rsp]
+  pop rax
+  cmp eax,[HPStatCap]
+  jle @F
+  mov eax,[HPStatCap]
+@@:
+  mov [esi+04],eax
+  xor rax,rax  
+  mov ax,[esi+08]  
+  push rax
+  fild dword ptr [rsp]
+  fmul dword ptr [fHeroStatMult]
+  fistp dword ptr [rsp]
+  pop rax
+  cmp ax,[OtherStatCap]
+  jle @F
+  mov ax,[OtherStatCap]
+@@:
+  mov [esi+08],ax
+  xor rax,rax  
+  mov eax,[esi+0A]
+  push rax
+  fild dword ptr [rsp]
+  fmul dword ptr [fHeroStatMult]
+  fistp dword ptr [rsp]
+  pop rax
+  cmp ax,[OtherStatCap]
+  jle @F
+  mov ax,[OtherStatCap]
+@@:
+  mov [esi+0A],ax
+  xor rax,rax  
+  mov ax,[esi+10]
+  push rax
+  fild dword ptr [rsp]
+  fmul dword ptr [fHeroStatMult]
+  fistp dword ptr [rsp]
+  pop rax
+  cmp ax,[OtherStatCap]
+  jle @F
+  mov ax,[OtherStatCap]
+@@:
+  mov [esi+10],ax
+  xor rax,rax  
+  mov ax,[esi+12]
+  push rax
+  fild dword ptr [rsp]
+  fmul dword ptr [fHeroStatMult]
+  fistp dword ptr [rsp]
+  pop rax
+  cmp ax,[OtherStatCap]
+  jle @F
+  mov ax,[OtherStatCap]
+@@:
+  mov [esi+12],ax
+  xor rax,rax  
+  mov ax,[esi+14]
+  push rax
+  fild dword ptr [rsp]
+  fmul dword ptr [fHeroStatMult]
+  fistp dword ptr [rsp]
+  pop rax
+  cmp ax,[OtherStatCap]
+  jle @F
+  mov ax,[OtherStatCap]
+@@:
+  mov [esi+14],ax
+  xor rax,rax  
+  mov ax,[esi+16]
+  push rax
+  fild dword ptr [rsp]
+  fmul dword ptr [fHeroStatMult]
+  fistp dword ptr [rsp]
+  pop rax
+  cmp ax,[OtherStatCap]
+  jle @F
+  mov ax,[OtherStatCap]
+@@:
+  mov [esi+16],ax
+  xor rax,rax  
+  mov ax,[esi+18]  
+  push rax
+  fild dword ptr [rsp]
+  fmul dword ptr [fHeroStatMult]
+  fistp dword ptr [rsp]
+  pop rax
+  cmp ax,[OtherStatCap]
+  jle @F
+  mov ax,[OtherStatCap]
+@@:
+  mov [esi+18],ax
+  xor rax,rax  
+  mov ax,[esi+1A]
+  push rax
+  fild dword ptr [rsp]
+  fmul dword ptr [fHeroStatMult]
+  fistp dword ptr [rsp]
+  pop rax
+  cmp ax,[OtherStatCap]
+  jle @F
+  mov ax,[OtherStatCap]
+@@:
+  mov [esi+1A],ax
+  xor rax,rax  
+  mov ax,[esi+1C]
+  push rax
+  fild dword ptr [rsp]
+  fmul dword ptr [fHeroStatMult]
+  fistp dword ptr [rsp]
+  pop rax
+  cmp ax,[OtherStatCap]
+  jle @F
+  mov ax,[OtherStatCap]
+@@:
+  mov [esi+1C],ax
+  xor rax,rax  
+  mov ax,[esi+1E]
+  push rax
+  fild dword ptr [rsp]
+  fmul dword ptr [fHeroStatMult]
+  fistp dword ptr [rsp]
+  pop rax
+  cmp ax,[OtherStatCap]
+  jle @F
+  mov ax,[OtherStatCap]
+@@:
+  mov [esi+1E],ax
+  pop rax
+  
+originalcode:
+  mov [ebp-48],dx
+  mov [ebp-2C],eax
+  jmp return
+
+fHeroStatMult:
+dd (float)1.5
+ApplyToReanOnly:
+dd 0
+HPStatCap:
+dd #99999
+OtherStatCap:
+dd #9999
+  
+StatWriteAOB:
+  jmp newmem
+  nop
+  nop
+return:
+  
+[DISABLE]
+
+StatWriteAOB:
+  db 66 89 55 B8 89 45 D4
+
+unregistersymbol(StatWriteAOB)
+unregistersymbol(fHeroStatMult)
+unregistersymbol(ApplyToReanOnly)
+unregistersymbol(HPStatCap)
+unregistersymbol(OtherStatCap)
+
+dealloc(newmem)				
+</AssemblerScript>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>216</ID>
+                      <Description>"Hero Stat Multiplier"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>fHeroStatMult</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>217</ID>
+                      <Description>"Apply To Rean Only"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>ApplyToReanOnly</Address>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+1:On
+</DropDownList>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>218</ID>
+                      <Description>"HP Stat Cap"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>HPStatCap</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>219</ID>
+                      <Description>"Other Stat Cap"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>OtherStatCap</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>220</ID>
+                  <Description>"Infinite Turns Left Positive Status Effects (Allies)"</Description>
+                  <Options moHideChildren="1"/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+{
+Status Effects Figured Out
+
+0004000 = STR Up
+0008000 = DEF Up
+0010000 = ATS Up
+0020000 = ADF Up
+0040000 = SPD Up
+0080000 = MOV Up
+0100000 = Insight
+0200000 = Link Break (Negative)
+0400000 = HP Regen
+0800000 = CP Regen
+1000000 = Craft Guard
+2000000 = Art Reflect
+}
+
+aobscanmodule(WriteTurnsLeftAOB,ed8.exe,FF 48 08 8B 40 08 89 45 E4) // should be unique
+registersymbol(WriteTurnsLeftAOB)
+alloc(newmem,2048,WriteTurnsLeftAOB)
+
+label(return)
+label(originalcode)
+label(originalcode2)
+label(StatusUpPower)
+registersymbol(StatusUpPower)
+label(HPCPRegenPower)
+registersymbol(HPCPRegenPower)
+label(InsightPower)
+registersymbol(InsightPower)
+
+newmem:
+  cmp byte ptr [ebx+40],0
+  jne originalcode
+  push ecx
+  mov ecx,[StatusUpEffects]
+  test dword ptr [eax],ecx
+  je @F
+  mov ecx,[StatusUpPower]
+  mov [eax+C],cx
+  pop ecx
+  jmp originalcode2
+@@:
+  test dword ptr [eax],400000
+  je @F
+  mov ecx,[HPCPRegenPower]
+  mov [eax+C],cx
+@@:
+  test dword ptr [eax],100000
+  je @F
+  mov ecx,[InsightPower]
+  mov [eax+C],cx
+@@:
+  mov ecx,[AdditionalPositiveStatusEffects]
+  test dword ptr [eax],ecx
+  pop ecx
+  je originalcode
+  jmp originalcode2
+
+originalcode:
+  dec [eax+08]
+
+originalcode2:
+  mov eax,[eax+08]  
+  jmp return
+
+StatusUpEffects:
+dd 000FC000
+AdditionalPositiveStatusEffects:
+dd 03D00000
+StatusUpPower:
+dd #50
+HPCPRegenPower:
+dd #30
+InsightPower:
+dd #50
+
+WriteTurnsLeftAOB:
+  jmp newmem
+  nop
+return:
+  
+[DISABLE]
+WriteTurnsLeftAOB:
+  db FF 48 08 8B 40 08
+
+unregistersymbol(WriteTurnsLeftAOB)
+unregistersymbol(StatusUpPower)
+unregistersymbol(HPCPRegenPower)
+unregistersymbol(InsightPower)
+
+dealloc(newmem)				
+</AssemblerScript>
+				  <CheatEntries>
+					<CheatEntry>
+					  <ID>2001</ID>
+					  <Description>"Status Up Power"</Description>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>StatusUpPower</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>2002</ID>
+					  <Description>"HP CP Regen Power"</Description>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>HPCPRegenPower</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>2003</ID>
+					  <Description>"Insight Power"</Description>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>InsightPower</Address>
+					</CheatEntry>
+				  </CheatEntries>
+                </CheatEntry>
+				<CheatEntry>
+				  <ID>2005</ID>
+				  <Description>"Add Positive Status Effects (When Adding A Status)"</Description>
+				  <Options moHideChildren="1"/>
+				  <VariableType>Auto Assembler Script</VariableType>
+				  <AssemblerScript>[ENABLE]
+{
+Status Effects Figured Out
+
+0004000 = STR Up
+0008000 = DEF Up
+0010000 = ATS Up
+0020000 = ADF Up
+0040000 = SPD Up
+0080000 = MOV Up
+0100000 = Insight
+0200000 = Link Break (Negative)
+0400000 = HP Regen
+0800000 = CP Regen
+1000000 = Craft Guard
+2000000 = Art Reflect
+}
+
+aobscanmodule(AddStatusAOB,ed8.exe,C6 45 F3 00 85 45 EC) // should be unique
+registersymbol(AddStatusAOB)
+alloc(newmem,2048,AddStatusAOB)
+
+aobscanmodule(AddStatusAOB2,ed8.exe,C7 45 EC 01 00 00 00 8B 45 10 C6 45 F2 00) // should be unique
+registersymbol(AddStatusAOB2)
+
+///
+label(return)
+label(originalcode)
+label(EffectsToAdd)
+registersymbol(EffectsToAdd)
+label(SavedPower)
+registersymbol(SavedPower)
+label(SavedTurns)
+registersymbol(SavedTurns)
+label(NumTurns)
+registersymbol(NumTurns)
+label(StatusUpPower2)
+registersymbol(StatusUpPower2)
+label(HPCPRegenPower2)
+registersymbol(HPCPRegenPower2)
+label(InsightPower2)
+registersymbol(InsightPower2)
+
+//
+label(return2)
+label(originalcode2)
+
+newmem:
+  mov byte ptr [ebp-0D],00
+  push edx
+  mov edx,[ebp-54]
+  cmp [edx+40],0
+  pop edx
+  jne originalcode
+  push edx
+  mov edx,[EffectsToAdd]
+  test [ebp-14],edx
+  je @F
+  mov eax,[ebp-14]
+@@:
+  mov edx,[ebp+10]
+  test [ebp-14],edx
+  je @F
+  mov eax,[ebp+10]
+@@:
+  test [ebp-14],eax
+  je DoRegular
+  mov edx,[EffectsToAdd]
+  test eax,edx
+  je DoRegular
+  mov edx,[StatusUpEffects2]
+  test eax,edx
+  je @F
+  mov edx,[StatusUpPower2]
+  mov [ebp+14],dx
+  jmp DoTurns
+@@:
+  test eax,C00000
+  je @F
+  mov edx,[HPCPRegenPower2]
+  mov [ebp+14],dx
+  jmp DoTurns
+@@:
+  test eax,100000
+  je @F
+  mov edx,[InsightPower2]
+  mov [ebp+14],dx
+  jmp DoTurns
+@@:  
+  mov edx,[SavedPower]
+  mov [ebp+14],edx
+DoTurns:
+  mov edx,[NumTurns]
+  mov [ebp+18],dx
+  pop edx
+  jmp originalcode
+DoRegular:
+  mov edx,[SavedPower]
+  mov [ebp+14],edx
+  mov edx,[SavedTurns]
+  mov [ebp+18],edx
+  pop edx
+  
+originalcode:
+  test [ebp-14],eax  
+  jmp return  
+
+newmem2:
+  push edx
+  mov edx,[ebp+14]
+  mov [SavedPower],edx
+  mov edx,[ebp+18]
+  mov [SavedTurns],edx
+  pop edx
+  
+originalcode2:
+  mov [ebp-14],00000001
+  jmp return2
+  
+EffectsToAdd:
+dd 00DFC000
+SavedPower:
+dd 0
+SavedTurns:
+dd 0
+StatusUpEffects2:
+dd 000FC000
+StatusUpPower2:
+dd #50
+HPCPRegenPower2:
+dd #30
+InsightPower2:
+dd #50
+NumTurns:
+dd #9
+    
+AddStatusAOB:
+  jmp newmem
+  nop
+  nop
+  return:
+
+AddStatusAOB2:
+  jmp newmem2
+  nop
+  nop
+  return2:
+ 
+[DISABLE]
+
+AddStatusAOB:
+  db C6 45 F3 00 85 45 EC
+
+unregistersymbol(AddStatusAOB)
+unregistersymbol(EffectsToAdd)
+unregistersymbol(SavedPower)
+unregistersymbol(SavedTurns)
+unregistersymbol(StatusUpPower2)
+unregistersymbol(HPCPRegenPower2)
+unregistersymbol(InsightPower2)
+unregistersymbol(NumTurns)
+
+AddStatusAOB2:
+  db C7 45 EC 01 00 00 00
+    
+dealloc(newmem)
+</AssemblerScript>
+				  <CheatEntries>
+					<CheatEntry>
+					  <ID>2006</ID>
+					  <Description>"Num Turns To Add"</Description>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>NumTurns</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>2007</ID>
+					  <Description>"Status Up Power"</Description>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>StatusUpPower2</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>2008</ID>
+					  <Description>"HP CP Regen Power"</Description>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>HPCPRegenPower2</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>2009</ID>
+					  <Description>"Insight Power"</Description>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>InsightPower2</Address>
+					</CheatEntry>
+				  </CheatEntries>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>2400</ID>
+				  <Description>"Moebius Effect For Items Always Available"</Description>
+				  <Options moHideChildren="1"/>
+				  <LastState/>
+				  <VariableType>Auto Assembler Script</VariableType>
+				  <AssemblerScript>[ENABLE]
+
+luaCall(lua_aobscan("MoebiusAOB","ed8.exe","0F B6 49 14 8B D1 C1 E2 04 2B D1 8D 4C 90 CC BA DD 07 00 00",1))
+alloc(newmem,1024,MoebiusAOB)
+
+aobscanmodule(MoebiusAOB2,ed8.exe,BA DD 07 00 00 66 39 10 75 27) // should be unique
+registersymbol(MoebiusAOB2)
+
+luaCall(lua_aobscan("MoebiusAOB3","ed8.exe","0F B6 49 14 8B D1 C1 E2 04 2B D1 8D 4C 90 CC BA DD 07 00 00",2))
+alloc(newmem2,1024,MoebiusAOB3)
+
+aobscanmodule(MoebiusAOB4,ed8.exe,BA DD 07 00 00 66 39 10 75 10) // should be unique
+registersymbol(MoebiusAOB4)
+
+label(return)
+label(return2)
+
+newmem:
+  mov ecx,05
+  mov edx,ecx
+  jmp return
+   
+newmem2:
+  mov ecx,05
+  mov edx,ecx
+  jmp return2
+   
+MoebiusAOB:
+  jmp newmem
+  nop
+  return:
+
+MoebiusAOB2+8:
+  db 90 90
+
+MoebiusAOB3:
+  jmp newmem2
+  nop
+  return2:
+
+MoebiusAOB4+8:
+  db 90 90
+  
+[DISABLE]
+
+MoebiusAOB:
+  db 0F B6 49 14 8B D1
+  
+MoebiusAOB2+8:
+  db 75 27
+
+MoebiusAOB3:
+  db 0F B6 49 14 8B D1
+  
+MoebiusAOB4+8:
+  db 75 10
+  
+unregistersymbol(MoebiusAOB)
+unregistersymbol(MoebiusAOB2)
+unregistersymbol(MoebiusAOB3)
+unregistersymbol(MoebiusAOB4)
+  
+dealloc(newmem)
+</AssemblerScript>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>2500</ID>
+				  <Description>"Megalith Effect For HP/EP/CP Regeneration Always Available"</Description>
+				  <Options moHideChildren="1"/>
+				  <LastState/>
+				  <VariableType>Auto Assembler Script</VariableType>
+				  <AssemblerScript>[ENABLE]
+
+aobscanmodule(MegalithAOB1,ed8.exe,B9 E6 07 00 00 66 3B C1 0F 85 9C 00 0 00) // should be unique
+registersymbol(MegalithAOB1)
+
+aobscanmodule(MegalithAOB2,ed8.exe,3C 04 0F 82 82 00 00 00) // should be unique
+registersymbol(MegalithAOB2)
+
+aobscanmodule(MegalithAOB3,ed8.exe,3C 05 72 11 C7 45 FC 08 00 00 00) // should be unique
+registersymbol(MegalithAOB3)
+  
+MegalithAOB1+8:
+  db 90 90 90 90 90 90
+
+MegalithAOB2+2:
+  db 90 90 90 90 90 90
+
+MegalithAOB3+2:
+  db 90 90
+  
+[DISABLE]
+
+MegalithAOB1+8:
+  db 0F 85 9C 00 00 00
+  
+MegalithAOB2+2:
+  db 0F 82 82 00 00 00
+
+MegalithAOB3+2:
+  db 72 11
+
+unregistersymbol(MegalithAOB1)
+unregistersymbol(MegalithAOB2)
+unregistersymbol(MegalithAOB3)
+</AssemblerScript>
+				</CheatEntry>				
+                <CheatEntry>
+                  <ID>230</ID>
+                  <Description>"Master Quartz Exp Multiplier"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+aobscanmodule(MasterQuartzExpMultAOB,ed8.exe,89 B0 18 4F 06 00 33 C0 F7 83 A8 00 00 00) // should be unique
+alloc(newmem,2048,MasterQuartzExpMultAOB)
+registersymbol(MasterQuartzExpMultAOB)
+
+label(return)
+label(originalcode)
+label(MasterQuartzExpMult)
+registersymbol(MasterQuartzExpMult)
+
+newmem:
+  push ebx
+  mov ebx,esi
+  sub ebx,[eax+00064F18]
+  imul ebx,[MasterQuartzExpMult]
+  add ebx,[eax+00064F18]
+  mov esi,ebx
+  pop ebx
+  
+originalcode:
+  mov [eax+00064F18],esi
+  jmp return
+
+MasterQuartzExpMult:
+  dd 4
+
+MasterQuartzExpMultAOB:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+MasterQuartzExpMultAOB:
+  db 89 B0 18 4F 06 00
+
+unregistersymbol(MasterQuartzExpMultAOB)
+unregistersymbol(MasterQuartzExpMult)
+dealloc(newmem)
+</AssemblerScript>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>231</ID>
+                      <Description>"Multiplier"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>MasterQuartzExpMult</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>225</ID>
+                  <Description>"Infinite Item Usage/Set Minimum Item Amount (Excludes Key Event Items)"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+aobscanmodule(InfiniteItemUsageAOB,ed8.exe,0F B7 55 0C 2B C2 33 D2 85 C0) // should be unique
+alloc(newmem,2048,InfiniteItemUsageAOB)
+registersymbol(InfiniteItemUsageAOB)
+
+label(return)
+label(originalcode)
+label(SetItemAmount)
+registersymbol(SetItemAmount)
+
+newmem:
+  cmp word ptr [esi+edx*4],#100
+  jl DoMin
+  cmp word ptr [esi+edx*4],#200
+  jg DoMin
+  jmp originalcode
+DoMin:
+  cmp byte ptr [SetItemAmount],0
+  je return
+  cmp eax,[SetItemAmount]
+  jge return
+  mov eax,[SetItemAmount]
+  jmp return
+  
+originalcode:
+  movzx edx,word ptr [ebp+0C]
+  sub eax,edx
+  jmp return
+
+SetItemAmount:
+dq #25
+    
+InfiniteItemUsageAOB:
+  jmp newmem
+  nop
+  return:
+  
+[DISABLE]
+
+InfiniteItemUsageAOB:
+  db 0F B7 55 0C 2B C2
+  
+unregistersymbol(SetItemAmount)
+unregistersymbol(InfiniteItemUsageAOB)
+  
+dealloc(newmem)
+</AssemblerScript>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>226</ID>
+                      <Description>"Set Minimum Item Amount On Use/Toss (0 = Off)"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>SetItemAmount</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>226</ID>
+                  <Description>"Infinite Sepith Usage"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+aobscanmodule(InfiniteSepithUsageAOB,ed8.exe,89 84 8A B8 85 12 00 5D C2 08 00) // should be unique
+registersymbol(InfiniteSepithUsageAOB)
+ 
+InfiniteSepithUsageAOB:
+  db 90 90 90 90 90 90 90
+  
+[DISABLE]
+
+InfiniteSepithUsageAOB:
+  db 89 84 8A B8 85 12 00
+  
+unregistersymbol(InfiniteSepithUsageAOB)
+  
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>227</ID>
+                  <Description>"Infinite New Game Plus Points Usage"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+aobscanmodule(InfiniteNGPlusUsageAOB,ed8.exe,66 01 48 36 8B 56 10 83 45 FC 10) // should be unique
+registersymbol(InfiniteNGPlusUsageAOB)
+ 
+InfiniteNGPlusUsageAOB:
+  db 90 90 90 90
+  
+[DISABLE]
+
+InfiniteNGPlusUsageAOB:
+  db 66 01 48 36
+  
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>228</ID>
+                  <Description>"Add Bonus AP When Completing A Quest"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+aobscanmodule(BonusQuestAPAOB,ed8.exe,08 8C 1A 4E 02 00 00 8D 84 1A 4E 02 00 00) // should be unique
+alloc(newmem,2048,BonusQuestAPAOB)
+registersymbol(BonusQuestAPAOB)
+
+label(return)
+label(originalcode)
+label(BonusAPAmount)
+registersymbol(BonusAPAmount)
+
+newmem:
+  test cl,08
+  je originalcode
+  push eax
+  mov eax,[BonusAPAmount]
+  add [edx+ebx+00000270],al
+  pop eax
+
+originalcode:
+  or [edx+ebx+0000024E],cl
+  jmp return
+
+BonusAPAmount:
+dq #5
+    
+BonusQuestAPAOB:
+  jmp newmem
+  nop
+  nop
+  return:
+  
+[DISABLE]
+
+BonusQuestAPAOB:
+  db 08 8C 1A 4E 02 00 00
+  
+unregistersymbol(BonusAPAmount)
+unregistersymbol(BonusQuestAPAOB)
+  
+dealloc(newmem)
+</AssemblerScript>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>229</ID>
+                      <Description>"Bonus AP Amount"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>BonusAPAmount</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>				
+                <CheatEntry>
+                  <ID>251</ID>
+                  <Description>"EXP Multiplier"</Description>
+                  <Options moHideChildren="1"/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat		  
+//aobscanmodule(EXPMultAOB2,ed8.exe,8B 86 B8 01 00 00 8B 80 AC 01 00 00 89 55 E0) // should be unique
+luaCall(lua_aobscan("ExpMultAOB2","ed8.exe","83 EC 0C D9 5C 24 08 8B CF D9 45 EC D9 5C 24 04 D9 45 E0 D9 1C 24",1))
+alloc(newmem,1024,EXPMultAOB2)
+
+///
+label(return)
+label(originalcode)
+label(EXPMult2)
+registersymbol(EXPMult2)
+
+newmem:
+  push eax
+  mov eax,[edi+000001D4]
+  imul eax,[EXPMult2]
+  mov [edi+000001D4],eax
+  pop eax
+  
+originalcode:
+  sub esp,0C
+  fstp dword ptr [esp+08]
+  jmp return
+ 
+EXPMult2:
+dd #5
+    
+EXPMultAOB2:
+  jmp newmem
+  nop
+  nop
+  return:
+  
+[DISABLE]
+
+EXPMultAOB2:
+  db 83 EC 0C D9 5C 24 08
+  
+unregistersymbol(EXPMult2)
+unregistersymbol(EXPMultAOB2)
+
+dealloc(newmem)
+</AssemblerScript>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>252</ID>
+                      <Description>"EXP Multiplier"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>EXPMult2</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>250</ID>
+                  <Description>"Exp Multiplier Level 99 One Battle"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+luaCall(lua_aobscan("ExpMultAOB","ed8.exe","89 46 0C 8B 46 0C 5E 8B E5 5D C2 04 00",1))
+alloc(newmem,2048,ExpMultAOB)
+
+label(return)
+label(originalcode)
+label(ExpMult)
+registersymbol(ExpMult)
+
+newmem:
+  push ebx
+  mov ebx,eax
+  sub ebx,[esi+0C]
+  imul ebx,[ExpMult]
+  add ebx,[esi+0C]
+  mov eax,ebx
+  pop ebx
+  
+originalcode:
+  mov [esi+0C],eax
+  mov eax,[esi+0C]
+  jmp return
+
+ExpMult:
+dd 4
+
+ExpMultAOB:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+ExpMultAOB:
+  db 89 46 0C 8B 46 0C
+
+unregistersymbol(ExpMultAOB)
+unregistersymbol(ExpMult)
+dealloc(newmem)
+</AssemblerScript>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>251</ID>
+                      <Description>"Multiplier"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>ExpMult</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>				
+			  </CheatEntries>
+			</CheatEntry>
+            <CheatEntry>
+              <ID>4000</ID>
+              <Description>"Pointers"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" Activated="1" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>4100</ID>
+                  <Description>"Difficulty Setting"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>APPtr</Address>
+				  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Normal
+1:Easy
+2:Hard
+3:Nightmare
+</DropDownList>
+                  <Offsets>
+                    <Offset>-18</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>4101</ID>
+                  <Description>"Current Rank"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>APPtr</Address>
+                  <Offsets>
+                    <Offset>-4</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>4102</ID>
+                  <Description>"Current Regular AP"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>APPtr</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>4103</ID>
+                  <Description>"Current Bonus AP"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>APPtr</Address>
+                  <Offsets>
+                    <Offset>6C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>4001</ID>
+                  <Description>"Sepith Mass Crystals"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>CrystalPtr</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>4002</ID>
+                  <Description>"Mira"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>MiraPtr</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>4003</ID>
+                  <Description>"Bonding Points Current"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>APPtr</Address>
+                  <Offsets>
+                    <Offset>-24</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>4004</ID>
+                  <Description>"Bonding Points Max"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>APPtr</Address>
+                  <Offsets>
+                    <Offset>-20</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>4005</ID>
+                  <Description>"Last Selected Master Quartz Level"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>SelectedMasterQuartzPtr</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+				</CheatEntry>
+                <CheatEntry>
+                  <ID>4006</ID>
+                  <Description>"Last Selected Master Quartz EXP"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>SelectedMasterQuartzPtr</Address>
+                  <Offsets>
+                    <Offset>4</Offset>
+                  </Offsets>
+				</CheatEntry>
+                <CheatEntry>
+                  <ID>305</ID>
+                  <Description>"Quartz"</Description>
+                  <Options moHideChildren="1" moRecursiveSetValue="1" />
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>310</ID>
+                      <Description>"Earth Sepith"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>EarthSepithPtr</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>311</ID>
+                      <Description>"Water Sepith"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>EarthSepithPtr</Address>
+                      <Offsets>
+                        <Offset>4</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>312</ID>
+                      <Description>"Fire Sepith"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>EarthSepithPtr</Address>
+                      <Offsets>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>313</ID>
+                      <Description>"Wind Sepith"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>EarthSepithPtr</Address>
+                      <Offsets>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>314</ID>
+                      <Description>"Time Sepith"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>EarthSepithPtr</Address>
+                      <Offsets>
+                        <Offset>10</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>315</ID>
+                      <Description>"Space Sepith"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>EarthSepithPtr</Address>
+                      <Offsets>
+                        <Offset>14</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>316</ID>
+                      <Description>"Mirage Sepith"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>EarthSepithPtr</Address>
+                      <Offsets>
+                        <Offset>18</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+				<CheatEntry>
+				  <ID>410</ID>
+				  <Description>"Orbment Editor"</Description>
+				  <Options moHideChildren="1"/>
+				  <GroupHeader>1</GroupHeader>
+				  <CheatEntries>
+					<CheatEntry>
+					  <ID>411</ID>
+					  <Description>"Selected Char for Orbments"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>SelectedQuartzChar</Address>
+                      <DropDownList DescriptionOnly="1">00:Rean
+01:Alisa
+02:Elliot
+03:Laura
+04:Machias
+05:FieorEmma
+06:Jusis
+07:FieorEmma
+08:Gaius
+</DropDownList>	
+                    <ShowAsHex>1</ShowAsHex>					
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>411</ID>
+					  <Description>"Master Quartz Item ID"</Description>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>SelectedQuartzPtr</Address>
+					  <Offsets>
+						<Offset>[SelectedQuartzChar]*12</Offset>
+					  </Offsets>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>411</ID>
+					  <Description>"Orbment Slot 1 Item ID"</Description>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>SelectedQuartzPtr</Address>
+					  <Offsets>
+						<Offset>[SelectedQuartzChar]*12+2</Offset>
+					  </Offsets>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>413</ID>
+					  <Description>"Orbment Slot 2 Item ID"</Description>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>SelectedQuartzPtr</Address>
+					  <Offsets>
+						<Offset>[SelectedQuartzChar]*12+4</Offset>
+					  </Offsets>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>415</ID>
+					  <Description>"Orbment Slot 3 Item ID"</Description>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>SelectedQuartzPtr</Address>
+					  <Offsets>
+						<Offset>[SelectedQuartzChar]*12+6</Offset>
+					  </Offsets>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>417</ID>
+					  <Description>"Orbment Slot 4 Item ID"</Description>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>SelectedQuartzPtr</Address>
+					  <Offsets>
+						<Offset>[SelectedQuartzChar]*12+8</Offset>
+					  </Offsets>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>419</ID>
+					  <Description>"Orbment Slot 5 Item ID"</Description>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>SelectedQuartzPtr</Address>
+					  <Offsets>
+						<Offset>[SelectedQuartzChar]*12+A</Offset>
+					  </Offsets>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>421</ID>
+					  <Description>"Orbment Slot 6 Item ID"</Description>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>SelectedQuartzPtr</Address>
+					  <Offsets>
+						<Offset>[SelectedQuartzChar]*12+C</Offset>
+					  </Offsets>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>421</ID>
+					  <Description>"Orbment Slot 7 Item ID"</Description>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>SelectedQuartzPtr</Address>
+					  <Offsets>
+						<Offset>[SelectedQuartzChar]*12+E</Offset>
+					  </Offsets>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>421</ID>
+					  <Description>"Orbment Slot 8 Item ID"</Description>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>SelectedQuartzPtr</Address>
+					  <Offsets>
+						<Offset>[SelectedQuartzChar]*12+10</Offset>
+					  </Offsets>
+					</CheatEntry>
+				  </CheatEntries>
+				</CheatEntry>	
+				<CheatEntry>
+				  <ID>450</ID>
+				  <Description>"Equipment Editor (Last Viewed In Status Equip Menu)"</Description>
+				  <Options moHideChildren="1"/>
+				  <GroupHeader>1</GroupHeader>
+				  <CheatEntries>
+					<CheatEntry>
+					  <ID>452</ID>
+					  <Description>"Weapon ID"</Description>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>EquipBasePtr</Address>
+					  <Offsets>
+						<Offset>[SelectedEquipChar]*E</Offset>
+					  </Offsets>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>453</ID>
+					  <Description>"Armor ID"</Description>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>EquipBasePtr</Address>
+					  <Offsets>
+						<Offset>[SelectedEquipChar]*E+2</Offset>
+					  </Offsets>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>454</ID>
+					  <Description>"Shoes ID"</Description>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>EquipBasePtr</Address>
+					  <Offsets>
+						<Offset>[SelectedEquipChar]*E+4</Offset>
+					  </Offsets>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>455</ID>
+					  <Description>"Accessory 1 ID"</Description>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>EquipBasePtr</Address>
+					  <Offsets>
+						<Offset>[SelectedEquipChar]*E+6</Offset>
+					  </Offsets>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>456</ID>
+					  <Description>"Accessory 2 ID"</Description>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>EquipBasePtr</Address>
+					  <Offsets>
+						<Offset>[SelectedEquipChar]*E+8</Offset>
+					  </Offsets>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>457</ID>
+					  <Description>"Costume 1 ID"</Description>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>EquipBasePtr</Address>
+					  <Offsets>
+						<Offset>[SelectedEquipChar]*E+A</Offset>
+					  </Offsets>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>458</ID>
+					  <Description>"Costume 2 ID"</Description>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>EquipBasePtr</Address>
+					  <Offsets>
+						<Offset>[SelectedEquipChar]*E+C</Offset>
+					  </Offsets>
+					</CheatEntry>
+				  </CheatEntries>
+				</CheatEntry>
+                <CheatEntry>
+                  <ID>330</ID>
+                  <Description>"Character Editor (Those In Your Party Only)"</Description>
+                  <Options moHideChildren="1"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>340</ID>
+                      <Description>"Selected Party Member"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>CurrentSelectedCharacter</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>340</ID>
+                      <Description>"Experience"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>CharacterPtr+[CurrentSelectedCharacter]*4</Address>
+                      <Offsets>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>370</ID>
+                      <Description>"Character Stats"</Description>
+                      <Options moHideChildren="1"/>
+                      <LastState Value="" Activated="1" RealAddress="00000000"/>
+                      <GroupHeader>1</GroupHeader>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>371</ID>
+                          <Description>"Current HP"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>CharacterPtr+[CurrentSelectedCharacter]*4</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>372</ID>
+                          <Description>"Max HP"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>CharacterPtr+[CurrentSelectedCharacter]*4</Address>
+                          <Offsets>
+                            <Offset>4</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>373</ID>
+                          <Description>"Current MP"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>CharacterPtr+[CurrentSelectedCharacter]*4</Address>
+                          <Offsets>
+                            <Offset>8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>374</ID>
+                          <Description>"Max MP"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>CharacterPtr+[CurrentSelectedCharacter]*4</Address>
+                          <Offsets>
+                            <Offset>A</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>375</ID>
+                          <Description>"Current CP"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>CharacterPtr+[CurrentSelectedCharacter]*4</Address>
+                          <Offsets>
+                            <Offset>C</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>376</ID>
+                          <Description>"Max CP"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>CharacterPtr+[CurrentSelectedCharacter]*4</Address>
+                          <Offsets>
+                            <Offset>E</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>377</ID>
+                          <Description>"Strength"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>CharacterPtr+[CurrentSelectedCharacter]*4</Address>
+                          <Offsets>
+                            <Offset>10</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>373</ID>
+                          <Description>"Defense"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>CharacterPtr+[CurrentSelectedCharacter]*4</Address>
+                          <Offsets>
+                            <Offset>12</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>374</ID>
+                          <Description>"Magic Strength (ATS)"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>CharacterPtr+[CurrentSelectedCharacter]*4</Address>
+                          <Offsets>
+                            <Offset>14</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>375</ID>
+                          <Description>"Magic Defense (ADF)"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>CharacterPtr+[CurrentSelectedCharacter]*4</Address>
+                          <Offsets>
+                            <Offset>16</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>376</ID>
+                          <Description>"Speed"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>CharacterPtr+[CurrentSelectedCharacter]*4</Address>
+                          <Offsets>
+                            <Offset>1C</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>377</ID>
+                          <Description>"Dexterity"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>CharacterPtr+[CurrentSelectedCharacter]*4</Address>
+                          <Offsets>
+                            <Offset>18</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>378</ID>
+                          <Description>"Agility"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>CharacterPtr+[CurrentSelectedCharacter]*4</Address>
+                          <Offsets>
+                            <Offset>1A</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>379</ID>
+                          <Description>"Movement"</Description>
+                          <VariableType>2 Bytes</VariableType>
+                          <Address>CharacterPtr+[CurrentSelectedCharacter]*4</Address>
+                          <Offsets>
+                            <Offset>1E</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+				  </CheatEntries>
+				</CheatEntry>
+                <CheatEntry>
+                  <ID>360</ID>
+                  <Description>"Inventory Editor (Choose Slot Manually)"</Description>
+                  <Options moHideChildren="1"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>361</ID>
+                      <Description>"Inventory Slot"</Description>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>InventorySlotOffset</Address>
+					  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0000: Slot 1
+0024: Slot 2
+0048: Slot 3
+006C: Slot 4
+0090: Slot 5
+00B4: Slot 6
+00D8: Slot 7
+00FC: Slot 8
+0120: Slot 9
+0144: Slot 10
+0168: Slot 11
+018C: Slot 12
+01B0: Slot 13
+01D4: Slot 14
+01F8: Slot 15
+021C: Slot 16
+0240: Slot 17
+0264: Slot 18
+0288: Slot 19
+02AC: Slot 20
+02D0: Slot 21
+02F4: Slot 22
+0318: Slot 23
+033C: Slot 24
+0360: Slot 25
+0384: Slot 26
+03A8: Slot 27
+03CC: Slot 28
+03F0: Slot 29
+0414: Slot 30
+0438: Slot 31
+045C: Slot 32
+0480: Slot 33
+04A4: Slot 34
+04C8: Slot 35
+04EC: Slot 36
+0510: Slot 37
+0534: Slot 38
+0558: Slot 39
+057C: Slot 40
+05A0: Slot 41
+05C4: Slot 42
+05E8: Slot 43
+060C: Slot 44
+0630: Slot 45
+0654: Slot 46
+0678: Slot 47
+069C: Slot 48
+06C0: Slot 49
+06E4: Slot 50
+0708: Slot 51
+072C: Slot 52
+0750: Slot 53
+0774: Slot 54
+0798: Slot 55
+07BC: Slot 56
+07E0: Slot 57
+0804: Slot 58
+0828: Slot 59
+084C: Slot 60
+0870: Slot 61
+0894: Slot 62
+08B8: Slot 63
+08DC: Slot 64
+0900: Slot 65
+0924: Slot 66
+0948: Slot 67
+096C: Slot 68
+0990: Slot 69
+09B4: Slot 70
+09D8: Slot 71
+09FC: Slot 72
+0A20: Slot 73
+0A44: Slot 74
+0A68: Slot 75
+0A8C: Slot 76
+0AB0: Slot 77
+0AD4: Slot 78
+0AF8: Slot 79
+0B1C: Slot 80
+0B40: Slot 81
+0B64: Slot 82
+0B88: Slot 83
+0BAC: Slot 84
+0BD0: Slot 85
+0BF4: Slot 86
+0C18: Slot 87
+0C3C: Slot 88
+0C60: Slot 89
+0C84: Slot 90
+0CA8: Slot 91
+0CCC: Slot 92
+0CF0: Slot 93
+0D14: Slot 94
+0D38: Slot 95
+0D5C: Slot 96
+0D80: Slot 97
+0DA4: Slot 98
+0DC8: Slot 99
+0DEC: Slot 100
+0E10: Slot 101
+0E34: Slot 102
+0E58: Slot 103
+0E7C: Slot 104
+0EA0: Slot 105
+0EC4: Slot 106
+0EE8: Slot 107
+0F0C: Slot 108
+0F30: Slot 109
+0F54: Slot 110
+0F78: Slot 111
+0F9C: Slot 112
+0FC0: Slot 113
+0FE4: Slot 114
+1008: Slot 115
+102C: Slot 116
+1050: Slot 117
+1074: Slot 118
+1098: Slot 119
+10BC: Slot 120
+10E0: Slot 121
+1104: Slot 122
+1128: Slot 123
+114C: Slot 124
+1170: Slot 125
+1194: Slot 126
+11B8: Slot 127
+11DC: Slot 128
+1200: Slot 129
+1224: Slot 130
+1248: Slot 131
+126C: Slot 132
+1290: Slot 133
+12B4: Slot 134
+12D8: Slot 135
+12FC: Slot 136
+1320: Slot 137
+1344: Slot 138
+1368: Slot 139
+138C: Slot 140
+13B0: Slot 141
+13D4: Slot 142
+13F8: Slot 143
+141C: Slot 144
+1440: Slot 145
+1464: Slot 146
+1488: Slot 147
+14AC: Slot 148
+14D0: Slot 149
+14F4: Slot 150
+1518: Slot 151
+153C: Slot 152
+1560: Slot 153
+1584: Slot 154
+15A8: Slot 155
+15CC: Slot 156
+15F0: Slot 157
+1614: Slot 158
+1638: Slot 159
+165C: Slot 160
+1680: Slot 161
+16A4: Slot 162
+16C8: Slot 163
+16EC: Slot 164
+1710: Slot 165
+1734: Slot 166
+1758: Slot 167
+177C: Slot 168
+17A0: Slot 169
+17C4: Slot 170
+17E8: Slot 171
+180C: Slot 172
+1830: Slot 173
+1854: Slot 174
+1878: Slot 175
+189C: Slot 176
+18C0: Slot 177
+18E4: Slot 178
+1908: Slot 179
+192C: Slot 180
+1950: Slot 181
+1974: Slot 182
+1998: Slot 183
+19BC: Slot 184
+19E0: Slot 185
+1A04: Slot 186
+1A28: Slot 187
+1A4C: Slot 188
+1A70: Slot 189
+1A94: Slot 190
+1AB8: Slot 191
+1ADC: Slot 192
+1B00: Slot 193
+1B24: Slot 194
+1B48: Slot 195
+1B6C: Slot 196
+1B90: Slot 197
+1BB4: Slot 198
+1BD8: Slot 199
+1BFC: Slot 200
+1C20: Slot 201
+1C44: Slot 202
+1C68: Slot 203
+1C8C: Slot 204
+1CB0: Slot 205
+1CD4: Slot 206
+1CF8: Slot 207
+1D1C: Slot 208
+1D40: Slot 209
+1D64: Slot 210
+1D88: Slot 211
+1DAC: Slot 212
+1DD0: Slot 213
+1DF4: Slot 214
+1E18: Slot 215
+1E3C: Slot 216
+1E60: Slot 217
+1E84: Slot 218
+1EA8: Slot 219
+1ECC: Slot 220
+1EF0: Slot 221
+1F14: Slot 222
+1F38: Slot 223
+1F5C: Slot 224
+1F80: Slot 225
+1FA4: Slot 226
+1FC8: Slot 227
+1FEC: Slot 228
+2010: Slot 229
+2034: Slot 230
+2058: Slot 231
+207C: Slot 232
+20A0: Slot 233
+20C4: Slot 234
+20E8: Slot 235
+210C: Slot 236
+2130: Slot 237
+2154: Slot 238
+2178: Slot 239
+219C: Slot 240
+21C0: Slot 241
+21E4: Slot 242
+2208: Slot 243
+222C: Slot 244
+2250: Slot 245
+2274: Slot 246
+2298: Slot 247
+22BC: Slot 248
+22E0: Slot 249
+2304: Slot 250
+2328: Slot 251
+234C: Slot 252
+2370: Slot 253
+2394: Slot 254
+23B8: Slot 255
+					</DropDownList>
+                    <ShowAsHex>1</ShowAsHex>					
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>361</ID>
+                      <Description>"Quantity"</Description>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>[ItemBasePtr] + [InventorySlotOffset] + 2</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>362</ID>
+                      <Description>"Item ID"</Description>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>[ItemBasePtr] + [InventorySlotOffset]</Address>
+					  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Tear Balm 
+1:Teara Balm 
+2:Tearal Balm 
+3:EP Charge I 
+4:EP Charge II 
+5:EP Charge III 
+6:Reviving Balm 
+7:Celestial Balm 
+8:Celestial Balm EX 
+9:Zeram Powder 
+10:Zeram Capsule 
+11:Antidote 
+12:Relaxant 
+13:Insulating Tape 
+14:Eye Drop 
+15:Mint Drop 
+16:Cooling Spray 
+17:Warmer 
+18:Softening Ointment 
+19:Stimulant 
+20:Sedative 
+21:S-Tablet 
+22:Curia Balm 
+23:Smoke Grenade 
+24:Battle Scope 
+25:Shining Pom Bait 
+26:Vanilla Gelato 
+27:Lemon Gelato 
+28:Tetra Gelato 
+29:Ground Sausage 
+30:Turkey Leg 
+31:Chocobanana Crepe 
+32:Banana Crepe 
+33:Apple Juice 
+34:Orange Juice 
+35:Steak Skewer 
+36:Rich Strawberry Crepe 
+37:Dark Cherry Pie 
+50:U-Material 
+51:Zemurian Ore Shard 
+52:Zemurian Ore 
+135:Orbal Scale 
+136:Antique Orbal Lamp 
+137:Orbal Wristwatch 
+134:Colette's Student Notebook 
+146:Passion Leaf Bundle 
+104:New Orbment Light 
+105:Broken Orbment Light 
+112:Bear Claw 
+113:Imperial Carrots 
+124:Lost Wallet 
+141:Behind the War of the Lions 
+142:Modern Art: The Complete Works 
+143:Topical Science 
+144:Analyzing Macroeconomics 
+145:The Empire's Hottest Spots 
+138:Grand Rose Money 
+139:Snow Lilies 
+140:Grand Rose 
+118:Dryad's Tear 
+125:Pink Salt 
+126:Healing Herb 
+149:Munk's Sticker 
+106:Epona Grass 
+107:Food Parcel 
+108:Erebonian Wine 
+147:Eastern Ink Brush 
+119:Handmade Summer Cap 
+122:Orbal Camera 
+123:PR Comment 
+127:Record Money 
+128:Amber Amour 
+120:Ladies' Stregas 
+121:Orbal Pedometer 
+129:Phantom Thief B's Card 
+130:Phantom Thief B's Card 
+131:Phantom Thief B's Card 
+132:Phantom Thief B's Card 
+133:Phantom Thief B's Card 
+103:Crimson Tiara 
+114:Maintenance Key 
+115:New Orbment Light 
+116:Broken Orbment Light 
+100:White Seed 
+101:Legram Pretzel 
+109:Gold Salmon 
+117:Luminous Grass 
+176:Linium 
+102:Orbal Wave Detector 
+111:Blade Deck 
+150:Permission Slip (Nicholas) 
+151:Permission Slip (Colette) 
+152:Permission Slip (Hugo) 
+153:Permission Slip (Becky) 
+148:Black Leather Notebook 
+154:Mishy Plush 
+155:Relief Card 
+156:Super Stallion Shield 
+157:Orbal Radio 
+158:Old Schoolhouse Key 
+159:Nord Highlands Map 
+160:Student Notebook 
+161:Recipe Book 
+162:Fishing Book 
+170:Memory Quartz 
+171:Address &amp; Keys 
+172:Underground Passage Key 
+173:Underground Waterway Key 
+110:Abend Time Sticker 
+174:Yellow Orb 
+178:Red Orb 
+175:Mine Shaft Key 
+177:Card Key 
+179:Millium's Student Notebook 
+186:Student Council Tasks (Apr) 
+187:Student Council Tasks (May) 
+188:Student Council Tasks (Jun) 
+189:Student Council Tasks (Jul) 
+190:Student Council Tasks (Aug) 
+191:Student Council Tasks (Sep) 
+192:Student Council Tasks (Oct) 
+180:Field Study Envelope (Apr) 
+181:Field Study Envelope (May) 
+182:Field Study Envelope (Jun) 
+183:Field Study Envelope (Jul) 
+184:Field Study Envelope (Aug) 
+185:Field Study Envelope (Sep) 
+1000:Kazekiri 
+1001:Kazekiri +1 
+1002:Uzuki 
+1004:Kisaragi 
+1005:Kogitsunemaru 
+1007:Rougatou 
+1008:Nowaki no Tachi 
+1010:Fuujin no Tachi 
+1011:Sasameyuki 
+1013:Akayukitou 
+1014:Hakuu 
+1016:Shigure 
+1017:Fuji Ichimonji 
+1019:Kage Ichimonji 
+1020:Yakou 
+1021:Byakuya 
+1031:Prima Bow 
+1032:Light Bow 
+1034:Rapid Bow 
+1036:Prima Bow +1 
+1038:Windlass 
+1040:Wind Arc 
+1042:Prima Bow +2 
+1045:Prima Bow +3 
+1047:White Bow 
+1049:Platinum Bow 
+1050:Siren's Song 
+1051:Golden Archer 
+1060:Lambda Rod 
+1061:Lambda Rod +1 
+1062:Scalar Cane 
+1063:Belta Rod 
+1064:Variable Cane 
+1065:Synchrotron 
+1066:Lambda Rod +2 
+1067:Aerial Wand 
+1068:Libra Staff 
+1069:Lambda Rod +3 
+1070:Stella Oak 
+1071:Ruby Wand 
+1072:Belta Rod +1 
+1073:Ruby Force 
+1074:Vector Staff 
+1075:Lambda Rod +4 
+1076:Glare Wand 
+1077:Closed-Delta 
+1078:Belta Rod +2 
+1079:Open-Delta 
+1080:Faith Rod 
+1081:Blue Rhapsody 
+1082:Lunar Witch 
+1091:Braver 
+1092:Broad Edge 
+1094:Heavy Edge 
+1096:Braver +1 
+1099:Braver +2 
+1101:Bastard Sword 
+1103:Zweihaender 
+1104:Titania 
+1106:Durga 
+1108:Braver +3 
+1110:Grambringer 
+1111:Valkyria 
+1120:Buster Shot 
+1123:Buster Shot +1 
+1125:Needler SG50 
+1127:Gray Needler 
+1129:Buster Shot +2 
+1131:Stinger SG30 
+1133:Bear Stinger 
+1135:Buster Shot +3 
+1137:Inferno Blazer 
+1139:Flare Cyclone 
+1140:Blitz Blaster 
+1141:Subjugation Blaster 
+1142:Phantom SG Zero 
+1180:Knight's Sword 
+1183:Knight's Sword +1 
+1185:Saber 
+1187:Sinclair 
+1188:Backsword 
+1190:Walloon Sword 
+1192:Knight's Sword +2 
+1194:Lombardia 
+1196:Katzbalger 
+1198:Knight's Sword +3 
+1200:Edel Saber 
+1201:Holy Order 
+1213:Dual Edge 
+1215:Karambit 
+1217:Double Skinner 
+1219:Dual Edge +1 
+1221:Gemini Star 
+1223:Odd-Eye 
+1225:Dual Edge +2 
+1227:Strider 
+1229:Avenger 
+1230:Sword Breaker 
+1231:Vert Venti 
+1232:Black Raid 
+1240:Cross Spear 
+1241:Cross Spear +1 
+1243:Cross Spear +2 
+1246:Cross Spear +3 
+1248:Long Pike 
+1250:Gladiator Spear 
+1252:Cross Spear +4 
+1254:Partisan 
+1256:Corsesca 
+1258:Cross Spear +5 
+1260:Dragoon Lance 
+1261:Astra Hawk 
+1280:Breaker Arm 
+1282:Breaker Arm +1 
+1284:Chrome Claw 
+1286:Wild Claw 
+1288:Breaker Arm +2 
+1290:Mighty Arm 
+1291:Divine Gear 
+1310:Trickster 
+1312:Trickster 
+1315:Trickster +1 
+1317:Colt &amp; Pony 
+1319:Double Mustang 
+1320:Shadow Jack 
+1321:Crime &amp; Punishment 
+1322:Fire &amp; Ice 
+1346:Diablo &amp; Pain 
+1377:Platinum Fists 
+500:Leather Guard 
+501:Border Print T-Shirt 
+502:White Blouse 
+503:Armored Vest 
+504:Fiber Guard 
+505:Cotton Shirt 
+506:Silver Jacket 
+507:Golden Dress 
+508:Sturdy Leather 
+509:Earth Vest 
+510:Wind Robe 
+511:Leopard Print Jacket 
+512:Frilly Dress 
+513:Titanium Coat 
+514:Red Jacket 
+515:Blue Tunic 
+516:Golden Mail 
+517:Lunar Robe 
+518:Battle Coat 
+519:Thick Jumpsuit 
+520:General's Cape 
+521:Shield Jacket 
+522:Ares Armor 
+523:Aurelia Dress 
+524:Aura Jacket 
+550:Leather Shoes 
+551:Sunny Sandals 
+552:Pink High Heels 
+553:Metal Spikes 
+554:Fiber Boots 
+555:Rubber Soles 
+556:Noble Leather 
+557:Glittering Mules 
+558:Rigid Shoes 
+559:Frost Shoes 
+560:Star Shoes 
+561:Feathered Shoes 
+562:Leaf Sandals 
+563:Military Spikes 
+564:Red Shoes 
+565:Ladies' Stregas 
+566:Hiking Shoes 
+567:Golden Thread Shoes 
+568:Dawn Boots 
+569:Battle Boots 
+570:Haken Boots 
+571:General's Boots 
+572:Accel Gear 
+573:Orion Boots 
+574:Kaleido Boots 
+575:Strega-A1 
+600:Silver Earring 
+601:Coral Ring 
+602:Marble Ring 
+603:White Glasses 
+604:Black Bangle 
+605:Cool Necklace 
+606:Lighter 
+607:Stone Brooch 
+608:Citrus Bottle 
+609:Floral Bottle 
+610:Holy Chain 
+614:Grail Locket 
+615:Silver Chain 
+616:Coral Bracelet 
+617:Marble Bracelet 
+618:Luminous Glasses 
+619:Energy Bandana 
+620:Cooling Belt 
+621:Cozy Socks 
+622:Soft Stole 
+623:Orange Cape 
+624:Prismatic Cape 
+625:Holy Sphere 
+626:Yellow Pendulum 
+627:Blue Pendulum 
+628:Red Pendulum 
+629:Green Pendulum 
+630:Deep Ocher 
+631:Still Blue 
+632:Passionate Rouge 
+633:Evergreen 
+634:Abyss Shadow 
+635:Proxy Puppet 
+639:Gladiator Headband 
+640:Gladiator Belt 
+636:Swordtail Badge 
+637:Carp Badge 
+638:Salmon Badge 
+641:Ceramic Ring 
+645:ZCF Light 
+646:Frog Strap 
+647:Puppy Strap 
+648:Kitty Strap 
+650:Horseman's Cap 
+651:Highland Cloth 
+652:Silver Hourglass 
+653:Golden Hourglass 
+654:Fairy Brooch 
+662:Fairy Necklace 
+655:Mechanic's Goggles 
+656:Reinford Medal 
+643:Pikkard Plush 
+644:Kobold Plush 
+642:Sitting Mishy 
+649:Napping Mishy 
+661:Running Mishy 
+611:Medal of Fortitude 
+612:Medal of Discipline 
+613:Medal of Vigor 
+663:Medal of Dawn 
+657:Medal of Valor 
+658:Medal of Friendship 
+659:Medal of Compassion 
+660:Medal of Heroism 
+800:Class VII Uniform 
+801:Thors Summer Uniform 
+802:Academy Swimsuit 
+803:Stage Outfit 
+804:Class VII Uniform 
+805:Rean - Awakened (Dev Use) 
+806:Rean - Long Sleeves (Dev Use) 
+807:Rean's Pajamas 
+808:Rean's Shirt 
+809:Rean's Sleeveless Shirt 
+820:Alisa's Lacrosse Wear 
+972:Emma's Pajamas 
+997:Jusis' Pajamas 
+925:Gaius' Traditional Garb 
+940:Special Ops Uniform 
+955:Thors Standard Uniform 
+967:Sara's Swimwear  
+2400:Rean's Casual Clothes 
+2401:Alisa's Casual Clothes 
+2402:Elliot's Casual Clothes 
+2403:Laura's Casual Clothes 
+2404:Machias' Casual Clothes 
+2405:Emma's Casual Clothes 
+2406:Jusis' Casual Clothes 
+2407:Fie's Casual Clothes 
+2408:Gaius' Casual Clothes 
+2409:Millium's Casual Clothes 
+2410:Crow's Casual Clothes 
+2455:Jenis Uniform 
+2444:Black Uniform 
+2422:Mishy Paradise Uniform 
+2433:Lawson Uniform 
+2411:Reverse Uniform 
+2600:Ride-Along Mishy 
+2601:Ride-Along Noi 
+2602:Bunny Ears 
+2603:Ride-Along Toro 
+2604:Ride-Along Kuro 
+980:Kitty Ears 
+981:Ride-Along Bear 
+982:Ride-Along Bunny 
+983:Student Council Band 
+2000:Force 
+2001:Canon 
+2002:Falco 
+2003:Angel 
+2004:Brave 
+2005:Scepter 
+2006:Iron 
+2007:Mistral 
+2008:Raven 
+2009:Mirage 
+2010:Wing 
+2013:Moebius 
+2012:Aries 
+2015:Criminal 
+2014:Tauros 
+2011:Aegis 
+2017:Cypher 
+2018:Pandora 
+2019:Katze 
+2022:Megalith 
+2016:Juggler 
+2025:Murakumo 
+2024:Vermillion 
+2023:Orochi 
+2020:Chevalier 
+2027:Thor 
+2021:Magius 
+2026:Emblem 
+2028:Emblem 
+2029:Thor 
+2100:Needle Shoot 
+2101:Earth Lance 
+2102:Grand Press 
+2103:Yggdrasil 
+2104:Ancient Glyph 
+2105:Earth Pulse 
+2106:Crest 
+2107:La Crest 
+2108:Adamantine Shield 
+2109:Defense 1 
+2110:Defense 2 
+2111:Defense 3 
+2112:Poison 
+2113:Petrify 
+2122:Needle Shoot 
+2123:Earth Lance 
+2124:Grand Press 
+2125:Yggdrasil 
+2126:Ancient Glyph 
+2127:Earth Pulse 
+2128:Crest 
+2129:La Crest 
+2130:Adamantine Shield 
+2116:Septium Vein 
+2117:Dragon Vein 
+2114:Shield Breaker 
+2115:Earth Bell 
+2118:Harvest 
+2121:Genbu 
+2119:Impenetrable Shield 
+2120:Acala Gem 
+2135:Aqua Bleed 
+2136:Frost Edge 
+2137:Hydro Cannon 
+2138:Crystal Flood 
+2139:Maelstrom 
+2140:Tear 
+2141:Teara 
+2142:Tearal 
+2143:Thelas 
+2144:Athelas 
+2145:HP 1 
+2146:HP 2 
+2147:Shield 1 
+2148:Shield 2 
+2149:Shield 3 
+2150:Mute 
+2151:Freeze 
+2159:Aqua Bleed 
+2160:Frost Edge 
+2161:Hydro Cannon 
+2162:Crystal Flood 
+2163:Maelstrom 
+2164:Tear 
+2165:Teara 
+2166:Tearal 
+2167:Thelas 
+2168:Athelas 
+2153:Heal 
+2154:Effort 
+2152:Spirit Breaker 
+2155:Water Bell 
+2156:Flood 
+2158:Seiryuu  
+2157:Sennin Gem 
+2170:Fire Bolt 
+2171:Heatwave 
+2172:Flame Tongue 
+2173:Volcanic Rain 
+2174:Flare Bomb 
+2175:Purgatorial Flame 
+2176:Impassion 
+2177:Heat Up 
+2178:Forte 
+2179:La Forte 
+2180:Attack 1 
+2181:Attack 2 
+2182:Attack 3 
+2183:Seal 
+2184:Burn 
+2193:Fire Bolt 
+2194:Heatwave 
+2195:Flame Tongue 
+2196:Volcanic Rain 
+2197:Flare Bomb 
+2198:Purgatorial Flame 
+2199:Impassion 
+2200:Heat Up 
+2201:Forte 
+2202:La Forte 
+2187:Invigorate 
+2186:Prankster 
+2188:Ingenuity 
+2185:Sword Breaker 
+2189:Fire Bell 
+2190:Hellfire 
+2192:Suzaku 
+2191:Mars Gem 
+2205:Air Strike 
+2206:Spark Arrow 
+2207:Aerial 
+2208:Judgment Bolt 
+2209:Ragna Vortex 
+2210:Breath 
+2211:Holy Breath 
+2212:Recuria 
+2213:Evade 1 
+2214:Evade 2 
+2215:Move 1 
+2216:Move 2 
+2217:Move 3 
+2218:Blind 
+2219:Sleep 
+2229:Air Strike 
+2230:Spark Arrow 
+2231:Aerial 
+2232:Judgment Bolt 
+2233:Ragna Vortex 
+2234:Breath 
+2235:Holy Breath 
+2236:Recuria 
+2221:Hare 
+2222:Scent 
+2220:Leg Breaker 
+2224:Wind Bell 
+2225:Breeze 
+2228:Byakko 
+2223:Wrath 
+2226:Zeus Gem 
+2227:Aeolus Gem 
+2240:Soul Blur 
+2241:Demonic Scythe 
+2242:Grim Butterfly 
+2243:Shadow Blade 
+2244:Chrono Drive 
+2245:Chrono Break 
+2246:Chrono Burst 
+2247:Action 1 
+2248:Action 2 
+2249:Action 3 
+2250:Impede 1 
+2251:Impede 2 
+2252:Cast 1 
+2253:Cast 2 
+2261:Soul Blur 
+2262:Demonic Scythe 
+2263:Grim Butterfly 
+2264:Shadow Blade 
+2265:Chrono Drive 
+2266:Chrono Break 
+2267:Chrono Burst 
+2254:Nightmare 
+2255:Speed Breaker 
+2256:Black Bell 
+2257:Reaper 
+2260:Rakshasha 
+2258:Skanda Gem 
+2259:Diabolos Gem 
+2270:Golden Sphere 
+2271:Dark Matter 
+2272:Cross Crusade 
+2273:Altair Cannon 
+2274:Fortuna 
+2275:Shining 
+2276:Seraphic Ring 
+2277:EP Cut 1 
+2278:EP Cut 2 
+2279:Hit 1 
+2280:Hit 2 
+2291:Golden Sphere 
+2292:Dark Matter 
+2293:Cross Crusade 
+2294:Altair Cannon 
+2295:Fortuna 
+2296:Shining 
+2297:Seraphic Ring 
+2284:Detection 
+2285:Luck 
+2286:Dragon Vision 
+2281:Vanish 
+2282:Voice Breaker 
+2283:Golden Bell 
+2289:Seraph 
+2290:Qilin 
+2287:Domination 
+2288:Deus Gem 
+2300:Luminous Ray 
+2301:Silver Thorn 
+2302:Phantom Phobia 
+2303:Claiomh Solarion 
+2304:Analyze 
+2305:Saintly Force 
+2306:Crescent Mirror 
+2307:EP 1 
+2308:EP 2 
+2309:Mind 1 
+2310:Mind 2 
+2311:Mind 3 
+2320:Luminous Ray 
+2321:Silver Thorn 
+2322:Phantom Phobia 
+2323:Claiomh Solarion 
+2324:Analyze 
+2325:Saintly Force 
+2326:Crescent Mirror 
+2313:Information 
+2314:Intimidation 
+2315:Chaos 
+2312:Confuse 
+2316:Silver Bell 
+2319:Youkai Gem 
+2317:Brahma Gem 
+2318:Chakravarti Gem 
+2350:Thors Faceplate 
+2351:Special Ops Faceplate 
+2352:Thors Faceplate - Black 
+2353:Thors Faceplate - Red 
+2700:Faceplate - Rean 
+2701:Faceplate - Alisa 
+2702:Faceplate - Elliot 
+2703:Faceplate - Laura 
+2704:Faceplate - Machias 
+2705:Faceplate - Emma 
+2706:Faceplate - Jusis 
+2707:Faceplate - Fie 
+2708:Faceplate - Gaius 
+2709:Faceplate - Millium 
+2710:Faceplate - Crow 
+2713:Faceplate - Cold Steel 
+2712:Faceplate - Dengeki 
+2711:Faceplate - Famitsu 
+2716:Faceplate - Toro &amp; Kuro 
+201:Beginner Rod 
+202:Deluxe Rod 
+203:Lakelord Star 
+220:Groundbait 
+241:Earth Sepith 
+242:Water Sepith 
+243:Fire Sepith 
+244:Wind Sepith 
+245:Time Sepith 
+246:Space Sepith 
+247:Mirage Sepith 
+248:Sepith Mass 
+249:All Element Sepith 
+250:Notebook - Main 
+251:Notebook - Quest 
+252:Notebook - Battle 
+253:Notebook - Character 
+254:Recipe Book 
+255:Fishing Book 
+256:Notebook - Books 
+257:Notebook - A.Voice 
+258:Notebook - Help 
+260:Imperial Chronicle - Issue 1 
+261:Imperial Chronicle - Issue 2 
+262:Imperial Chronicle - Issue 3 
+263:Imperial Chronicle - Issue 4 
+264:Imperial Chronicle - Issue 5 
+265:Imperial Chronicle - Issue 6 
+266:Imperial Chronicle - Issue 7 
+267:Imperial Chronicle - Issue 8 
+268:Imperial Chronicle - Issue 9 
+269:Imperial Chronicle - Issue 10 
+270:Imperial Chronicle - Issue 11 
+271:Carnelia Reprint - Chapter 1 
+272:Carnelia Reprint - Chapter 2 
+273:Carnelia Reprint - Chapter 3 
+274:Carnelia Reprint - Chapter 4 
+275:Carnelia Reprint - Chapter 5 
+276:Carnelia Reprint - Chapter 6 
+277:Carnelia Reprint - Chapter 7 
+278:Carnelia Reprint - Chapter 8 
+279:Carnelia Reprint - Chapter 9 
+280:Carnelia Reprint - Chapter 10 
+281:Carnelia Reprint - Finale 
+282:Erebonian Public Transport 
+283:Erebonian Folklore: Vol. 1 
+284:Erebonian Sports 
+285:Erebonian Mass Media 
+286:Erebonian Folklore: Vol. 2 
+287:Reinford Group: Past to Present 
+288:Erebonian Folklore: Vol. 3 
+289:Manly Munchies - Omelets 
+290:Manly Munchies - Cookies 
+291:Manly Munchies - Juice 
+292:Manly Munchies - Sandwiches 
+293:Manly Munchies - Tea 
+294:Manly Munchies - Chowder 
+295:Manly Munchies - Tarts 
+296:Manly Munchies - Porridge 
+297:Manly Munchies - Pizza 
+298:Manly Munchies - Coffee 
+299:Manly Munchies - Gratin 
+300:Manly Munchies - Deep Frying 
+301:Manly Munchies - Puddings 
+302:Manly Munchies - Pasta Soup 
+303:Manly Munchies - Beef &amp; Rice 
+304:Manly Munchies - Steak 
+305:Manly Munchies - Cocktails 
+306:Manly Munchies - Gelato 
+307:Manly Munchies - Hotpots 
+308:Manly Munchies - Hamburgers 
+309:Red Moon Rose - Chapter 1 
+310:Red Moon Rose - Chapter 2 
+311:Red Moon Rose - Chapter 3 
+312:Red Moon Rose - Chapter 4 
+313:Red Moon Rose - Chapter 5 
+314:Red Moon Rose - Chapter 6 
+315:Red Moon Rose - Chapter 7 
+316:Red Moon Rose - Chapter 8 
+317:Red Moon Rose - Chapter 9 
+318:Red Moon Rose - Chapter 10 
+319:Red Moon Rose - Chapter 11 
+320:Red Moon Rose - Chapter 12 
+321:Red Moon Rose - Chapter 13 
+322:Red Moon Rose - Finale 
+323:Relaxation Through Music 
+324:Legram Guidebook 
+325:Touching Paintings 
+326:Traditional Archery 
+327:The Art of Napping 
+328:Intermediate Chess 
+329:A Teaching Primer 
+330:Imperial Horsemanship 
+331:Swimming Strategies 
+332:Military Mania 
+333:Erebonian Art History 
+334:Essence of Lacrosse 
+335:Big Book of Instruments 
+336:Advanced Court Fencing 
+337:Brewing Amazing Coffee 
+338:Cats, Cats, Cats 
+339:Expert Cookware 
+340:The Philosophy of Blade 
+1575:Ooze Cookie  
+1576:Frozen Soup  
+1577:Roasted Fry-up  
+1578:Hampering Rice  
+1579:Dangerous Meatball  
+1520:Soft &amp; Fluffy Omelet 
+1521:Royal Sable 
+1522:Golden Juice 
+1523:Elegant Sandwich 
+1524:Aromatic Tea 
+1525:Jewel Potage 
+1526:Luxury Tart 
+1527:Nord Porridge 
+1528:Special Pizza 
+1529:Premium Coffee 
+1530:Melted Gratin 
+1531:Elegant Fried Fish 
+1532:Wobbly Pudding 
+1533:Celestial Pasta Soup 
+1534:Noble Demi-Glace Rice 
+1535:Marbled Steak 
+1536:Miraculous Cocktail 
+1537:Heavenly Gelato 
+1538:Ultimate Hotpot 
+1539:Imperial Hamburger 
+1540:Simple Omelet 
+1541:Sweet Cookie 
+1542:Whole Juice 
+1543:Tomato Sandwich 
+1544:Savory Herb Tea 
+1545:Creamy Chowder 
+1546:Berry Tart 
+1547:Milk Porridge 
+1548:Crispy Pizza 
+1549:Roasted Coffee 
+1550:Tomato Gratin 
+1551:Fried Fish 
+1552:Custard Pudding 
+1553:Refreshing Pasta Soup 
+1554:Hashed Beef Rice 
+1555:Stamina Steak 
+1556:Tomato Cocktail 
+1557:Mixed Gelato 
+1558:Filling Hotpot 
+1559:Handmade Hamburger 
+1560:Solid Omelet  
+1561:Yellow Liquid  
+1562:Bitter Sandwich  
+1563:Brown Liquid  
+1564:Elementart  
+1565:Soggy Porridge  
+1566:Mirror Pizza  
+1567:Black Liquid  
+1568:Magma Gratin  
+1569:Egg Custard Pudding  
+1570:Colorless Noodles  
+1571:Adamantine Steak  
+1572:Red Liquid  
+1573:Wonder Gelato  
+1574:Enigmatic Hotpot  
+1500:Warm Egg Soup  
+1501:White Cookie  
+1502:Wild Mix  
+1503:Victory Sandwich  
+1504:Nord Tea  
+1505:Deluxe Herb Chowder  
+1506:Soft Chocolate Tart  
+1507:Three Cheese Risotto  
+1508:Teriyaki Chicken Pizza  
+1509:Double Espresso  
+1510:Whole Pumpkin Gratin  
+1511:Fish Nuggets 
+1512:Quartet Pudding  
+1513:Deluxe Herb Pasta  
+1514:Artistic Omurice  
+1515:Juicy Kebab  
+1516:Red Hot Soda  
+1517:Salty Gelato  
+1518:Hurricane Hotpot 
+1519:Mixed Hamburger Dish  
+1600:Fresh Egg 
+1601:Fresh Milk 
+1602:Mature Cheese 
+1603:Fresh Herb 
+1604:Crisp Onion 
+1605:Flaky Potato 
+1606:Starberry 
+1607:Acerbic Tomato 
+1608:Honey Syrup 
+1609:Coarse Rock Salt 
+1610:Assorted Grains 
+1611:Healthy Liquor 
+1612:Red Beast Flesh 
+1613:White Beast Flesh 
+1614:Chitinous Shell 
+1615:Clear Gelatin 
+1616:Globby Fat 
+1617:Hearty Powder 
+</DropDownList>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>				
+			  </CheatEntries>
+			</CheatEntry>
+		</CheatEntries>
+		</CheatEntry>
+	   </CheatEntries>
+	</CheatEntry>
+	</CheatEntries>
+  <LuaScript>function lua_aobscan(name,module,bytes,index)
+  index = index - 1
+  if(module == "") then
+    local resultSet = AOBScan(bytes)
+      if(resultSet == nil) then
+        unregisterSymbol(name)
+        print(name.." not found")
+      else
+        unregisterSymbol(name)
+        registerSymbol(name,resultSet[index])
+        resultSet.destroy()
+      end
+  else
+    if(getModuleSize(module) == nil) then
+      print("Module "..module.." not found")
+    else
+      local memScanner = createMemScan()
+      local memFoundList = createFoundList(memScanner)
+      memScanner.firstScan(
+        soExactValue,vtByteArray,rtRounded,bytes,nil,
+        getAddress(module),(getAddress(module)+getModuleSize(module)),"",
+        fsmNotAligned,"",true,false,false,false)
+      memScanner.waitTillDone()
+      memFoundList.initialize()
+        if(memFoundList.Count == 0) then
+          unregisterSymbol(name)
+          print(name.." in module "..module.." not found")
+        else
+          unregisterSymbol(name)
+          registerSymbol(name,memFoundList.Address[index])
+        end
+      memScanner.destroy()
+      memFoundList.destroy()
+    end
+  end
+end
+</LuaScript>	
+</CheatTable>
