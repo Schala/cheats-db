@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CheatTable CheatEngineTableVersion="28">
+<CheatTable CheatEngineTableVersion="29">
   <CheatEntries>
     <CheatEntry>
       <ID>274</ID>
       <Description>"Bloodybone"</Description>
       <Options moHideChildren="1"/>
-      <LastState/>
+      <LastState Activated="1"/>
       <Color>0000FF</Color>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
@@ -26,7 +26,7 @@ end
           <ID>106</ID>
           <Description>"AobScan"</Description>
           <Options moHideChildren="1"/>
-          <LastState Value="" RealAddress="00000000"/>
+          <LastState Value="" Activated="1" RealAddress="00000000"/>
           <Color>008000</Color>
           <GroupHeader>1</GroupHeader>
           <CheatEntries>
@@ -734,7 +734,7 @@ dd 0
             <CheatEntry>
               <ID>189</ID>
               <Description>"Infinite Health Alternative"</Description>
-              <LastState/>
+              <LastState Activated="1"/>
               <Color>FF0000</Color>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>[ENABLE]
@@ -869,7 +869,7 @@ unregistersymbol(infjumps)
             <CheatEntry>
               <ID>38</ID>
               <Description>"Inf Jumps"</Description>
-              <LastState/>
+              <LastState Activated="1"/>
               <Color>FF0000</Color>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>[ENABLE]
@@ -1578,7 +1578,7 @@ unregistersymbol(setgravityvalue)
             <CheatEntry>
               <ID>68</ID>
               <Description>"Full Bright"</Description>
-              <LastState/>
+              <LastState Activated="1"/>
               <Color>FF0000</Color>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>[ENABLE]
@@ -2073,7 +2073,7 @@ unregistersymbol(shiplevel.data)
               <ID>186</ID>
               <Description>"Mech Energy"</Description>
               <Options moHideChildren="1"/>
-              <LastState/>
+              <LastState Activated="1"/>
               <Color>FF0000</Color>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>// xmm0 == current _ 0     double
@@ -2155,7 +2155,7 @@ unregistersymbol(getmechenergy)
                 <CheatEntry>
                   <ID>188</ID>
                   <Description>"Inf Mech Energy"</Description>
-                  <LastState/>
+                  <LastState Activated="1"/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>{$lua}
 [ENABLE]
@@ -2375,106 +2375,9 @@ unregistersymbol(canalwaysbeamup)
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
-      <ID>199</ID>
-      <Description>"Unused"</Description>
-      <Options moHideChildren="1"/>
-      <LastState Value="" RealAddress="00000000"/>
-      <Color>808080</Color>
-      <GroupHeader>1</GroupHeader>
-      <CheatEntries>
-        <CheatEntry>
-          <ID>197</ID>
-          <Description>"Get World Server"</Description>
-          <Options moHideChildren="1"/>
-          <LastState/>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>define(address,starbound.Star::WorldServer::update)
-define(bytes,40 55 53 56 57)
-
-[ENABLE]
-assert(address,bytes)
-alloc(newmem,$1000,starbound.Star::WorldServer::update)
-
-label(code)
-label(return)
-label(worldserver_data)
-registersymbol(worldserver_data)
-
-newmem:
-mov [worldserver_data],rcx
-push rax
-lea rax,[rcx+930] // starbound.Star::GameTimer
-mov [worldserver_data+8],rax
-lea rax,[rcx+190]
-mov rax,[rax] // starbound.Star::EntityMap
-mov [worldserver_data+10],rax
-mov rax,[rcx+2D0] // starbound.Star::Sky
-mov [worldserver_data+18],rax
-mov rax,[rcx+920]
-mov rax,[rax]
-mov rax,[rax+18]
-add rax,18 // starbound.Star::WorldClientState
-mov [worldserver_data+20],rax
-lea rax,[rcx+238] // starbound.Star::WorldGeometry
-mov [worldserver_data+28],rax
-lea rax,[rcx+2E0] // starbound.Star::ServerWeather
-mov [worldserver_data+30],rax
-lea rax,[rcx+1C8] // starbound.Star::Json
-mov [worldserver_data+38],rax
-lea rax,[rcx+938] // starbound.Star::LiquidCellEngine
-mov [worldserver_data+40],rax
-lea rax,[rcx+948] // starbound.Star::FallingBlocksAgent
-mov [worldserver_data+48],rax
-lea rax,[rcx+1B0] // starbound.Star::WorldStorage
-mov [worldserver_data+50],rax
-lea rax,[rcx+920]
-mov rax,[rax]
-mov rax,[rax+18] // starbound.Star::WorldServer::ClientInfo
-mov [worldserver_data+58],rax
-mov rax,[rcx+20] // starbound.Star::WorldTemplate
-mov [worldserver_data+60],rax
-lea rax,[rcx+228] // starbound.Star::LuaRoot
-mov [worldserver_data+68],rax
-pop rax
-
-code:
-  push rbp
-  push rbx
-  push rsi
-  push rdi
-  jmp return
-
-worldserver_data:
-dq 0
-
-address:
-  jmp newmem
-return:
-
-[DISABLE]
-
-address:
-  db bytes
-
-dealloc(newmem)
-unregistersymbol(worldserver_data)
-</AssemblerScript>
-          <CheatEntries>
-            <CheatEntry>
-              <ID>198</ID>
-              <Description>"WorldServer"</Description>
-              <ShowAsHex>1</ShowAsHex>
-              <VariableType>8 Bytes</VariableType>
-              <Address>worldserver_data</Address>
-            </CheatEntry>
-          </CheatEntries>
-        </CheatEntry>
-      </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
       <ID>1</ID>
       <Description>"Load Lua Library Alternative"</Description>
-      <LastState/>
+      <LastState Activated="1"/>
       <Color>0000FF</Color>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
