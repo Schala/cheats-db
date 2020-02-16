@@ -1,0 +1,14 @@
+cheat
+  name: All enemies die with one hit and will die if they attack you. The party is healed after battle.
+  code: c1ecbe=3b
+  enable
+
+cheat
+  name: Characters in party go to level 99 after one battle. It says you get the normal amount of EXP, but you go to level 99.
+  code: c1f7f4=c6
+  enable
+
+cheat
+  name: Walk through walls
+  code: c08847=49
+
