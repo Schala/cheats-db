@@ -1,0 +1,804 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="26">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"Trials of Mana (Steam)"</Description>
+      <Options moHideChildren="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>10</ID>
+          <Description>"Enable"</Description>
+          <Options moHideChildren="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+
+///
+label(MainBaseAddr)
+registersymbol(MainBaseAddr)
+label(SavedLucre)
+registersymbol(SavedLucre)
+label(LucreInitialized)
+registersymbol(LucreInitialized)
+label(LucreMultiplier)
+registersymbol(LucreMultiplier)
+label(InfiniteLucre)
+registersymbol(InfiniteLucre)
+label(SavedEXP)
+registersymbol(SavedEXP)
+label(EXPInitialized)
+registersymbol(EXPInitialized)
+label(EXPMultiplier)
+registersymbol(EXPMultiplier)
+label(MinItemQty)
+registersymbol(MinItemQty)
+alloc(newmem,4096)
+
+"Trials of Mana-Win64-Shipping.exe"+03087028:
+MainBaseAddr:
+
+newmem:
+
+MinItemQty:
+dq #15
+LucreMultiplier:
+dq #100
+InfiniteLucre:
+dq 1
+LucreInitialized:
+dq 0
+SavedLucre:
+dq 0
+EXPMultiplier:
+dq #5
+EXPInitialized:
+dq 0
+SavedEXP:
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+  
+[DISABLE]
+
+unregistersymbol(MainBaseAddr)
+
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>100</ID>
+              <Description>"[Scripts]"</Description>
+              <Options moHideChildren="1"/>
+              <GroupHeader>1</GroupHeader>
+			  <CheatEntries>
+				<CheatEntry>
+				  <ID>1100</ID>
+				  <Description>"Infinite HP All Chars"</Description>
+				  <Options moHideChildren="1"/>
+				  <VariableType>Auto Assembler Script</VariableType>
+				  <AssemblerScript>[ENABLE]
+{$lua}
+tInfHP = createTimer(nil, false)
+tInfHP.OnTimer = function(fInfHP)
+  errorOnLookupFailure = false
+  if (getAddress("MainBaseAddr") == 0) then
+	tInfHP.Destroy()
+  end
+  local MainAddr = ReadQword(getAddress("MainBaseAddr"))
+  if (MainAddr ~= nil) then
+	local Char1Ptr1 = ReadQword(MainAddr + 0x9D50)
+	
+	if (Char1Ptr1 ~= nil) then
+		local Char1Ptr2 = ReadQword(Char1Ptr1 + 0x178)
+	
+		if (Char1Ptr2 ~= nil) then
+			local NumChars = 6
+			local CurrentChar = 0
+			
+			while (CurrentChar &lt; NumChars) do		
+			  if (Char1Ptr2 ~= nil) then
+				  local MaxHP = 9999
+				  WriteInteger(Char1Ptr2 + (CurrentChar * 0x200) + 0x20,MaxHP)
+			  end
+			  
+			  CurrentChar = CurrentChar + 1
+			end
+		end
+	end  
+  end
+
+end
+tInfHP.Interval = 1000
+tInfHP.Enabled = true
+{$asm}
+
+[DISABLE]
+{$lua}
+tInfHP.Destroy()
+
+{$asm}
+</AssemblerScript>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>1110</ID>
+				  <Description>"Infinite MP All Chars"</Description>
+				  <Options moHideChildren="1"/>
+				  <VariableType>Auto Assembler Script</VariableType>
+				  <AssemblerScript>[ENABLE]
+{$lua}
+tInfMP = createTimer(nil, false)
+tInfMP.OnTimer = function(fInfMP)
+  errorOnLookupFailure = false
+  if (getAddress("MainBaseAddr") == 0) then
+	tInfMP.Destroy()
+  end
+  local MainAddr = ReadQword(getAddress("MainBaseAddr"))
+  if (MainAddr ~= nil) then
+	local Char1Ptr1 = ReadQword(MainAddr + 0x9D50)
+	
+	if (Char1Ptr1 ~= nil) then
+		local Char1Ptr2 = ReadQword(Char1Ptr1 + 0x178)
+	
+		if (Char1Ptr2 ~= nil) then
+			local NumChars = 6
+			local CurrentChar = 0
+			
+			while (CurrentChar &lt; NumChars) do		
+			  if (Char1Ptr2 ~= nil) then
+				  local MaxMP = 999
+				  WriteInteger(Char1Ptr2 + (CurrentChar * 0x200) + 0x24,MaxMP)
+			  end
+			  
+			  CurrentChar = CurrentChar + 1
+			end
+		end
+	end  
+  end
+
+end
+tInfMP.Interval = 1000
+tInfMP.Enabled = true
+{$asm}
+
+[DISABLE]
+{$lua}
+tInfMP.Destroy()
+
+{$asm}
+</AssemblerScript>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>1120</ID>
+				  <Description>"Max CS Gauge All Chars"</Description>
+				  <Options moHideChildren="1"/>
+				  <VariableType>Auto Assembler Script</VariableType>
+				  <AssemblerScript>[ENABLE]
+{$lua}
+tInfCS = createTimer(nil, false)
+tInfCS.OnTimer = function(fInfCS)
+  errorOnLookupFailure = false
+  if (getAddress("MainBaseAddr") == 0) then
+	tInfCS.Destroy()
+  end
+  local MainAddr = ReadQword(getAddress("MainBaseAddr"))
+  if (MainAddr ~= nil) then
+	local Char1Ptr1 = ReadQword(MainAddr + 0x9D50)
+	
+	if (Char1Ptr1 ~= nil) then
+		local Char1Ptr2 = ReadQword(Char1Ptr1 + 0x178)
+	
+		if (Char1Ptr2 ~= nil) then
+			local NumChars = 6
+			local CurrentChar = 0
+			
+			while (CurrentChar &lt; NumChars) do		
+			  if (Char1Ptr2 ~= nil) then
+				  local MaxCS = 200
+				  WriteInteger(Char1Ptr2 + (CurrentChar * 0x200) + 0x5C,MaxCS)
+			  end
+			  
+			  CurrentChar = CurrentChar + 1
+			end
+		end
+	end  
+  end
+
+end
+tInfCS.Interval = 1000
+tInfCS.Enabled = true
+{$asm}
+
+[DISABLE]
+{$lua}
+tInfCS.Destroy()
+
+{$asm}
+</AssemblerScript>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>1130</ID>
+				  <Description>"EXP Multiplier (Enable After Loading Save/Starting New Game, Not At Title Menu)"</Description>
+				  <Options moHideChildren="1"/>
+				  <VariableType>Auto Assembler Script</VariableType>
+				  <AssemblerScript>[ENABLE]
+{$lua}
+tEXPMult = createTimer(nil, false)
+tEXPMult.OnTimer = function(fEXPMult)
+  errorOnLookupFailure = false
+  if (getAddress("MainBaseAddr") == 0) then
+	tEXPMult.Destroy()
+  end
+  local MainAddr = ReadQword(getAddress("MainBaseAddr"))
+  local EXPMult = ReadQword(getAddress(getAddress("EXPMultiplier")))
+  local EXPInitialized = ReadQword(getAddress("EXPInitialized"))
+  local EXPSaved = getAddress("SavedEXP")
+  local NumChars = 6
+  local CharOffset = 0x200
+  local EXPStartOffset = 0x110
+  
+  if (MainAddr ~= nil) then
+	local StatPtr1 = ReadQword(MainAddr + 0x9D50)
+	
+	if (StatPtr1 ~= nil) then
+		local StatPtr2 = ReadQword(StatPtr1 + 0x178)
+
+		if (StatPtr2 ~= nil) then
+		  if (EXPInitialized == 0) then
+		   local CurrentChar = 0
+		   while (CurrentChar &lt; NumChars) do
+		     WriteInteger(getAddress("EXPInitialized"),1)
+			 WriteInteger(EXPSaved + (CurrentChar * 0x08),ReadInteger(StatPtr2 + EXPStartOffset + (CurrentChar * CharOffset)))
+			 CurrentChar = CurrentChar + 1
+		   end
+		  else
+		    local CurrentChar = 0
+			while (CurrentChar &lt; NumChars) do
+			  local EXPDifference = ReadInteger(StatPtr2 + EXPStartOffset + (CurrentChar * CharOffset)) - ReadInteger(EXPSaved + (CurrentChar * 0x04))
+			  if (EXPDifference &gt; 0) then
+			    local EXPMultiplied = EXPDifference * EXPMult
+				local NewEXP = ReadInteger(EXPSaved + (CurrentChar * 0x04)) + EXPMultiplied
+				WriteInteger(StatPtr2 + EXPStartOffset + (CurrentChar * CharOffset),NewEXP)
+				WriteInteger(EXPSaved + (CurrentChar * 0x04),NewEXP)
+			  end
+   			  CurrentChar = CurrentChar + 1
+			end
+		  end		  
+		end
+	end  
+  end
+
+end
+tEXPMult.Interval = 1000
+tEXPMult.Enabled = true
+{$asm}
+
+[DISABLE]
+{$lua}
+tEXPMult.Destroy()
+WriteInteger(getAddress("EXPInitialized"),0)
+
+{$asm}
+</AssemblerScript>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1131</ID>
+                      <Description>"EXP Multiplier"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>EXPMultiplier</Address>
+                    </CheatEntry>
+				  </CheatEntries>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>1140</ID>
+				  <Description>"Lucre(Money) Multiplier/Infinite Lucre(Money) (Enable After Loading Save/Starting New Game, Not At Title Menu)"</Description>
+				  <Options moHideChildren="1"/>
+				  <VariableType>Auto Assembler Script</VariableType>
+				  <AssemblerScript>[ENABLE]
+{$lua}
+tGPMult = createTimer(nil, false)
+tGPMult.OnTimer = function(fGPMult)
+  errorOnLookupFailure = false
+  if (getAddress("MainBaseAddr") == 0) then
+	tGPMult.Destroy()
+  end
+  local MainAddr = ReadQword(getAddress("MainBaseAddr"))
+  local GPMult = ReadQword(getAddress(getAddress("LucreMultiplier")))
+  local GPInitialized = ReadQword(getAddress("LucreInitialized"))
+  local GPSaved = getAddress("SavedLucre")
+  local InfGP = ReadQword(getAddress("InfiniteLucre"))
+  
+  if (MainAddr ~= nil) then
+	local StatPtr1 = ReadQword(MainAddr + 0x9D50)
+	
+	if (StatPtr1 ~= nil) then
+		local StatPtr2 = ReadQword(StatPtr1 + 0x68)
+
+		if (StatPtr2 ~= nil) then
+		  if (GPInitialized == 0) then
+			 WriteInteger(getAddress("LucreInitialized"),1)
+			 WriteInteger(GPSaved,ReadInteger(StatPtr2 + 0x3A6C))
+		  else
+			local GPDifference = ReadInteger(StatPtr2 + 0x3A6C) - ReadInteger(GPSaved)
+			if (GPDifference &lt;= 0) then
+			  if (InfGP == 1) then
+				WriteInteger(StatPtr2 + 0x3A6C,ReadInteger(GPSaved))
+			  else
+				WriteInteger(GPSaved,ReadInteger(StatPtr2 + 0x3A6C))
+			  end
+			else
+			  local GPMultiplied = GPDifference * GPMult
+			  local NewGP = ReadInteger(GPSaved) + GPMultiplied
+			  WriteInteger(StatPtr2 + 0x3A6C,NewGP)
+			  WriteInteger(GPSaved,NewGP)
+			end
+		  end
+		end
+	end  
+  end
+
+end
+tGPMult.Interval = 1000
+tGPMult.Enabled = true
+{$asm}
+
+[DISABLE]
+{$lua}
+tGPMult.Destroy()
+WriteInteger(getAddress("LucreInitialized"),0)
+
+{$asm}
+</AssemblerScript>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1141</ID>
+                      <Description>"Infinite Lucre(Money)"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+1:On
+</DropDownList>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>InfiniteLucre</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1142</ID>
+                      <Description>"Lucre(Money) Multiplier"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>LucreMultiplier</Address>
+                    </CheatEntry>
+				  </CheatEntries>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>1150</ID>
+				  <Description>"Set Minimum Item Quantity"</Description>
+				  <Options moHideChildren="1"/>
+				  <VariableType>Auto Assembler Script</VariableType>
+				  <AssemblerScript>[ENABLE]
+{$lua}
+tInfMinQty = createTimer(nil, false)
+tInfMinQty.OnTimer = function(fInfMinQty)
+  errorOnLookupFailure = false
+  if (getAddress("MainBaseAddr") == 0) then
+	tInfMinQty.Destroy()
+  end
+  local MainAddr = ReadQword(getAddress("MainBaseAddr"))
+  if (MainAddr ~= nil) then
+	local Char1Ptr1 = ReadQword(MainAddr + 0x9D50)
+	
+	if (Char1Ptr1 ~= nil) then
+		local Char1Ptr2 = ReadQword(Char1Ptr1 + 0x68)
+	
+		if (Char1Ptr2 ~= nil) then
+			local NumItems = 0x7D
+			local CurrentItem = 0
+			local MinQuantity = ReadInteger(getAddress("MinItemQty"))
+			
+			while (CurrentItem &lt; NumItems) do		
+			  if (Char1Ptr2 ~= nil) then
+			    if (ReadInteger(Char1Ptr2 + (CurrentItem * 0x18)) &lt; 0x6C) then
+				  if (ReadInteger(Char1Ptr2 + (CurrentItem * 0x18) + 0x04) &lt; MinQuantity) then
+				    WriteInteger(Char1Ptr2 + (CurrentItem * 0x18) + 0x04,MinQuantity)
+				  end
+				end
+			  end
+			  
+			  CurrentItem = CurrentItem + 1
+		    end
+		end
+	end  
+  end
+
+end
+tInfMinQty.Interval = 1000
+tInfMinQty.Enabled = true
+{$asm}
+
+[DISABLE]
+{$lua}
+tInfMinQty.Destroy()
+
+{$asm}
+</AssemblerScript>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1151</ID>
+                      <Description>"Minimum Item Qty"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>MinItemQty</Address>
+                    </CheatEntry>
+				  </CheatEntries>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>1160</ID>
+				  <Description>"Get All Regular Items (Minus Key Items) (Fight One Battle After Enabling)"</Description>
+				  <Options moHideChildren="1"/>
+				  <VariableType>Auto Assembler Script</VariableType>
+				  <AssemblerScript>[ENABLE]
+{$lua}
+local MinQuantity = 15
+local MainAddr = ReadQword(getAddress("MainBaseAddr"))
+if (MainAddr ~= nil) then
+local Char1Ptr1 = ReadQword(MainAddr + 0x9D50)
+
+	if (Char1Ptr1 ~= nil) then
+		local Char1Ptr2 = ReadQword(Char1Ptr1 + 0x68)
+
+		if (Char1Ptr2 ~= nil) then
+			local NumItems = 0x6B
+			local CurrentItem = 0
+			
+			while (CurrentItem &lt; NumItems) do		
+			  if (Char1Ptr2 ~= nil) then
+			    WriteInteger(Char1Ptr2 + (CurrentItem * 0x18),CurrentItem)
+				if (ReadInteger(Char1Ptr2 + (CurrentItem * 0x18)) &lt; 0x6C) then
+				  if (ReadInteger(Char1Ptr2 + (CurrentItem * 0x18) + 0x04) &lt; MinQuantity) then
+					WriteInteger(Char1Ptr2 + (CurrentItem * 0x18) + 0x04,MinQuantity)
+				  end
+				end
+			  end
+			  
+			  CurrentItem = CurrentItem + 1
+			end
+		end
+	end  
+end
+
+{$asm}
+
+[DISABLE]
+{$lua}
+
+{$asm}
+</AssemblerScript>
+				</CheatEntry>
+			  </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>4000</ID>
+              <Description>"Pointers"</Description>
+              <Options moHideChildren="1"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>4100</ID>
+                  <Description>"Lucre (Money)"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[[[MainBaseAddr]+9D50]+68]+3A6C</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>4110</ID>
+                  <Description>"Candy Quantity"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[[[MainBaseAddr]+9D50]+68]+04</Address>
+                </CheatEntry>
+				<CheatEntry>
+				  <ID>4200</ID>
+				  <Description>"Duran Character Stats"</Description>
+				  <Options moHideChildren="1"/>
+				  <GroupHeader>1</GroupHeader>
+				  <CheatEntries>
+					<CheatEntry>
+					  <ID>4201</ID>
+					  <Description>"Character Level"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>[[[MainBaseAddr]+9D50]+178]+0*200+0C</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4202</ID>
+					  <Description>"Character HP"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>[[[MainBaseAddr]+9D50]+178]+0*200+20</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4203</ID>
+					  <Description>"Character MP"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>[[[MainBaseAddr]+9D50]+178]+0*200+24</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4204</ID>
+					  <Description>"Character CS Gauge"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>[[[MainBaseAddr]+9D50]+178]+0*200+5C</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4205</ID>
+					  <Description>"Character EXP"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>[[[MainBaseAddr]+9D50]+178]+0*200+110</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4206</ID>
+					  <Description>"Character Training Points"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>[[[MainBaseAddr]+9D50]+178]+0*200+1A0</Address>
+					</CheatEntry>
+				  </CheatEntries>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>4300</ID>
+				  <Description>"Angela Character Stats"</Description>
+				  <Options moHideChildren="1"/>
+				  <GroupHeader>1</GroupHeader>
+				  <CheatEntries>
+					<CheatEntry>
+					  <ID>4301</ID>
+					  <Description>"Character Level"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>[[[MainBaseAddr]+9D50]+178]+1*200+0C</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4302</ID>
+					  <Description>"Character HP"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>[[[MainBaseAddr]+9D50]+178]+1*200+20</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4303</ID>
+					  <Description>"Character MP"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>[[[MainBaseAddr]+9D50]+178]+1*200+24</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4304</ID>
+					  <Description>"Character CS Gauge"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>[[[MainBaseAddr]+9D50]+178]+1*200+5C</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4305</ID>
+					  <Description>"Character EXP"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>[[[MainBaseAddr]+9D50]+178]+1*200+110</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4306</ID>
+					  <Description>"Character Training Points"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>[[[MainBaseAddr]+9D50]+178]+1*200+1A0</Address>
+					</CheatEntry>
+				  </CheatEntries>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>4400</ID>
+				  <Description>"Kevin Character Stats"</Description>
+				  <Options moHideChildren="1"/>
+				  <GroupHeader>1</GroupHeader>
+				  <CheatEntries>
+					<CheatEntry>
+					  <ID>4401</ID>
+					  <Description>"Character Level"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>[[[MainBaseAddr]+9D50]+178]+2*200+0C</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4402</ID>
+					  <Description>"Character HP"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>[[[MainBaseAddr]+9D50]+178]+2*200+20</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4403</ID>
+					  <Description>"Character MP"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>[[[MainBaseAddr]+9D50]+178]+2*200+24</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4404</ID>
+					  <Description>"Character CS Gauge"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>[[[MainBaseAddr]+9D50]+178]+2*200+5C</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4405</ID>
+					  <Description>"Character EXP"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>[[[MainBaseAddr]+9D50]+178]+2*200+110</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4406</ID>
+					  <Description>"Character Training Points"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>[[[MainBaseAddr]+9D50]+178]+2*200+1A0</Address>
+					</CheatEntry>
+				  </CheatEntries>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>4500</ID>
+				  <Description>"Charlotte Character Stats"</Description>
+				  <Options moHideChildren="1"/>
+				  <GroupHeader>1</GroupHeader>
+				  <CheatEntries>
+					<CheatEntry>
+					  <ID>4501</ID>
+					  <Description>"Character Level"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>[[[MainBaseAddr]+9D50]+178]+3*200+0C</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4502</ID>
+					  <Description>"Character HP"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>[[[MainBaseAddr]+9D50]+178]+3*200+20</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4503</ID>
+					  <Description>"Character MP"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>[[[MainBaseAddr]+9D50]+178]+3*200+24</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4504</ID>
+					  <Description>"Character CS Gauge"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>[[[MainBaseAddr]+9D50]+178]+3*200+5C</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4505</ID>
+					  <Description>"Character EXP"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>[[[MainBaseAddr]+9D50]+178]+3*200+110</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4506</ID>
+					  <Description>"Character Training Points"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>[[[MainBaseAddr]+9D50]+178]+3*200+1A0</Address>
+					</CheatEntry>
+				  </CheatEntries>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>4600</ID>
+				  <Description>"Hawkeye Character Stats"</Description>
+				  <Options moHideChildren="1"/>
+				  <GroupHeader>1</GroupHeader>
+				  <CheatEntries>
+					<CheatEntry>
+					  <ID>4601</ID>
+					  <Description>"Character Level"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>[[[MainBaseAddr]+9D50]+178]+4*200+0C</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4602</ID>
+					  <Description>"Character HP"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>[[[MainBaseAddr]+9D50]+178]+4*200+20</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4603</ID>
+					  <Description>"Character MP"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>[[[MainBaseAddr]+9D50]+178]+4*200+24</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4604</ID>
+					  <Description>"Character CS Gauge"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>[[[MainBaseAddr]+9D50]+178]+4*200+5C</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4605</ID>
+					  <Description>"Character EXP"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>[[[MainBaseAddr]+9D50]+178]+4*200+110</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4606</ID>
+					  <Description>"Character Training Points"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>[[[MainBaseAddr]+9D50]+178]+4*200+1A0</Address>
+					</CheatEntry>
+				  </CheatEntries>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>4700</ID>
+				  <Description>"Riesz Character Stats"</Description>
+				  <Options moHideChildren="1"/>
+				  <GroupHeader>1</GroupHeader>
+				  <CheatEntries>
+					<CheatEntry>
+					  <ID>4701</ID>
+					  <Description>"Character Level"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>[[[MainBaseAddr]+9D50]+178]+5*200+0C</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4702</ID>
+					  <Description>"Character HP"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>[[[MainBaseAddr]+9D50]+178]+5*200+20</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4703</ID>
+					  <Description>"Character MP"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>[[[MainBaseAddr]+9D50]+178]+5*200+24</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4704</ID>
+					  <Description>"Character CS Gauge"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>[[[MainBaseAddr]+9D50]+178]+5*200+5C</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4705</ID>
+					  <Description>"Character EXP"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>[[[MainBaseAddr]+9D50]+178]+5*200+110</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4706</ID>
+					  <Description>"Character Training Points"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>[[[MainBaseAddr]+9D50]+178]+5*200+1A0</Address>
+					</CheatEntry>
+				  </CheatEntries>
+				</CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+<LuaScript>function lua_aobscan(name,module,bytes,index)
+  index = index - 1
+  if(module == "") then
+    local resultSet = AOBScan(bytes)
+      if(resultSet == nil) then
+        unregisterSymbol(name)
+        print(name.." not found")
+      else
+        unregisterSymbol(name)
+        registerSymbol(name,resultSet[index])
+        resultSet.destroy()
+      end
+  else
+    if(getModuleSize(module) == nil) then
+      print("Module "..module.." not found")
+    else
+      local memScanner = createMemScan()
+      local memFoundList = createFoundList(memScanner)
+      memScanner.firstScan(
+        soExactValue,vtByteArray,rtRounded,bytes,nil,
+        getAddress(module),(getAddress(module)+getModuleSize(module)),"",
+        fsmNotAligned,"",true,false,false,false)
+      memScanner.waitTillDone()
+      memFoundList.initialize()
+        if(memFoundList.Count == 0) then
+          unregisterSymbol(name)
+          print(name.." in module "..module.." not found")
+        else
+          unregisterSymbol(name)
+          registerSymbol(name,memFoundList.Address[index])
+        end
+      memScanner.destroy()
+      memFoundList.destroy()
+    end
+  end
+end
+</LuaScript>
+</CheatTable>
