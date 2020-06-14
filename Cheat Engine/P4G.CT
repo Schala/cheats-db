@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="26">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"Persona 4 Golden (Steam)"</Description>
+      <Options moHideChildren="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>10</ID>
+          <Description>"Enable"</Description>
+          <Options moHideChildren="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+///
+alloc(newmem,1024,"P4G.exe")
+
+///
+label(MainPlayerStructurePtr)
+registersymbol(MainPlayerStructurePtr)
+label(YosukePlayerStructurePtr)
+registersymbol(YosukePlayerStructurePtr)
+label(MainPlayerYenPtr)
+registersymbol(MainPlayerYenPtr)
+label(MainPlayerInventoryPtr)
+registersymbol(MainPlayerInventoryPtr)
+
+P4G.exe+4A0F3C0:
+MainPlayerYenPtr:
+
+P4G.exe+4A0F3F0:
+MainPlayerInventoryPtr:
+
+P4G.exe+4A10034:
+MainPlayerStructurePtr:
+P4G.exe+4A100B8:
+YosukePlayerStructurePtr:
+
+newmem:
+    
+[DISABLE]
+  
+unregistersymbol(MainPlayerStructurePtr)
+unregistersymbol(YosukePlayerStructurePtr)
+
+unregistersymbol(MainPlayerYenPtr)
+unregistersymbol(MainPlayerInventoryPtr)
+
+dealloc(newmem)
+</AssemblerScript>
+        <CheatEntries>
+			<CheatEntry>
+			  <ID>200</ID>
+			  <Description>"[Scripts]"</Description>
+			  <Options moHideChildren="1"/>
+			  <GroupHeader>1</GroupHeader>
+			  <CheatEntries>
+                <CheatEntry>
+                  <ID>205</ID>
+                  <Description>"Infinite Yen/Yen Multiplier"</Description>
+                  <Options moHideChildren="1"/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+aobscanmodule(GPSubtractAOB,"P4G.exe",89 5D F8 89 75 F4 29 08 B9 04 00 00 00) // should be unique
+registersymbol(GPSubtractAOB)
+alloc(newmem,1024,GPSubtractAOB)
+
+///
+aobscanmodule(GPAddAOB,"P4G.exe",8B 01 01 F8 39 D0 0F 4F C2 89 01 8B 45 FC) // should be unique
+registersymbol(GPAddAOB)
+alloc(newmem2,1024,GPAddAOB)
+
+label(originalcode)
+label(return)
+label(InfiniteGP)
+registersymbol(InfiniteGP)
+label(fGPAddMult)
+registersymbol(fGPAddMult)
+label(fGPSubtractMult)
+registersymbol(fGPSubtractMult)
+
+newmem:
+originalcode:
+  mov [ebp-08],ebx
+  mov [ebp-0C],esi
+SubtractGP:
+  cmp [InfiniteGP],1
+  jne SubtractGPMult
+  xor ecx,ecx
+  jmp return
+SubtractGPMult:
+  push ecx
+  fild dword ptr [esp]
+  fmul dword ptr [fGPSubtractMult]
+  fistp dword ptr [esp]
+  pop ecx
+  jmp return
+
+InfiniteGP:
+dq 1
+fGPSubtractMult:
+dq (float)0.5
+
+newmem2:
+AddGPMult:
+  push edi
+  fild dword ptr [esp]
+  fmul dword ptr [fGPAddMult]
+  fistp dword ptr [esp]
+  pop edi
+originalcode2:
+  mov eax,[ecx]
+  add eax,edi
+  cmp eax,edx
+  jmp return2
+
+fGPAddMult:
+dq (float)100.0
+  
+GPSubtractAOB:
+  jmp newmem
+  nop
+return:
+
+GPAddAOB:
+  jmp newmem2
+  nop
+return2:
+  
+[DISABLE]
+
+GPSubtractAOB:
+  db 89 5D F8 89 75 F4
+
+unregistersymbol(GPSubtractAOB)
+unregistersymbol(InfiniteGP)
+unregistersymbol(fGPSubtractMult)
+
+GPAddAOB:
+  db 8B 01 01 F8 39 D0
+
+unregistersymbol(GPAddAOB)
+unregistersymbol(fGPAddMult)
+  
+dealloc(newmem)
+dealloc(newmem2)
+</AssemblerScript>
+                  <CheatEntries>
+					<CheatEntry>
+					  <ID>206</ID>
+					  <Description>"Infinite Yen (Money)"</Description>
+					  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+1:On
+</DropDownList>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>InfiniteGP</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>207</ID>
+					  <Description>"Yen (Money) Subtract Multiplier"</Description>
+					  <VariableType>Float</VariableType>
+					  <Address>fGPSubtractMult</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>208</ID>
+					  <Description>"Yen (Money) Add Multiplier"</Description>
+					  <VariableType>Float</VariableType>
+					  <Address>fGPAddMult</Address>
+					</CheatEntry>
+				  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>210</ID>
+                  <Description>"Damage Modifier Script (God Mode, One Hit Kill, etc)"</Description>
+                  <Options moHideChildren="1"/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+aobscanmodule(DamageModAOB,"P4G.exe",0F B7 47 08 89 F9 01 F0 31 F6 85 C0) // should be unique
+registersymbol(DamageModAOB)
+alloc(newmem,2048,DamageModAOB)
+
+label(originalcode)
+label(return)
+label(GodMode)
+registersymbol(GodMode)
+label(OneHitKill)
+registersymbol(OneHitKill)
+label(fEnemyDamageMult)
+registersymbol(fEnemyDamageMult)
+label(fHeroDamageMult)
+registersymbol(fHeroDamageMult)
+label(HeroCannotDie)
+registersymbol(HeroCannotDie)
+		  
+newmem:
+originalcode:
+  movzx eax,word ptr [edi+08]
+  mov ecx,edi
+  cmp [edi+44],0
+  je EnemyHit
+  cmp [edi+48],0
+  je EnemyHit
+  jmp HeroHit
+EnemyHit:
+  cmp esi,0
+  jl EnemyDamageHit
+  jmp CleanUp
+EnemyDamageHit:
+  cmp [fEnemyDamageMult],(float)0.0
+  je CheckOneHitKill
+  neg esi
+  push esi
+  fild dword ptr [esp]
+  fmul dword ptr [fEnemyDamageMult]
+  fistp dword ptr [esp]
+  pop esi
+  neg esi
+CheckOneHitKill:
+  cmp [OneHitKill],1
+  jne CleanUp
+  mov esi,#9999
+  neg esi
+  jmp CleanUp
+HeroHit:
+  cmp esi,0
+  jl HeroDamageHit
+  jmp CleanUp
+HeroDamageHit:
+  cmp [fHeroDamageMult],(float)0.0
+  je CheckGodMode
+  neg esi
+  push esi
+  fild dword ptr [esp]
+  fmul dword ptr [fHeroDamageMult]
+  fistp dword ptr [esp]
+  pop esi
+  neg esi
+CheckGodMode:
+  cmp [GodMode],1
+  jne CheckHeroCannotDie
+  xor esi,esi
+  jmp CleanUp
+CheckHeroCannotDie:
+  cmp [HeroCannotDie],1
+  jne CleanUp
+  cmp esi,eax
+  jl @F
+  xor esi,esi
+@@:
+  jmp CleanUp  
+CleanUp:
+  jmp return
+
+GodMode:
+dq 0
+OneHitKill:
+dq 0
+fEnemyDamageMult:
+dq (float)2.0
+fHeroDamageMult:
+dq (float)0.5
+HeroCannotDie:
+dq 1
+
+DamageModAOB:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+
+DamageModAOB:
+  db 0F B7 47 08 89 F9
+
+unregistersymbol(DamageModAOB)
+unregistersymbol(GodMode)
+unregistersymbol(OneHitKill)
+unregistersymbol(fEnemyDamageMult)
+unregistersymbol(fHeroDamageMult)
+unregistersymbol(HeroCannotDie)
+
+dealloc(newmem)
+</AssemblerScript>
+                  <CheatEntries>
+					<CheatEntry>
+					  <ID>211</ID>
+					  <Description>"God Mode"</Description>
+					  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+1:On
+</DropDownList>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>GodMode</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>212</ID>
+					  <Description>"Hero Damage Multiplier (Set to 0.0 = Off; Otherwise multiplier so 0.5 is half damage to hero party)"</Description>
+					  <VariableType>Float</VariableType>
+					  <Address>fHeroDamageMult</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>213</ID>
+					  <Description>"Hero Cannot Die (If On and God Mode Off, Then You Take Damage Until The Hit Will Kill You)"</Description>
+					  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+1:On
+</DropDownList>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>HeroCannotDie</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>214</ID>
+					  <Description>"One Hit Kill"</Description>
+					  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+1:On
+</DropDownList>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>OneHitKill</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>215</ID>
+					  <Description>"Enemy Damage Multiplier (Set to Zero = Off; Otherwise multiplier to damage you deal to enemies)"</Description>
+					  <VariableType>Float</VariableType>
+					  <Address>fEnemyDamageMult</Address>
+					</CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>220</ID>
+                  <Description>"Infinite SP"</Description>
+                  <Options moHideChildren="1"/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+aobscanmodule(SPModAOB,"P4G.exe",0F B7 47 0A 89 F9 01 F0 31 F6 85 C0) // should be unique
+registersymbol(SPModAOB)
+alloc(newmem,1024,SPModAOB)
+
+label(originalcode)
+label(return)
+		  
+newmem:
+originalcode:
+  movzx eax,word ptr [edi+0A]
+  mov ecx,edi
+  cmp [edi+44],0
+  je EnemyHit
+  cmp [edi+48],0
+  je EnemyHit
+  jmp HeroHit
+EnemyHit:
+  jmp CleanUp
+HeroHit:
+  cmp esi,0
+  jl HeroDamageHit
+  jmp CleanUp
+HeroDamageHit:
+  xor esi,esi
+  jmp CleanUp  
+CleanUp:
+  jmp return
+
+SPModAOB:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+
+SPModAOB:
+  db 0F B7 47 0A 89 F9
+
+unregistersymbol(SPModAOB)
+
+dealloc(newmem)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>225</ID>
+                  <Description>"Infinite Item Usage / Set Minimum Amount On Use/Sell"</Description>
+                  <Options moHideChildren="1"/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+/// This code occurs when using an item
+aobscanmodule(InfItemUsageAOB,"P4G.exe",8B 4D F4 8A 14 01 89 F9 FE CA) // should be unique
+registersymbol(InfItemUsageAOB)
+alloc(newmem,1024,InfItemUsageAOB)
+
+/// This code occurs when selling an item
+aobscanmodule(InfItemUsageAOB2,"P4G.exe",89 F1 8A 14 07 28 DA) // should be unique
+registersymbol(InfItemUsageAOB2)
+alloc(newmem2,1024,InfItemUsageAOB2)
+
+///
+label(originalcode)
+label(return)
+label(SetMinAmount)
+registersymbol(SetMinAmount)
+
+///
+label(originalcode2)
+label(return2)
+
+newmem:
+originalcode:
+  mov ecx,[ebp-0C]
+  mov dl,[ecx+eax]
+  cmp dl,[SetMinAmount]
+  jge InfiniteUsage
+  mov dl,[SetMinAmount]
+InfiniteUsage:
+  inc dl
+  jmp return
+
+SetMinAmount:
+dq #10
+
+newmem2:
+originalcode2:
+  mov ecx,esi
+  mov dl,[edi+eax]
+  cmp dl,[SetMinAmount]
+  jge InfiniteUsage2
+  mov dl,[SetMinAmount]
+InfiniteUsage2:
+  jmp return2+2
+  
+InfItemUsageAOB:
+  jmp newmem
+  nop
+return:
+
+InfItemUsageAOB2:
+  jmp newmem2
+  return2:
+  
+[DISABLE]
+
+InfItemUsageAOB:
+  db 8B 4D F4 8A 14 01
+
+unregistersymbol(InfItemUsageAOB)
+unregistersymbol(SetMinAmount)
+
+InfItemUsageAOB2:
+  db 89 F1 8A 14 07
+
+unregistersymbol(InfItemUsageAOB2)
+  
+dealloc(newmem)
+dealloc(newmem2)
+</AssemblerScript>
+                  <CheatEntries>
+					<CheatEntry>
+					  <ID>226</ID>
+					  <Description>"Minimum Amount"</Description>
+					  <VariableType>Byte</VariableType>
+					  <Address>SetMinAmount</Address>
+					</CheatEntry>
+				  </CheatEntries>
+                </CheatEntry>
+			  </CheatEntries>
+			</CheatEntry>
+            <CheatEntry>
+              <ID>4000</ID>
+              <Description>"Pointers"</Description>
+              <Options moHideChildren="1"/>
+			  <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>4001</ID>
+                  <Description>"Yen (Money)"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>MainPlayerYenPtr</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>4001</ID>
+                  <Description>"Main Character Current HP"</Description>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>MainPlayerStructurePtr+08</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>4002</ID>
+                  <Description>"Main Character Current SP"</Description>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>MainPlayerStructurePtr+0A</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>4003</ID>
+                  <Description>"Yosuke Current HP"</Description>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>YosukePlayerStructurePtr+08</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>4004</ID>
+                  <Description>"Yosuke Current SP"</Description>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>YosukePlayerStructurePtr+0A</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+<LuaScript>function lua_aobscan(name,module,bytes,index)
+  index = index - 1
+  if(module == "") then
+    local resultSet = AOBScan(bytes)
+      if(resultSet == nil) then
+        unregisterSymbol(name)
+        print(name.." not found")
+      else
+        unregisterSymbol(name)
+        registerSymbol(name,resultSet[index])
+        resultSet.destroy()
+      end
+  else
+    if(getModuleSize(module) == nil) then
+      print("Module "..module.." not found")
+    else
+      local memScanner = createMemScan()
+      local memFoundList = createFoundList(memScanner)
+      memScanner.firstScan(
+        soExactValue,vtByteArray,rtRounded,bytes,nil,
+        getAddress(module),(getAddress(module)+getModuleSize(module)),"",
+        fsmNotAligned,"",true,false,false,false)
+      memScanner.waitTillDone()
+      memFoundList.initialize()
+        if(memFoundList.Count == 0) then
+          unregisterSymbol(name)
+          print(name.." in module "..module.." not found")
+        else
+          unregisterSymbol(name)
+          registerSymbol(name,memFoundList.Address[index])
+        end
+      memScanner.destroy()
+      memFoundList.destroy()
+    end
+  end
+end
+</LuaScript>  
+</CheatTable>
