@@ -20,6 +20,8 @@ alloc(newmem,1024,"P4G.exe")
 ///
 label(MainPlayerStructurePtr)
 registersymbol(MainPlayerStructurePtr)
+label(ChiePlayerStructurePtr)
+registersymbol(ChiePlayerStructurePtr)
 label(YosukePlayerStructurePtr)
 registersymbol(YosukePlayerStructurePtr)
 label(MainPlayerYenPtr)
@@ -37,6 +39,8 @@ P4G.exe+4A10034:
 MainPlayerStructurePtr:
 P4G.exe+4A100B8:
 YosukePlayerStructurePtr:
+P4G.exe+4A1013C:
+ChiePlayerStructurePtr:
 
 newmem:
     
@@ -44,6 +48,7 @@ newmem:
   
 unregistersymbol(MainPlayerStructurePtr)
 unregistersymbol(YosukePlayerStructurePtr)
+unregistersymbol(ChiePlayerStructurePtr)
 
 unregistersymbol(MainPlayerYenPtr)
 unregistersymbol(MainPlayerInventoryPtr)
@@ -384,15 +389,30 @@ dealloc(newmem)
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
 
-/// This code occurs when using an item
+/// This code occurs when using an expendable item
 aobscanmodule(InfItemUsageAOB,"P4G.exe",8B 4D F4 8A 14 01 89 F9 FE CA) // should be unique
 registersymbol(InfItemUsageAOB)
 alloc(newmem,1024,InfItemUsageAOB)
+
+/// This code occurs when using an battle item
+aobscanmodule(InfItemUsageAOB3,"P4G.exe",0F B7 49 7C ?? ?? ?? ?? ?? 0F BF D1 8A 14 02 FE CA) // should be unique
+registersymbol(InfItemUsageAOB3)
+alloc(newmem3,1024,InfItemUsageAOB3)
 
 /// This code occurs when selling an item
 aobscanmodule(InfItemUsageAOB2,"P4G.exe",89 F1 8A 14 07 28 DA) // should be unique
 registersymbol(InfItemUsageAOB2)
 alloc(newmem2,1024,InfItemUsageAOB2)
+
+/// This code occurs when using ??? item
+aobscanmodule(InfItemUsageAOB4,"P4G.exe",0F B7 08 ?? ?? ?? ?? ?? 0F BF D1 8A 14 02 FE CA) // should be unique
+registersymbol(InfItemUsageAOB4)
+alloc(newmem4,1024,InfItemUsageAOB4)
+
+/// This code occurs when using ??? item
+aobscanmodule(InfItemUsageAOB5,"P4G.exe",0F B7 4C 81 04 ?? ?? ?? ?? ?? 0F BF D1 8A 14 02 FE CA) // should be unique
+registersymbol(InfItemUsageAOB5)
+alloc(newmem5,1024,InfItemUsageAOB5)
 
 ///
 label(originalcode)
@@ -427,6 +447,39 @@ originalcode2:
   mov dl,[SetMinAmount]
 InfiniteUsage2:
   jmp return2+2
+
+newmem3:
+originalcode3:
+  movsx edx,cx
+  mov dl,[edx+eax]
+  cmp dl,[SetMinAmount]
+  jge InfiniteUsage3
+  mov dl,[SetMinAmount]
+InfiniteUsage3:
+  inc dl
+  jmp return3
+
+newmem4:
+originalcode4:
+  movsx edx,cx
+  mov dl,[edx+eax]
+  cmp dl,[SetMinAmount]
+  jge InfiniteUsage4
+  mov dl,[SetMinAmount]
+InfiniteUsage4:
+  inc dl
+  jmp return4
+
+newmem5:
+originalcode5:
+  movsx edx,cx
+  mov dl,[edx+eax]
+  cmp dl,[SetMinAmount]
+  jge InfiniteUsage5
+  mov dl,[SetMinAmount]
+InfiniteUsage5:
+  inc dl
+  jmp return5
   
 InfItemUsageAOB:
   jmp newmem
@@ -436,6 +489,21 @@ return:
 InfItemUsageAOB2:
   jmp newmem2
   return2:
+
+InfItemUsageAOB3+9:
+  jmp newmem3
+  nop
+  return3:
+
+InfItemUsageAOB4+8:
+  jmp newmem4
+  nop
+  return4:
+
+InfItemUsageAOB5+A:
+  jmp newmem5
+  nop
+  return5:
   
 [DISABLE]
 
@@ -449,9 +517,27 @@ InfItemUsageAOB2:
   db 89 F1 8A 14 07
 
 unregistersymbol(InfItemUsageAOB2)
+
+InfItemUsageAOB3+9:
+  db 0F BF D1 8A 14 02
+
+unregistersymbol(InfItemUsageAOB3)
+
+InfItemUsageAOB4+8:
+  db 0F BF D1 8A 14 02
+
+unregistersymbol(InfItemUsageAOB4)
+
+InfItemUsageAOB5+A:
+  db 0F BF D1 8A 14 02
+
+unregistersymbol(InfItemUsageAOB5)
   
 dealloc(newmem)
 dealloc(newmem2)
+dealloc(newmem3)
+dealloc(newmem4)
+dealloc(newmem5)
 </AssemblerScript>
                   <CheatEntries>
 					<CheatEntry>
@@ -461,6 +547,87 @@ dealloc(newmem2)
 					  <Address>SetMinAmount</Address>
 					</CheatEntry>
 				  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>230</ID>
+                  <Description>"Allies Always In Guard Status, Enemies Never In Guard Status"</Description>
+                  <Options moHideChildren="1"/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+aobscanmodule(GuardStatusAOB,"P4G.exe",BA 00 02 00 00 8B 81 84 0A 00 00 66 85 10) // should be unique
+registersymbol(GuardStatusAOB)
+alloc(newmem,1024,GuardStatusAOB)
+
+///
+aobscanmodule(GuardStatusAOB2,"P4G.exe",B8 00 02 00 00 66 85 06 B8 18 00 00 00) // should be unique
+registersymbol(GuardStatusAOB2)
+alloc(newmem2,1024,GuardStatusAOB2)
+
+///
+label(return)
+		  
+newmem:
+originalcode:
+  mov eax,[ecx+00000A84]
+  cmp [eax+44],0
+  je EnemyHit
+  cmp [eax+48],0
+  je EnemyHit
+  jmp HeroHit
+EnemyHit:
+  mov edx,0000FDFF
+  and [eax],dx
+  mov edx,00000200
+  jmp CleanUp
+HeroHit:
+  or [eax],dx
+  jmp CleanUp  
+CleanUp:
+  jmp return
+
+newmem2:
+originalcode2:
+  mov eax,00000200
+  cmp [esi+44],0
+  je EnemyHit2
+  cmp [esi+48],0
+  je EnemyHit2
+  jmp HeroHit2
+EnemyHit2:
+  mov eax,0000FDFF
+  and [esi],ax
+  mov eax,00000200
+  jmp CleanUp2
+HeroHit2:
+  or [esi],ax
+  jmp CleanUp2
+CleanUp2:
+  jmp return2
+
+GuardStatusAOB+5:
+  jmp newmem
+  nop
+return:
+
+GuardStatusAOB2:
+  jmp newmem2
+return2:
+
+[DISABLE]
+
+GuardStatusAOB+5:
+  db 8B 81 84 0A 00 00
+
+unregistersymbol(GuardStatusAOB)
+
+GuardStatusAOB2:
+  db B8 00 02 00 00
+
+unregistersymbol(GuardStatusAOB2)
+  
+dealloc(newmem)
+</AssemblerScript>
                 </CheatEntry>
 			  </CheatEntries>
 			</CheatEntry>
@@ -477,28 +644,58 @@ dealloc(newmem2)
                   <Address>MainPlayerYenPtr</Address>
                 </CheatEntry>
                 <CheatEntry>
-                  <ID>4001</ID>
+                  <ID>4101</ID>
                   <Description>"Main Character Current HP"</Description>
                   <VariableType>2 Bytes</VariableType>
                   <Address>MainPlayerStructurePtr+08</Address>
                 </CheatEntry>
                 <CheatEntry>
-                  <ID>4002</ID>
+                  <ID>4102</ID>
                   <Description>"Main Character Current SP"</Description>
                   <VariableType>2 Bytes</VariableType>
                   <Address>MainPlayerStructurePtr+0A</Address>
                 </CheatEntry>
                 <CheatEntry>
-                  <ID>4003</ID>
+                  <ID>4103</ID>
+                  <Description>"Main Character EXP"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>MainPlayerStructurePtr+40</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>4111</ID>
                   <Description>"Yosuke Current HP"</Description>
                   <VariableType>2 Bytes</VariableType>
                   <Address>YosukePlayerStructurePtr+08</Address>
                 </CheatEntry>
                 <CheatEntry>
-                  <ID>4004</ID>
+                  <ID>4112</ID>
                   <Description>"Yosuke Current SP"</Description>
                   <VariableType>2 Bytes</VariableType>
                   <Address>YosukePlayerStructurePtr+0A</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>4113</ID>
+                  <Description>"Yosuke EXP"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>YosukePlayerStructurePtr+40</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>4121</ID>
+                  <Description>"Chie Current HP"</Description>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>ChiePlayerStructurePtr+08</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>4122</ID>
+                  <Description>"Chie Current SP"</Description>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>ChiePlayerStructurePtr+0A</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>4123</ID>
+                  <Description>"Chie EXP"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>ChiePlayerStructurePtr+40</Address>
                 </CheatEntry>
               </CheatEntries>
             </CheatEntry>
