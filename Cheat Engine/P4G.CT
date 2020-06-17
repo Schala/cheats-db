@@ -38,6 +38,8 @@ label(MainPlayerYenPtr)
 registersymbol(MainPlayerYenPtr)
 label(MainPlayerInventoryPtr)
 registersymbol(MainPlayerInventoryPtr)
+label(MainPlayerNumPersonasAvailablePtr)
+registersymbol(MainPlayerNumPersonasAvailablePtr)
 
 P4G.exe+4A0F3C0:
 MainPlayerYenPtr:
@@ -51,6 +53,9 @@ P4G.exe+4A100B8:
 YosukePlayerStructurePtr:
 P4G.exe+4A1013C:
 ChiePlayerStructurePtr:
+
+P4G.exe+4A1079C:
+MainPlayerNumPersonasAvailablePtr:
 
 newmem:
 QtyToAdd:
@@ -2629,6 +2634,7 @@ unregistersymbol(ChiePlayerStructurePtr)
 
 unregistersymbol(MainPlayerYenPtr)
 unregistersymbol(MainPlayerInventoryPtr)
+unregistersymbol(MainPlayerNumPersonasAvailablePtr)
 
 unregistersymbol(ValidItemArray)
 unregistersymbol(ItemTypeToAdd)
@@ -3373,6 +3379,232 @@ unregistersymbol(ShuffleTimeAOB)
 
 dealloc(newmem)
 </AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>260</ID>
+                  <Description>"100% Item Drop"</Description>
+                  <Options moHideChildren="1"/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+aobscanmodule(ItemDropAOB,"P4G.exe",0F B6 06 66 01 C7 83 C6 04) // should be unique
+registersymbol(ItemDropAOB)
+alloc(newmem,1024,ItemDropAOB)
+
+label(originalcode)
+label(return)
+		  
+newmem:
+  mov byte ptr [esi],FF
+originalcode:
+  movzx eax,byte ptr [esi]
+  add di,ax
+  jmp return
+
+ItemDropAOB:
+  jmp newmem
+  nop
+return:
+  
+[DISABLE]
+
+ItemDropAOB:
+  db 0F B6 06 66 01 C7
+
+unregistersymbol(ItemDropAOB)
+
+dealloc(newmem)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>265</ID>
+                  <Description>"Have 12 (Maximum) Persona Slots Available"</Description>
+                  <Options moHideChildren="1"/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+MainPlayerNumPersonasAvailablePtr:
+  db 07
+  
+[DISABLE]
+
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>270</ID>
+                  <Description>"Can Fuse Persona Regardless of Level"</Description>
+                  <Options moHideChildren="1"/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+aobscanmodule(FusePersonaLevelCheckAOB,"P4G.exe",8A 40 06 38 43 08 76 03 83 0B 02) // should be unique
+registersymbol(FusePersonaLevelCheckAOB)
+
+FusePersonaLevelCheckAOB+6:
+  db EB 03
+  
+[DISABLE]
+
+FusePersonaLevelCheckAOB+6:
+  db 76 03
+
+unregistersymbol(FusePersonaLevelCheckAOB)
+
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>275</ID>
+                  <Description>"Allies Have All Passive Skills (Mainly HP,SP,Auto-Status and Victory Cry)"</Description>
+                  <Options moHideChildren="1"/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+aobscanmodule(PassiveSkillCheckAOB,"P4G.exe",0F B7 CE 66 39 3C 48 74 41 46 66 83 FE 08) // should be unique
+registersymbol(PassiveSkillCheckAOB)
+alloc(newmem,1024,PassiveSkillCheckAOB)
+
+label(originalcode)
+label(return)
+label(DISave)
+registersymbol(DISave)
+		  
+newmem:
+  movzx ecx,si
+  cmp [eax+64],0
+  je AllyCheck
+  jmp originalcode
+AllyCheck:
+  push ebx
+  mov ebx,DISave
+StartLoop:
+  cmp word ptr [ebx],di
+  je FoundMatch
+  cmp word ptr [ebx],0
+  je NotFound
+  add ebx,2
+  jmp StartLoop  
+NotFound:
+  mov [ebx],di
+FoundMatch:
+  pop ebx  
+  cmp di,di
+  jmp return
+originalcode:
+  cmp [eax+ecx*2],di
+  jmp return
+
+DISave:
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+
+PassiveSkillCheckAOB:
+  jmp newmem
+  nop
+  nop
+return:
+  
+[DISABLE]
+
+PassiveSkillCheckAOB:
+  db 0F B7 CE 66 39 3C 48
+
+unregistersymbol(PassiveSkillCheckAOB)
+unregistersymbol(DISave)
+
+dealloc(newmem)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>280</ID>
+                  <Description>"All Inactive Persona Have Growth 3 Skill And Growth 3 EXP Multiplier"</Description>
+                  <Options moHideChildren="1"/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+aobscanmodule(GrowthSkillCheckAOB,"P4G.exe",66 85 C0 74 40 2D 1F 02 00 00) // should be unique
+registersymbol(GrowthSkillCheckAOB)
+
+/// This code executes for Growth 3, we are adding a EXP Multiplier for Inactive Persona With Growth 3 Skills
+aobscanmodule(GrowthSkillCheckAOB2,"P4G.exe",66 0F 6E C6 0F 5B C0 EB 20) // should be unique
+registersymbol(GrowthSkillCheckAOB2)
+alloc(newmem,1024,GrowthSkillCheckAOB2)
+
+label(return)
+label(fGrowth3EXPMult)
+registersymbol(fGrowth3EXPMult)
+
+newmem:
+originalcode:
+  movd xmm0,esi
+  cvtdq2ps xmm0,xmm0
+  mulss xmm0,[fGrowth3EXPMult]
+  jmp return
+
+fGrowth3EXPMult:
+dq (float)10.0
+  
+GrowthSkillCheckAOB+3:
+  db EB 11
+
+GrowthSkillCheckAOB2:
+  jmp newmem
+  nop
+  nop
+  return:  
+  
+[DISABLE]
+
+GrowthSkillCheckAOB+3:
+  db 74 40
+
+unregistersymbol(GrowthSkillCheckAOB)
+
+GrowthSkillCheckAOB2:
+  db 66 0F 6E C6 0F 5B C0
+  
+unregistersymbol(GrowthSkillCheckAOB2)
+unregistersymbol(fGrowth3EXPMult)
+
+dealloc(newmem)
+</AssemblerScript>
+                  <CheatEntries>
+					<CheatEntry>
+					  <ID>281</ID>
+					  <Description>"Growth 3 EXP Multiplier (For Inactive Persona)"</Description>
+					  <VariableType>Float</VariableType>
+					  <Address>fGrowth3EXPMult</Address>
+					</CheatEntry>
+				  </CheatEntries>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>250</ID>
@@ -5025,7 +5257,9 @@ local SpecificItemToAdd = ReadInteger(getAddress("SpecificItemToAdd"))
 local InventoryBaseAddr = getAddress("MainPlayerInventoryPtr")
 local QtyToAdd = ReadBytes(getAddress("QtyToAdd"))
 
-WriteBytes(InventoryBaseAddr + SpecificItemToAdd,QtyToAdd)
+if (SpecificItemToAdd ~= 0) then
+	WriteBytes(InventoryBaseAddr + SpecificItemToAdd,QtyToAdd)
+end
 
 {$asm}
 [DISABLE]
