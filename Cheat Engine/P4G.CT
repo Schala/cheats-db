@@ -40,6 +40,8 @@ label(MainPlayerInventoryPtr)
 registersymbol(MainPlayerInventoryPtr)
 label(MainPlayerNumPersonasAvailablePtr)
 registersymbol(MainPlayerNumPersonasAvailablePtr)
+label(MainPlayerStatusParametersPtr)
+registersymbol(MainPlayerStatusParametersPtr)
 
 P4G.exe+4A0F3C0:
 MainPlayerYenPtr:
@@ -56,6 +58,9 @@ ChiePlayerStructurePtr:
 
 P4G.exe+4A1079C:
 MainPlayerNumPersonasAvailablePtr:
+
+P4G.exe+4A10068:
+MainPlayerStatusParametersPtr:
 
 newmem:
 QtyToAdd:
@@ -3470,8 +3475,8 @@ registersymbol(DISave)
 		  
 newmem:
   movzx ecx,si
-  cmp [eax+64],0
-  je AllyCheck
+  cmp [eax-8],FF
+  jl AllyCheck
   jmp originalcode
 AllyCheck:
   push ebx
@@ -3603,6 +3608,96 @@ dealloc(newmem)
 					  <Description>"Growth 3 EXP Multiplier (For Inactive Persona)"</Description>
 					  <VariableType>Float</VariableType>
 					  <Address>fGrowth3EXPMult</Address>
+					</CheatEntry>
+				  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>285</ID>
+                  <Description>"Always Critical"</Description>
+                  <Options moHideChildren="1"/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+aobscanmodule(CriticalCheckAOB,"P4G.exe",F3 0F 2C C0 89 45 0C) // should be unique
+registersymbol(CriticalCheckAOB)
+alloc(newmem,1024,CriticalCheckAOB)
+
+label(originalcode)
+label(return)
+		  
+newmem:
+  mov eax,#100
+originalcode:
+  mov [ebp+0C],eax
+  jmp return
+
+CriticalCheckAOB:
+  jmp newmem
+  nop
+  nop
+return:
+  
+[DISABLE]
+
+CriticalCheckAOB:
+  db F3 0F 2C C0 89 45 0C
+
+unregistersymbol(CriticalCheckAOB)
+
+dealloc(newmem)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>290</ID>
+                  <Description>"Status Up Multiplier (Courage,Diligence,Knowledge,Understanding,Expression)"</Description>
+                  <Options moHideChildren="1"/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+aobscanmodule(StatusUpMultAOB,"P4G.exe",8B 7B 08 8B 73 04 98 89 45 B0) // should be unique
+registersymbol(StatusUpMultAOB)
+alloc(newmem,1024,StatusUpMultAOB)
+
+label(originalcode)
+label(return)
+label(fStatusUpMultiplier)
+registersymbol(fStatusUpMultiplier)
+		  
+newmem:
+originalcode:
+  mov edi,[ebx+08]
+  mov esi,[ebx+04]
+  push edi
+  fild dword ptr [esp]
+  fmul dword ptr [fStatusUpMultiplier]
+  fistp dword ptr [esp]
+  pop edi
+  jmp return
+
+fStatusUpMultiplier:
+dq (float)5.0
+
+StatusUpMultAOB:
+  jmp newmem
+  nop
+return:
+  
+[DISABLE]
+
+StatusUpMultAOB:
+  db 8B 7B 08 8B 73 04
+
+unregistersymbol(StatusUpMultAOB)
+unregistersymbol(fStatusUpMultiplier)
+
+dealloc(newmem)
+</AssemblerScript>
+                  <CheatEntries>
+					<CheatEntry>
+					  <ID>291</ID>
+					  <Description>"Status Up Multiplier"</Description>
+					  <VariableType>Float</VariableType>
+					  <Address>fStatusUpMultiplier</Address>
 					</CheatEntry>
 				  </CheatEntries>
                 </CheatEntry>
@@ -5282,6 +5377,44 @@ end
                   <VariableType>4 Bytes</VariableType>
                   <Address>MainPlayerYenPtr</Address>
                 </CheatEntry>
+				<CheatEntry>
+				  <ID>4200</ID>
+				  <Description>"Status Parameters"</Description>
+				  <Options moHideChildren="1"/>
+				  <GroupHeader>1</GroupHeader>
+				  <CheatEntries>
+					<CheatEntry>
+					  <ID>4201</ID>
+					  <Description>"Courage"</Description>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>MainPlayerStatusParametersPtr</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4202</ID>
+					  <Description>"Knowledge"</Description>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>MainPlayerStatusParametersPtr+2</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4203</ID>
+					  <Description>"Diligence"</Description>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>MainPlayerStatusParametersPtr+4</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4204</ID>
+					  <Description>"Understanding"</Description>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>MainPlayerStatusParametersPtr+6</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4205</ID>
+					  <Description>"Expression"</Description>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>MainPlayerStatusParametersPtr+8</Address>
+					</CheatEntry>
+				  </CheatEntries>
+				</CheatEntry>
                 <CheatEntry>
                   <ID>4101</ID>
                   <Description>"Main Character Current HP"</Description>
