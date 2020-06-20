@@ -30,10 +30,14 @@ registersymbol(QtyToAdd)
 /// Static Pointers
 label(MainPlayerStructurePtr)
 registersymbol(MainPlayerStructurePtr)
-label(ChiePlayerStructurePtr)
-registersymbol(ChiePlayerStructurePtr)
 label(YosukePlayerStructurePtr)
 registersymbol(YosukePlayerStructurePtr)
+label(ChiePlayerStructurePtr)
+registersymbol(ChiePlayerStructurePtr)
+label(YukikoPlayerStructurePtr)
+registersymbol(YukikoPlayerStructurePtr)
+
+///
 label(MainPlayerYenPtr)
 registersymbol(MainPlayerYenPtr)
 label(MainPlayerInventoryPtr)
@@ -43,24 +47,51 @@ registersymbol(MainPlayerNumPersonasAvailablePtr)
 label(MainPlayerStatusParametersPtr)
 registersymbol(MainPlayerStatusParametersPtr)
 
+///
+label(TrophyWeaknessPtr)
+registersymbol(TrophyWeaknessPtr)
+label(TrophyAllOutAttackPtr)
+registersymbol(TrophyAllOutAttackPtr)
+label(TrophySweepBonusPtr)
+registersymbol(TrophySweepBonusPtr)
+label(TrophyNumFusionPtr)
+registersymbol(TrophyNumFusionPtr)
+
+///
 P4G.exe+4A0F3C0:
 MainPlayerYenPtr:
 
+///
 P4G.exe+4A0F3F0:
 MainPlayerInventoryPtr:
 
+///
 P4G.exe+4A10034:
 MainPlayerStructurePtr:
 P4G.exe+4A100B8:
 YosukePlayerStructurePtr:
 P4G.exe+4A1013C:
 ChiePlayerStructurePtr:
+P4G.exe+4A101C0:
+YukikoPlayerStructurePtr:
 
+///
 P4G.exe+4A1079C:
 MainPlayerNumPersonasAvailablePtr:
 
+///
 P4G.exe+4A10068:
 MainPlayerStatusParametersPtr:
+
+///
+P4G.exe+4A18B50:
+TrophyNumFusionPtr:
+P4G.exe+4A18B54:
+TrophyAllOutAttackPtr:
+P4G.exe+4A18B55:
+TrophyWeaknessPtr:
+P4G.exe+4A18C48:
+TrophySweepBonusPtr:
 
 newmem:
 QtyToAdd:
@@ -2641,6 +2672,9 @@ unregistersymbol(MainPlayerYenPtr)
 unregistersymbol(MainPlayerInventoryPtr)
 unregistersymbol(MainPlayerNumPersonasAvailablePtr)
 
+unregistersymbol(TrophyWeaknessPtr)
+unregistersymbol(TrophyAllOutAttackPtr)
+
 unregistersymbol(ValidItemArray)
 unregistersymbol(ItemTypeToAdd)
 unregistersymbol(SpecificItemToAdd)
@@ -2671,6 +2705,12 @@ aobscanmodule(GPAddAOB,"P4G.exe",8B 01 01 F8 39 D0 0F 4F C2 89 01 8B 45 FC) // s
 registersymbol(GPAddAOB)
 alloc(newmem2,1024,GPAddAOB)
 
+/// This code is for purchasing Persona's from the Compendium
+aobscanmodule(GPSubtractAOB2,"P4G.exe",8B 8E 70 02 00 00 29 08) // should be unique
+registersymbol(GPSubtractAOB2)
+alloc(newmem3,1024,GPSubtractAOB2)
+
+///
 label(originalcode)
 label(return)
 label(InfiniteGP)
@@ -2717,6 +2757,22 @@ originalcode2:
 
 fGPAddMult:
 dq (float)100.0
+
+newmem3:
+originalcode3:
+  mov ecx,[esi+00000270]
+SubtractGP3:
+  cmp [InfiniteGP],1
+  jne SubtractGPMult3
+  xor ecx,ecx
+  jmp return3
+SubtractGPMult3:
+  push ecx
+  fild dword ptr [esp]
+  fmul dword ptr [fGPSubtractMult]
+  fistp dword ptr [esp]
+  pop ecx
+  jmp return3
   
 GPSubtractAOB:
   jmp newmem
@@ -2727,6 +2783,11 @@ GPAddAOB:
   jmp newmem2
   nop
 return2:
+
+GPSubtractAOB2:
+  jmp newmem3
+  nop
+return3:
   
 [DISABLE]
 
@@ -2737,14 +2798,22 @@ unregistersymbol(GPSubtractAOB)
 unregistersymbol(InfiniteGP)
 unregistersymbol(fGPSubtractMult)
 
+///
 GPAddAOB:
   db 8B 01 01 F8 39 D0
 
 unregistersymbol(GPAddAOB)
 unregistersymbol(fGPAddMult)
+
+///
+GPSubtractAOB2:
+  db 8B 8E 70 02 00 00
+
+unregistersymbol(GPSubtractAOB2)
   
 dealloc(newmem)
 dealloc(newmem2)
+dealloc(newmem3)
 </AssemblerScript>
                   <CheatEntries>
 					<CheatEntry>
@@ -3265,92 +3334,57 @@ dealloc(newmem)
 </AssemblerScript>
                 </CheatEntry>
                 <CheatEntry>
-                  <ID>235</ID>
-                  <Description>"Character EXP Multiplier"</Description>
+                  <ID>310</ID>
+                  <Description>"Persona Minimum Stat Up"</Description>
                   <Options moHideChildren="1"/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
 
-aobscanmodule(EXPMultAOB,"P4G.exe",03 4F 04 89 4E 40) // should be unique
-registersymbol(EXPMultAOB)
-alloc(newmem,1024,EXPMultAOB)
-
-/// EXP for characters beside the main character
-aobscanmodule(EXPMultAOB2,"P4G.exe",01 4B 08 8B 46 38) // should be unique
-registersymbol(EXPMultAOB2)
-alloc(newmem2,1024,EXPMultAOB2)
+aobscanmodule(PersonaStatUpAOB,"P4G.exe",66 0F BE 45 08 0F B7 D6 01 FA) // should be unique
+registersymbol(PersonaStatUpAOB)
+alloc(newmem,1024,PersonaStatUpAOB)
 
 label(return)
-label(fEXPMultiplier)
-registersymbol(fEXPMultiplier)
+label(MinStatUp)
+registersymbol(MinStatUp)
 		  
 newmem:
-  push eax
-  mov eax,[edi+04]
-  push eax
-  fild dword ptr [esp]
-  fmul dword ptr [fEXPMultiplier]
-  fistp dword ptr [esp]
-  pop eax
-  mov [edi+04],eax
-  pop eax
 originalcode:
-  add ecx,[edi+04]
-  mov [esi+40],ecx
+  movsx ax,byte ptr [ebp+08]
+  cmp ax,[MinStatUp]
+  jae return
+  movzx ax,byte ptr [MinStatUp]
   jmp return
 
-fEXPMultiplier:
-dq (float)10.0
-
-newmem2:
-  push ecx
-  fild dword ptr [esp]
-  fmul dword ptr [fEXPMultiplier]
-  fistp dword ptr [esp]
-  pop ecx
-originalcode2:
-  add [ebx+08],ecx
-  mov eax,[esi+38]  
-  jmp return2
+MinStatUp:
+dq #5
   
-EXPMultAOB:
+PersonaStatUpAOB:
   jmp newmem
-  nop
 return:
-
-EXPMultAOB2:
-  jmp newmem2
-  nop
-  return2:
   
 [DISABLE]
 
-EXPMultAOB:
-  db 03 4F 04 89 4E 40
+PersonaStatUpAOB:
+  db 66 0F BE 45 08
 
-unregistersymbol(EXPMultAOB)
-unregistersymbol(fEXPMultiplier)
-
-EXPMultAOB2:
-  db 01 4B 08 8B 46 38
-
-unregistersymbol(EXPMultAOB2)
+unregistersymbol(PersonaStatUpAOB)
+unregistersymbol(MinStatUp)
   
 dealloc(newmem)
-dealloc(newmem2)
 </AssemblerScript>
                   <CheatEntries>
 					<CheatEntry>
-					  <ID>236</ID>
-					  <Description>"EXP Multiplier"</Description>
-					  <VariableType>Float</VariableType>
-					  <Address>fEXPMultiplier</Address>
+					  <ID>311</ID>
+					  <Description>"Min Stat Up Per Event"</Description>
+					  <VariableType>Byte</VariableType>
+					  <Address>MinStatUp</Address>
 					</CheatEntry>
 				  </CheatEntries>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>240</ID>
-                  <Description>"Always 8 Picks for Shuffle Time"</Description>
+                  <Description>"Always 6 Picks for Shuffle Time"</Description>
                   <Options moHideChildren="1"/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
@@ -3363,7 +3397,7 @@ label(originalcode)
 label(return)
 		  
 newmem:
-  mov eax,0008
+  mov eax,0006
   mov [edi+0001B594],eax
   mov [esi+000001B6],ax
 originalcode:
@@ -3383,6 +3417,27 @@ ShuffleTimeAOB:
 unregistersymbol(ShuffleTimeAOB)
 
 dealloc(newmem)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>300</ID>
+                  <Description>"Always 6 Cards For Shuffle Time"</Description>
+                  <Options moHideChildren="1"/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+aobscanmodule(ShuffleTimeNumCardsAOB,"P4G.exe",8B B4 83 9C B6 01 00) // should be unique
+registersymbol(ShuffleTimeNumCardsAOB)
+
+ShuffleTimeNumCardsAOB:
+  db BE 06 00 00 00 90 90
+  
+[DISABLE]
+
+ShuffleTimeNumCardsAOB:
+  db 8B B4 83 9C B6 01 00
+
+unregistersymbol(ShuffleTimeNumCardsAOB)
 </AssemblerScript>
                 </CheatEntry>
                 <CheatEntry>
@@ -3459,7 +3514,7 @@ unregistersymbol(FusePersonaLevelCheckAOB)
                 </CheatEntry>
                 <CheatEntry>
                   <ID>275</ID>
-                  <Description>"Allies Have All Passive Skills (Mainly HP,SP,Auto-Status and Victory Cry)"</Description>
+                  <Description>"Allies Have Just Victory Cry OR All Passive Skills (Mainly HP,SP,Auto-Status and Victory Cry)"</Description>
                   <Options moHideChildren="1"/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
@@ -3470,6 +3525,8 @@ alloc(newmem,1024,PassiveSkillCheckAOB)
 
 label(originalcode)
 label(return)
+label(JustVictoryCry)
+registersymbol(JustVictoryCry)
 label(DISave)
 registersymbol(DISave)
 		  
@@ -3492,12 +3549,21 @@ NotFound:
   mov [ebx],di
 FoundMatch:
   pop ebx  
+  cmp [JustVictoryCry],1
+  je CheckVictoryCry
+  cmp di,di
+  jmp return
+CheckVictoryCry:
+  cmp di,#580
+  jne originalcode
   cmp di,di
   jmp return
 originalcode:
   cmp [eax+ecx*2],di
   jmp return
 
+JustVictoryCry:
+dq 0
 DISave:
 dq 0
 dq 0
@@ -3544,10 +3610,22 @@ PassiveSkillCheckAOB:
   db 0F B7 CE 66 39 3C 48
 
 unregistersymbol(PassiveSkillCheckAOB)
+unregistersymbol(JustVictoryCry)
 unregistersymbol(DISave)
 
 dealloc(newmem)
 </AssemblerScript>
+                  <CheatEntries>
+					<CheatEntry>
+					  <ID>276</ID>
+					  <Description>"Just Victory Cry (Set To On To Only Have Victory Cry Passive)"</Description>
+					  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+1:On
+</DropDownList>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>JustVictoryCry</Address>
+					</CheatEntry>
+				  </CheatEntries>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>280</ID>
@@ -3564,6 +3642,19 @@ aobscanmodule(GrowthSkillCheckAOB2,"P4G.exe",66 0F 6E C6 0F 5B C0 EB 20) // shou
 registersymbol(GrowthSkillCheckAOB2)
 alloc(newmem,1024,GrowthSkillCheckAOB2)
 
+// This code makes sure we only run the Growth 3 EXP One Time
+aobscanmodule(GrowthSkillCheckAOB3,"P4G.exe",83 FA 08 7C B0 89 CE) // should be unique
+registersymbol(GrowthSkillCheckAOB3)
+
+// This code we want to change the maximum amount of EXP you can gain in one battle from 99,999 to 9,999,999
+aobscanmodule(GrowthSkillCheckAOB4,"P4G.exe",81 FA 9F 86 01 00 7E 08 BA 9F 86 01 00 89 D0) // should be unique
+registersymbol(GrowthSkillCheckAOB4)
+
+// This code we want to change the maximum amount of EXP you can gain in one battle from 99,999 to 9,999,999
+aobscanmodule(GrowthSkillCheckAOB5,"P4G.exe",81 FF 9F 86 01 00 7E 07 BF 9F 86 01 00 EB 0A 85 FF) // should be unique
+registersymbol(GrowthSkillCheckAOB5)
+
+///
 label(return)
 label(fGrowth3EXPMult)
 registersymbol(fGrowth3EXPMult)
@@ -3586,6 +3677,21 @@ GrowthSkillCheckAOB2:
   nop
   nop
   return:  
+
+GrowthSkillCheckAOB3+3:
+  db 90 90
+
+GrowthSkillCheckAOB4+2:
+  db 7F 96 98 00
+
+GrowthSkillCheckAOB4+9:
+  db 7F 96 98 00
+
+GrowthSkillCheckAOB5+2:
+  db 7F 96 98 00
+
+GrowthSkillCheckAOB5+9:
+  db 7F 96 98 00
   
 [DISABLE]
 
@@ -3599,6 +3705,27 @@ GrowthSkillCheckAOB2:
   
 unregistersymbol(GrowthSkillCheckAOB2)
 unregistersymbol(fGrowth3EXPMult)
+
+GrowthSkillCheckAOB3+3:
+  db 7C B0
+
+unregistersymbol(GrowthSkillCheckAOB3)
+
+GrowthSkillCheckAOB4+2:
+  db 9F 86 01 00
+
+GrowthSkillCheckAOB4+9:
+  db 9F 86 01 00
+
+unregistersymbol(GrowthSkillCheckAOB4)
+
+GrowthSkillCheckAOB5+2:
+  db 9F 86 01 00
+
+GrowthSkillCheckAOB5+9:
+  db 9F 86 01 00
+
+unregistersymbol(GrowthSkillCheckAOB5)
 
 dealloc(newmem)
 </AssemblerScript>
@@ -3698,6 +3825,61 @@ dealloc(newmem)
 					  <Description>"Status Up Multiplier"</Description>
 					  <VariableType>Float</VariableType>
 					  <Address>fStatusUpMultiplier</Address>
+					</CheatEntry>
+				  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>295</ID>
+                  <Description>"Social Link Progress Multiplier"</Description>
+                  <Options moHideChildren="1"/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+aobscanmodule(SLProgressMultAOB,"P4G.exe",0F B7 C0 66 01 46 08 5E) // should be unique
+registersymbol(SLProgressMultAOB)
+alloc(newmem,1024,SLProgressMultAOB)
+
+label(originalcode)
+label(return)
+label(fSLProgressMultiplier)
+registersymbol(fSLProgressMultiplier)
+		  
+newmem:
+  push eax
+  fild dword ptr [esp]
+  fmul dword ptr [fSLProgressMultiplier]
+  fistp dword ptr [esp]
+  pop eax
+originalcode:
+  movzx eax,ax
+  add [esi+08],ax
+  jmp return
+
+fSLProgressMultiplier:
+dq (float)2.5
+
+SLProgressMultAOB:
+  jmp newmem
+  nop
+  nop
+return:
+  
+[DISABLE]
+
+SLProgressMultAOB:
+  db 0F B7 C0 66 01 46 08
+
+unregistersymbol(SLProgressMultAOB)
+unregistersymbol(fSLProgressMultiplier)
+
+dealloc(newmem)
+</AssemblerScript>
+                  <CheatEntries>
+					<CheatEntry>
+					  <ID>296</ID>
+					  <Description>"Social Link Progress Multiplier"</Description>
+					  <VariableType>Float</VariableType>
+					  <Address>fSLProgressMultiplier</Address>
 					</CheatEntry>
 				  </CheatEntries>
                 </CheatEntry>
@@ -5415,60 +5597,118 @@ end
 					</CheatEntry>
 				  </CheatEntries>
 				</CheatEntry>
-                <CheatEntry>
-                  <ID>4101</ID>
-                  <Description>"Main Character Current HP"</Description>
-                  <VariableType>2 Bytes</VariableType>
-                  <Address>MainPlayerStructurePtr+08</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>4102</ID>
-                  <Description>"Main Character Current SP"</Description>
-                  <VariableType>2 Bytes</VariableType>
-                  <Address>MainPlayerStructurePtr+0A</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>4103</ID>
-                  <Description>"Main Character EXP"</Description>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>MainPlayerStructurePtr+40</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>4111</ID>
-                  <Description>"Yosuke Current HP"</Description>
-                  <VariableType>2 Bytes</VariableType>
-                  <Address>YosukePlayerStructurePtr+08</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>4112</ID>
-                  <Description>"Yosuke Current SP"</Description>
-                  <VariableType>2 Bytes</VariableType>
-                  <Address>YosukePlayerStructurePtr+0A</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>4113</ID>
-                  <Description>"Yosuke EXP"</Description>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>YosukePlayerStructurePtr+5C</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>4121</ID>
-                  <Description>"Chie Current HP"</Description>
-                  <VariableType>2 Bytes</VariableType>
-                  <Address>ChiePlayerStructurePtr+08</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>4122</ID>
-                  <Description>"Chie Current SP"</Description>
-                  <VariableType>2 Bytes</VariableType>
-                  <Address>ChiePlayerStructurePtr+0A</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>4123</ID>
-                  <Description>"Chie EXP"</Description>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>ChiePlayerStructurePtr+5C</Address>
-                </CheatEntry>
+				<CheatEntry>
+				  <ID>4100</ID>
+				  <Description>"Character Stats"</Description>
+				  <Options moHideChildren="1"/>
+				  <GroupHeader>1</GroupHeader>
+				  <CheatEntries>
+					<CheatEntry>
+					  <ID>4101</ID>
+					  <Description>"Main Character Current HP"</Description>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>MainPlayerStructurePtr+08</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4102</ID>
+					  <Description>"Main Character Current SP"</Description>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>MainPlayerStructurePtr+0A</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4103</ID>
+					  <Description>"Main Character EXP"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>MainPlayerStructurePtr+40</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4111</ID>
+					  <Description>"Yosuke Current HP"</Description>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>YosukePlayerStructurePtr+08</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4112</ID>
+					  <Description>"Yosuke Current SP"</Description>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>YosukePlayerStructurePtr+0A</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4113</ID>
+					  <Description>"Yosuke EXP"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>YosukePlayerStructurePtr+5C</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4121</ID>
+					  <Description>"Chie Current HP"</Description>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>ChiePlayerStructurePtr+08</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4122</ID>
+					  <Description>"Chie Current SP"</Description>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>ChiePlayerStructurePtr+0A</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4123</ID>
+					  <Description>"Chie EXP"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>ChiePlayerStructurePtr+5C</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4131</ID>
+					  <Description>"Yukiko Current HP"</Description>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>YukikoPlayerStructurePtr+08</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4132</ID>
+					  <Description>"Yukiko Current SP"</Description>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>YukikoPlayerStructurePtr+0A</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4133</ID>
+					  <Description>"Yukiko EXP"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>YukikoPlayerStructurePtr+5C</Address>
+					</CheatEntry>
+				  </CheatEntries>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>4300</ID>
+				  <Description>"Trophy Tracking Pointers"</Description>
+				  <Options moHideChildren="1"/>
+				  <GroupHeader>1</GroupHeader>
+				  <CheatEntries>
+					<CheatEntry>
+					  <ID>4301</ID>
+					  <Description>"Number of Times Used Fusion"</Description>
+					  <VariableType>Byte</VariableType>
+					  <Address>TrophyNumFusionPtr</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4302</ID>
+					  <Description>"Number of Times Used All-Out Attack"</Description>
+					  <VariableType>Byte</VariableType>
+					  <Address>TrophyAllOutAttackPtr</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4303</ID>
+					  <Description>"Number of Times Hit Enemy Weakness"</Description>
+					  <VariableType>Byte</VariableType>
+					  <Address>TrophyWeaknessPtr</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4304</ID>
+					  <Description>"Number of Times Sweep Bonus Occurred"</Description>
+					  <VariableType>Byte</VariableType>
+					  <Address>TrophySweepBonusPtr</Address>
+					</CheatEntry>
+				  </CheatEntries>
+				</CheatEntry>
               </CheatEntries>
             </CheatEntry>
           </CheatEntries>
