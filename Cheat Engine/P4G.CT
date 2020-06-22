@@ -3884,6 +3884,38 @@ dealloc(newmem)
 				  </CheatEntries>
                 </CheatEntry>
                 <CheatEntry>
+                  <ID>315</ID>
+                  <Description>"Freeze Time"</Description>
+                  <Options moHideChildren="1"/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+aobscanmodule(FreezeTimeAOB1,"P4G.exe",75 22 83 79 04 00) // should be unique
+registersymbol(FreezeTimeAOB1)
+
+aobscanmodule(FreezeTimeAOB2,"P4G.exe",75 0F 66 8B 01 66 40) // should be unique
+registersymbol(FreezeTimeAOB2)
+
+FreezeTimeAOB1:
+  db EB 22
+
+FreezeTimeAOB2:
+  db EB 42
+  
+[DISABLE]
+
+FreezeTimeAOB1:
+  db 75 22
+
+unregistersymbol(FreezeTimeAOB1)
+
+FreezeTimeAOB2:
+  db 75 0F
+
+unregistersymbol(FreezeTimeAOB2)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
                   <ID>250</ID>
                   <Description>"Inventory Options"</Description>
                   <Options moHideChildren="1"/>
