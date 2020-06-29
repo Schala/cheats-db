@@ -3168,6 +3168,8 @@ newmem6:
   mov bl,[SetMinAmount]
   jmp originalcode6
 InfiniteUsage6:
+  cmp [edx+eax],bl
+  jbe originalcode
   inc bl
   jmp originalcode6
 originalcode6:
@@ -3915,6 +3917,125 @@ FreezeTimeAOB2:
 unregistersymbol(FreezeTimeAOB2)
 </AssemblerScript>
                 </CheatEntry>
+                <CheatEntry>
+                  <ID>350</ID>
+                  <Description>"Get Specific Achievement From Fusing A Persona"</Description>
+                  <Options moHideChildren="1"/>
+				  <VariableType>Auto Assembler Script</VariableType>
+				  <AssemblerScript>[ENABLE]
+
+aobscanmodule(SpecificAchievementAOB1,"P4G.exe",0F B6 D0 83 FA 32 88 01 19 FF 83 E7 F6 83 C7 0A) // should be unique
+registersymbol(SpecificAchievementAOB1)
+alloc(newmem,1024,SpecificAchievementAOB1)
+
+aobscanmodule(SpecificAchievementAOB2,"P4G.exe",08 D0 83 FA 32 88 01 19 FF 83 E7 F6 83 C7 0A) // should be unique
+registersymbol(SpecificAchievementAOB2)
+
+///
+label(AchievementToGet)
+registersymbol(AchievementToGet)
+
+newmem:
+AchievementToGet:
+dq #10
+
+[DISABLE]
+
+unregistersymbol(AchievementToGet)
+unregistersymbol(SpecificAchievementAOB1)
+unregistersymbol(SpecificAchievementAOB2)
+
+dealloc(newmem)
+</AssemblerScript>
+                  <CheatEntries>
+					<CheatEntry>
+					  <ID>351</ID>
+					  <Description>"Choose Achievment To Get When Fusing Persona"</Description>
+					  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">1:A Prince Appears | Rescue Yukiko Amagi.
+2:A True Man's Stand | Rescue Kanji Tatsumi.
+3:The Lounge is Closed | Rescue Rise Kujikawa.
+4:Game Over | Apprehended Mitsuo Kubo.
+5:Boarded-Up Lab | Rescue Naoto Shirogane.
+6:The Return of the Angels | Rescue Nanako Dojima.
+7:Breaking Through the Fog | Secure Tohru Adachi.
+8:Welcome Back | Rescue Marie.
+9:The Truth In Your Hands | Defeat Izanami.
+10:Fusion Expert | Perform 50 Persona fusions
+11:Special Fusion Expert | Use 4 or more Personas in a special fusion.
+12:The Nose Doesn't Always Know | Experience a fusion accident
+13:Persona Shopper | Buy a Persona from the Compendium
+14:A Favor for Marie | Give Marie a Skill Card.
+15:Card Collector | Register 100 skills cards
+16:Displaying Adaptability | Switch Personas five times in one battle.
+17:Hardcore Risette Fan | Hear 250 of Rise's navigation lines
+18:Going Nova | Deal over 999 damage in 1 attack
+19:Skilled Commander | Perform 50 All-Out Attacks
+20:Tactical Fighter | Exploit enemy weakness 100 times
+21:Fill Your Hand | Get 50 Sweep Bonus
+22:Grasping at Greed | Defeat a Golden Hand.
+23:One Who Has Proven Their Power | Defeat Margaret
+24:The Reaper Becomes the Reaped | Defeat the Reaper.
+25:Food Fighter | Finish Aiya's special dish.
+26:Compulsive Reader | Read every book in a single playthrough.
+27:It's Working Today | Buy an item from the Capsule Machine
+28:Lucky Me! | Win a prize from the vending machine
+29:Granter of Your Desires | Bought 5 products from Tanaka's Amazing Commodities.
+30:Seize the Moment | Buy a special croquette from Sozai Daigaku
+31:Cooking With Gas | Cooked 5 perfect meals.
+32:A Special Lady | Enter a special relationship with someone
+33:Mr. Perfect | Maxed every trait.
+34:The Other Self | Obtained the Persona Izanagi.
+35:The Power of Truth | Fuse Izanagi-no-Okami.
+36:Moderate Bookkeeper | Complete 50% of the Persona Compendium.
+37:Thorough Bookkeeper | Complete the Persona Compendium
+38:Fashion Plate | Fight a battle in costume
+39:Head of the Class | Rank #1 in your class on an exam
+40:Fishing Master | Catch the Sea Guardian
+41:A True Bond | Max a Social Link.
+42:Bond Maniac | Maxed 10 Social Links in a single playthrough.
+43:Legend of Inaba | Maxed all Social Links in a single playthrough.
+44:An Acquired Taste | Drink the coffee at Chagall Cafe
+45:Movie Buff | Go to 3 movies at 30 Frame
+46:Bug Hunter | Swing the net with perfect timing
+47:Advantage Mine! | Get a Player Advantage
+48:Big Bro is Worried | Visit Nanako in the hospital 3 times
+49:A New Quiz King | Win the Miracle Quiz Finals
+</DropDownList>
+					  <VariableType>Byte</VariableType>
+					  <Address>AchievementToGet</Address>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>352</ID>
+					  <Description>"Perform Setup for Get Specific Achievment When Fusing Persona"</Description>
+					  <VariableType>Auto Assembler Script</VariableType>
+					  <AssemblerScript>[ENABLE]
+{$lua}
+local AchievementToGet = ReadBytes(getAddress("AchievementToGet"))
+local SpecificAchievementAOB1 = getAddress("SpecificAchievementAOB1")
+local SpecificAchievementAOB2 = getAddress("SpecificAchievementAOB2")
+local NegativeAchievementToGet = (~AchievementToGet + 1) &amp; 0xFF
+
+WriteBytes(SpecificAchievementAOB1+5,1)
+WriteBytes(SpecificAchievementAOB1+12,NegativeAchievementToGet)
+WriteBytes(SpecificAchievementAOB1+15,AchievementToGet)
+
+WriteBytes(SpecificAchievementAOB2+4,1)
+WriteBytes(SpecificAchievementAOB2+11,NegativeAchievementToGet)
+WriteBytes(SpecificAchievementAOB2+14,AchievementToGet)
+
+{$asm}
+[DISABLE]
+
+</AssemblerScript>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>353</ID>
+					  <Description>"After Executing Above, Just Perform Fusion In Game To Get Achievement You Selected"</Description>
+					  <VariableType>Byte</VariableType>
+					  <Address>AchievementToGet</Address>
+					</CheatEntry>
+				  </CheatEntries>
+				</CheatEntry>				
                 <CheatEntry>
                   <ID>250</ID>
                   <Description>"Inventory Options"</Description>
