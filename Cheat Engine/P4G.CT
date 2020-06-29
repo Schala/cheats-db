@@ -4097,6 +4097,35 @@ end
 					</CheatEntry>
 					<CheatEntry>
 					  <ID>254</ID>
+					  <Description>"Perform REMOVING All Items of Specific Type"</Description>
+					  <VariableType>Auto Assembler Script</VariableType>
+					  <AssemblerScript>[ENABLE]
+{$lua}
+local ItemTypeToAdd = ReadInteger(getAddress("ItemTypeToAdd"))
+local InventoryBaseAddr = getAddress("MainPlayerInventoryPtr")
+local ValidItemArrayBasePtr = getAddress("ValidItemArray")
+local QtyToAdd = ReadBytes(getAddress("QtyToAdd"))
+local CurrentItem = 0
+
+local StartItemType = ItemTypeToAdd * 0x100
+local EndItemType = StartItemType + 0xFF
+
+while (CurrentItem &lt; 0x1000) do
+	if (CurrentItem &gt;= StartItemType and CurrentItem &lt;= EndItemType) then
+	  if (ReadBytes(ValidItemArrayBasePtr + CurrentItem) == 1) then
+		WriteBytes(InventoryBaseAddr + CurrentItem,0)
+	  end
+	end
+	CurrentItem = CurrentItem + 1
+end
+
+{$asm}
+[DISABLE]
+
+</AssemblerScript>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>255</ID>
 					  <Description>"Specific Item for Adding a Specific Item"</Description>
 					  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Nothing
 1:Golf Club
@@ -5678,7 +5707,7 @@ end
 					  <Address>SpecificItemToAdd</Address>
 					</CheatEntry>
 					<CheatEntry>
-					  <ID>255</ID>
+					  <ID>256</ID>
 					  <Description>"Perform Adding Specific Item"</Description>
 					  <VariableType>Auto Assembler Script</VariableType>
 					  <AssemblerScript>[ENABLE]
@@ -5690,6 +5719,23 @@ local QtyToAdd = ReadBytes(getAddress("QtyToAdd"))
 if (SpecificItemToAdd ~= 0) then
 	WriteBytes(InventoryBaseAddr + SpecificItemToAdd,QtyToAdd)
 end
+
+{$asm}
+[DISABLE]
+
+</AssemblerScript>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>257</ID>
+					  <Description>"Perform REMOVING Specific Item"</Description>
+					  <VariableType>Auto Assembler Script</VariableType>
+					  <AssemblerScript>[ENABLE]
+{$lua}
+local SpecificItemToAdd = ReadInteger(getAddress("SpecificItemToAdd"))
+local InventoryBaseAddr = getAddress("MainPlayerInventoryPtr")
+local QtyToAdd = ReadBytes(getAddress("QtyToAdd"))
+
+WriteBytes(InventoryBaseAddr + SpecificItemToAdd,0)
 
 {$asm}
 [DISABLE]
