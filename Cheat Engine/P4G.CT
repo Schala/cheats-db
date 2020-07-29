@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CheatTable CheatEngineTableVersion="26">
+<CheatTable CheatEngineTableVersion="31">
   <CheatEntries>
     <CheatEntry>
       <ID>1</ID>
       <Description>"Persona 4 Golden (Steam)"</Description>
       <Options moHideChildren="1"/>
+      <LastState Value="" Activated="1" RealAddress="00000000"/>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
           <ID>10</ID>
           <Description>"Enable"</Description>
           <Options moHideChildren="1"/>
+          <LastState Activated="1"/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>[ENABLE]
 
@@ -2682,17 +2684,19 @@ unregistersymbol(QtyToAdd)
 
 dealloc(newmem)
 </AssemblerScript>
-        <CheatEntries>
-			<CheatEntry>
-			  <ID>200</ID>
-			  <Description>"[Scripts]"</Description>
-			  <Options moHideChildren="1"/>
-			  <GroupHeader>1</GroupHeader>
-			  <CheatEntries>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>200</ID>
+              <Description>"[Scripts]"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
                 <CheatEntry>
                   <ID>205</ID>
                   <Description>"Infinite Yen/Yen Multiplier"</Description>
                   <Options moHideChildren="1"/>
+                  <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
 
@@ -2816,33 +2820,34 @@ dealloc(newmem2)
 dealloc(newmem3)
 </AssemblerScript>
                   <CheatEntries>
-					<CheatEntry>
-					  <ID>206</ID>
-					  <Description>"Infinite Yen (Money)"</Description>
-					  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+                    <CheatEntry>
+                      <ID>206</ID>
+                      <Description>"Infinite Yen (Money)"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
 1:On
 </DropDownList>
-					  <VariableType>4 Bytes</VariableType>
-					  <Address>InfiniteGP</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>207</ID>
-					  <Description>"Yen (Money) Subtract Multiplier"</Description>
-					  <VariableType>Float</VariableType>
-					  <Address>fGPSubtractMult</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>208</ID>
-					  <Description>"Yen (Money) Add Multiplier"</Description>
-					  <VariableType>Float</VariableType>
-					  <Address>fGPAddMult</Address>
-					</CheatEntry>
-				  </CheatEntries>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>InfiniteGP</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>207</ID>
+                      <Description>"Yen (Money) Subtract Multiplier"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>fGPSubtractMult</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>208</ID>
+                      <Description>"Yen (Money) Add Multiplier"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>fGPAddMult</Address>
+                    </CheatEntry>
+                  </CheatEntries>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>210</ID>
                   <Description>"Damage Modifier Script (God Mode, One Hit Kill, etc)"</Description>
                   <Options moHideChildren="1"/>
+                  <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
 
@@ -2953,51 +2958,52 @@ unregistersymbol(HeroCannotDie)
 dealloc(newmem)
 </AssemblerScript>
                   <CheatEntries>
-					<CheatEntry>
-					  <ID>211</ID>
-					  <Description>"God Mode"</Description>
-					  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+                    <CheatEntry>
+                      <ID>211</ID>
+                      <Description>"God Mode"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
 1:On
 </DropDownList>
-					  <VariableType>4 Bytes</VariableType>
-					  <Address>GodMode</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>212</ID>
-					  <Description>"Hero Damage Multiplier (Set to 0.0 = Off; Otherwise multiplier so 0.5 is half damage to hero party)"</Description>
-					  <VariableType>Float</VariableType>
-					  <Address>fHeroDamageMult</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>213</ID>
-					  <Description>"Hero Cannot Die (If On and God Mode Off, Then You Take Damage Until The Hit Will Kill You)"</Description>
-					  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GodMode</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>212</ID>
+                      <Description>"Hero Damage Multiplier (Set to 0.0 = Off; Otherwise multiplier so 0.5 is half damage to hero party)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>fHeroDamageMult</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>213</ID>
+                      <Description>"Hero Cannot Die (If On and God Mode Off, Then You Take Damage Until The Hit Will Kill You)"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
 1:On
 </DropDownList>
-					  <VariableType>4 Bytes</VariableType>
-					  <Address>HeroCannotDie</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>214</ID>
-					  <Description>"One Hit Kill"</Description>
-					  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>HeroCannotDie</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>214</ID>
+                      <Description>"One Hit Kill"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
 1:On
 </DropDownList>
-					  <VariableType>4 Bytes</VariableType>
-					  <Address>OneHitKill</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>215</ID>
-					  <Description>"Enemy Damage Multiplier (Set to Zero = Off; Otherwise multiplier to damage you deal to enemies)"</Description>
-					  <VariableType>Float</VariableType>
-					  <Address>fEnemyDamageMult</Address>
-					</CheatEntry>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>OneHitKill</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>215</ID>
+                      <Description>"Enemy Damage Multiplier (Set to Zero = Off; Otherwise multiplier to damage you deal to enemies)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>fEnemyDamageMult</Address>
+                    </CheatEntry>
                   </CheatEntries>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>220</ID>
                   <Description>"Infinite SP"</Description>
                   <Options moHideChildren="1"/>
+                  <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
 
@@ -3060,6 +3066,7 @@ dealloc(newmem)
                   <ID>225</ID>
                   <Description>"Infinite Item Usage / Set Minimum Amount On Use/Sell"</Description>
                   <Options moHideChildren="1"/>
+                  <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
 
@@ -3246,18 +3253,19 @@ dealloc(newmem5)
 dealloc(newmem6)
 </AssemblerScript>
                   <CheatEntries>
-					<CheatEntry>
-					  <ID>226</ID>
-					  <Description>"Minimum Amount"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>SetMinAmount</Address>
-					</CheatEntry>
-				  </CheatEntries>
+                    <CheatEntry>
+                      <ID>226</ID>
+                      <Description>"Minimum Amount"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>SetMinAmount</Address>
+                    </CheatEntry>
+                  </CheatEntries>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>230</ID>
                   <Description>"Allies Always In Guard Status, Enemies Never In Guard Status"</Description>
                   <Options moHideChildren="1"/>
+                  <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
 
@@ -3339,6 +3347,7 @@ dealloc(newmem)
                   <ID>310</ID>
                   <Description>"Persona Minimum Stat Up"</Description>
                   <Options moHideChildren="1"/>
+                  <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
 
@@ -3376,18 +3385,19 @@ unregistersymbol(MinStatUp)
 dealloc(newmem)
 </AssemblerScript>
                   <CheatEntries>
-					<CheatEntry>
-					  <ID>311</ID>
-					  <Description>"Min Stat Up Per Event"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>MinStatUp</Address>
-					</CheatEntry>
-				  </CheatEntries>
+                    <CheatEntry>
+                      <ID>311</ID>
+                      <Description>"Min Stat Up Per Event"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>MinStatUp</Address>
+                    </CheatEntry>
+                  </CheatEntries>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>240</ID>
                   <Description>"Always 6 Picks for Shuffle Time"</Description>
                   <Options moHideChildren="1"/>
+                  <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
 
@@ -3425,6 +3435,7 @@ dealloc(newmem)
                   <ID>300</ID>
                   <Description>"Always 6 Cards For Shuffle Time"</Description>
                   <Options moHideChildren="1"/>
+                  <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
 
@@ -3446,6 +3457,7 @@ unregistersymbol(ShuffleTimeNumCardsAOB)
                   <ID>260</ID>
                   <Description>"100% Item Drop"</Description>
                   <Options moHideChildren="1"/>
+                  <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
 
@@ -3482,6 +3494,7 @@ dealloc(newmem)
                   <ID>265</ID>
                   <Description>"Have 12 (Maximum) Persona Slots Available"</Description>
                   <Options moHideChildren="1"/>
+                  <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
 
@@ -3496,6 +3509,7 @@ MainPlayerNumPersonasAvailablePtr:
                   <ID>270</ID>
                   <Description>"Can Fuse Persona Regardless of Level"</Description>
                   <Options moHideChildren="1"/>
+                  <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
 
@@ -3518,6 +3532,7 @@ unregistersymbol(FusePersonaLevelCheckAOB)
                   <ID>275</ID>
                   <Description>"Allies Have Just Victory Cry OR All Passive Skills (Mainly HP,SP,Auto-Status and Victory Cry)"</Description>
                   <Options moHideChildren="1"/>
+                  <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
 
@@ -3618,21 +3633,22 @@ unregistersymbol(DISave)
 dealloc(newmem)
 </AssemblerScript>
                   <CheatEntries>
-					<CheatEntry>
-					  <ID>276</ID>
-					  <Description>"Just Victory Cry (Set To On To Only Have Victory Cry Passive)"</Description>
-					  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+                    <CheatEntry>
+                      <ID>276</ID>
+                      <Description>"Just Victory Cry (Set To On To Only Have Victory Cry Passive)"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
 1:On
 </DropDownList>
-					  <VariableType>4 Bytes</VariableType>
-					  <Address>JustVictoryCry</Address>
-					</CheatEntry>
-				  </CheatEntries>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>JustVictoryCry</Address>
+                    </CheatEntry>
+                  </CheatEntries>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>280</ID>
                   <Description>"All Inactive Persona Have Growth 3 Skill And Growth 3 EXP Multiplier"</Description>
                   <Options moHideChildren="1"/>
+                  <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
 
@@ -3732,18 +3748,19 @@ unregistersymbol(GrowthSkillCheckAOB5)
 dealloc(newmem)
 </AssemblerScript>
                   <CheatEntries>
-					<CheatEntry>
-					  <ID>281</ID>
-					  <Description>"Growth 3 EXP Multiplier (For Inactive Persona)"</Description>
-					  <VariableType>Float</VariableType>
-					  <Address>fGrowth3EXPMult</Address>
-					</CheatEntry>
-				  </CheatEntries>
+                    <CheatEntry>
+                      <ID>281</ID>
+                      <Description>"Growth 3 EXP Multiplier (For Inactive Persona)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>fGrowth3EXPMult</Address>
+                    </CheatEntry>
+                  </CheatEntries>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>285</ID>
                   <Description>"Always Critical"</Description>
                   <Options moHideChildren="1"/>
+                  <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
 
@@ -3780,6 +3797,7 @@ dealloc(newmem)
                   <ID>290</ID>
                   <Description>"Status Up Multiplier (Courage,Diligence,Knowledge,Understanding,Expression)"</Description>
                   <Options moHideChildren="1"/>
+                  <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
 
@@ -3822,18 +3840,19 @@ unregistersymbol(fStatusUpMultiplier)
 dealloc(newmem)
 </AssemblerScript>
                   <CheatEntries>
-					<CheatEntry>
-					  <ID>291</ID>
-					  <Description>"Status Up Multiplier"</Description>
-					  <VariableType>Float</VariableType>
-					  <Address>fStatusUpMultiplier</Address>
-					</CheatEntry>
-				  </CheatEntries>
+                    <CheatEntry>
+                      <ID>291</ID>
+                      <Description>"Status Up Multiplier"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>fStatusUpMultiplier</Address>
+                    </CheatEntry>
+                  </CheatEntries>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>295</ID>
                   <Description>"Social Link Progress Multiplier"</Description>
                   <Options moHideChildren="1"/>
+                  <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
 
@@ -3877,18 +3896,19 @@ unregistersymbol(fSLProgressMultiplier)
 dealloc(newmem)
 </AssemblerScript>
                   <CheatEntries>
-					<CheatEntry>
-					  <ID>296</ID>
-					  <Description>"Social Link Progress Multiplier"</Description>
-					  <VariableType>Float</VariableType>
-					  <Address>fSLProgressMultiplier</Address>
-					</CheatEntry>
-				  </CheatEntries>
+                    <CheatEntry>
+                      <ID>296</ID>
+                      <Description>"Social Link Progress Multiplier"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>fSLProgressMultiplier</Address>
+                    </CheatEntry>
+                  </CheatEntries>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>315</ID>
                   <Description>"Freeze Time"</Description>
                   <Options moHideChildren="1"/>
+                  <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
 
@@ -3921,8 +3941,9 @@ unregistersymbol(FreezeTimeAOB2)
                   <ID>350</ID>
                   <Description>"Get Specific Achievement From Fusing A Persona"</Description>
                   <Options moHideChildren="1"/>
-				  <VariableType>Auto Assembler Script</VariableType>
-				  <AssemblerScript>[ENABLE]
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
 
 aobscanmodule(SpecificAchievementAOB1,"P4G.exe",0F B6 D0 83 FA 32 88 01 19 FF 83 E7 F6 83 C7 0A) // should be unique
 registersymbol(SpecificAchievementAOB1)
@@ -3948,10 +3969,10 @@ unregistersymbol(SpecificAchievementAOB2)
 dealloc(newmem)
 </AssemblerScript>
                   <CheatEntries>
-					<CheatEntry>
-					  <ID>351</ID>
-					  <Description>"Choose Achievment To Get When Fusing Persona"</Description>
-					  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">1:A Prince Appears | Rescue Yukiko Amagi.
+                    <CheatEntry>
+                      <ID>351</ID>
+                      <Description>"Choose Achievment To Get When Fusing Persona"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">1:A Prince Appears | Rescue Yukiko Amagi.
 2:A True Man's Stand | Rescue Kanji Tatsumi.
 3:The Lounge is Closed | Rescue Rise Kujikawa.
 4:Game Over | Apprehended Mitsuo Kubo.
@@ -4001,14 +4022,15 @@ dealloc(newmem)
 48:Big Bro is Worried | Visit Nanako in the hospital 3 times
 49:A New Quiz King | Win the Miracle Quiz Finals
 </DropDownList>
-					  <VariableType>Byte</VariableType>
-					  <Address>AchievementToGet</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>352</ID>
-					  <Description>"Perform Setup for Get Specific Achievment When Fusing Persona"</Description>
-					  <VariableType>Auto Assembler Script</VariableType>
-					  <AssemblerScript>[ENABLE]
+                      <VariableType>Byte</VariableType>
+                      <Address>AchievementToGet</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>352</ID>
+                      <Description>"Perform Setup for Get Specific Achievment When Fusing Persona"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
 {$lua}
 local AchievementToGet = ReadBytes(getAddress("AchievementToGet"))
 local SpecificAchievementAOB1 = getAddress("SpecificAchievementAOB1")
@@ -4027,31 +4049,33 @@ WriteBytes(SpecificAchievementAOB2+14,AchievementToGet)
 [DISABLE]
 
 </AssemblerScript>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>353</ID>
-					  <Description>"After Executing Above, Just Perform Fusion In Game To Get Achievement You Selected"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>AchievementToGet</Address>
-					</CheatEntry>
-				  </CheatEntries>
-				</CheatEntry>				
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>353</ID>
+                      <Description>"After Executing Above, Just Perform Fusion In Game To Get Achievement You Selected"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>AchievementToGet</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
                 <CheatEntry>
                   <ID>250</ID>
                   <Description>"Inventory Options"</Description>
                   <Options moHideChildren="1"/>
-				  <GroupHeader>1</GroupHeader>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
                   <CheatEntries>
-					<CheatEntry>
-					  <ID>251</ID>
-					  <Description>"Quantity To Add"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>QtyToAdd</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>252</ID>
-					  <Description>"Item Type for Adding All Items of Specific Type"</Description>
-					  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">10:Nothing
+                    <CheatEntry>
+                      <ID>251</ID>
+                      <Description>"Quantity To Add"</Description>
+                      <LastState Value="10" RealAddress="29240000"/>
+                      <VariableType>Byte</VariableType>
+                      <Address>QtyToAdd</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>252</ID>
+                      <Description>"Item Type for Adding All Items of Specific Type"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">10:Nothing
 0:Weapons
 1:Armor
 2:Accessories
@@ -4063,14 +4087,16 @@ WriteBytes(SpecificAchievementAOB2+14,AchievementToGet)
 8:Dolls, Scooters, Vegetables &amp; Gems
 9:Type 9 Items
 </DropDownList>
-					  <VariableType>4 Bytes</VariableType>
-					  <Address>ItemTypeToAdd</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>253</ID>
-					  <Description>"Perform Adding All Items of Specific Type"</Description>
-					  <VariableType>Auto Assembler Script</VariableType>
-					  <AssemblerScript>[ENABLE]
+                      <LastState Value="10" RealAddress="29240008"/>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>ItemTypeToAdd</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>253</ID>
+                      <Description>"Perform Adding All Items of Specific Type"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
 {$lua}
 local ItemTypeToAdd = ReadInteger(getAddress("ItemTypeToAdd"))
 local InventoryBaseAddr = getAddress("MainPlayerInventoryPtr")
@@ -4094,12 +4120,13 @@ end
 [DISABLE]
 
 </AssemblerScript>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>254</ID>
-					  <Description>"Perform REMOVING All Items of Specific Type"</Description>
-					  <VariableType>Auto Assembler Script</VariableType>
-					  <AssemblerScript>[ENABLE]
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>254</ID>
+                      <Description>"Perform REMOVING All Items of Specific Type"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
 {$lua}
 local ItemTypeToAdd = ReadInteger(getAddress("ItemTypeToAdd"))
 local InventoryBaseAddr = getAddress("MainPlayerInventoryPtr")
@@ -4123,11 +4150,11 @@ end
 [DISABLE]
 
 </AssemblerScript>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>255</ID>
-					  <Description>"Specific Item for Adding a Specific Item"</Description>
-					  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Nothing
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>255</ID>
+                      <Description>"Specific Item for Adding a Specific Item"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Nothing
 1:Golf Club
 2:Titanium Club
 3:5-Iron
@@ -5703,14 +5730,16 @@ end
 2439:Strange Firearm
 2440:Strange Claw
 </DropDownList>
-					  <VariableType>4 Bytes</VariableType>
-					  <Address>SpecificItemToAdd</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>256</ID>
-					  <Description>"Perform Adding Specific Item"</Description>
-					  <VariableType>Auto Assembler Script</VariableType>
-					  <AssemblerScript>[ENABLE]
+                      <LastState Value="0" RealAddress="29240010"/>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>SpecificItemToAdd</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>256</ID>
+                      <Description>"Perform Adding Specific Item"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
 {$lua}
 local SpecificItemToAdd = ReadInteger(getAddress("SpecificItemToAdd"))
 local InventoryBaseAddr = getAddress("MainPlayerInventoryPtr")
@@ -5724,12 +5753,13 @@ end
 [DISABLE]
 
 </AssemblerScript>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>257</ID>
-					  <Description>"Perform REMOVING Specific Item"</Description>
-					  <VariableType>Auto Assembler Script</VariableType>
-					  <AssemblerScript>[ENABLE]
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>257</ID>
+                      <Description>"Perform REMOVING Specific Item"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
 {$lua}
 local SpecificItemToAdd = ReadInteger(getAddress("SpecificItemToAdd"))
 local InventoryBaseAddr = getAddress("MainPlayerInventoryPtr")
@@ -5741,173 +5771,241 @@ WriteBytes(InventoryBaseAddr + SpecificItemToAdd,0)
 [DISABLE]
 
 </AssemblerScript>
-					</CheatEntry>
-				  </CheatEntries>
+                    </CheatEntry>
+                  </CheatEntries>
                 </CheatEntry>
-			  </CheatEntries>
-			</CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
             <CheatEntry>
               <ID>4000</ID>
               <Description>"Pointers"</Description>
               <Options moHideChildren="1"/>
-			  <GroupHeader>1</GroupHeader>
+              <LastState Value="" Activated="1" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
               <CheatEntries>
                 <CheatEntry>
                   <ID>4001</ID>
                   <Description>"Yen (Money)"</Description>
+                  <LastState Value="340415" RealAddress="04E0F3C0"/>
                   <VariableType>4 Bytes</VariableType>
                   <Address>MainPlayerYenPtr</Address>
                 </CheatEntry>
-				<CheatEntry>
-				  <ID>4200</ID>
-				  <Description>"Status Parameters"</Description>
-				  <Options moHideChildren="1"/>
-				  <GroupHeader>1</GroupHeader>
-				  <CheatEntries>
-					<CheatEntry>
-					  <ID>4201</ID>
-					  <Description>"Courage"</Description>
-					  <VariableType>2 Bytes</VariableType>
-					  <Address>MainPlayerStatusParametersPtr</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>4202</ID>
-					  <Description>"Knowledge"</Description>
-					  <VariableType>2 Bytes</VariableType>
-					  <Address>MainPlayerStatusParametersPtr+2</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>4203</ID>
-					  <Description>"Diligence"</Description>
-					  <VariableType>2 Bytes</VariableType>
-					  <Address>MainPlayerStatusParametersPtr+4</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>4204</ID>
-					  <Description>"Understanding"</Description>
-					  <VariableType>2 Bytes</VariableType>
-					  <Address>MainPlayerStatusParametersPtr+6</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>4205</ID>
-					  <Description>"Expression"</Description>
-					  <VariableType>2 Bytes</VariableType>
-					  <Address>MainPlayerStatusParametersPtr+8</Address>
-					</CheatEntry>
-				  </CheatEntries>
-				</CheatEntry>
-				<CheatEntry>
-				  <ID>4100</ID>
-				  <Description>"Character Stats"</Description>
-				  <Options moHideChildren="1"/>
-				  <GroupHeader>1</GroupHeader>
-				  <CheatEntries>
-					<CheatEntry>
-					  <ID>4101</ID>
-					  <Description>"Main Character Current HP"</Description>
-					  <VariableType>2 Bytes</VariableType>
-					  <Address>MainPlayerStructurePtr+08</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>4102</ID>
-					  <Description>"Main Character Current SP"</Description>
-					  <VariableType>2 Bytes</VariableType>
-					  <Address>MainPlayerStructurePtr+0A</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>4103</ID>
-					  <Description>"Main Character EXP"</Description>
-					  <VariableType>4 Bytes</VariableType>
-					  <Address>MainPlayerStructurePtr+40</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>4111</ID>
-					  <Description>"Yosuke Current HP"</Description>
-					  <VariableType>2 Bytes</VariableType>
-					  <Address>YosukePlayerStructurePtr+08</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>4112</ID>
-					  <Description>"Yosuke Current SP"</Description>
-					  <VariableType>2 Bytes</VariableType>
-					  <Address>YosukePlayerStructurePtr+0A</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>4113</ID>
-					  <Description>"Yosuke EXP"</Description>
-					  <VariableType>4 Bytes</VariableType>
-					  <Address>YosukePlayerStructurePtr+5C</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>4121</ID>
-					  <Description>"Chie Current HP"</Description>
-					  <VariableType>2 Bytes</VariableType>
-					  <Address>ChiePlayerStructurePtr+08</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>4122</ID>
-					  <Description>"Chie Current SP"</Description>
-					  <VariableType>2 Bytes</VariableType>
-					  <Address>ChiePlayerStructurePtr+0A</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>4123</ID>
-					  <Description>"Chie EXP"</Description>
-					  <VariableType>4 Bytes</VariableType>
-					  <Address>ChiePlayerStructurePtr+5C</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>4131</ID>
-					  <Description>"Yukiko Current HP"</Description>
-					  <VariableType>2 Bytes</VariableType>
-					  <Address>YukikoPlayerStructurePtr+08</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>4132</ID>
-					  <Description>"Yukiko Current SP"</Description>
-					  <VariableType>2 Bytes</VariableType>
-					  <Address>YukikoPlayerStructurePtr+0A</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>4133</ID>
-					  <Description>"Yukiko EXP"</Description>
-					  <VariableType>4 Bytes</VariableType>
-					  <Address>YukikoPlayerStructurePtr+5C</Address>
-					</CheatEntry>
-				  </CheatEntries>
-				</CheatEntry>
-				<CheatEntry>
-				  <ID>4300</ID>
-				  <Description>"Trophy Tracking Pointers"</Description>
-				  <Options moHideChildren="1"/>
-				  <GroupHeader>1</GroupHeader>
-				  <CheatEntries>
-					<CheatEntry>
-					  <ID>4301</ID>
-					  <Description>"Number of Times Used Fusion"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>TrophyNumFusionPtr</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>4302</ID>
-					  <Description>"Number of Times Used All-Out Attack"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>TrophyAllOutAttackPtr</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>4303</ID>
-					  <Description>"Number of Times Hit Enemy Weakness"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>TrophyWeaknessPtr</Address>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>4304</ID>
-					  <Description>"Number of Times Sweep Bonus Occurred"</Description>
-					  <VariableType>Byte</VariableType>
-					  <Address>TrophySweepBonusPtr</Address>
-					</CheatEntry>
-				  </CheatEntries>
-				</CheatEntry>
+                <CheatEntry>
+                  <ID>4200</ID>
+                  <Description>"Status Parameters"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>4201</ID>
+                      <Description>"Courage"</Description>
+                      <LastState Value="174" RealAddress="04E10068"/>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>MainPlayerStatusParametersPtr</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4202</ID>
+                      <Description>"Knowledge"</Description>
+                      <LastState Value="261" RealAddress="04E1006A"/>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>MainPlayerStatusParametersPtr+2</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4203</ID>
+                      <Description>"Diligence"</Description>
+                      <LastState Value="66" RealAddress="04E1006C"/>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>MainPlayerStatusParametersPtr+4</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4204</ID>
+                      <Description>"Understanding"</Description>
+                      <LastState Value="98" RealAddress="04E1006E"/>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>MainPlayerStatusParametersPtr+6</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4205</ID>
+                      <Description>"Expression"</Description>
+                      <LastState Value="75" RealAddress="04E10070"/>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>MainPlayerStatusParametersPtr+8</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>4100</ID>
+                  <Description>"Character Stats"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" Activated="1" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>4101</ID>
+                      <Description>"Main Character Current HP"</Description>
+                      <LastState Value="999" Activated="1" RealAddress="04E1003C"/>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>MainPlayerStructurePtr+08</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4102</ID>
+                      <Description>"Main Character Current SP"</Description>
+                      <LastState Value="999" Activated="1" RealAddress="04E1003E"/>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>MainPlayerStructurePtr+0A</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4103</ID>
+                      <Description>"Main Character EXP"</Description>
+                      <LastState Value="581556" RealAddress="04E10074"/>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>MainPlayerStructurePtr+40</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4111</ID>
+                      <Description>"Yosuke Current HP"</Description>
+                      <LastState Value="999" Activated="1" RealAddress="04E100C0"/>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>YosukePlayerStructurePtr+08</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4112</ID>
+                      <Description>"Yosuke Current SP"</Description>
+                      <LastState Value="999" Activated="1" RealAddress="04E100C2"/>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>YosukePlayerStructurePtr+0A</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4113</ID>
+                      <Description>"Yosuke EXP"</Description>
+                      <LastState Value="408667" RealAddress="04E10114"/>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>YosukePlayerStructurePtr+5C</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4121</ID>
+                      <Description>"Chie Current HP"</Description>
+                      <LastState Value="999" Activated="1" RealAddress="04E10144"/>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>ChiePlayerStructurePtr+08</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4122</ID>
+                      <Description>"Chie Current SP"</Description>
+                      <LastState Value="999" Activated="1" RealAddress="04E10146"/>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>ChiePlayerStructurePtr+0A</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4123</ID>
+                      <Description>"Chie EXP"</Description>
+                      <LastState Value="402042" RealAddress="04E10198"/>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>ChiePlayerStructurePtr+5C</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4131</ID>
+                      <Description>"Yukiko Current HP"</Description>
+                      <LastState Value="999" Activated="1" RealAddress="04E101C8"/>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>YukikoPlayerStructurePtr+08</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4132</ID>
+                      <Description>"Yukiko Current SP"</Description>
+                      <LastState Value="999" Activated="1" RealAddress="04E101CA"/>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>YukikoPlayerStructurePtr+0A</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4133</ID>
+                      <Description>"Yukiko EXP"</Description>
+                      <LastState Value="431711" RealAddress="04E1021C"/>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>YukikoPlayerStructurePtr+5C</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4306</ID>
+                      <Description>"Kanji Current HP"</Description>
+                      <LastState Value="999" Activated="1" RealAddress="04E102D0"/>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>P4G.exe+4A102D0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4305</ID>
+                      <Description>"Kanji Current SP"</Description>
+                      <LastState Value="999" Activated="1" RealAddress="04E102D2"/>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>P4G.exe+4A102D2</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4308</ID>
+                      <Description>"Teddie Current HP"</Description>
+                      <LastState Value="999" Activated="1" RealAddress="04E103D8"/>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>P4G.exe+4A103D8</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4307</ID>
+                      <Description>"Teddie Current SP"</Description>
+                      <LastState Value="999" Activated="1" RealAddress="04E103DA"/>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>P4G.exe+4A103DA</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4309</ID>
+                      <Description>"Naoto Current HP"</Description>
+                      <LastState Value="999" Activated="1" RealAddress="04E10354"/>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>P4G.exe+4A10354</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4310</ID>
+                      <Description>"Naoto Current SP"</Description>
+                      <LastState Value="999" Activated="1" RealAddress="04E10356"/>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>P4G.exe+4A10356</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>4300</ID>
+                  <Description>"Trophy Tracking Pointers"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>4301</ID>
+                      <Description>"Number of Times Used Fusion"</Description>
+                      <LastState Value="38" RealAddress="04E18B50"/>
+                      <VariableType>Byte</VariableType>
+                      <Address>TrophyNumFusionPtr</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4302</ID>
+                      <Description>"Number of Times Used All-Out Attack"</Description>
+                      <LastState Value="255" RealAddress="04E18B54"/>
+                      <VariableType>Byte</VariableType>
+                      <Address>TrophyAllOutAttackPtr</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4303</ID>
+                      <Description>"Number of Times Hit Enemy Weakness"</Description>
+                      <LastState Value="255" RealAddress="04E18B55"/>
+                      <VariableType>Byte</VariableType>
+                      <Address>TrophyWeaknessPtr</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4304</ID>
+                      <Description>"Number of Times Sweep Bonus Occurred"</Description>
+                      <LastState Value="32" RealAddress="04E18C48"/>
+                      <VariableType>Byte</VariableType>
+                      <Address>TrophySweepBonusPtr</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
               </CheatEntries>
             </CheatEntry>
           </CheatEntries>
@@ -5915,7 +6013,8 @@ WriteBytes(InventoryBaseAddr + SpecificItemToAdd,0)
       </CheatEntries>
     </CheatEntry>
   </CheatEntries>
-<LuaScript>function lua_aobscan(name,module,bytes,index)
+  <UserdefinedSymbols/>
+  <LuaScript>function lua_aobscan(name,module,bytes,index)
   index = index - 1
   if(module == "") then
     local resultSet = AOBScan(bytes)
@@ -5951,5 +6050,5 @@ WriteBytes(InventoryBaseAddr + SpecificItemToAdd,0)
     end
   end
 end
-</LuaScript>  
+</LuaScript>
 </CheatTable>
