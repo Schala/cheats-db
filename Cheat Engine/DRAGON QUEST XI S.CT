@@ -1,0 +1,2190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="26">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"Dragon Quest XI S Definitive Edition (Steam)"</Description>
+      <Options moHideChildren="1"/>
+	  <VariableType>Auto Assembler Script</VariableType>
+	  <AssemblerScript>[ENABLE]
+
+alloc(newmem,1024)
+
+label(ItemListStartPtr)
+registersymbol(ItemListStartPtr)
+
+newmem:
+ItemListStartPtr:
+dq 0
+
+[DISABLE]
+
+unregistersymbol(ItemListStartPtr)
+
+dealloc(newmem)
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>10</ID>
+          <Description>"Enable"</Description>
+          <Options moHideChildren="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+{
+Code to Pull In Items (Found Starting Address Manually by searching for an item id)
+
+local StartAddress = 0x39770000
+local index = 0
+while (index &lt; 2730) do
+  local ItemName
+  if (ReadBytes(ReadPointer(StartAddress + 0x08)+0x16) == 0) and (ReadBytes(ReadPointer(StartAddress + 0x08)+0x18) == 0) then
+	ItemName = ansiToUtf8(readString(ReadPointer(StartAddress + 0x08)+0x15,50,true))
+  else
+        ItemName = readString(ReadPointer(StartAddress + 0x08)+0x15,50,false)
+  end
+
+  -- First, Print the Decimal Item ID
+  --print(string.format("%d",ReadQword(StartAddress)))
+
+  -- Second, Print the Hex Item ID
+  --print(string.format("%0.16X",ReadQword(StartAddress)))
+
+  -- Finally, Print the Item Name (Could Be Unicode)
+  --print(string.format("%s",ItemName))
+
+  --print(string.format("%d:%0.16X|%s",ReadQword(StartAddress),ReadQword(StartAddress),ItemName))
+  StartAddress = StartAddress + 0x20
+  index = index + 1
+end
+
+Item Start At 'mini medal' and end with 'Trodain's Top Trends'
+}
+
+{$lua}
+
+lua_aobscan("EXPReadInStatusAOB",process,"8B 81 B0 00 00 00 C3 CC",1)
+
+-- Another Attempt at Getting The ItemListStart Pointer using Pointer Scan to Find the Pointer
+-- Found a Pointer for STEAM version at "DRAGON QUEST XI S.EXE" + 5C08210, Offset 220, Offset 70, Offset A0
+local ItemListPtr1 = getAddress(process)
+if (ItemListPtr1 ~= nil and ItemListPtr1 ~= 0) then
+	local ItemListPtr2 = ReadPointer(ItemListPtr1 + 0x05C08210)
+	
+	if (ItemListPtr2 ~= nil and ItemListPtr2 ~= 0) then
+		local ItemListPtr3 = ReadPointer(ItemListPtr2 + 0x220)
+		
+		if (ItemListPtr3 ~= nil and ItemListPtr3 ~= 0) then
+			local ItemListPtr4 = ReadPointer(ItemListPtr3 + 0x70)
+			
+			if (ItemListPtr4 ~= nil and ItemListPtr4 ~= 0) then
+				local ItemListPtr5 = ReadPointer(ItemListPtr4 + 0xA0)
+				
+				if (ItemListPtr5 ~= nil and ItemListPtr5 ~= 0) then
+					WritePointer(getAddress("ItemListStartPtr"),ItemListPtr5)
+				end
+			end
+		end
+	end
+end
+
+
+-- Found a Pointer for GAMEPASS version at "DRAGON QUEST XI S.EXE" + 5CA5F10, Offset 220, Offset 70, Offset A0
+local ItemListPtrGP1 = getAddress(process)
+if (ItemListPtrGP1 ~= nil and ItemListPtrGP1 ~= 0) then
+	local ItemListPtrGP2 = ReadPointer(ItemListPtrGP1 + 0x05CA5F10)
+	
+	if (ItemListPtrGP2 ~= nil and ItemListPtrGP2 ~= 0) then
+		local ItemListPtrGP3 = ReadPointer(ItemListPtrGP2 + 0x220)
+		
+		if (ItemListPtrGP3 ~= nil and ItemListPtrGP3 ~= 0) then
+			local ItemListPtrGP4 = ReadPointer(ItemListPtrGP3 + 0x70)
+			
+			if (ItemListPtrGP4 ~= nil and ItemListPtrGP4 ~= 0) then
+				local ItemListPtrGP5 = ReadPointer(ItemListPtrGP4 + 0xA0)
+				
+				if (ItemListPtrGP5 ~= nil and ItemListPtrGP5 ~= 0) then
+					WritePointer(getAddress("ItemListStartPtr"),ItemListPtrGP5)
+				end
+			end
+		end
+	end
+end
+
+-- This gets the starting point for the Item List to load at runtime
+--lua_aobscan("ItemListStartAOB","","BA 16 00 00 00 00 00 00 ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? BC 16 00 00 00 00 00 00 ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? BB 16 00 00 00 00 00 00",1)
+
+---Processing for the Huge Item Lists in 2 spots to cut down on file size
+local al = getAddressList()
+
+-- Load Item Dropdowns
+local ItemList = {}
+
+-- Get Item List From Memory at Runtime
+--local StartAddress = getAddress("ItemListStartAOB")
+local StartAddress = ReadPointer(getAddress("ItemListStartPtr"))
+local index = 0
+while (index &lt; 2730) do
+  if (ReadBytes(ReadPointer(StartAddress + 0x08)+0x16) == 0) and (ReadBytes(ReadPointer(StartAddress + 0x08)+0x18) == 0) then
+	ItemList[index+1] = string.format("%0.16X",ReadQword(StartAddress))..":"..string.format("%s",ansiToUtf8(readString(ReadPointer(StartAddress + 0x08)+0x15,50,true)))
+  else
+	ItemList[index+1] = string.format("%0.16X",ReadQword(StartAddress))..":"..string.format("%s",readString(ReadPointer(StartAddress + 0x08)+0x15,50,false))
+  end
+  StartAddress = StartAddress + 0x20
+  index = index + 1
+end
+
+local DropDownListITM = createStringlist()
+for i,j in ipairs(ItemList) do
+	DropDownListITM.add(string.format("%s",j))
+end
+
+local mr = al.getMemoryRecordByDescription("Highlighted Item ID")
+al[mr.Index].DropDownList.Text = DropDownListITM.Text
+al[mr.Index].DropDownReadOnly = false
+al[mr.Index].DropDownDescriptionOnly = true
+al[mr.Index].DisplayAsDropDownListItem = true
+
+local mr2 = al.getMemoryRecordByDescription("Shop Item 1 ID")
+al[mr2.Index].DropDownList.Text = DropDownListITM.Text
+al[mr2.Index].DropDownReadOnly = false
+al[mr2.Index].DropDownDescriptionOnly = true
+al[mr2.Index].DisplayAsDropDownListItem = true
+
+{$asm}
+aobscanmodule(GoldReadInStatusAOB,$process,5B C3 8B 83 C0 00 00 00 48 83 C4 20 5B C3 CC) // should be unique
+registersymbol(GoldReadInStatusAOB)
+alloc(newmem,1024,GoldReadInStatusAOB)
+
+///
+///aobscanmodule(EXPReadInStatusAOB,$process,8B 81 B0 00 00 00 C3 CC CC CC CC CC CC CC CC CC 8B 81 AC 00 00 00) // should be unique
+///registersymbol(EXPReadInStatusAOB)
+alloc(newmem2,1024,EXPReadInStatusAOB)
+
+///
+aobscanmodule(HighlightedItemReadInStatusAOB,$process,49 8B 14 C0 8B 72 18 03 DF) // should be unique
+registersymbol(HighlightedItemReadInStatusAOB)
+alloc(newmem3,1024,HighlightedItemReadInStatusAOB)
+
+///
+aobscanmodule(MedalsReadInStatusAOB,$process,44 8B 51 18 41 03 C2 3B C6 7F 0D) // should be unique
+registersymbol(MedalsReadInStatusAOB)
+alloc(newmem4,1024,MedalsReadInStatusAOB)
+
+///
+aobscanmodule(CheckDraconianQuestAOB,$process,0F B6 44 08 48 C3 CC) // should be unique
+registersymbol(CheckDraconianQuestAOB)
+alloc(newmem5,1024,CheckDraconianQuestAOB)
+
+///
+label(GoldBasePtr)
+registersymbol(GoldBasePtr)
+label(originalcode)
+label(return)
+
+///
+label(CharBasePtr)
+registersymbol(CharBasePtr)
+label(originalcode2)
+label(return2)
+
+///
+label(HighlightedItemBasePtr)
+registersymbol(HighlightedItemBasePtr)
+label(originalcode2)
+label(return3)
+
+///
+label(MiniMedalsBasePtr)
+registersymbol(MiniMedalsBasePtr)
+label(PearlsBasePtr)
+registersymbol(PearlsBasePtr)
+label(originalcode4)
+label(return4)
+
+///
+label(return5)
+label(DraconianQuestBasePtr)
+registersymbol(DraconianQuestBasePtr)
+label(TurnOffNoShopping)
+registersymbol(TurnOffNoShopping)
+label(TurnOffNoArmor)
+registersymbol(TurnOffNoArmor)
+
+///
+newmem:
+  mov [GoldBasePtr],rbx
+  
+originalcode:
+  mov eax,[rbx+000000C0]
+  jmp return  
+
+GoldBasePtr:
+dq 0
+
+///
+newmem2:
+  mov [CharBasePtr],rcx
+  
+originalcode2:
+  mov eax,[rcx+000000B0]
+  jmp return2
+
+CharBasePtr:
+dq 0
+
+///
+newmem3:
+  mov rdx,[r8+rax*8]
+  mov [HighlightedItemBasePtr],rdx
+  
+originalcode3:
+  mov esi,[rdx+18]  
+  jmp return3
+  
+HighlightedItemBasePtr:
+dq 0
+
+///
+newmem4:
+  cmp r8,16BA
+  jne SkipMiniMedalPtr
+  mov [MiniMedalsBasePtr],rcx
+  jmp originalcode4
+SkipMiniMedalPtr:
+  cmp r8,16BC
+  jne originalcode4
+  mov [PearlsBasePtr],rcx
+  jmp originalcode4
+  
+originalcode4:
+  mov r10d,[rcx+18]
+  add eax,r10d  
+  jmp return4
+
+MiniMedalsBasePtr:
+dq 0
+PearlsBasePtr:
+dq 0
+
+///
+newmem5:
+  mov [DraconianQuestBasePtr],rcx
+  cmp [TurnOffNoShopping],1
+  jne SkipTurnOffNoShopping
+  cmp rax,1
+  jne SkipTurnOffNoShopping
+  xor eax,eax
+  jmp return5
+SkipTurnOffNoShopping:
+  cmp [TurnOffNoArmor],1
+  jne originalcode5
+  cmp rax,2
+  jne originalcode5
+  xor eax,eax
+  jmp return5
+  
+originalcode5:
+  movzx eax,byte ptr [rax+rcx+48]
+  jmp return5
+
+DraconianQuestBasePtr:
+dq 0
+TurnOffNoShopping:
+dq 0
+TurnOffNoArmor:
+dq 0
+
+GoldReadInStatusAOB+2:
+  jmp newmem
+  nop
+  return:
+
+///
+EXPReadInStatusAOB:
+  jmp newmem2
+  nop
+  return2:
+
+///
+HighlightedItemReadInStatusAOB:
+  jmp newmem3
+  nop
+  nop
+  return3:
+
+///  
+MedalsReadInStatusAOB:
+  jmp newmem4
+  nop
+  nop
+  return4:
+
+///
+CheckDraconianQuestAOB:
+  jmp newmem5
+return5:
+
+[DISABLE]
+
+GoldReadInStatusAOB+2:
+  db 8B 83 C0 00 00 00
+  
+unregistersymbol(GoldBasePtr)
+unregistersymbol(GoldReadInStatusAOB)
+
+///
+EXPReadInStatusAOB:
+  db 8B 81 B0 00 00 00
+  
+unregistersymbol(CharBasePtr)
+unregistersymbol(EXPReadInStatusAOB)
+
+///
+HighlightedItemReadInStatusAOB:
+  db 49 8B 14 C0 8B 72 18
+  
+unregistersymbol(HighlightedItemBasePtr)
+unregistersymbol(HighlightedItemReadInStatusAOB)
+
+///
+MedalsReadInStatusAOB:
+  db 44 8B 51 18 41 03 C2
+
+unregistersymbol(MedalsReadInStatusAOB)
+unregistersymbol(MiniMedalsBasePtr)
+
+///
+CheckDraconianQuestAOB:
+  db 0F B6 44 08 48
+
+unregistersymbol(CheckDraconianQuestAOB)
+unregistersymbol(DraconianQuestBasePtr)
+unregistersymbol(TurnOffNoArmor)
+unregistersymbol(TurnOffNoShopping)
+
+///  
+dealloc(newmem)
+dealloc(newmem2)
+dealloc(newmem3)
+dealloc(newmem4)
+dealloc(newmem5)
+</AssemblerScript>
+        <CheatEntries>
+			<CheatEntry>
+              <ID>100</ID>
+              <Description>"[Scripts]"</Description>
+              <Options moHideChildren="1"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>200</ID>
+                  <Description>"Damage Modifier Script (FOR 3D MODE) (God Mode, One Hit Kill, etc.)"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+aobscanmodule(DamageModAOB,$process,8B 47 7C 3B C6 7C 04 2B C6) // should be unique
+registersymbol(DamageModAOB)
+alloc(newmem,1024,DamageModAOB)
+
+label(return)
+label(GodMode)
+registersymbol(GodMode)
+label(OneHitKill)
+registersymbol(OneHitKill)
+label(fEnemyDamageMult)
+registersymbol(fEnemyDamageMult)
+label(fHeroDamageMult)
+registersymbol(fHeroDamageMult)
+label(HeroCannotDie)
+registersymbol(HeroCannotDie)
+
+newmem:
+  mov eax,[rdi+7C]
+  cmp word ptr [rdi+70],0
+  je EnemyHit
+HeroHit:
+HeroDamageHit:
+  cmp [fHeroDamageMult],(float)0.0
+  je CheckGodMode
+  push esi
+  fild dword ptr [rsp]
+  fmul dword ptr [fHeroDamageMult]
+  fistp dword ptr [rsp]
+  pop esi
+CheckGodMode:
+  cmp [GodMode],1
+  jne CheckHeroCannotDie
+  xor esi,esi
+  jmp CleanUp
+CheckHeroCannotDie:
+  cmp [HeroCannotDie],1
+  jne CleanUp
+  cmp esi,eax
+  jl @F
+  xor esi,esi
+@@:
+  jmp CleanUp  
+EnemyHit:
+EnemyDamageHit:
+  cmp [fEnemyDamageMult],(float)0.0
+  je CheckOneHitKill
+  push esi
+  fild dword ptr [rsp]
+  fmul dword ptr [fEnemyDamageMult]
+  fistp dword ptr [rsp]
+  pop esi
+CheckOneHitKill:
+  cmp [OneHitKill],1
+  jne CleanUp
+  mov esi,#99999
+  jmp CleanUp
+
+CleanUp:    
+  cmp eax,esi
+  jmp return
+
+GodMode:
+dq 0
+OneHitKill:
+dq 0
+fEnemyDamageMult:
+dq (float)0.0
+fHeroDamageMult:
+dq (float)0.5
+HeroCannotDie:
+dq 1
+
+DamageModAOB:
+  jmp newmem
+return:
+
+[DISABLE]
+
+DamageModAOB:
+  db 8B 47 7C 3B C6
+
+unregistersymbol(DamageModAOB)
+unregistersymbol(GodMode)
+unregistersymbol(OneHitKill)
+unregistersymbol(fEnemyDamageMult)
+unregistersymbol(fHeroDamageMult)
+
+dealloc(newmem)
+</AssemblerScript>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>201</ID>
+                      <Description>"God Mode"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+1:On
+</DropDownList>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GodMode</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>202</ID>
+                      <Description>"Hero Damage Multiplier (Set to 0.0 = Off; Otherwise multiplier so 0.5 is half damage to hero party)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>fHeroDamageMult</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>204</ID>
+                      <Description>"Hero Cannot Die (If On and God Mode Off, Then You Take Damage Until The Hit Will Kill You)"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+1:On
+</DropDownList>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>HeroCannotDie</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>205</ID>
+                      <Description>"One Hit Kill"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+1:On
+</DropDownList>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>OneHitKill</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>206</ID>
+                      <Description>"Enemy Damage Multiplier (Set to Zero = Off; Otherwise multiplier to damage you deal to enemies)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>fEnemyDamageMult</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>210</ID>
+                  <Description>"MP Damage Modifier (Infinite MP, HeroMPDamageMult)"</Description>
+                  <Options moHideChildren="1"/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+aobscanmodule(BattleMPModAOB,$process,8B 93 80 00 00 00 41 B0 01 F3 0F 2C C1) // should be unique
+registersymbol(BattleMPModAOB)
+alloc(newmem,1024,BattleMPModAOB)
+
+label(return)
+label(InfiniteMP)
+registersymbol(InfiniteMP)
+label(fHeroMPDamageMult)
+registersymbol(fHeroMPDamageMult)
+
+newmem:
+  mov edx,[rbx+00000080]
+  mov r8l,01
+  cvttss2si eax,xmm1
+  cmp word ptr [rbx+70],0
+  je EnemyMPHit
+HeroMPHit:
+  cmp eax,0
+  jle return
+CheckHeroMPDamageMult:
+  cmp [fHeroMPDamageMult],(float)0.0
+  je CheckInfiniteMP
+  push eax
+  fild dword ptr [rsp]
+  fmul dword ptr [fHeroMPDamageMult]
+  fistp dword ptr [rsp]
+  pop eax
+CheckInfiniteMP:
+  cmp [InfiniteMP],1
+  jne return
+  xor eax,eax
+  jmp return
+EnemyMPHit:
+  jmp return
+
+InfiniteMP:
+dq 0
+fHeroMPDamageMult:
+dq (float)0.50
+  
+BattleMPModAOB:
+  jmp newmem
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+return:
+  
+[DISABLE]
+
+BattleMPModAOB:
+  db 8B 93 80 00 00 00 41 B0 01 F3 0F 2C C1  
+
+unregistersymbol(BattleMPModAOB)
+dealloc(newmem)				
+</AssemblerScript>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>211</ID>
+                      <Description>"Infinite MP"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+1:On
+</DropDownList>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>InfiniteMP</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>212</ID>
+                      <Description>"Hero MP Damage Multiplier (Set to 0.0 = Off; Otherwise multiplier so 0.5 is half MP damage to hero party)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>fHeroMPDamageMult</Address>
+                    </CheatEntry>
+				  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>215</ID>
+                  <Description>"Gold Multiplier (After Battle)"</Description>
+                  <Options moHideChildren="1"/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+aobscanmodule(GoldMultAOB,$process,03 91 C0 00 00 00 48 8B D9 E8 ?? ?? ?? ?? 48 8B CB) // should be unique
+registersymbol(GoldMultAOB)
+alloc(newmem,1024,GoldMultAOB)
+
+///
+label(return)
+label(originalcode)
+label(GoldMult)
+registersymbol(GoldMult)
+
+newmem:
+  imul edx,[GoldMult]
+  
+originalcode:
+  add edx,[rcx+000000C0]
+  jmp return
+ 
+GoldMult:
+dd #100
+    
+GoldMultAOB:
+  jmp newmem
+  nop
+  return:
+  
+[DISABLE]
+
+GoldMultAOB:
+  db 03 91 C0 00 00 00
+  
+unregistersymbol(GoldMult)
+unregistersymbol(GoldMultAOB)
+
+dealloc(newmem)
+</AssemblerScript>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>216</ID>
+                      <Description>"Gold Multiplier"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GoldMult</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>220</ID>
+                  <Description>"EXP Multiplier"</Description>
+                  <Options moHideChildren="1"/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+aobscanmodule(EXPMultAOB,$process,01 91 B0 00 00 00 C3 CC) // should be unique
+registersymbol(EXPMultAOB)
+alloc(newmem,1024,EXPMultAOB)
+
+///
+label(return)
+label(originalcode)
+label(EXPMult)
+registersymbol(EXPMult)
+
+newmem:
+  imul edx,dword ptr [EXPMult]
+  
+originalcode:
+  add [rcx+000000B0],edx
+  jmp return
+ 
+EXPMult:
+dq #5
+    
+EXPMultAOB:
+  jmp newmem
+  nop
+  return:
+  
+[DISABLE]
+
+EXPMultAOB:
+  db 01 91 B0 00 00 00
+  
+unregistersymbol(EXPMult)
+unregistersymbol(EXPMultAOB)
+
+dealloc(newmem)
+</AssemblerScript>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>221</ID>
+                      <Description>"EXP Multiplier"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>EXPMult</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>225</ID>
+                  <Description>"Skill Point Cost Multiplier"</Description>
+                  <Options moHideChildren="1"/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+aobscanmodule(SPCostMultAOB1,$process,8B 46 38 89 43 4C 0F B6 46 44) // should be unique
+registersymbol(SPCostMultAOB1)
+alloc(newmem,1024,SPCostMultAOB1)
+
+///
+aobscanmodule(SPCostMultAOB2,$process,03 46 38 48 8B CB 8B D0 E8 ?? ?? ?? ?? 48 8B 5C 24 40) // should be unique
+registersymbol(SPCostMultAOB2)
+alloc(newmem2,1024,SPCostMultAOB2)
+
+///
+label(return)
+label(originalcode)
+label(ZeroSPCost)
+registersymbol(ZeroSPCost)
+label(fSPCostMult)
+registersymbol(fSPCostMult)
+
+newmem:
+  mov eax,[rsi+38]
+CheckZeroSPCost1:
+  cmp [ZeroSPCost],1
+  jne DoSPCostMult1
+  xor eax,eax
+  jmp originalcode
+DoSPCostMult1:
+  push eax
+  fild dword ptr [rsp]
+  fmul dword ptr [fSPCostMult]
+  fistp dword ptr [rsp]
+  pop eax
+  
+originalcode:
+  mov [rbx+4C],eax
+  jmp return
+
+ZeroSPCost:
+dq 0 
+fSPCostMult:
+dq (float)0.50
+
+newmem2:
+  push r15
+  mov r15d,[rsi+38]
+CheckZeroSPCost2:
+  cmp [ZeroSPCost],1
+  jne DoSPCostMult2
+  xor r15d,r15d
+  jmp CleanUp2
+DoSPCostMult2:
+  push r15d
+  fild dword ptr [rsp]
+  fmul dword ptr [fSPCostMult]
+  fistp dword ptr [rsp]
+  pop r15d
+  jmp CleanUp2
+
+CleanUp2:
+  add eax,r15d
+  pop r15
+  
+originalcode2:
+  mov rcx,rbx
+  jmp return2
+  
+///  
+SPCostMultAOB1:
+  jmp newmem
+  nop
+  return:
+
+SPCostMultAOB2:
+  jmp newmem2
+  nop
+  return2:
+  
+[DISABLE]
+
+SPCostMultAOB1:
+  db 8B 46 38 89 43 4C
+  
+unregistersymbol(fSPCostMult)
+unregistersymbol(SPCostMultAOB1)
+
+///
+SPCostMultAOB2:
+  db 03 46 38 48 8B CB
+
+unregistersymbol(SPCostMultAOB2)
+  
+dealloc(newmem)
+dealloc(newmem2)
+</AssemblerScript>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>226</ID>
+                      <Description>"Skills Cost Zero (Infinite Skill Points)"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+1:On
+</DropDownList>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>ZeroSPCost</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>227</ID>
+                      <Description>"Skill Point Cost Multiplier"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>fSPCostMult</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>235</ID>
+                  <Description>"Infinite Item Usage / Set Minimum Item Amount"</Description>
+                  <Options moHideChildren="1"/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+aobscanmodule(InfiniteItemUsageAOB,$process,8B 43 18 3B C5 7D 12 2B E8) // should be unique
+alloc(newmem,1024,InfiniteItemUsageAOB)
+registersymbol(InfiniteItemUsageAOB)
+
+label(return)
+label(originalcode)
+label(SetItemAmount)
+registersymbol(SetItemAmount)
+
+newmem:
+  xor ebp,ebp
+  mov eax,[rbx+18]
+  cmp word ptr [SetItemAmount],0
+  je originalcode
+  cmp eax,[SetItemAmount]
+  jge originalcode
+  mov eax,[SetItemAmount]
+  mov [rbx+18],eax
+
+originalcode:
+  cmp eax,ebp
+  jmp return
+
+SetItemAmount:
+dq 0
+    
+InfiniteItemUsageAOB:
+  jmp newmem
+  return:
+  
+[DISABLE]
+
+InfiniteItemUsageAOB:
+  db 8B 43 18 3B C5
+  
+unregistersymbol(SetItemAmount)
+unregistersymbol(InfiniteItemUsageAOB)
+  
+dealloc(newmem)
+</AssemblerScript>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>236</ID>
+                      <Description>"Set Minimum Item Amount On Use/Sell (0 = Off)"</Description>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>SetItemAmount</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>240</ID>
+                  <Description>"Shop Items (Override)"</Description>
+                  <Options moHideChildren="1"/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+aobscanmodule(ShopItemsAOB,$process,48 39 01 0F 84 4A 01 00 00 48 89 4C 24 58) // should be unique
+registersymbol(ShopItemsAOB)
+alloc(newmem,1024,ShopItemsAOB)
+
+label(return)
+label(ShopBasePtr)
+registersymbol(ShopBasePtr)
+
+newmem:
+  cmp rsi,0
+  jne originalcode
+  mov [ShopBasePtr],rcx
+  
+originalcode:
+  cmp [rcx],rax
+  je ShopItemsAOB+153
+  jmp return
+
+ShopBasePtr:
+dq 0
+
+ShopItemsAOB:
+  jmp newmem
+  nop
+  nop
+  nop
+  nop
+return:
+  
+[DISABLE]
+
+ShopItemsAOB:
+  db 48 39 01 0F 84 4A 01 00 00
+
+unregistersymbol(ShopBasePtr)
+unregistersymbol(ShopItemsAOB)
+
+dealloc(newmem)				
+</AssemblerScript>
+				  <CheatEntries>
+					<CheatEntry>
+					  <ID>241</ID>
+					  <Description>"Shop Item 1 ID"</Description>
+					  <ShowAsHex>1</ShowAsHex>
+					  <VariableType>8 Bytes</VariableType>
+					  <Address>ShopBasePtr</Address>
+					  <Offsets>
+						<Offset>0</Offset>
+					  </Offsets>
+					</CheatEntry>
+				  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>245</ID>
+                  <Description>"Infinite Turns Good Status For Allies / Infinite Turns Bad Status For Enemies"</Description>
+                  <Options moHideChildren="1"/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+aobscanmodule(StatusTurnsAOB,$process,8B 83 EC 00 00 00 83 F8 01 7C 11) // should be unique
+registersymbol(StatusTurnsAOB)
+alloc(newmem,1024,StatusTurnsAOB)
+
+label(return)
+
+newmem:
+  test r13,r13
+  je originalcode
+  cmp word ptr [r13+70],0
+  je EnemyStatusHit
+HeroStatusHit:
+  cmp [rbx+000000EC],FFFFFFFF
+  je originalcode
+  cmp [rbx+000000EC],0
+  je originalcode
+  cmp [rbx+000000E0],0 //defense up
+  je AllyGoodStatus
+  cmp [rbx+000000D8],0 //pep-up, oomph
+  je AllyGoodStatus
+  cmp [rbx+000000E0],1 //paralyze, snooze
+  je AllyBadStatus
+  cmp [rbx+000000C0],0 //dance, laugh
+  je AllyBadStatus
+  jmp originalcode
+AllyGoodStatus:
+  inc [rbx+000000EC]
+  jmp originalcode
+AllyBadStatus:
+  mov eax,1
+  mov [rbx+000000EC],eax
+  jmp originalcode
+  
+EnemyStatusHit:
+  cmp [rbx+000000EC],FFFFFFFF
+  je originalcode
+  cmp [rbx+000000EC],0
+  je originalcode
+  cmp [rbx+000000E0],0 //defense up
+  je EnemyGoodStatus
+  cmp [rbx+000000D8],0 //pep-up, oomph
+  je EnemyGoodStatus
+  cmp [rbx+000000E0],1 //paralyze, snooze
+  je EnemyBadStatus
+  cmp [rbx+000000C0],0 //dance, laugh
+  je EnemyBadStatus
+  jmp originalcode
+EnemyGoodStatus:
+  mov eax,1
+  mov [rbx+000000EC],eax
+  jmp originalcode
+EnemyBadStatus:
+  inc [rbx+000000EC]
+  jmp originalcode
+  
+originalcode:
+  mov eax,[rbx+000000EC]
+  jmp return
+  
+StatusTurnsAOB:
+  jmp newmem
+  nop
+return:
+  
+[DISABLE]
+
+StatusTurnsAOB:
+  db 8B 83 EC 00 00 00
+
+unregistersymbol(StatusTurnsAOB)
+
+dealloc(newmem)				
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>250</ID>
+                  <Description>"Infinite Horse Stamina (Original MancombSeepgood, Updated By DrummerIX)"</Description>
+                  <Options moHideChildren="1"/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+aobscanmodule(HorseStaminaAOB,$process,F3 0F 5E C8 F3 0F 59 8B 48 1E 00 00 0F 2F CF) // should be unique
+registersymbol(HorseStaminaAOB)
+alloc(newmem,1024,HorseStaminaAOB)
+
+label(return)
+
+newmem:
+  divss xmm1,xmm0
+  mov [rbx+00001E48],461C3C00
+  mulss xmm1,[rbx+00001E48]
+  jmp return
+
+HorseStaminaAOB:
+  jmp newmem
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+return:
+
+[DISABLE]
+
+HorseStaminaAOB:
+  db F3 0F 5E C8 F3 0F 59 8B 48 1E 00 00
+
+unregistersymbol(HorseStaminaAOB)
+
+dealloc(newmem)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>255</ID>
+                  <Description>"Damage Modifier Script (FOR 2D MODE) (God Mode, etc.)"</Description>
+                  <Options moHideChildren="1"/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+aobscanmodule(DamageModAOB2,$process,44 0F B7 40 04 45 03 C1 0F B7 10) // should be unique
+registersymbol(DamageModAOB2)
+alloc(newmem,1024,DamageModAOB2)
+
+label(return)
+label(GodMode2D)
+registersymbol(GodMode2D)
+label(fHeroDamageMult2D)
+registersymbol(fHeroDamageMult2D)
+label(HeroCannotDie2D)
+registersymbol(HeroCannotDie2D)
+
+newmem:
+  movzx r8d,word ptr [rax+04]
+HeroHit:
+  cmp r9d,0
+  jl HeroDamageHit
+  jmp CleanUp
+HeroDamageHit:
+  cmp [fHeroDamageMult2D],(float)0.0
+  je CheckGodMode
+  push r9d
+  fild dword ptr [rsp]
+  fmul dword ptr [fHeroDamageMult2D]
+  fistp dword ptr [rsp]
+  pop r9d
+CheckGodMode:
+  cmp [GodMode2D],1
+  jne CheckHeroCannotDie
+  xor r9d,r9d
+  jmp CleanUp
+CheckHeroCannotDie:
+  cmp [HeroCannotDie2D],1
+  jne CleanUp
+  cmp r9d,r8d
+  jl @F
+  xor r9d,r9d
+@@:
+  jmp CleanUp  
+
+CleanUp:    
+  jmp return
+
+GodMode2D:
+dq 0
+fHeroDamageMult2D:
+dq (float)0.5
+HeroCannotDie2D:
+dq 1
+
+DamageModAOB2:
+  jmp newmem
+return:
+
+[DISABLE]
+
+DamageModAOB2:
+  db 44 0F B7 40 04
+
+unregistersymbol(DamageModAOB2)
+unregistersymbol(GodMode2D)
+unregistersymbol(fHeroDamageMult2D)
+
+dealloc(newmem)
+</AssemblerScript>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>256</ID>
+                      <Description>"God Mode"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+1:On
+</DropDownList>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GodMode2D</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>257</ID>
+                      <Description>"Hero Damage Multiplier (Set to 0.0 = Off; Otherwise multiplier so 0.5 is half damage to hero party)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>fHeroDamageMult2D</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>258</ID>
+                      <Description>"Hero Cannot Die (If On and God Mode Off, Then You Take Damage Until The Hit Will Kill You)"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+1:On
+</DropDownList>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>HeroCannotDie2D</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>260</ID>
+                  <Description>"Monster Defeated Multiplier"</Description>
+                  <Options moHideChildren="1"/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+aobscanmodule(MonsterDefeatedMultAOB,$process,8B 28 41 03 EE E8 ?? ?? ?? ?? 8B C6) // should be unique
+registersymbol(MonsterDefeatedMultAOB)
+alloc(newmem,1024,MonsterDefeatedMultAOB)
+
+label(return)
+label(MonsterDefeatedMult)
+registersymbol(MonsterDefeatedMult)
+
+newmem:
+  imul r14d,[MonsterDefeatedMult]
+  
+originalcode:
+  mov ebp,[rax]
+  add ebp,r14d
+  jmp return
+
+MonsterDefeatedMult:
+dq #10
+
+MonsterDefeatedMultAOB:
+  jmp newmem
+return:
+
+[DISABLE]
+
+MonsterDefeatedMultAOB:
+  db 8B 28 41 03 EE
+
+unregistersymbol(MonsterDefeatedMultAOB)
+unregistersymbol(MonsterDefeatedMult)
+
+dealloc(newmem)
+</AssemblerScript>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>261</ID>
+                      <Description>"Monster Defeated Multiplier"</Description>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>MonsterDefeatedMult</Address>
+                    </CheatEntry>
+				  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>300</ID>
+                  <Description>"Equipment Bonus Modifier Options (Block, Parry, Dodge, Critical, etc)"</Description>
+                  <Options moHideChildren="1"/>
+				  <GroupHeader>1</GroupHeader>
+				  <CheatEntries>
+					<CheatEntry>
+					  <ID>305</ID>
+					  <Description>"Bonus Block Percent"</Description>
+					  <Options moHideChildren="1"/>
+					  <VariableType>Auto Assembler Script</VariableType>
+					  <AssemblerScript>[ENABLE]
+					  
+aobscanmodule(StatModEquipmentAOB1,$process,F3 0F 11 46 34 F3 0F 10 45 EB ?? ?? ?? ?? ?? F3 0F 10 4D EF) // should be unique
+registersymbol(StatModEquipmentAOB1)
+alloc(newmem,1024,StatModEquipmentAOB1)
+
+label(return)
+label(BonusBlockPercent)
+registersymbol(BonusBlockPercent)
+
+newmem:
+  addss xmm0,[BonusBlockPercent]
+  
+originalcode:
+  movss [rsi+34],xmm0
+  jmp return
+
+BonusBlockPercent:
+dq (float)10.0
+
+StatModEquipmentAOB1:
+  jmp newmem
+return:
+
+[DISABLE]
+
+StatModEquipmentAOB1:
+  db F3 0F 11 46 34
+
+unregistersymbol(StatModEquipmentAOB1)
+unregistersymbol(BonusBlockPercent)
+
+dealloc(newmem)
+	</AssemblerScript>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>306</ID>
+						  <Description>"Bonus Block Percent"</Description>
+						  <VariableType>Float</VariableType>
+						  <Address>BonusBlockPercent</Address>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>310</ID>
+					  <Description>"Bonus Parry Percent"</Description>
+					  <Options moHideChildren="1"/>
+					  <VariableType>Auto Assembler Script</VariableType>
+					  <AssemblerScript>[ENABLE]
+					  
+aobscanmodule(StatModEquipmentAOB2,$process,F3 0F 11 4E 38 F3 0F 10 4D EF F3 0F 58 46 3C) // should be unique
+registersymbol(StatModEquipmentAOB2)
+alloc(newmem,1024,StatModEquipmentAOB2)
+
+label(return)
+label(BonusParryPercent)
+registersymbol(BonusParryPercent)
+
+newmem:
+  addss xmm1,[BonusParryPercent]
+  
+originalcode:
+  movss [rsi+38],xmm1
+  jmp return
+
+BonusParryPercent:
+dq (float)10.0
+
+StatModEquipmentAOB2:
+  jmp newmem
+return:
+
+[DISABLE]
+
+StatModEquipmentAOB2:
+  db F3 0F 11 4E 38
+
+unregistersymbol(StatModEquipmentAOB2)
+unregistersymbol(BonusParryPercent)
+
+dealloc(newmem)
+</AssemblerScript>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>311</ID>
+						  <Description>"Bonus Parry Percent"</Description>
+						  <VariableType>Float</VariableType>
+						  <Address>BonusParryPercent</Address>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>315</ID>
+					  <Description>"Bonus Testing 3 (Unknown, Perhaps Hit Chance)"</Description>
+					  <Options moHideChildren="1"/>
+					  <VariableType>Auto Assembler Script</VariableType>
+					  <AssemblerScript>[ENABLE]
+				  
+aobscanmodule(StatModEquipmentAOB3,$process,F3 0F 11 46 2C F3 0F 10 45 E3 F3 0F 11 4E 30) // should be unique
+registersymbol(StatModEquipmentAOB3)
+alloc(newmem,1024,StatModEquipmentAOB3)
+
+label(return)
+
+newmem:
+  movss xmm0,[BigFloat]
+  
+originalcode:
+  movss [rsi+2C],xmm0
+  jmp return
+
+BigFloat:
+dq (float)100.0
+
+StatModEquipmentAOB3:
+  jmp newmem
+return:
+
+[DISABLE]
+
+StatModEquipmentAOB3:
+  db F3 0F 11 46 2C
+
+unregistersymbol(StatModEquipmentAOB3)
+
+dealloc(newmem)
+</AssemblerScript>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>320</ID>
+					  <Description>"Bonus Testing 4 (Unknown)"</Description>
+					  <Options moHideChildren="1"/>
+					  <VariableType>Auto Assembler Script</VariableType>
+					  <AssemblerScript>[ENABLE]
+					  
+aobscanmodule(StatModEquipmentAOB4,$process,F3 0F 11 4E 30 F3 0F 10 4D E7 F3 0F 58 46 34) // should be unique
+registersymbol(StatModEquipmentAOB4)
+alloc(newmem,1024,StatModEquipmentAOB4)
+
+label(return)
+
+newmem:
+  movss xmm1,[BigFloat]
+  
+originalcode:
+  movss [rsi+30],xmm1
+  jmp return
+
+BigFloat:
+dq (float)100.0
+
+StatModEquipmentAOB4:
+  jmp newmem
+return:
+
+[DISABLE]
+
+StatModEquipmentAOB4:
+  db F3 0F 11 4E 30
+
+unregistersymbol(StatModEquipmentAOB4)
+
+dealloc(newmem)
+</AssemblerScript>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>325</ID>
+					  <Description>"Bonus Dodge Percent"</Description>
+					  <Options moHideChildren="1"/>
+					  <VariableType>Auto Assembler Script</VariableType>
+					  <AssemblerScript>[ENABLE]
+				  
+aobscanmodule(StatModEquipmentAOB5,$process,F3 0F 11 46 3C F3 0F 10 45 F3 ?? ?? ?? ?? ?? F3 0F 10 4D F7) // should be unique
+registersymbol(StatModEquipmentAOB5)
+alloc(newmem,1024,StatModEquipmentAOB5)
+
+label(return)
+label(BonusDodgePercent)
+registersymbol(BonusDodgePercent)
+
+newmem:
+  addss xmm0,[BonusDodgePercent]
+  
+originalcode:
+  movss [rsi+3C],xmm0
+  jmp return
+
+BonusDodgePercent:
+dq (float)10.0
+
+StatModEquipmentAOB5:
+  jmp newmem
+return:
+
+[DISABLE]
+
+StatModEquipmentAOB5:
+  db F3 0F 11 46 3C
+
+unregistersymbol(StatModEquipmentAOB5)
+unregistersymbol(BonusDodgePercent)
+
+dealloc(newmem)
+</AssemblerScript>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>326</ID>
+						  <Description>"Bonus Dodge Percent"</Description>
+						  <VariableType>Float</VariableType>
+						  <Address>BonusDodgePercent</Address>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>330</ID>
+					  <Description>"Critical Percent Modifier"</Description>
+					  <Options moHideChildren="1"/>
+					  <VariableType>Auto Assembler Script</VariableType>
+					  <AssemblerScript>[ENABLE]
+					  
+aobscanmodule(StatModEquipmentAOB6,$process,F3 0F 11 4E 40 F3 0F 10 4D F7 F3 0F 58 46 44) // should be unique
+registersymbol(StatModEquipmentAOB6)
+alloc(newmem,1024,StatModEquipmentAOB6)
+
+label(return)
+label(BonusCriticalPercent)
+registersymbol(BonusCriticalPercent)
+
+newmem:
+  addss xmm1,[BonusCriticalPercent]
+  
+originalcode:
+  movss [rsi+40],xmm1
+  jmp return
+
+BonusCriticalPercent:
+dq (float)100.0
+
+StatModEquipmentAOB6:
+  jmp newmem
+return:
+
+[DISABLE]
+
+StatModEquipmentAOB6:
+  db F3 0F 11 4E 40
+
+unregistersymbol(StatModEquipmentAOB6)
+unregistersymbol(BonusCriticalPercent)
+
+dealloc(newmem)
+</AssemblerScript>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>331</ID>
+						  <Description>"Bonus Critical Percent"</Description>
+						  <VariableType>Float</VariableType>
+						  <Address>BonusCriticalPercent</Address>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>335</ID>
+					  <Description>"Testing 7 (Unknown)"</Description>
+					  <Options moHideChildren="1"/>
+					  <VariableType>Auto Assembler Script</VariableType>
+					  <AssemblerScript>[ENABLE]
+				  
+aobscanmodule(StatModEquipmentAOB7,$process,F3 0F 11 46 44 ?? ?? ?? ?? ?? 45 84 E4) // should be unique
+registersymbol(StatModEquipmentAOB7)
+alloc(newmem,1024,StatModEquipmentAOB7)
+
+label(return)
+
+newmem:
+  movss xmm0,[BigFloat]
+  
+originalcode:
+  movss [rsi+44],xmm0
+  jmp return
+
+BigFloat:
+dq (float)1000.0
+
+StatModEquipmentAOB7:
+  jmp newmem
+return:
+
+[DISABLE]
+
+StatModEquipmentAOB7:
+  db F3 0F 11 46 44
+
+unregistersymbol(StatModEquipmentAOB7)
+
+dealloc(newmem)
+</AssemblerScript>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>340</ID>
+					  <Description>"Testing 8 (Unknown)"</Description>
+					  <Options moHideChildren="1"/>
+					  <VariableType>Auto Assembler Script</VariableType>
+					  <AssemblerScript>[ENABLE]
+
+aobscanmodule(StatModEquipmentAOB8,$process,F3 0F 11 4E 48 45 84 E4 0F 84 D8 01 00 00) // should be unique
+registersymbol(StatModEquipmentAOB8)
+alloc(newmem,1024,StatModEquipmentAOB8)
+
+label(return)
+
+newmem:
+  movss xmm1,[BigFloat]
+  
+originalcode:
+  movss [rsi+48],xmm1
+  jmp return
+
+BigFloat:
+dq (float)100.0
+
+StatModEquipmentAOB8:
+  jmp newmem
+return:
+
+[DISABLE]
+
+StatModEquipmentAOB8:
+  db F3 0F 11 4E 48
+
+unregistersymbol(StatModEquipmentAOB8)
+
+dealloc(newmem)
+</AssemblerScript>
+					</CheatEntry>
+				  </CheatEntries>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>265</ID>
+				  <Description>"Perfect Item Bashing (Forge Equipment)"</Description>
+				  <Options moHideChildren="1"/>
+				  <VariableType>Auto Assembler Script</VariableType>
+				  <AssemblerScript>[ENABLE]
+
+aobscanmodule(PerfectForgeBashAOB,$process,F3 0F 11 84 CB 58 02 00 00 8B 84 83 D4 03 00 00) // should be unique
+registersymbol(PerfectForgeBashAOB)
+alloc(newmem,1024,PerfectForgeBashAOB)
+
+label(return)
+
+newmem:
+  movss xmm0,[rbx+rcx*8+00000254]
+  
+originalcode:
+  movss [rbx+rcx*8+00000258],xmm0
+  jmp return
+
+PerfectForgeBashAOB:
+  jmp newmem
+  nop
+  nop
+  nop
+  nop
+return:
+
+[DISABLE]
+
+PerfectForgeBashAOB:
+  db F3 0F 11 84 CB 58 02 00 00
+
+unregistersymbol(PerfectForgeBashAOB)
+
+dealloc(newmem)
+</AssemblerScript>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>270</ID>
+				  <Description>"Forge Temp Never Decrease"</Description>
+				  <Options moHideChildren="1"/>
+				  <VariableType>Auto Assembler Script</VariableType>
+				  <AssemblerScript>[ENABLE]
+
+aobscanmodule(ForgeTempAOB,$process,29 86 B0 03 00 00 48 81 C4 80 00 00 00) // should be unique
+registersymbol(ForgeTempAOB)
+alloc(newmem,1024,ForgeTempAOB)
+
+label(return)
+
+newmem:
+  xor eax,eax
+  
+originalcode:
+  sub [rsi+000003B0],eax
+  jmp return
+
+ForgeTempAOB:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+
+ForgeTempAOB:
+  db 29 86 B0 03 00 00
+
+unregistersymbol(ForgeTempAOB)
+
+dealloc(newmem)
+</AssemblerScript>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>275</ID>
+				  <Description>"Always Drop Options (Only Turn One Of These On)"</Description>
+				  <Options moHideChildren="1"/>
+				  <GroupHeader>1</GroupHeader>
+				  <CheatEntries>
+					<CheatEntry>
+					  <ID>276</ID>
+					  <Description>"Always Drop Rare Item"</Description>
+					  <Options moHideChildren="1"/>
+					  <VariableType>Auto Assembler Script</VariableType>
+					  <AssemblerScript>[ENABLE]
+
+aobscanmodule(AlwaysDropAOB1,$process,44 8B B5 88 00 00 00 84 C0 75 0E) // should be unique
+registersymbol(AlwaysDropAOB1)
+
+AlwaysDropAOB1+9:
+  db EB
+
+[DISABLE]
+
+AlwaysDropAOB1+9:
+  db 75
+
+unregistersymbol(AlwaysDropAOB1)
+</AssemblerScript>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>277</ID>
+					  <Description>"Always Drop Common Item If Rare Didn't Drop"</Description>
+					  <Options moHideChildren="1"/>
+					  <VariableType>Auto Assembler Script</VariableType>
+					  <AssemblerScript>[ENABLE]
+
+aobscanmodule(AlwaysDropAOB2,$process,84 C0 75 14 41 38 85 19 04 00 00 75 0B) // should be unique
+registersymbol(AlwaysDropAOB2)
+
+AlwaysDropAOB2+2:
+  db EB
+
+[DISABLE]
+
+AlwaysDropAOB2+2:
+  db 75
+
+unregistersymbol(AlwaysDropAOB2)
+</AssemblerScript>
+					</CheatEntry>
+				  </CheatEntries>
+				</CheatEntry>
+                <CheatEntry>
+                  <ID>280</ID>
+                  <Description>"Instant Party Pep Up"</Description>
+                  <Options moHideChildren="1"/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+///aobscanmodule(PepUpAOB,$process,F3 0F 11 47 38 48 8B 5C 24 40) // should be unique
+aobscanmodule(PepUpAOB,$process,F3 0F 10 47 38 F3 0F 10 15 ?? ?? ?? ?? F3 0F 5E C1) // should be unique
+registersymbol(PepUpAOB)
+alloc(newmem,1024,PepUpAOB)
+
+label(return)
+
+newmem:
+  comiss xmm1,[XMM1ToLookFor]
+  ja originalcode
+  movss xmm0,[MaxPepUp]
+  movss [rdi+38],xmm0
+  
+originalcode:
+  movss xmm0,[rdi+38]
+  jmp return
+
+XMM1ToLookFor:
+dq (float)100.0
+MaxPepUp:
+dq (float)1000.0
+
+PepUpAOB:
+  jmp newmem
+return:
+
+[DISABLE]
+
+PepUpAOB:
+  db F3 0F 10 47 38
+
+unregistersymbol(PepUpAOB)
+
+dealloc(newmem)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>285</ID>
+                  <Description>"Force Off Some Draconian Quests With Them Officially Still On (No Armor, No Shopping)"</Description>
+                  <Options moHideChildren="1"/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+
+TurnOffNoShopping:
+dq 1
+TurnOffNoArmor:
+dq 1
+
+[DISABLE]
+
+TurnOffNoShopping:
+dq 0
+TurnOffNoArmor:
+dq 0
+
+</AssemblerScript>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>286</ID>
+                      <Description>"Don't Have This Option On When Finishing The Game"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>TurnOffNoShopping</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>286</ID>
+                      <Description>"Turn Off No Shopping"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>TurnOffNoShopping</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>287</ID>
+                      <Description>"Turn Off No Armor"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>TurnOffNoArmor</Address>
+                    </CheatEntry>
+				  </CheatEntries>
+                </CheatEntry>
+			  </CheatEntries>
+			</CheatEntry>
+            <CheatEntry>
+              <ID>4000</ID>
+              <Description>"Pointers"</Description>
+              <Options moHideChildren="1"/>
+			  <GroupHeader>1</GroupHeader>
+			  <CheatEntries>
+                <CheatEntry>
+                  <ID>4100</ID>
+                  <Description>"Gold"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>GoldBasePtr</Address>
+                  <Offsets>
+                    <Offset>C0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>4101</ID>
+                  <Description>"Mini Medals (View Attributes Everything)"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>MiniMedalsBasePtr</Address>
+                  <Offsets>
+                    <Offset>18</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>4102</ID>
+                  <Description>"Perfectionist's Pearls (View Attributes Everything)"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>PearlsBasePtr</Address>
+                  <Offsets>
+                    <Offset>18</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>4200</ID>
+                  <Description>"Highlighted Item ID"</Description>
+                  <VariableType>8 Bytes</VariableType>
+				  <ShowAsHex>1</ShowAsHex>
+                  <Address>HighlightedItemBasePtr</Address>
+                  <Offsets>
+                    <Offset>10</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>4200</ID>
+                  <Description>"Highlighted Item Qty"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>HighlightedItemBasePtr</Address>
+                  <Offsets>
+                    <Offset>18</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>4500</ID>
+                  <Description>"Character Editor (View In Attributes Menu)"</Description>
+                  <Options moHideChildren="1"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>4501</ID>
+                      <Description>"Experience"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>CharBasePtr</Address>
+                      <Offsets>
+                        <Offset>B0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+					<CheatEntry>
+					  <ID>4502</ID>
+					  <Description>"Current HP"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>CharBasePtr</Address>
+					  <Offsets>
+						<Offset>7C</Offset>
+					  </Offsets>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4503</ID>
+					  <Description>"Current MP"</Description>
+					  <VariableType>4 Bytes</VariableType>
+					  <Address>CharBasePtr</Address>
+					  <Offsets>
+						<Offset>80</Offset>
+					  </Offsets>
+					</CheatEntry>
+                    <CheatEntry>
+                      <ID>4504</ID>
+                      <Description>"Total Skill Points Earned"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>CharBasePtr</Address>
+                      <Offsets>
+                        <Offset>B4</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4505</ID>
+                      <Description>"Total Skill Points Spent"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>CharBasePtr</Address>
+                      <Offsets>
+                        <Offset>B8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4510</ID>
+                      <Description>"Character Base Stats"</Description>
+                      <Options moHideChildren="1" moRecursiveSetValue="1" />
+                      <GroupHeader>1</GroupHeader>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>4511</ID>
+                          <Description>"Max HP"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>CharBasePtr</Address>
+                          <Offsets>
+                            <Offset>A0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4512</ID>
+                          <Description>"Max MP"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>CharBasePtr</Address>
+                          <Offsets>
+                            <Offset>A4</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4513</ID>
+                          <Description>"Strength"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>CharBasePtr</Address>
+                          <Offsets>
+                            <Offset>84</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4514</ID>
+                          <Description>"Resilience"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>CharBasePtr</Address>
+                          <Offsets>
+                            <Offset>88</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4515</ID>
+                          <Description>"Agility"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>CharBasePtr</Address>
+                          <Offsets>
+                            <Offset>8C</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4516</ID>
+                          <Description>"Deftness"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>CharBasePtr</Address>
+                          <Offsets>
+                            <Offset>90</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4517</ID>
+                          <Description>"Charm"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>CharBasePtr</Address>
+                          <Offsets>
+                            <Offset>94</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4518</ID>
+                          <Description>"Magical Might"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>CharBasePtr</Address>
+                          <Offsets>
+                            <Offset>98</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4519</ID>
+                          <Description>"Magical Mending"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>CharBasePtr</Address>
+                          <Offsets>
+                            <Offset>9C</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4520</ID>
+                      <Description>"Character Other Stats (From Seeds)"</Description>
+                      <Options moHideChildren="1" moRecursiveSetValue="1" />
+                      <GroupHeader>1</GroupHeader>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>4521</ID>
+                          <Description>"Max HP"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>CharBasePtr</Address>
+                          <Offsets>
+                            <Offset>1BC</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4522</ID>
+                          <Description>"Max MP"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>CharBasePtr</Address>
+                          <Offsets>
+                            <Offset>1C0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4523</ID>
+                          <Description>"Strength"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>CharBasePtr</Address>
+                          <Offsets>
+                            <Offset>1A0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4524</ID>
+                          <Description>"Resilience"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>CharBasePtr</Address>
+                          <Offsets>
+                            <Offset>1A4</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4525</ID>
+                          <Description>"Agility"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>CharBasePtr</Address>
+                          <Offsets>
+                            <Offset>1A8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4526</ID>
+                          <Description>"Deftness"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>CharBasePtr</Address>
+                          <Offsets>
+                            <Offset>1AC</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4527</ID>
+                          <Description>"Charm"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>CharBasePtr</Address>
+                          <Offsets>
+                            <Offset>1B0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4528</ID>
+                          <Description>"Magical Might"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>CharBasePtr</Address>
+                          <Offsets>
+                            <Offset>1B4</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>4529</ID>
+                          <Description>"Magical Mending"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>CharBasePtr</Address>
+                          <Offsets>
+                            <Offset>1B8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+				  </CheatEntries>
+				</CheatEntry>
+                <CheatEntry>
+                  <ID>4110</ID>
+                  <Description>"Draconian Quest (Attempt To Equip A Piece Of Armor To Update Pointer)"</Description>
+                  <Options moHideChildren="1" moRecursiveSetValue="1"/>
+				  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+					<CheatEntry>
+					  <ID>4111</ID>
+					  <Description>"Draconion Quest No Shopping"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+1:On
+</DropDownList>
+					  <VariableType>Byte</VariableType>
+					  <Address>DraconianQuestBasePtr</Address>
+					  <Offsets>
+						<Offset>49</Offset>
+					  </Offsets>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4112</ID>
+					  <Description>"Draconion Quest No Armour"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+1:On
+</DropDownList>
+					  <VariableType>Byte</VariableType>
+					  <Address>DraconianQuestBasePtr</Address>
+					  <Offsets>
+						<Offset>4A</Offset>
+					  </Offsets>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4113</ID>
+					  <Description>"Draconion Quest Super Shypox"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+1:On
+</DropDownList>
+					  <VariableType>Byte</VariableType>
+					  <Address>DraconianQuestBasePtr</Address>
+					  <Offsets>
+						<Offset>4B</Offset>
+					  </Offsets>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4114</ID>
+					  <Description>"Draconion Quest ShyPox"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+1:On
+</DropDownList>
+					  <VariableType>Byte</VariableType>
+					  <Address>DraconianQuestBasePtr</Address>
+					  <Offsets>
+						<Offset>4C</Offset>
+					  </Offsets>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4115</ID>
+					  <Description>"Draconion Quest Party Wiped Out If Protaganist Perishes"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+1:On
+</DropDownList>
+					  <VariableType>Byte</VariableType>
+					  <Address>DraconianQuestBasePtr</Address>
+					  <Offsets>
+						<Offset>4D</Offset>
+					  </Offsets>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4116</ID>
+					  <Description>"Draconion Quest All Enemies Are Super Strong"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+1:On
+</DropDownList>
+					  <VariableType>Byte</VariableType>
+					  <Address>DraconianQuestBasePtr</Address>
+					  <Offsets>
+						<Offset>4E</Offset>
+					  </Offsets>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>4114</ID>
+					  <Description>"Draconion Quest Reduced Experience From Easy Fights"</Description>
+                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Off
+1:On
+</DropDownList>
+					  <VariableType>Byte</VariableType>
+					  <Address>DraconianQuestBasePtr</Address>
+					  <Offsets>
+						<Offset>4F</Offset>
+					  </Offsets>
+					</CheatEntry>
+				  </CheatEntries>
+				</CheatEntry>
+			  </CheatEntries>
+			</CheatEntry>
+		</CheatEntries>
+		</CheatEntry>
+	   </CheatEntries>
+	</CheatEntry>
+	</CheatEntries>
+<LuaScript>
+function lua_aobscan(name,module,bytes,index)
+  index = index - 1
+  if(module == "") then
+    local resultSet = AOBScan(bytes)
+      if(resultSet == nil) then
+        unregisterSymbol(name)
+        print(name.." not found")
+      else
+        unregisterSymbol(name)
+        registerSymbol(name,resultSet[index])
+        resultSet.destroy()
+      end
+  else
+    if(getModuleSize(module) == nil) then
+      print("Module "..module.." not found")
+    else
+      local memScanner = createMemScan()
+      local memFoundList = createFoundList(memScanner)
+      memScanner.firstScan(
+        soExactValue,vtByteArray,rtRounded,bytes,nil,
+        getAddress(module),(getAddress(module)+getModuleSize(module)),"",
+        fsmNotAligned,"",true,false,false,false)
+      memScanner.waitTillDone()
+      memFoundList.initialize()
+        if(memFoundList.Count == 0) then
+          unregisterSymbol(name)
+          print(name.." in module "..module.." not found")
+        else
+          unregisterSymbol(name)
+          registerSymbol(name,memFoundList.Address[index])
+        end
+      memScanner.destroy()
+      memFoundList.destroy()
+    end
+  end
+end
+</LuaScript>
+</CheatTable>
