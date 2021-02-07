@@ -8,3 +8,6 @@ setgs fpowerarmorpowerdrainperimpactland 0
 setgs fpickpocketminchance 100
 setgs fpickpocketmaxchance 100
 setgs ihackingmaxwords 1
+setgs ihourstorespawncell 2147483647
+setgs ihourstorespawncellcleared 2147483647
+set chancelegendary to 100
